@@ -73,6 +73,30 @@ export function Hero() {
           animate="show"
           style={{ maxWidth: "1000px" }}
         >
+          {/* Badge */}
+          <motion.div
+            variants={item}
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.5rem",
+              padding: "0.375rem 0.75rem",
+              border: "1px solid var(--color-border)",
+              borderRadius: "9999px",
+              marginBottom: "2rem",
+              fontFamily: "var(--font-mono)",
+              fontSize: "0.75rem",
+              fontWeight: 600,
+              color: "var(--color-fg)",
+              background: "var(--color-card)",
+              textTransform: "uppercase",
+              letterSpacing: "0.05em",
+            }}
+          >
+            <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#10B981", boxShadow: "0 0 12px rgba(16, 185, 129, 0.6)" }} />
+            {t("tagline")}
+          </motion.div>
+
           {/* Headline */}
           <h1 className="display" style={{ color: "var(--color-fg)", marginBottom: "2rem", whiteSpace: "pre-line" }}>
             <TextReveal text={t("headline")} delay={0.2} />
