@@ -1,31 +1,25 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg:           #0E0E14;
-  --color-fg:           #F0EFF8;
-  --color-accent:       #7B61FF;  
-  --color-accent-hover: #6246FF;  
-  --color-secondary:    #10B981;
-  --color-secondary-hover: #0D9668;
-  --color-muted:        #888896;
-  --color-border:       #242428;
-  --color-card:         #18181F;
-  --color-accent-gradient: linear-gradient(135deg, #7B61FF, #10B981);
-  --color-glass-bg:     rgba(14, 14, 20, 0.22);
+  --color-bg:           #0a0a0a;
+  --color-fg:           #fafafa;
+  --color-accent:       #818cf8;  
+  --color-accent-hover: #6366f1;  
+  --color-muted:        #888888;
+  --color-border:       #222222;
+  --color-card:         #0f0f0f;
+  --color-glass-bg:     rgba(10, 10, 10, 0.4);
 }
 
 .light {
-  --color-bg:           #F0EFF8;
-  --color-fg:           #0E0E14;
-  --color-accent:       #7B61FF;
-  --color-accent-hover: #6246FF;
-  --color-secondary:    #10B981;
-  --color-secondary-hover: #0D9668;
-  --color-muted:        #888896;
-  --color-border:       #d4d4db;
+  --color-bg:           #fafafa;
+  --color-fg:           #0a0a0a;
+  --color-accent:       #6366f1;
+  --color-accent-hover: #4f46e5;
+  --color-muted:        #888888;
+  --color-border:       #e5e5e5;
   --color-card:         #ffffff;
-  --color-accent-gradient: linear-gradient(135deg, #7B61FF, #10B981);
-  --color-glass-bg:     rgba(240, 239, 248, 0.45);
+  --color-glass-bg:     rgba(250, 250, 250, 0.45);
 }
 
 /* ─── Base ───────────────────────────────────────────────────────────────── */
@@ -36,7 +30,7 @@ html { scroll-behavior: smooth; }
 body {
   background-color: var(--color-bg);
   color: var(--color-fg);
-  font-family: var(--font-body, "IBM Plex Sans", system-ui, sans-serif);
+  font-family: var(--font-body, "DM Sans", system-ui, sans-serif);
   font-size: 1rem;
   line-height: 1.6;
   font-weight: 400;
@@ -47,20 +41,20 @@ body {
 
 /* ─── Typography ─────────────────────────────────────────────────────────── */
 .display {
-  font-family: var(--font-body, "IBM Plex Sans", system-ui, sans-serif);
+  font-family: var(--font-display, "Syne", system-ui, sans-serif);
   font-size: clamp(2.5rem, 8vw, 7rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-weight: 800;
+  letter-spacing: -0.04em;
   line-height: 1;
 }
 
 .heading {
-  font-family: var(--font-body, "IBM Plex Sans", system-ui, sans-serif);
+  font-family: var(--font-display, "Syne", system-ui, sans-serif);
   font-size: clamp(2rem, 5vw, 4rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-weight: 800;
+  letter-spacing: -0.04em;
   line-height: 1.05;
-  text-shadow: 0 0 40px rgba(123, 97, 255, 0.25), 0 0 80px rgba(123, 97, 255, 0.1);
+  text-shadow: 0 0 40px rgba(99, 102, 241, 0.25), 0 0 80px rgba(99, 102, 241, 0.1);
 }
 
 .label {
@@ -106,7 +100,7 @@ body {
   padding: 0.875rem 2rem;
   background: var(--color-fg);
   color: var(--color-bg);
-  font-family: var(--font-body, "IBM Plex Sans", system-ui, sans-serif);
+  font-family: var(--font-body, "DM Sans", system-ui, sans-serif);
   font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0.02em;
@@ -124,7 +118,7 @@ body {
   padding: 0.875rem 2rem;
   border: 1px solid var(--color-border);
   color: var(--color-fg);
-  font-family: var(--font-body, "IBM Plex Sans", system-ui, sans-serif);
+  font-family: var(--font-body, "DM Sans", system-ui, sans-serif);
   font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0.02em;
@@ -206,7 +200,7 @@ body {
 .project-row:hover .proj-arrow { transform: translate(6px, -6px) rotate(15deg); color: var(--color-accent); }
 
 .proj-num {
-  font-family: var(--font-body, "IBM Plex Sans", system-ui, sans-serif);
+  font-family: var(--font-body, "DM Sans", system-ui, sans-serif);
   font-size: 0.875rem;
   font-weight: 700;
   color: var(--color-muted);
@@ -234,7 +228,7 @@ body {
 
 /* ─── Stat cards ─────────────────────────────────────────────────────────── */
 .stat-value {
-  font-family: var(--font-body, "IBM Plex Sans", system-ui, sans-serif);
+  font-family: var(--font-display, "Syne", system-ui, sans-serif);
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 800;
   letter-spacing: -0.04em;

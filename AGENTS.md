@@ -42,8 +42,8 @@ quién soy, qué construyo, por qué contratarme a mí y no a una agencia.
 @theme {
   --color-bg:           #0a0a0a;
   --color-fg:           #fafafa;
-  --color-accent:       #4b4058ff;  
-  --color-accent-hover: #9e00ffff;  
+  --color-accent:       #818cf8;  
+  --color-accent-hover: #6366f1;  
   --color-muted:        #888888;
   --color-border:       #222222;
 }
@@ -51,9 +51,9 @@ quién soy, qué construyo, por qué contratarme a mí y no a una agencia.
 .light {
   --color-bg:           #fafafa;
   --color-fg:           #0a0a0a;
-  --color-accent:       #4a395cff;
-  --color-accent-hover: #7700ffff;
-  --color-muted:        #666666;
+  --color-accent:       #6366f1;  
+  --color-accent-hover: #4f46e5;  
+  --color-muted:        #888888;
   --color-border:       #e5e5e5;
 }
 ```

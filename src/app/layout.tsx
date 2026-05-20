@@ -1,10 +1,17 @@
-import { IBM_Plex_Sans, JetBrains_Mono } from "next/font/google";
+import { DM_Sans, Syne, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const ibmPlexSans = IBM_Plex_Sans({
+const dmSans = DM_Sans({
   subsets: ["latin"],
   variable: "--font-body",
   weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
+const syne = Syne({
+  subsets: ["latin"],
+  variable: "--font-display",
+  weight: ["700", "800"],
   display: "swap",
 });
 
@@ -21,7 +28,7 @@ const jetbrainsMono = JetBrains_Mono({
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html suppressHydrationWarning data-scroll-behavior="smooth">
-      <body className={`${ibmPlexSans.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
+      <body className={`${dmSans.variable} ${syne.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
         {children}
       </body>
     </html>
