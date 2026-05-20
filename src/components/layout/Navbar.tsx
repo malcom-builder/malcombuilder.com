@@ -91,6 +91,10 @@ export function Navbar() {
               <a
                 href="#cta"
                 style={{
+                  display: "inline-flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  minWidth: "140px",
                   fontSize: "0.875rem",
                   fontWeight: 600,
                   color: "#ffffff",
