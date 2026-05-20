@@ -1,0 +1,68 @@
+{
+  "nav": {
+    "logo": "malcom.builder",
+    "services": "Services",
+    "projects": "Projects",
+    "method": "Method",
+    "about": "About",
+    "cta": "Let's Build"
+  },
+  "hero": {
+    "tagline": "AI-native systems builder",
+    "headline": "AI-native systems builder.",
+    "headline_accent": "Alone.",
+    "subheadline": "I build complex systems from the ground up AI powered.",
+    "cta_primary": "View projects"
+  },
+  "services": {
+    "badge": "Services",
+    "title": "What I build",
+    "items": [
+      { "title": "Services Building",  "desc": "From idea to product with AI at the core of every decision." },
+      { "title": "AI Integration",     "desc": "Automation and intelligence in existing processes to multiply output." },
+      { "title": "Technical Strategy", "desc": "Architecture and stack to scale from day one without technical debt." },
+      { "title": "MVP Development",    "desc": "Functional product in weeks, not months. Fast validation, constant iteration." }
+    ]
+  },
+  "projects": {
+    "badge": "Projects",
+    "title": "Selected",
+    "view": "View project"
+  },
+  "method": {
+    "badge": "Method",
+    "title": "Tools"
+  },
+  "about": {
+    "badge": "About",
+    "title": "I build differently",
+    "bio": "malcom.builder is an AI-native system builder based in Rosario, Argentina. I combine solid software architecture with artificial intelligence as an execution tool to build real systems — fast, without technical debt and ready to scale.",
+    "stats": [
+      { "value": "3+",   "label": "Years building" },
+      { "value": "4+",   "label": "Projects shipped" },
+      { "value": "100%", "label": "AI-native stack" },
+      { "value": "24/7", "label": "Active monitoring" }
+    ]
+  },
+  "cta": {
+    "marquee": "LET’S TALK — LET’S COLLABORATE — SAY HELLO — WANNA BE STARTING SOMETHING? ",
+    "btn_text": "Let's Build.",
+    "email": "contact@malcombuilder.com"
+  },
+  "footer": {
+    "tagline": "AI-native system builder",
+    "description": "Building systems from the ground up with AI at the core.",
+    "nav_title": "Navigation",
+    "social_title": "Social",
+    "bottom": "© 2025 malcom.builder · Rosario, Argentina · Built with Next.js & AI"
+  },
+  "toggle": {
+    "theme_dark":  "Switch to dark mode",
+    "theme_light": "Switch to light mode",
+    "lang": "Cambiar a Español"
+  },
+  "meta": {
+    "title": "malcom.builder — AI-native company builder",
+    "description": "We build companies from the ground up with AI at the core, not as an afterthought."
+  }
+}

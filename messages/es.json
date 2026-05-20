@@ -1,0 +1,68 @@
+{
+  "nav": {
+    "logo": "malcom.builder",
+    "services": "Services",
+    "projects": "Projects",
+    "method": "Method",
+    "about": "About",
+    "cta": "Construyamos"
+  },
+  "hero": {
+    "tagline": "AI-native systems builder",
+    "headline": "Desarrollo sistemas con IA.",
+    "headline_accent": "Solo.",
+    "subheadline": "Construyo sistemas digitales complejos desde cero. Potenciados con IA.",
+    "cta_primary": "Ver proyectos"
+  },
+  "services": {
+    "badge": "Servicios",
+    "title": "Qué construyo",
+    "items": [
+      { "title": "Services Building",  "desc": "De la idea al producto con IA en el núcleo de cada decisión." },
+      { "title": "AI Integration",     "desc": "Automatización e inteligencia en procesos existentes para multiplicar el output." },
+      { "title": "Technical Strategy", "desc": "Arquitectura y stack para escalar desde el día uno sin deuda técnica." },
+      { "title": "MVP Development",    "desc": "Producto funcional en semanas, no meses. Validación rápida, iteración constante." }
+    ]
+  },
+  "projects": {
+    "badge": "Proyectos",
+    "title": "Selección",
+    "view": "Ver proyecto"
+  },
+  "method": {
+    "badge": "Método",
+    "title": "Herramientas"
+  },
+  "about": {
+    "badge": "Nosotros",
+    "title": "Construyo distinto",
+    "bio": "malcom.builder es un AI-native system builder con base en Rosario, Argentina. Combino arquitectura de software sólida con inteligencia artificial como herramienta de ejecución para construir sistemas reales — rápido, sin deuda técnica y listos para escalar.",
+    "stats": [
+      { "value": "3+",   "label": "Años construyendo" },
+      { "value": "4+",   "label": "Proyectos entregados" },
+      { "value": "100%", "label": "Stack AI-native" },
+      { "value": "24/7", "label": "Monitoreo activo" }
+    ]
+  },
+  "cta": {
+    "marquee": "HABLEMOS — COLABOREMOS — SALUDA — ¿QUIERES EMPEZAR ALGO? ",
+    "btn_text": "Construyamos.",
+    "email": "contact@malcombuilder.com"
+  },
+  "footer": {
+    "tagline": "AI-native system builder",
+    "description": "Construyo sistemas desde cero con IA en el núcleo.",
+    "nav_title": "Navegación",
+    "social_title": "Redes",
+    "bottom": "© 2025 malcom.builder · Rosario, Argentina · Built with Next.js & AI"
+  },
+  "toggle": {
+    "theme_dark":  "Cambiar a modo oscuro",
+    "theme_light": "Cambiar a modo claro",
+    "lang": "Switch to English"
+  },
+  "meta": {
+    "title": "malcom.builder — AI-native company builder",
+    "description": "Construimos empresas desde cero usando inteligencia artificial como base, no como herramienta."
+  }
+}
