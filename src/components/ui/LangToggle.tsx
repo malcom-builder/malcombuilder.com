@@ -3,6 +3,7 @@
 import { useLocale } from "next-intl";
 import { useRouter, usePathname } from "@/i18n/routing";
 import { useTransition } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export function LangToggle() {
   const locale = useLocale();
@@ -29,9 +30,22 @@ export function LangToggle() {
         fontSize: "0.75rem",
         letterSpacing: "0.05em",
         width: "2.5rem",
+        position: "relative",
+        overflow: "hidden"
       }}
     >
-      {locale.toUpperCase()}
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.span
+          key={locale}
+          initial={{ y: 15, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -15, opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          style={{ position: "absolute" }}
+        >
+          {locale.toUpperCase()}
+        </motion.span>
+      </AnimatePresence>
     </button>
   );
 }

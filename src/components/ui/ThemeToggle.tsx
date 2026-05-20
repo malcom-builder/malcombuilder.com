@@ -3,6 +3,7 @@
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { Sun, Moon } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
@@ -17,8 +18,20 @@ export function ThemeToggle() {
       onClick={() => setTheme(isDark ? "light" : "dark")}
       className="icon-btn"
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+      style={{ position: "relative", overflow: "hidden" }}
     >
-      {isDark ? <Sun size={16} /> : <Moon size={16} />}
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.div
+          key={isDark ? "dark" : "light"}
+          initial={{ y: -20, opacity: 0, rotate: -90 }}
+          animate={{ y: 0, opacity: 1, rotate: 0 }}
+          exit={{ y: 20, opacity: 0, rotate: 90 }}
+          transition={{ duration: 0.2 }}
+          style={{ position: "absolute", display: "flex", alignItems: "center", justifyContent: "center" }}
+        >
+          {isDark ? <Sun size={16} /> : <Moon size={16} />}
+        </motion.div>
+      </AnimatePresence>
     </button>
   );
 }
