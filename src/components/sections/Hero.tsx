@@ -66,7 +66,7 @@ export function Hero() {
         />
       </div>
 
-      <div className="container" style={{ position: "relative", zIndex: 1, marginTop: "-10vh" }}>
+      <div className="container" style={{ position: "relative", zIndex: 1, marginTop: "-12vh" }}>
         <motion.div
           variants={container}
           initial="hidden"
@@ -83,7 +83,7 @@ export function Hero() {
               padding: "0.375rem 0.75rem",
               border: "1px solid var(--color-border)",
               borderRadius: "9999px",
-              marginBottom: "2rem",
+              marginBottom: "1.5rem",
               fontFamily: "var(--font-mono)",
               fontSize: "0.75rem",
               fontWeight: 600,
@@ -98,7 +98,7 @@ export function Hero() {
           </motion.div>
 
           {/* Headline */}
-          <h1 className="display" style={{ color: "var(--color-fg)", marginBottom: "2rem", whiteSpace: "pre-line" }}>
+          <h1 className="display" style={{ color: "var(--color-fg)", marginBottom: "1.5rem", whiteSpace: "pre-line" }}>
             <TextReveal text={t("headline")} delay={0.2} />
             <br />
             <motion.span
@@ -132,7 +132,7 @@ export function Hero() {
               fontSize: "clamp(1.125rem, 2vw, 1.375rem)",
               color: "var(--color-muted)",
               maxWidth: "40rem",
-              marginBottom: "3rem",
+              marginBottom: "2.5rem",
               lineHeight: 1.6,
               fontWeight: 400,
             }}
