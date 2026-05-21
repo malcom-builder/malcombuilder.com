@@ -1,10 +1,11 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, useMotionValue, useSpring } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { TextReveal } from "@/components/ui/TextReveal";
 import { MagneticButton } from "@/components/ui/MagneticButton";
+import { useEffect, useRef } from "react";
 
 const container = { hidden: {}, show: { transition: { staggerChildren: 0.12, delayChildren: 0.2 } } };
 const item      = { hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] } } };
@@ -12,10 +13,33 @@ const item      = { hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0, tra
 export function Hero() {
   const t = useTranslations("hero");
   const shouldReduceMotion = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Cursor tracking for orb
+  const rawX = useMotionValue(0);
+  const rawY = useMotionValue(0);
+  const orbX = useSpring(rawX, { stiffness: 40, damping: 20 });
+  const orbY = useSpring(rawY, { stiffness: 40, damping: 20 });
+
+  useEffect(() => {
+    if (shouldReduceMotion) return;
+    const handleMove = (e: MouseEvent) => {
+      const rect = sectionRef.current?.getBoundingClientRect();
+      if (!rect) return;
+      // Map cursor to ±40px offset from center
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      rawX.set((e.clientX - cx) * 0.06);
+      rawY.set((e.clientY - cy) * 0.06);
+    };
+    window.addEventListener("mousemove", handleMove);
+    return () => window.removeEventListener("mousemove", handleMove);
+  }, [shouldReduceMotion, rawX, rawY]);
 
   return (
     <section
       id="hero"
+      ref={sectionRef}
       style={{
         minHeight: "100svh",
         display: "flex",
@@ -45,16 +69,13 @@ export function Hero() {
             WebkitMaskImage: "radial-gradient(ellipse 80% 60% at 50% 40%, black, transparent)",
           }}
         />
-        {/* AI Glow Orb */}
+
+        {/* Breathing + cursor-tracking AI Glow Orb */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 0.15, scale: 1 }}
-          transition={{ duration: 2, ease: "easeOut" }}
           style={{
             position: "absolute",
             top: "10%",
             left: "50%",
-            transform: "translateX(-50%)",
             width: "80vw",
             height: "80vw",
             maxWidth: "800px",
@@ -62,7 +83,27 @@ export function Hero() {
             background: "radial-gradient(circle, var(--color-accent) 0%, transparent 60%)",
             filter: "blur(80px)",
             borderRadius: "50%",
+            translateX: "calc(-50% + var(--orb-shift-x, 0px))",
+            x: orbX,
+            y: orbY,
           }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={
+            shouldReduceMotion
+              ? { opacity: 0.12, scale: 1 }
+              : {
+                  opacity: [0, 0.12, 0.18, 0.12],
+                  scale: [0.8, 1, 1.05, 1],
+                }
+          }
+          transition={
+            shouldReduceMotion
+              ? { duration: 2, ease: "easeOut" }
+              : {
+                  opacity: { duration: 6, repeat: Infinity, ease: "easeInOut", times: [0, 0.3, 0.6, 1] },
+                  scale:   { duration: 6, repeat: Infinity, ease: "easeInOut", times: [0, 0.3, 0.6, 1] },
+                }
+          }
         />
       </div>
 
@@ -143,34 +184,34 @@ export function Hero() {
           {/* CTAs */}
           <motion.div variants={item} style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
             <MagneticButton>
-              <a 
-                href="#projects" 
-                id="hero-cta-primary" 
-                style={{ 
+              <a
+                href="#projects"
+                id="hero-cta-primary"
+                style={{
                   display: "inline-flex",
                   alignItems: "center",
                   gap: "0.75rem",
-                  background: "var(--color-fg)", 
-                  color: "var(--color-bg)", 
+                  background: "var(--color-fg)",
+                  color: "var(--color-bg)",
                   border: "none",
                   fontSize: "1rem",
                   fontWeight: 700,
                   padding: "1rem 2.5rem",
                   borderRadius: "9999px",
                   textDecoration: "none",
-                  boxShadow: "0 10px 30px rgba(158, 80, 247, 0.05)",
+                  boxShadow: "0 10px 30px rgba(16, 185, 129, 0.05)",
                   transition: "background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease"
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.backgroundColor = "var(--color-accent)";
+                  (e.currentTarget as HTMLElement).style.backgroundColor = "var(--color-emerald)";
                   (e.currentTarget as HTMLElement).style.color = "#ffffff";
-                  (e.currentTarget as HTMLElement).style.boxShadow = "0 12px 35px rgba(158, 80, 247, 0.45)";
+                  (e.currentTarget as HTMLElement).style.boxShadow = "0 12px 35px rgba(16, 185, 129, 0.45)";
                   (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
                 }}
                 onMouseLeave={(e) => {
                   (e.currentTarget as HTMLElement).style.backgroundColor = "var(--color-fg)";
                   (e.currentTarget as HTMLElement).style.color = "var(--color-bg)";
-                  (e.currentTarget as HTMLElement).style.boxShadow = "0 10px 30px rgba(158, 80, 247, 0.05)";
+                  (e.currentTarget as HTMLElement).style.boxShadow = "0 10px 30px rgba(16, 185, 129, 0.05)";
                   (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
                 }}
               >

@@ -40,21 +40,24 @@ quién soy, qué construyo, por qué contratarme a mí y no a una agencia.
 
 ```css
 @theme {
-  --color-bg:           #0a0a0a;
-  --color-fg:           #fafafa;
-  --color-accent:       #818cf8;  
-  --color-accent-hover: #6366f1;  
-  --color-muted:        #888888;
-  --color-border:       #222222;
+  --color-bg: #0e0e14; /* Void */
+  --color-surface: #18181f; /* Surface */
+  --color-fg: #f0eff8; /* Chalk */
+  --color-muted: #888896; /* Mist */
+  --color-accent: #7b61ff; /* Indigo — token global de marca */
+  --color-accent-hover: #6246ff;
+  --color-emerald: #10b981; /* Emerald — detalles tech/AI */
+  --color-emerald-hover: #0d9668;
+  --color-border: #242428;
 }
 
 .light {
-  --color-bg:           #fafafa;
-  --color-fg:           #0a0a0a;
-  --color-accent:       #6366f1;  
-  --color-accent-hover: #4f46e5;  
-  --color-muted:        #888888;
-  --color-border:       #e5e5e5;
+  --color-bg: #f0eff8; /* Chalk como fondo claro */
+  --color-fg: #0e0e14; /* Void como texto */
+  --color-accent: #7b61ff; /* Indigo — mismo token */
+  --color-accent-hover: #6246ff;
+  --color-muted: #888896; /* Mist */
+  --color-border: #242428;
 }
 ```
 
@@ -103,56 +106,72 @@ messages/
 ## Secciones
 
 ### Navbar
-- Sticky, `backdrop-blur-md`, `bg-[var(--bg)]/80`
+
+- 100% opaco — `background: var(--color-bg)` (sin blur, decisión de desarrollo)
+- `box-shadow` + `border-bottom` al scrollear para separarse del fondo
 - Logo: `malcom.builder` en monospace a la izquierda
-- Links: Services / Projects / Method / About (siempre en ingles)
+- Links: Services / Projects / Method / About (siempre en inglés)
 - Derecha: LangToggle (ES/EN) + ThemeToggle
-- CTA: `Construyamos` (primario)
+- CTA: `Construyamos` — ancho fijo `width: 130px` para evitar saltos de layout ES/EN
+- Botones de ícono con `transform: scale(0.9)` en `:active`
 
 ### Hero
+
 - Headline: `AI-native system builder. Alone.`
-- Subheadline ES: *Construyo sistemas complejos desde cero potenciados con IA.*
-- Subheadline EN: *I build complex systems from the ground up AI powered.*
-- CTAs: `Ver proyectos` (primario)
+- Subheadline ES: _Construyo sistemas complejos desde cero potenciados con IA._
+- Subheadline EN: _I build complex systems from the ground up AI powered._
+- CTA: `Ver proyectos` (primario)
+- `marginTop: "-10vh"` en el contenedor para que el CTA quede above the fold
 - Entrada staggered con Framer Motion
 
 ### Services — grid 2×2
-1. **Services Building** — De la idea al producto con IA en el núcleo
-2. **AI Integration** — Automatización e inteligencia en procesos existentes
-3. **Technical Strategy** — Arquitectura y stack para escalar desde el día uno
-4. **MVP Development** — Producto funcional en semanas, no meses
 
-### Projects — lista numerada 
+Basado en el framework ASÍ CONSTRUYO de CLAUDE.md:
+
+1. **Strategy** — Tesis · posicionamiento · modelo de negocio
+2. **Architecture** — Identidad · sistema visual · marca completa
+3. **Product** — Web · e-commerce · plataforma · app
+4. **Growth** — Contenido AI · pauta · automatizaciones
+
+### Projects — lista numerada
+
 Datos en `lib/constants.ts`:
+
 ```ts
-{ id: '01', category: 'Portal Médico',      title: 'Zolfo Medicina Estética', metric: '100 Lighthouse', url: 'https://zolfoestetica.com.ar' },
-{ id: '02', category: 'Web Institucional',  title: 'NurEstética',             metric: 'Real Score 100', url: 'https://nurestetica.com.ar' },
-{ id: '03', category: 'IAM System',         title: 'AuthMotion',              metric: 'Open Source',    url: 'https://github.com/malcom-builder/AuthMotion' },
-{ id: '04', category: 'Fintech',            title: 'SmartWallet',             metric: 'Double-Entry',   url: 'https://github.com/malcom-builder/SmartWallet' },
+{ id: '01', category: 'Portal Médico',     title: 'Zolfo Medicina Estética', metric: '100 Lighthouse', url: 'https://zolfoestetica.com.ar' },
+{ id: '02', category: 'Web Institucional', title: 'NurEstética',             metric: 'Real Score 100', url: 'https://nurestetica.com.ar' },
+{ id: '03', category: 'IAM System',        title: 'AuthMotion',              metric: 'Open Source',    url: 'https://github.com/malcom-builder/AuthMotion' },
+{ id: '04', category: 'Fintech',           title: 'SmartWallet',             metric: 'Double-Entry',   url: 'https://github.com/malcom-builder/SmartWallet' },
 ```
 
 ### Stack — grid de logos
-Next.js · React · TypeScript · C# · .NET · Docker · SQL Server · Azure · Vercel · Tailwind · Framer Motion · Supabase · GitHub 
+
+Next.js · React · TypeScript · C# · .NET · Docker · SQL Server · Azure · Vercel · Tailwind · Framer Motion · Supabase · GitHub
 Hover: grayscale → color (acento indigo)
 
-### About — bio + stat counters
-| Número | ES                   | EN                    |
-| ------ | -------------------- | --------------------- |
-| `3+`   | Años construyendo    | Years building        |
-| `4+`   | Proyectos entregados | Projects shipped      |
-| `100%` | Stack AI-native      | AI-native stack       |
-| `24/7` | Monitoreo activo     | Active monitoring     |
+### About — La tesis + stat counters
 
-### CTA
-- Marquee: `LET’S TALK — LET’S COLLABORATE — SAY HELLO — WANNA BE STARTING SOMETHING?`
-- Let's Build (en)
-- Hablemos (es)
-- [contact@malcombuilder.com](mailto:[EMAIL_ADDRESS])
+**Texto ES:** _Construyo sistemas solo. Desde el modelo de negocio hasta el código. Desde la marca hasta cada pieza de contenido. Sin inventario. Una persona. Full-stack. Con criterio._
+**Texto EN:** _I build systems alone. From the business model to the code. From the brand to every piece of content. No inventory. One person. Full-stack. With conviction._
 
+| Número | ES                   | EN                |
+| ------ | -------------------- | ----------------- |
+| `3+`   | Años construyendo    | Years building    |
+| `4+`   | Proyectos entregados | Projects shipped  |
+| `100%` | Stack AI-native      | AI-native stack   |
+| `24/7` | Monitoreo activo     | Active monitoring |
+
+### CTA final
+
+- Marquee: `LET'S TALK — LET'S COLLABORATE — SAY HELLO — WANNA BE STARTING SOMETHING?`
+- Hover del marquee: color emerald `#10B981`
+- Botón ES: `Hablemos` / EN: `Let's Build`
+- Email: contact@malcombuilder.com
 
 ### Footer — estilo monzalab
+
 - Col izq: `© 2026 malcom.builder`
-- Col der: instagram + linkedin 
+- Col der: Instagram + LinkedIn
 - Barra inferior: `Rosario, Argentina · Next.js & AI`
 
 ---
@@ -163,6 +182,17 @@ Hover: grayscale → color (acento indigo)
 - Stagger: `0.1s` por ítem en grids
 - Marquee: CSS `@keyframes`, `20s linear infinite`
 - Hover cards: `scale(1.02)`, `border-color: var(--accent)`, `transition: 0.2s`
+- Espaciado entre secciones: `10rem` mobile / `16rem` desktop (whitespace intencional)
+- Títulos de sección: clase `.heading` para cohesión tipográfica
+
+---
+
+## Tipografía
+
+- UI / Headings: IBM Plex Sans 400 / 500 / 600 / 700
+- Código / Accents: JetBrains Mono 400 / 600
+- Headline size: `clamp(2.5rem, 8vw, 7rem)`
+- Letter-spacing: `-0.02em` en headings
 
 ---
 
@@ -189,7 +219,7 @@ title: 'malcom.builder — AI-native system builder'
 1. Setup
    └── Instalar dependencias del stack
    └── Configurar next-intl: routing.ts, middleware.ts, request.ts
-   └── Crear globals.css con @theme {} y tokens indigo
+   └── Crear globals.css con @theme {} y tokens
    └── Configurar ThemeProvider
 
 2. Estructura base
@@ -204,7 +234,7 @@ title: 'malcom.builder — AI-native system builder'
    └── Navbar.tsx · Footer.tsx
 
 5. Secciones (orden)
-   └── Hero → Services → Projects → Stack → About → Contact
+   └── Hero → Services → Projects → Stack → About → CTA
 
 6. Data
    └── lib/constants.ts con todos los arrays tipados
@@ -243,12 +273,38 @@ title: 'malcom.builder — AI-native system builder'
 
 ---
 
-## Placeholders a reemplazar antes de deploy
+## Decisiones del proyecto
 
-| Campo          | Placeholder     | Reemplazar con |
-| -------------- | --------------- | -------------- |
-| WhatsApp       | `+54XXXXXXXXXX` | Número real    |
-| URLs proyectos | `#`             | URLs reales    |
+> Esta sección la actualiza el agente con /update-memory al final de cada sesión.
+> No editar manualmente salvo corrección.
+
+### Decisiones UI/UX tomadas durante desarrollo
+
+- **Navbar blur:** Abandonado — problemas de renderizado. Navbar 100% opaco con `box-shadow` + `border-bottom` al scroll.
+- **Microinteracciones:** Botones de ícono (`LangToggle`, `ThemeToggle`) con `transform: scale(0.9)` en `:active`.
+- **Hero layout:** `marginTop: "-10vh"` para que el CTA quede above the fold sin scroll.
+- **Copywriting ES:** Traducciones naturales, no literales. "Desarrollo sistemas con IA" > "AI-native systems builder". "Solo" se mantiene igual en ambos idiomas — es firma de marca.
+- **Color accent:** `#7B61FF` (Indigo) + hover `#6246FF` — alineado con token global de marca.
+- **Emerald:** Token `--color-emerald: #10B981` para detalles puntuales (números en project cards, hover del marquee CTA).
+- **Navbar CTA:** `width: 130px` fijo para evitar saltos de layout al cambiar ES/EN.
+- **Tipografía:** Clase `.heading` en títulos de sección. Espaciado entre secciones: `10rem` mobile / `16rem` desktop.
+
+### Componentes creados
+
+- **About:** Sección completa a 2 columnas con grid responsive. Foto de perfil con aspecto 4:5, `object-fit: cover`, bordes con glow índigo y badges flotantes con efecto glassmorphism (`backdropFilter`). Título alineado usando la clase `.heading`.
+- **Method:** Sección con track de `Marquee` animado infinitamente y componentes SVG personalizados (`StackSVGs`). Tarjetas transparentes para revelar el resplandor de fondo (orb índigo).
+
+### Problemas resueltos
+
+- **Hydration React 19:** Mitigación del warning por inyección de `<script>` de `next-themes` usando un patch local en modo desarrollo dentro de `ThemeProvider.tsx`.
+- **Alineación About:** Se logró igualar perfectamente la altura de la imagen con el contenido de texto removiendo la elongación nativa del grid (`align-items: stretch` descartado). En su lugar se definió un alto fijo usando `aspect-ratio: 4/5` en la foto, y flexbox (`justify-content: space-between`) para distribuir el texto.
+- **Textos superpuestos:** Se resolvieron conflictos de padding al reemplazar el uso de `style` dinámico (ignorado por Framer Motion en `FadeIn`) con clases atómicas de Tailwind (`!pt-0`, `!pb-0`).
+
+### Pendientes próxima sesión
+
+- **Footer:** Construir sección final e integrar enlaces sociales.
+- **SEO / Metadata:** Generar el `sitemap.ts` y configurar las metadata en el `layout.tsx` raíz.
+- **Auditoría final:** Testing manual, validación Lighthouse y testeo de responsive en 375px/768px/1280px.
 
 ---
 
@@ -256,13 +312,3 @@ title: 'malcom.builder — AI-native system builder'
 
 Tenés todo lo que necesitás. Arrancá por el paso 1.
 Cuando termines, mostrá el resultado de `pnpm run build`.
-
----
-
-## Decisiones UI/UX y Ajustes (Memoria Activa)
-*Registro de ajustes iterativos decididos durante el desarrollo para no repetir errores:*
-
-- **Navbar y Blur:** Se abandonó el uso de `backdrop-filter: blur()` debido a problemas de renderizado con el fondo. El Navbar ahora es **100% opaco** (`background: var(--color-bg)`), usando `box-shadow` y `border-bottom` para separarse del fondo al scrollear.
-- **Microinteracciones:** Los botones de íconos (`LangToggle`, `ThemeToggle`) deben tener un efecto físico al clic: `transform: scale(0.9)` en el estado `:active`.
-- **Layout del Hero:** El contenedor de texto del Hero lleva un margen negativo (`marginTop: "-10vh"`) para elevar el contenido y garantizar que el botón CTA ("Ver proyectos") quede completamente visible *above the fold* sin necesidad de hacer scroll en la mayoría de las pantallas.
-- **Copywriting (ES):** Priorizar traducciones naturales y con impacto por sobre la traducción literal. Ej: En lugar de "AI-native systems builder", usar "Desarrollo sistemas con IA" y "Solo" en lugar de "Alone", para mantener un tono técnico, directo y personal.

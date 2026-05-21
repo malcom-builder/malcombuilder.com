@@ -14,7 +14,7 @@ export function CTA() {
       {/* Marquee */}
       <div
         style={{
-          paddingBlock: "3rem",
+          paddingBlock: "5rem",
           borderBottom: "1px solid var(--color-border)",
           borderTop: "1px solid var(--color-border)",
           backgroundColor: "var(--color-bg)",
@@ -24,7 +24,7 @@ export function CTA() {
       </div>
 
       {/* Content */}
-      <div className="section" style={{ paddingTop: "8rem", paddingBottom: "10rem", textAlign: "center" }}>
+      <div className="section" style={{ paddingTop: "16rem", paddingBottom: "12rem", textAlign: "center" }}>
         <div className="container" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
           <FadeIn>
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "2.5rem", position: "relative" }}>
@@ -45,13 +45,12 @@ export function CTA() {
                 }}
               />
               <span 
-                className="display" 
+                className="heading" 
                 style={{ 
                   color: "var(--color-fg)", 
-                  fontSize: "clamp(3rem, 7vw, 6rem)",
                   letterSpacing: "-0.04em",
                   fontWeight: 800,
-                  lineHeight: 1,
+                  lineHeight: 1.05,
                   position: "relative",
                   zIndex: 1,
                   textShadow: "0 0 40px rgba(158, 80, 247, 0.35), 0 0 80px rgba(158, 80, 247, 0.15)"

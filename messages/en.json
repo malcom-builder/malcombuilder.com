@@ -34,15 +34,31 @@
     "title": "Tools"
   },
   "about": {
-    "badge": "About",
-    "title": "I build differently",
-    "bio": "malcom.builder is an AI-native system builder based in Rosario, Argentina. I combine solid software architecture with artificial intelligence as an execution tool to build real systems — fast, without technical debt and ready to scale.",
-    "stats": [
-      { "value": "3+",   "label": "Years building" },
-      { "value": "4+",   "label": "Projects shipped" },
-      { "value": "100%", "label": "AI-native stack" },
-      { "value": "24/7", "label": "Active monitoring" }
-    ]
+    "label": "ABOUT",
+    "headline": "One builder. One result. Precision.",
+    "who": {
+      "label": "WHO",
+      "name": "Malcom Foca",
+      "role": "Associate Degree in Software Development — UTN Rosario",
+      "location": "Rosario → The World"
+    },
+    "does": {
+      "label": "WHAT HE DOES",
+      "bold": "Builds digital products powered by AI.",
+      "line1": "Webs, Agents, platforms, systems, databases, and automations.",
+      "line2": "Faster than an agency. Sharper than a freelancer."
+    },
+    "how": {
+      "label": "HOW",
+      "bold": "Solo. From architecture to deployment.",
+      "line1": "Solid tech stack + AI agents as a team.",
+      "line2": "Fixed price. Closed scope. No unnecessary meetings."
+    },
+    "social": {
+      "instagram": "INSTAGRAM",
+      "linkedin": "LINKEDIN",
+      "email": "EMAIL"
+    }
   },
   "cta": {
     "marquee": "LET’S TALK — LET’S COLLABORATE — SAY HELLO — WANNA BE STARTING SOMETHING? ",

@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { stackItems } from "@/lib/constants";
 import { motion } from "framer-motion";
+import React from "react";
 
 const StackSVGs: Record<string, React.ReactNode> = {
   "Next.js": (
@@ -119,13 +120,27 @@ const StackSVGs: Record<string, React.ReactNode> = {
 
 export function Method() {
   const t = useTranslations("method");
-
-  // Duplicate items for the infinite scroll effect
   const marqueeItems = [...stackItems, ...stackItems];
 
   return (
-    <section id="method" className="section" style={{ borderBottom: "1px solid var(--color-border)", overflow: "hidden" }}>
-      <div className="container">
+    <section id="method" className="section" style={{ borderBottom: "1px solid var(--color-border)", overflow: "hidden", position: "relative" }}>
+
+      {/* ── Accent orb — top right behind title ── */}
+      <div aria-hidden="true" style={{
+        position: "absolute",
+        top: "5%",
+        right: "15%",
+        width: "55vw",
+        height: "55vw",
+        maxWidth: "700px",
+        maxHeight: "700px",
+        background: "radial-gradient(ellipse at 70% 30%, rgba(123,97,255,0.15) 0%, rgba(16,185,129,0.04) 45%, transparent 65%)",
+        filter: "blur(70px)",
+        pointerEvents: "none",
+        zIndex: 0,
+      }} />
+
+      <div className="container" style={{ position: "relative", zIndex: 1 }}>
         <FadeIn>
           <span className="label" style={{ display: "inline-block", marginBottom: "1rem" }}>{t("badge")}</span>
           <h2 className="heading" style={{ color: "var(--color-fg)", marginBottom: "4rem" }}>{t("title")}</h2>
@@ -133,65 +148,61 @@ export function Method() {
       </div>
 
       <div style={{ position: "relative", width: "100%", paddingBlock: "1rem" }}>
-        {/* Gradients for fading effect at edges */}
-        <div 
-          style={{ 
-            position: "absolute", 
-            left: 0, 
-            top: 0, 
-            bottom: 0, 
-            width: "15%", 
-            background: "linear-gradient(to right, var(--color-bg), transparent)", 
-            zIndex: 10 
-          }} 
-        />
-        <div 
-          style={{ 
-            position: "absolute", 
-            right: 0, 
-            top: 0, 
-            bottom: 0, 
-            width: "15%", 
-            background: "linear-gradient(to left, var(--color-bg), transparent)", 
-            zIndex: 10 
-          }} 
-        />
-        
-        {/* Marquee Track */}
+        {/* Edge fades */}
+        <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: "15%", background: "linear-gradient(to right, var(--color-bg), transparent)", zIndex: 10, pointerEvents: "none" }} />
+        <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: "15%", background: "linear-gradient(to left, var(--color-bg), transparent)", zIndex: 10, pointerEvents: "none" }} />
+
+        {/* Marquee track */}
         <motion.div
           animate={{ x: ["0%", "-50%"] }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          style={{ display: "flex", gap: "3rem", width: "fit-content", paddingLeft: "1.5rem" }}
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+          style={{ display: "flex", gap: "1rem", width: "fit-content", paddingLeft: "1.5rem" }}
         >
           {marqueeItems.map((item, i) => (
-            <div
+            <motion.div
               key={`${item.label}-${i}`}
+              whileHover={{
+                y: -6,
+                scale: 1.06,
+                borderColor: "var(--color-accent)",
+                boxShadow: "0 8px 24px rgba(129, 140, 248, 0.2)",
+              }}
+              transition={{ type: "spring", stiffness: 400, damping: 15 }}
               style={{
                 display: "flex",
                 alignItems: "center",
                 gap: "1rem",
                 padding: "1rem 2rem",
-                background: "var(--color-card)",
-                border: "1px solid var(--color-border)",
+                background: "rgba(255,255,255,0.03)",
+                border: "1px solid rgba(255,255,255,0.07)",
                 borderRadius: "999px",
                 whiteSpace: "nowrap",
+                cursor: "default",
+                backdropFilter: "blur(4px)",
               }}
             >
-              <div style={{ width: 28, height: 28, display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <motion.div
+                whileHover={{ filter: "grayscale(0) opacity(1)" }}
+                style={{
+                  width: 28,
+                  height: 28,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  filter: "grayscale(0.6) opacity(0.7)",
+                  transition: "filter 0.25s",
+                }}
+              >
                 {StackSVGs[item.label] ?? (
                   <span style={{ fontFamily: "monospace", fontSize: "0.85rem", color: "var(--color-muted)", fontWeight: 700 }}>
                     {item.label[0]}
                   </span>
                 )}
-              </div>
+              </motion.div>
               <span style={{ fontSize: "1rem", fontWeight: 600, color: "var(--color-fg)" }}>
                 {item.label}
               </span>
-            </div>
+            </motion.div>
           ))}
         </motion.div>
       </div>

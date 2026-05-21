@@ -6,6 +6,7 @@ import { routing } from "@/i18n/routing";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { HtmlLang } from "@/components/ui/HtmlLang";
 import { CustomCursor } from "@/components/ui/CustomCursor";
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
 // globals.css is imported in the root layout
 
 type Locale = "es" | "en";
@@ -79,6 +80,7 @@ export default async function LocaleLayout({
       <NextIntlClientProvider messages={messages}>
         {/* Sets document.documentElement.lang on the client */}
         <HtmlLang locale={locale} />
+        <ScrollProgress />
         <CustomCursor />
         {children}
       </NextIntlClientProvider>
