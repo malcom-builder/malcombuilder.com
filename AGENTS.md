@@ -1,6 +1,6 @@
 # AGENTS.md — malcom.builder / portfolio
 
-> Contexto local del proyecto. El global está en ~/.gemini/CLAUDE.md.
+> Contexto local del proyecto. El global está en ~/.agents/GLOBAL.md.
 > No repetir lo que ya está allá. Solo lo específico de este proyecto.
 
 ---
@@ -117,9 +117,9 @@ messages/
 
 ### Hero
 
-- Headline: `AI-native system builder. Alone.`
-- Subheadline ES: _Construyo sistemas complejos desde cero potenciados con IA._
-- Subheadline EN: _I build complex systems from the ground up AI powered._
+- Headline: `Construyo productos digitales. Solo.` / `I build digital products. Solo.`
+- Subheadline ES: _Más rápido que una agencia. Más criterio que un freelancer._
+- Subheadline EN: _Faster than an agency. Sharper than a freelancer._
 - CTA: `Ver proyectos` (primario)
 - `marginTop: "-10vh"` en el contenedor para que el CTA quede above the fold
 - Entrada staggered con Framer Motion

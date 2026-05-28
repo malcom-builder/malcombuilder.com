@@ -16,12 +16,12 @@
   },
   "services": {
     "badge": "Services",
-    "title": "What I build",
+    "title": "How I build",
     "items": [
-      { "title": "Services Building",  "desc": "From idea to product with AI at the core of every decision." },
-      { "title": "AI Integration",     "desc": "Automation and intelligence in existing processes to multiply output." },
-      { "title": "Technical Strategy", "desc": "Architecture and stack to scale from day one without technical debt." },
-      { "title": "MVP Development",    "desc": "Functional product in weeks, not months. Fast validation, constant iteration." }
+      { "title": "Strategy",      "desc": "Thesis, positioning and business model. I define the direction before writing a line of code." },
+      { "title": "Architecture",  "desc": "Identity, visual system and full brand. Design as a competitive advantage." },
+      { "title": "Product",       "desc": "Web, e-commerce, platform or app. I build what your business needs." },
+      { "title": "Growth",        "desc": "AI-powered content, ads, and automations. I make the product work for you." }
     ]
   },
   "projects": {
@@ -36,6 +36,9 @@
   "about": {
     "label": "ABOUT",
     "headline": "One builder. One result. Precision.",
+    "thesis": {
+      "text": "I build systems alone. From the business model to the code. From the brand to every piece of content. No inventory. One person. Full-stack. With conviction."
+    },
     "who": {
       "label": "WHO",
       "name": "Malcom Foca",
@@ -61,7 +64,7 @@
     }
   },
   "cta": {
-    "marquee": "LET’S TALK — LET’S COLLABORATE — SAY HELLO — WANNA BE STARTING SOMETHING? ",
+    "marquee": "LET'S TALK — LET'S COLLABORATE — SAY HELLO — WANNA BE STARTING SOMETHING? ",
     "btn_text": "Let's Build.",
     "email": "contact@malcombuilder.com"
   },
@@ -70,7 +73,7 @@
     "description": "Building systems from the ground up with AI at the core.",
     "nav_title": "Navigation",
     "social_title": "Social",
-    "bottom": "© 2025 malcom.builder · Rosario, Argentina · Built with Next.js & AI"
+    "bottom": "© 2026 malcom.builder · Rosario, Argentina · Built with Next.js & AI"
   },
   "toggle": {
     "theme_dark":  "Switch to dark mode",
@@ -78,7 +81,7 @@
     "lang": "Cambiar a Español"
   },
   "meta": {
-    "title": "malcom.builder — AI-native company builder",
-    "description": "We build companies from the ground up with AI at the core, not as an afterthought."
+    "title": "malcom.builder — Digital product studio",
+    "description": "I build digital products powered by AI. Faster than an agency. Sharper than a freelancer."
   }
 }

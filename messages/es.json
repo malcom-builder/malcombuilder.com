@@ -16,12 +16,12 @@
   },
   "services": {
     "badge": "Servicios",
-    "title": "Qué construyo",
+    "title": "Así construyo",
     "items": [
-      { "title": "Services Building",  "desc": "De la idea al producto con IA en el núcleo de cada decisión." },
-      { "title": "AI Integration",     "desc": "Automatización e inteligencia en procesos existentes para multiplicar el output." },
-      { "title": "Technical Strategy", "desc": "Arquitectura y stack para escalar desde el día uno sin deuda técnica." },
-      { "title": "MVP Development",    "desc": "Producto funcional en semanas, no meses. Validación rápida, iteración constante." }
+      { "title": "Estrategia",     "desc": "Tesis, posicionamiento y modelo de negocio. Defino la dirección antes de escribir una línea de código." },
+      { "title": "Arquitectura",   "desc": "Identidad, sistema visual y marca completa. El diseño como ventaja competitiva." },
+      { "title": "Producto",       "desc": "Web, e-commerce, plataforma o app. Construyo lo que tu negocio necesita." },
+      { "title": "Crecimiento",    "desc": "Contenido con IA, pauta y automatizaciones. Hago que el producto trabaje para vos." }
     ]
   },
   "projects": {
@@ -36,6 +36,9 @@
   "about": {
     "label": "ABOUT",
     "headline": "Un builder. Un resultado. Precisión.",
+    "thesis": {
+      "text": "Construyo sistemas solo. Desde el modelo de negocio hasta el código. Desde la marca hasta cada pieza de contenido. Sin inventario. Una persona. Full-stack. Con criterio."
+    },
     "who": {
       "label": "QUIÉN",
       "name": "Malcom Foca",
@@ -70,7 +73,7 @@
     "description": "Construyo sistemas desde cero con IA en el núcleo.",
     "nav_title": "Navegación",
     "social_title": "Redes",
-    "bottom": "© 2025 malcom.builder · Rosario, Argentina · Built with Next.js & AI"
+    "bottom": "© 2026 malcom.builder · Rosario, Argentina · Built with Next.js & AI"
   },
   "toggle": {
     "theme_dark":  "Cambiar a modo oscuro",
@@ -78,7 +81,7 @@
     "lang": "Switch to English"
   },
   "meta": {
-    "title": "malcom.builder — AI-native company builder",
-    "description": "Construimos empresas desde cero usando inteligencia artificial como base, no como herramienta."
+    "title": "malcom.builder — Studio de producto digital",
+    "description": "Construyo productos digitales potenciados con IA. Más rápido que una agencia. Con más criterio que un freelancer."
   }
 }

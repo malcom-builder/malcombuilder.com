@@ -17,6 +17,24 @@ export function About() {
           <h2 className="heading" style={{ marginBottom: 0 }}>{t("headline")}</h2>
         </FadeIn>
 
+        {/* La tesis — GLOBAL.md §04 */}
+        <FadeIn delay={0.15} direction="up">
+          <blockquote
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "clamp(1.1rem, 2vw, 1.35rem)",
+              lineHeight: 1.7,
+              color: "var(--color-muted)",
+              borderLeft: "3px solid var(--color-accent)",
+              paddingLeft: "1.5rem",
+              marginBottom: "3rem",
+              fontStyle: "italic",
+            }}
+          >
+            {t("thesis.text")}
+          </blockquote>
+        </FadeIn>
+
         <div className="about-grid">
 
           {/* LEFT COLUMN: Photo */}
