@@ -29,6 +29,83 @@
     "title": "Selected",
     "view": "View project"
   },
+  "projectPages": {
+    "zolfo-medicina-estetica": {
+      "tagline": "Premium medical portal with admin panel and individual SEO per treatment.",
+      "description": "Complete portal for Zolfo Medicina Estética. 21 treatment pages with individual SEO, content management admin panel, and WhatsApp-integrated contact system.",
+      "features": [
+        "Lighthouse 100/100 desktop and 98/100 mobile",
+        "32% WhatsApp conversion rate",
+        "21 treatment pages with individual SEO",
+        "Average session time: 17 min 46 sec",
+        "Complete admin panel",
+        "100% uptime"
+      ]
+    },
+    "nurestetica": {
+      "tagline": "Modern institutional website with extreme performance and flawless UX.",
+      "description": "Institutional website for NurEstética. Clean professional design focused on conversion. Optimized for maximum performance with perfect user experience metrics.",
+      "features": [
+        "Real Experience Score: 100",
+        "TTFB: 0.35 seconds",
+        "CLS: 0 (zero layout shift)",
+        "Responsive and optimized design",
+        "Social media integration",
+        "Vercel edge network hosting"
+      ]
+    },
+    "authmotion": {
+      "tagline": "Enterprise IAM system with JWT, OAuth 2.0, 2FA and RBAC.",
+      "description": "Complete authentication and authorization system built with .NET 10 and Clean Architecture. Includes JWT HttpOnly, OAuth 2.0, two-factor authentication (2FA), and role-based access control (RBAC). Open source and production-ready.",
+      "features": [
+        "JWT HttpOnly with refresh tokens",
+        "OAuth 2.0 with multiple providers",
+        "Two-factor authentication (2FA)",
+        "RBAC with granular permissions",
+        "Clean Architecture + SOLID",
+        "Scalar API documentation",
+        "Open Source on GitHub"
+      ]
+    },
+    "smartwallet": {
+      "tagline": "Financial engine with double-entry bookkeeping and Azure Key Vault.",
+      "description": "Robust financial system with Double-Entry Bookkeeping architecture. Built with .NET 8, SQL Server, and Azure. Includes Azure Key Vault for secure secret management and encryption keys.",
+      "features": [
+        "Double-Entry Bookkeeping",
+        "Azure Key Vault for secrets",
+        "SQL Server with stored procedures",
+        "Documented RESTful API",
+        "Docker Compose for local development",
+        "CI/CD with GitHub Actions"
+      ]
+    },
+    "malcombuilder": {
+      "tagline": "Studio website — AI-native, multilingual, built with Next.js 15 and Tailwind v4.",
+      "description": "Portfolio and storefront for malcom.builder. Built with the modern stack: Next.js 15 App Router, React 19, Tailwind CSS v4, Framer Motion 11. Multilingual ES/EN with next-intl, dark/light mode with next-themes. Designed to convert visits into clients.",
+      "features": [
+        "Next.js 15 App Router with RSC",
+        "React 19 with server components",
+        "Tailwind CSS v4 with @theme",
+        "Multilingual ES/EN with next-intl",
+        "Dark/light mode with next-themes",
+        "Animations with Framer Motion 11",
+        "Lighthouse 95+ target"
+      ]
+    },
+    "pulse": {
+      "tagline": "24/7 web monitoring with Telegram alerts, monthly reports and real-time dashboard.",
+      "description": "Website monitoring system with 5-minute check intervals. Instant Telegram alerts when a site goes down. Monthly PDF reports with uptime, response time, and SSL statistics. Interactive real-time dashboard with live charts.",
+      "features": [
+        "Uptime monitoring every 5 minutes",
+        "Real-time Telegram alerts",
+        "Automatic SSL verification",
+        "Monthly PDF reports via email",
+        "Dashboard with stats and charts",
+        "Incident history with duration",
+        "Response time metrics"
+      ]
+    }
+  },
   "method": {
     "badge": "Method",
     "title": "Tools"

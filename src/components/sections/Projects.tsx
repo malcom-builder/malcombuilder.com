@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/routing";
 import { projects } from "@/lib/constants";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
@@ -21,15 +22,8 @@ const cardVariants = {
 
 function ProjectCard({ proj, index }: { proj: typeof projects[number]; index: number }) {
   return (
-    <motion.a
+    <motion.div
       variants={cardVariants}
-      href={proj.url}
-      target={proj.url !== "#" ? "_blank" : undefined}
-      rel={proj.url !== "#" ? "noopener noreferrer" : undefined}
-      id={`project-${proj.id}`}
-      whileHover="hovered"
-      initial="idle"
-      animate="idle"
       style={{
         display: "flex",
         flexDirection: "column",
@@ -42,52 +36,18 @@ function ProjectCard({ proj, index }: { proj: typeof projects[number]; index: nu
         textDecoration: "none",
         position: "relative",
         overflow: "hidden",
+        transition: "border-color 0.2s",
       }}
+      onMouseEnter={(e) => (e.currentTarget.style.borderColor = "var(--color-accent)")}
+      onMouseLeave={(e) => (e.currentTarget.style.borderColor = "var(--color-border)")}
     >
-      {/* hover glow layer */}
-      <motion.div
-        variants={{
-          idle: { opacity: 0 },
-          hovered: { opacity: 1 },
-        }}
-        transition={{ duration: 0.3 }}
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: "radial-gradient(circle at 50% 0%, rgba(129, 140, 248, 0.08), transparent 70%)",
-          pointerEvents: "none",
-        }}
-      />
-
-      {/* border accent on hover */}
-      <motion.div
-        variants={{
-          idle: { opacity: 0 },
-          hovered: { opacity: 1 },
-        }}
-        transition={{ duration: 0.25 }}
-        style={{
-          position: "absolute",
-          inset: 0,
-          borderRadius: "8px",
-          border: "1px solid var(--color-accent)",
-          pointerEvents: "none",
-        }}
-      />
-
       <div style={{ position: "relative", zIndex: 1 }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "1.5rem" }}>
-          {/* Project number: muted → accent on hover */}
-          <motion.span
-            variants={{
-              idle: { color: "var(--color-muted)" },
-              hovered: { color: "var(--color-emerald)" },
-            }}
-            transition={{ duration: 0.2 }}
-            style={{ fontSize: "0.875rem", fontFamily: "monospace", fontWeight: 700 }}
+          <span
+            style={{ fontSize: "0.875rem", fontFamily: "monospace", fontWeight: 700, color: "var(--color-muted)" }}
           >
             {proj.id}
-          </motion.span>
+          </span>
           <span
             className="label"
             style={{
@@ -101,18 +61,27 @@ function ProjectCard({ proj, index }: { proj: typeof projects[number]; index: nu
           </span>
         </div>
 
-        <h3
-          style={{
-            fontFamily: "var(--font-display)",
-            fontWeight: 700,
-            fontSize: "1.25rem",
-            letterSpacing: "-0.02em",
-            color: "var(--color-fg)",
-            marginBottom: "0.5rem",
-          }}
+        {/* Internal link — click on title goes to project page */}
+        <Link
+          href={`/projects/${proj.slug}`}
+          style={{ textDecoration: "none" }}
         >
-          {proj.title}
-        </h3>
+          <h3
+            style={{
+              fontFamily: "var(--font-display)",
+              fontWeight: 700,
+              fontSize: "1.25rem",
+              letterSpacing: "-0.02em",
+              color: "var(--color-fg)",
+              marginBottom: "0.5rem",
+              transition: "color 0.2s",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-accent)")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-fg)")}
+          >
+            {proj.title}
+          </h3>
+        </Link>
       </div>
 
       <div
@@ -127,23 +96,47 @@ function ProjectCard({ proj, index }: { proj: typeof projects[number]; index: nu
           marginTop: "1rem",
         }}
       >
-        <span style={{ fontSize: "0.85rem", color: "var(--color-muted)", fontWeight: 500 }}>
-          {proj.metric}
-        </span>
-
-        {/* Arrow with spring physics */}
-        <motion.span
-          variants={{
-            idle: { x: 0, y: 0, rotate: 0, color: "var(--color-muted)" },
-            hovered: { x: 4, y: -4, rotate: 15, color: "var(--color-accent)" },
+        {/* Internal link — view project details */}
+        <Link
+          href={`/projects/${proj.slug}`}
+          style={{
+            fontSize: "0.85rem",
+            color: "var(--color-muted)",
+            fontWeight: 500,
+            textDecoration: "none",
+            transition: "color 0.2s",
           }}
-          transition={{ type: "spring", stiffness: 400, damping: 18 }}
-          style={{ display: "inline-flex" }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-accent)")}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-muted)")}
         >
-          <ArrowUpRight size={20} />
-        </motion.span>
+          {proj.metric}
+        </Link>
+
+        {/* External link */}
+        <a
+          href={proj.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "0.375rem",
+            fontSize: "0.85rem",
+            color: "var(--color-muted)",
+            textDecoration: "none",
+            transition: "color 0.2s",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.color = "var(--color-accent)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.color = "var(--color-muted)";
+          }}
+        >
+          <ArrowUpRight size={16} />
+        </a>
       </div>
-    </motion.a>
+    </motion.div>
   );
 }
 
