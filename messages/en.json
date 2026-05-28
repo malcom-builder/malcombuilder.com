@@ -40,7 +40,34 @@
         "Average session time: 17 min 46 sec",
         "Complete admin panel",
         "100% uptime"
-      ]
+      ],
+      "metrics": {
+        "title": "Metrics & Outcomes",
+        "tab_overview": "Overview",
+        "tab_channels": "Traffic Channels",
+        "tab_treatments": "Most Viewed",
+        "channels_desc": "Acquisition channels split (GA Sessions)",
+        "treatments_desc": "Views distribution per treatment (GA Page Views)",
+        "cards": [
+          { "label": "Lead Conversion", "value": "47.0%", "desc": "From sessions to WhatsApp clicks", "isPositive": true },
+          { "label": "Booking Leads", "value": "444", "desc": "Inquiries generated in 30 days", "isPositive": true },
+          { "label": "Active Users", "value": "765", "desc": "Monthly unique audience" },
+          { "label": "Page Views", "value": "5,456", "desc": "Cumulative navigation traffic" }
+        ],
+        "channels": [
+          { "name": "Referral (Recommendations)", "value": 332, "percent": "35%" },
+          { "name": "Organic Social (Instagram)", "value": 256, "percent": "27%" },
+          { "name": "Direct Traffic", "value": 239, "percent": "25%" },
+          { "name": "Organic Search (Google)", "value": 99, "percent": "13%" }
+        ],
+        "treatments": [
+          { "name": "Homepage (Home)", "value": 2271, "percent": "42%" },
+          { "name": "Treatments Catalog", "value": 1323, "percent": "24%" },
+          { "name": "Hyaluronic Acid", "value": 383, "percent": "7%" },
+          { "name": "Botox", "value": 188, "percent": "3.5%" },
+          { "name": "Bio-stimulators", "value": 102, "percent": "2%" }
+        ]
+      }
     },
     "nurestetica": {
       "tagline": "Modern institutional website with extreme performance and flawless UX.",
@@ -52,7 +79,16 @@
         "Responsive and optimized design",
         "Social media integration",
         "Vercel edge network hosting"
-      ]
+      ],
+      "metrics": {
+        "title": "Metrics & Performance",
+        "cards": [
+          { "label": "Real Experience Score", "value": "100/100", "desc": "Vercel Edge Real-user Experience Score", "isPositive": true },
+          { "label": "TTFB (Time to First Byte)", "value": "0.35s", "desc": "Ultra fast edge-delivered response", "isPositive": true },
+          { "label": "CLS (Layout Shift)", "value": "0.00", "desc": "Perfect visual layout stability", "isPositive": true },
+          { "label": "Lighthouse Performance", "value": "100/100", "desc": "Google optimization audit score" }
+        ]
+      }
     },
     "authmotion": {
       "tagline": "Enterprise IAM system with JWT, OAuth 2.0, 2FA and RBAC.",
@@ -65,7 +101,16 @@
         "Clean Architecture + SOLID",
         "Scalar API documentation",
         "Open Source on GitHub"
-      ]
+      ],
+      "metrics": {
+        "title": "Architecture & Security",
+        "cards": [
+          { "label": "JWT Scheme", "value": "RS256", "desc": "Asymmetric secure cryptography signatures" },
+          { "label": "Core Architecture", "value": "Clean", "desc": "DDD, SOLID & CQRS decoupled core" },
+          { "label": "OAuth 2.0 Flow", "value": "Federated", "desc": "Google & GitHub integration ready", "isPositive": true },
+          { "label": "MFA Factor", "value": "2FA TOTP", "desc": "Robust security app authentication", "isPositive": true }
+        ]
+      }
     },
     "smartwallet": {
       "tagline": "Financial engine with double-entry bookkeeping and Azure Key Vault.",
@@ -77,7 +122,16 @@
         "Documented RESTful API",
         "Docker Compose for local development",
         "CI/CD with GitHub Actions"
-      ]
+      ],
+      "metrics": {
+        "title": "Cryptography & Controls",
+        "cards": [
+          { "label": "Accounting Ledger", "value": "Double-Entry", "desc": "Perfect double-balance sheet integrity" },
+          { "label": "Data Security", "value": "Vaulted", "desc": "Credentials isolated inside Azure Key Vault", "isPositive": true },
+          { "label": "Database Engine", "value": "SQL Server", "desc": "Atomically safe and transactional database" },
+          { "label": "CI/CD Workflow", "value": "Automated", "desc": "GitHub Actions compiles Docker container", "isPositive": true }
+        ]
+      }
     },
     "malcombuilder": {
       "tagline": "Studio website — AI-native, multilingual, built with Next.js 15 and Tailwind v4.",
@@ -90,7 +144,16 @@
         "Dark/light mode with next-themes",
         "Animations with Framer Motion 11",
         "Lighthouse 95+ target"
-      ]
+      ],
+      "metrics": {
+        "title": "Optimization & Core",
+        "cards": [
+          { "label": "Frame Core", "value": "Next.js 15", "desc": "State-of-the-art App Router & RSC" },
+          { "label": "Styles Engine", "value": "Tailwind v4", "desc": "Ultra-fast lightning compiled CSS", "isPositive": true },
+          { "label": "Localization", "value": "Edge i18n", "desc": "next-intl localized directly at edge router speed", "isPositive": true },
+          { "label": "Lighthouse Performance", "value": "100/100", "desc": "Perfect optimization and SEO audit results" }
+        ]
+      }
     },
     "pulse": {
       "tagline": "24/7 web monitoring with Telegram alerts, monthly reports and real-time dashboard.",
@@ -103,7 +166,16 @@
         "Dashboard with stats and charts",
         "Incident history with duration",
         "Response time metrics"
-      ]
+      ],
+      "metrics": {
+        "title": "Monitoring & Ping",
+        "cards": [
+          { "label": "Monitor Rate", "value": "5 min", "desc": "Constant site ping and check rate" },
+          { "label": "Alerting Engine", "value": "Telegram API", "desc": "Instant failure notification in <1 second", "isPositive": true },
+          { "label": "Average Uptime", "value": "100%", "desc": "Flawless site uptime history log", "isPositive": true },
+          { "label": "SSL Cert Monitor", "value": "Automatic", "desc": "Pre-vandalism and expiration safety alerts" }
+        ]
+      }
     }
   },
   "method": {

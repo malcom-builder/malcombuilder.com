@@ -2,7 +2,9 @@ import { notFound } from "next/navigation";
 import { setRequestLocale, getMessages } from "next-intl/server";
 import { projects } from "@/lib/constants";
 import { ProjectHero } from "@/components/project/ProjectHero";
+import { ProjectMockup } from "@/components/project/ProjectMockup";
 import { ProjectOverview } from "@/components/project/ProjectOverview";
+import { ProjectMetrics } from "@/components/project/ProjectMetrics";
 import { ProjectTechStack } from "@/components/project/ProjectTechStack";
 import { ProjectFeatures } from "@/components/project/ProjectFeatures";
 import { ProjectLinks } from "@/components/project/ProjectLinks";
@@ -55,7 +57,9 @@ export default async function ProjectPage({
   return (
     <article>
       <ProjectHero title={project.title} category={project.category} tagline={pageData.tagline} />
+      <ProjectMockup slug={project.slug} />
       <ProjectOverview description={pageData.description} />
+      <ProjectMetrics slug={project.slug} metrics={pageData.metrics} />
       <ProjectTechStack techStack={project.techStack} />
       <ProjectFeatures features={pageData.features} />
       <ProjectLinks url={project.url} github={project.github} />

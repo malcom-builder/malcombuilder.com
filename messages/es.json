@@ -40,7 +40,34 @@
         "Tiempo promedio en sitio: 17 min 46 seg",
         "Panel de administración completo",
         "Uptime del 100%"
-      ]
+      ],
+      "metrics": {
+        "title": "Métricas & Resultados",
+        "tab_overview": "Resumen General",
+        "tab_channels": "Canales de Tráfico",
+        "tab_treatments": "Secciones más Vistas",
+        "channels_desc": "Desglose de canales de adquisición (Sesiones GA)",
+        "treatments_desc": "Distribución de vistas por tratamiento (Páginas vistas GA)",
+        "cards": [
+          { "label": "Conversión de Leads", "value": "47.0%", "desc": "De visitas a clics en WhatsApp", "isPositive": true },
+          { "label": "Leads de Reserva", "value": "444", "desc": "Contactos generados en 30 días", "isPositive": true },
+          { "label": "Usuarios Activos", "value": "765", "desc": "Audiencia mensual única" },
+          { "label": "Páginas Vistas", "value": "5.456", "desc": "Tráfico de navegación acumulado" }
+        ],
+        "channels": [
+          { "name": "Referencia (Recomendación)", "value": 332, "percent": "35%" },
+          { "name": "Redes Sociales (Instagram)", "value": 256, "percent": "27%" },
+          { "name": "Tráfico Directo", "value": 239, "percent": "25%" },
+          { "name": "Búsqueda Orgánica (Google)", "value": 99, "percent": "13%" }
+        ],
+        "treatments": [
+          { "name": "Página de Inicio (Home)", "value": 2271, "percent": "42%" },
+          { "name": "Catálogo de Tratamientos", "value": 1323, "percent": "24%" },
+          { "name": "Ácido Hialurónico", "value": 383, "percent": "7%" },
+          { "name": "Toxina Botulínica (Bótox)", "value": 188, "percent": "3.5%" },
+          { "name": "Bioestimuladores", "value": 102, "percent": "2%" }
+        ]
+      }
     },
     "nurestetica": {
       "tagline": "Web institucional moderna con rendimiento extremo y experiencia de usuario impecable.",
@@ -52,20 +79,38 @@
         "Diseño responsive y optimizado",
         "Integración con redes sociales",
         "Hosting en Vercel con edge network"
-      ]
+      ],
+      "metrics": {
+        "title": "Métricas & Rendimiento",
+        "cards": [
+          { "label": "Real Experience Score", "value": "100/100", "desc": "Puntuación de experiencia de Vercel Edge", "isPositive": true },
+          { "label": "TTFB (Time to First Byte)", "value": "0.35s", "desc": "Respuesta de servidor ultra rápida", "isPositive": true },
+          { "label": "CLS (Layout Shift)", "value": "0.00", "desc": "Estabilidad visual perfecta", "isPositive": true },
+          { "label": "Lighthouse Performance", "value": "100/100", "desc": "Auditoría de optimización de Google" }
+        ]
+      }
     },
     "authmotion": {
       "tagline": "Sistema IAM empresarial open source con JWT, OAuth 2.0, 2FA y RBAC.",
       "description": "Sistema completo de autenticación y autorización construido con .NET 10 y Clean Architecture. Incluye JWT HttpOnly, OAuth 2.0, autenticación de dos factores (2FA) y control de acceso basado en roles (RBAC). Open source y listo para producción.",
       "features": [
         "JWT HttpOnly con refresh tokens",
-        "OAuth 2.0 con múltiples proveedores",
+        "OAuth 2.0 with multiple providers",
         "Autenticación de dos factores (2FA)",
         "RBAC con permisos granulares",
         "Clean Architecture + SOLID",
         "Documentación con Scalar",
         "Open Source en GitHub"
-      ]
+      ],
+      "metrics": {
+        "title": "Arquitectura & Seguridad",
+        "cards": [
+          { "label": "Esquema JWT", "value": "RS256", "desc": "Firmas seguras asimétricas" },
+          { "label": "Arquitectura Core", "value": "Clean", "desc": "DDD, SOLID & CQRS decoupled core" },
+          { "label": "OAuth 2.0 Flow", "value": "Federado", "desc": "Google & GitHub integration ready", "isPositive": true },
+          { "label": "MFA Factor", "value": "2FA TOTP", "desc": "Autenticación de dos pasos robusta", "isPositive": true }
+        ]
+      }
     },
     "smartwallet": {
       "tagline": "Motor financiero con contabilidad de doble entrada y Azure Key Vault.",
@@ -77,7 +122,16 @@
         "API RESTful documentada",
         "Docker Compose para desarrollo local",
         "CI/CD con GitHub Actions"
-      ]
+      ],
+      "metrics": {
+        "title": "Criptografía & Control",
+        "cards": [
+          { "label": "Ledger Contable", "value": "Double-Entry", "desc": "Cierre contable perfecto sin descuadres" },
+          { "label": "Seguridad de Datos", "value": "Vaulted", "desc": "Secretos custodiados en Azure Key Vault", "isPositive": true },
+          { "label": "Database Engine", "value": "SQL Server", "desc": "Consultas indexadas y transacciones atómicas" },
+          { "label": "Workflow CI/CD", "value": "Automated", "desc": "GitHub Actions compilando en contenedor", "isPositive": true }
+        ]
+      }
     },
     "malcombuilder": {
       "tagline": "Web del studio — AI-native, multi-idioma, construida con Next.js 15 y Tailwind v4.",
@@ -90,7 +144,16 @@
         "Modo oscuro/claro con next-themes",
         "Animaciones con Framer Motion 11",
         "Lighthouse 95+ target"
-      ]
+      ],
+      "metrics": {
+        "title": "Optimización & Core",
+        "cards": [
+          { "label": "Frame Core", "value": "Next.js 15", "desc": "La última tecnología en App Router & RSC" },
+          { "label": "Estilos", "value": "Tailwind v4", "desc": "Compilación nativa CSS ultrarrápida", "isPositive": true },
+          { "label": "Localización", "value": "Edge i18n", "desc": "next-intl traduciendo directamente en Edge Router", "isPositive": true },
+          { "label": "Lighthouse Performance", "value": "100/100", "desc": "Auditoría SEO & Best Practices perfectas" }
+        ]
+      }
     },
     "pulse": {
       "tagline": "Monitoreo web 24/7 con alertas en Telegram, reportes mensuales y dashboard en tiempo real.",
@@ -103,7 +166,16 @@
         "Dashboard con estadísticas y charts",
         "Historial de incidentes con duración",
         "Métricas de tiempo de respuesta"
-      ]
+      ],
+      "metrics": {
+        "title": "Monitoreo & Ping",
+        "cards": [
+          { "label": "Tasa de Monitoreo", "value": "5 min", "desc": "Comprobación constante de uptime" },
+          { "label": "Alerting Engine", "value": "Telegram API", "desc": "Notificación instantánea en <1 segundo", "isPositive": true },
+          { "label": "Uptime Promedio", "value": "100%", "desc": "Registro histórico sin interrupciones", "isPositive": true },
+          { "label": "SSL Cert Monitor", "value": "Automatic", "desc": "Alertas previas al vencimiento de certificados" }
+        ]
+      }
     }
   },
   "method": {
