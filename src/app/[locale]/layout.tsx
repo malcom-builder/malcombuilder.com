@@ -19,7 +19,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "meta" });
 
-  const baseUrl = "https://malcom.builder";
+  const baseUrl = "https://malcombuilder.com";
   const url = `${baseUrl}/${locale}`;
 
   return {

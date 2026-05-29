@@ -10,7 +10,7 @@
 - **Qué es:** Portfolio web de malcom.builder
 - **URL destino:** malcombuilder.com
 - **Stack:** Next.js 15 · React 19 · Tailwind CSS v4 · TypeScript · Framer Motion 11 · next-themes · next-intl · Vercel
-- **Estado:** En construcción
+- **Estado:** En construcción — build pasa, SEO listo, proyectos individuales con métricas reales
 
 ---
 
@@ -142,6 +142,8 @@ Datos en `lib/constants.ts`:
 { id: '02', category: 'Web Institucional', title: 'NurEstética',             metric: 'Real Score 100', url: 'https://nurestetica.com.ar' },
 { id: '03', category: 'IAM System',        title: 'AuthMotion',              metric: 'Open Source',    url: 'https://github.com/malcom-builder/AuthMotion' },
 { id: '04', category: 'Fintech',           title: 'SmartWallet',             metric: 'Double-Entry',   url: 'https://github.com/malcom-builder/SmartWallet' },
+{ id: '05', category: 'Portfolio',          title: 'malcombuilder.com',       metric: 'AI-native',      url: 'https://malcombuilder.com' },
+{ id: '06', category: 'Monitoring',         title: 'Pulse',                   metric: '24/7 Uptime',    url: 'https://pulse.malcombuilder.com' },
 ```
 
 ### Stack — grid de logos
@@ -149,17 +151,12 @@ Datos en `lib/constants.ts`:
 Next.js · React · TypeScript · C# · .NET · Docker · SQL Server · Azure · Vercel · Tailwind · Framer Motion · Supabase · GitHub
 Hover: grayscale → color (acento indigo)
 
-### About — La tesis + stat counters
+### About — La tesis + profile
 
 **Texto ES:** _Construyo sistemas solo. Desde el modelo de negocio hasta el código. Desde la marca hasta cada pieza de contenido. Sin inventario. Una persona. Full-stack. Con criterio._
 **Texto EN:** _I build systems alone. From the business model to the code. From the brand to every piece of content. No inventory. One person. Full-stack. With conviction._
 
-| Número | ES                   | EN                |
-| ------ | -------------------- | ----------------- |
-| `3+`   | Años construyendo    | Years building    |
-| `4+`   | Proyectos entregados | Projects shipped  |
-| `100%` | Stack AI-native      | AI-native stack   |
-| `24/7` | Monitoreo activo     | Active monitoring |
+Dos columnas: foto (4:5, glow índigo) + filas de datos (QUIEN / QUÉ HACE / CÓMO).
 
 ### CTA final
 
@@ -266,7 +263,7 @@ title: 'malcom.builder — AI-native system builder'
 - [ ] Toggle dark/light funciona correctamente
 - [ ] Toggle ES/EN cambia todos los strings
 - [ ] Marquee corre infinitamente sin saltos
-- [ ] Stats de About se animan al hacer scroll
+- [ ] Todos los textos en i18n cubiertos (sin hardcodeo)
 - [ ] Responsive: 375px / 768px / 1280px
 - [ ] Lighthouse 95+ en todas las categorías
 - [ ] robots.txt y sitemap.xml accesibles
@@ -302,9 +299,8 @@ title: 'malcom.builder — AI-native system builder'
 
 ### Pendientes próxima sesión
 
-- **Footer:** Construir sección final e integrar enlaces sociales.
-- **SEO / Metadata:** Generar el `sitemap.ts` y configurar las metadata en el `layout.tsx` raíz.
 - **Auditoría final:** Testing manual, validación Lighthouse y testeo de responsive en 375px/768px/1280px.
+- **CI/CD:** Configurar deploy automático a Vercel desde main.
 
 ---
 
