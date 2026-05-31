@@ -132,8 +132,8 @@ export function Navbar() {
             <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
               <LangToggle />
               <ThemeToggle />
-              <a
-                href="#cta"
+              <Link
+                href="/brief"
                 style={{
                   display: "inline-flex",
                   justifyContent: "center",
@@ -162,7 +162,7 @@ export function Navbar() {
                 }}
               >
                 {t("cta")}
-              </a>
+              </Link>
             </div>
           </nav>
         </div>

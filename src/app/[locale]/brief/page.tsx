@@ -1,0 +1,67 @@
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
+import { BriefForm } from "@/components/sections/BriefForm";
+import { setRequestLocale } from "next-intl/server";
+import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
+
+interface Props {
+  params: Promise<{ locale: string }>;
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  
+  const title =
+    locale === "en"
+      ? "Tell us about your project — malcom.builder"
+      : "Contanos sobre tu proyecto — malcom.builder";
+      
+  const description =
+    locale === "en"
+      ? "Complete this form and get a proposal in less than 24 hours. No commitments."
+      : "Completá este formulario y te respondemos con una propuesta en menos de 24 horas. Sin compromisos.";
+
+  const baseUrl = "https://malcombuilder.com";
+  const url = `${baseUrl}/${locale}/brief`;
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: url,
+      languages: {
+        es: `${baseUrl}/es/brief`,
+        en: `${baseUrl}/en/brief`,
+      },
+    },
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName: "malcom.builder",
+      locale: locale === "es" ? "es_AR" : "en_US",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+  };
+}
+
+export default async function BriefPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
+  return (
+    <>
+      <Navbar />
+      <main className="min-h-screen bg-[#0E0E14] pt-28 pb-20 flex flex-col justify-center">
+        <BriefForm />
+      </main>
+      <Footer />
+    </>
+  );
+}
