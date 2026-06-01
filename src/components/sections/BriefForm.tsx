@@ -707,7 +707,7 @@ export function BriefForm() {
   const topRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (topRef.current) {
+    if (topRef.current && step > 0) {
       topRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [step]);
@@ -1020,7 +1020,7 @@ export function BriefForm() {
             initial="enter"
             animate="center"
             exit="exit"
-            className="text-center space-y-8 mt-[-10vh]"
+            className="text-center space-y-8"
           >
             <div className="space-y-4 relative">
               <div className="absolute inset-0 bg-radial-gradient(circle, rgba(123,97,255,0.12) 0%, transparent 60%) pointer-events-none -top-12" />
