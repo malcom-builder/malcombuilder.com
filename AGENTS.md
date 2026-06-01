@@ -287,6 +287,7 @@ title: 'malcom.builder — AI-native system builder'
 - **Tipografía:** Clase `.heading` en títulos de sección. Espaciado entre secciones: `10rem` mobile / `16rem` desktop.
 - **Rediseño Premium /brief:** Formulario de prospección con animaciones de deslizamiento direccionales (de izquierda a derecha o viceversa según el paso) mediante Framer Motion. Iconos interactivos integrados para cada opción de tipo de proyecto, selectores con contornos e iluminación indigo al enfocarse y alertas dinámicas en inputs.
 - **Localización Completa /brief:** Integración de diccionarios paralelos en español e inglés basados en `useLocale()` de `next-intl` en el asistente. Se generalizó la pregunta sobre ubicación geográfica remitiendo a entornos locales, nacionales e internacionales en lugar de opciones fijas en Rosario.
+- **Alineación Vertical /brief:** Reestructuración de la página en un contenedor flex-column de `min-h-screen` con main en `flex-1` y paddings reducidos (`pt-12 pb-16`). Esto alinea verticalmente el formulario en el centro de la pantalla y previene que el footer genere espacio de scroll redundante en pantallas medianas y grandes.
 
 ### Componentes creados
 
