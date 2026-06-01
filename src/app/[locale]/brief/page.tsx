@@ -15,12 +15,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title =
     locale === "en"
       ? "Tell us about your project — malcom.builder"
-      : "Contanos sobre tu proyecto — malcom.builder";
+      : "Contame sobre tu proyecto — malcom.builder";
       
   const description =
     locale === "en"
       ? "Complete this form and get a proposal in less than 24 hours. No commitments."
-      : "Completá este formulario y te respondemos con una propuesta en menos de 24 horas. Sin compromisos.";
+      : "Completá este formulario y te respondo con una propuesta en menos de 24 horas. Sin compromisos.";
 
   const baseUrl = "https://malcombuilder.com";
   const url = `${baseUrl}/${locale}/brief`;

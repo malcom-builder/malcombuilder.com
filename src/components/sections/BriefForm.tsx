@@ -129,9 +129,9 @@ const dict = {
       atras: "Atrás",
       enviar: "Enviar brief",
       enviando: "Enviando...",
-      successTitle: "✅ Recibimos tu brief",
-      successDesc: "Te respondemos en menos de 24 horas hábiles con una propuesta personalizada para ",
-      successTalkBefore: "¿Querés hablar antes? Escribinos directo:",
+      successTitle: "✅ Recibí tu brief",
+      successDesc: "Te respondo en menos de 24 horas hábiles con una propuesta personalizada para ",
+      successTalkBefore: "¿Querés hablar antes? Escribíme directo:",
       whatsappText: "Escribir por WhatsApp",
       step: "PASO",
       de: "DE",
@@ -203,7 +203,7 @@ const dict = {
         },
         {
           label: "No tengo claro — necesito orientación",
-          desc: "Contanos tu problema general y te ayudamos a diseñar la arquitectura ideal."
+          desc: "Contame tu problema general y te ayudo a diseñar la arquitectura ideal."
         }
       ]
     },
@@ -356,7 +356,7 @@ const dict = {
       ]
     },
     caminoG: {
-      q1: "Contanos en tus palabras qué problema querés resolver con tecnología: *"
+      q1: "Contame en tus palabras qué problema querés resolver con tecnología: *"
     },
     step4: {
       qTime: "¿Cuándo necesitás tenerlo listo? *",
@@ -1029,12 +1029,12 @@ export function BriefForm() {
                 {t.steps.time}
               </div>
               <h1 className="heading text-4xl md:text-5xl font-black tracking-tight leading-tight">
-                {locale === "en" ? "Tell us about your project" : "Contanos sobre tu proyecto"}
+                {locale === "en" ? "Tell me about your project" : "Contame sobre tu proyecto"}
               </h1>
               <p className="text-base md:text-lg text-[var(--color-muted)] max-w-lg mx-auto leading-relaxed">
                 {locale === "en" 
-                  ? "Complete this form and we'll get back to you with a proposal in less than 24 hours. No commitments."
-                  : "Completá este formulario y te respondemos con una propuesta en menos de 24 horas. Sin compromisos."}
+                  ? "Complete this form and I'll get back to you with a proposal in less than 24 hours. No commitments."
+                  : "Completá este formulario y te respondo con una propuesta en menos de 24 horas. Sin compromisos."}
               </p>
             </div>
 

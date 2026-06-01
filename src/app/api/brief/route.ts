@@ -178,8 +178,8 @@ export async function POST(request: Request) {
     // 2. Send Client Email
     const clientEmailBody = `
       <p>Hola ${contacto_nombre},</p>
-      <p>Recibimos tu brief sobre ${projectDesc}.</p>
-      <p>Te respondemos con una propuesta personalizada antes del <strong>${deadlineString}</strong> (en menos de 24hs hábiles).</p>
+      <p>Recibí tu brief sobre ${projectDesc}.</p>
+      <p>Te respondo con una propuesta personalizada antes del <strong>${deadlineString}</strong> (en menos de 24hs hábiles).</p>
       <p>Si mientras tanto surge alguna consulta, respondé este email o escribime por WhatsApp.</p>
       <br />
       <p>
@@ -203,13 +203,13 @@ export async function POST(request: Request) {
       await resend.emails.send({
         from: "contact@malcombuilder.com",
         to: contacto_email,
-        subject: "Recibimos tu brief — malcom.builder",
+        subject: "Recibí tu brief — malcom.builder",
         html: clientEmailBody,
       });
     } else {
       console.log("--- MOCK EMAIL SEND ---");
       console.log("To Internal:", "contact@malcombuilder.com", "Subject:", subjectInternal);
-      console.log("To Client:", contacto_email, "Subject: Recibimos tu brief — malcom.builder");
+      console.log("To Client:", contacto_email, "Subject: Recibí tu brief — malcom.builder");
     }
 
     return NextResponse.json({ success: true });
