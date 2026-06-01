@@ -184,26 +184,26 @@
   },
   "about": {
     "label": "ABOUT",
-    "headline": "Un builder. Un resultado. Precisión.",
+    "headline": "Un builder. Un stack. Un resultado.",
     "thesis": {
-      "text": "Construyo sistemas solo. Desde el modelo de negocio hasta el código. Desde la marca hasta cada pieza de contenido. Sin inventario. Una persona. Full-stack. Con criterio."
+      "text": "Construyo productos digitales solo. Arquitectura sólida, ejecución con IA, entrega en semanas. Sin equipo, sin overhead, sin vueltas."
     },
     "who": {
       "label": "QUIÉN",
       "name": "Malcom Foca",
       "role": "Técnico Universitario en Programación — UTN Rosario",
-      "location": "Rosario → The World"
+      "location": "Rosario → Argentina → Latam"
     },
     "does": {
-      "label": "QUÉ HACE",
-      "bold": "Construye productos digitales potenciados con IA.",
-      "line1": "Webs, Agentes, plataformas, sistemas, base de datos, y automatizaciones.",
+      "label": "QUÉ HAGO",
+      "bold": "Construyo productos digitales potenciados con IA.",
+      "line1": "Webs, plataformas, sistemas, APIs y automatizaciones.",
       "line2": "Más rápido que una agencia. Con más criterio que un freelancer."
     },
     "how": {
-      "label": "CÓMO LO HACE",
+      "label": "CÓMO LO HAGO",
       "bold": "Solo. Desde la arquitectura hasta el deploy.",
-      "line1": "Stack técnico sólido + agentes de IA como equipo.",
+      "line1": "Stack técnico sólido + agentes de IA como palanca de ejecución.",
       "line2": "Precio fijo. Scope cerrado. Sin reuniones innecesarias."
     },
     "social": {

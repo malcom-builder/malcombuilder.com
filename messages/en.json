@@ -184,26 +184,26 @@
   },
   "about": {
     "label": "ABOUT",
-    "headline": "One builder. One result. Precision.",
+    "headline": "One builder. One stack. One result.",
     "thesis": {
-      "text": "I build systems alone. From the business model to the code. From the brand to every piece of content. No inventory. One person. Full-stack. With conviction."
+      "text": "I build digital products solo. Solid architecture, AI-powered execution, shipped in weeks. No team, no overhead, no detours."
     },
     "who": {
       "label": "WHO",
       "name": "Malcom Foca",
       "role": "Associate Degree in Software Development — UTN Rosario",
-      "location": "Rosario → The World"
+      "location": "Rosario → Argentina → Latam"
     },
     "does": {
-      "label": "WHAT HE DOES",
-      "bold": "Builds digital products powered by AI.",
-      "line1": "Webs, Agents, platforms, systems, databases, and automations.",
+      "label": "WHAT I DO",
+      "bold": "I build digital products powered by AI.",
+      "line1": "Websites, platforms, systems, APIs and automations.",
       "line2": "Faster than an agency. Sharper than a freelancer."
     },
     "how": {
-      "label": "HOW",
+      "label": "HOW I DO IT",
       "bold": "Solo. From architecture to deployment.",
-      "line1": "Solid tech stack + AI agents as a team.",
+      "line1": "Solid tech stack + AI agents as an execution lever.",
       "line2": "Fixed price. Closed scope. No unnecessary meetings."
     },
     "social": {
