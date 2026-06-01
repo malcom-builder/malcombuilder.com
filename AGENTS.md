@@ -286,6 +286,7 @@ title: 'malcom.builder — AI-native system builder'
 - **Navbar CTA:** `width: 130px` fijo para evitar saltos de layout al cambiar ES/EN.
 - **Tipografía:** Clase `.heading` en títulos de sección. Espaciado entre secciones: `10rem` mobile / `16rem` desktop.
 - **Rediseño Premium /brief:** Formulario de prospección con animaciones de deslizamiento direccionales (de izquierda a derecha o viceversa según el paso) mediante Framer Motion. Iconos interactivos integrados para cada opción de tipo de proyecto, selectores con contornos e iluminación indigo al enfocarse y alertas dinámicas en inputs.
+- **Localización Completa /brief:** Integración de diccionarios paralelos en español e inglés basados en `useLocale()` de `next-intl` en el asistente. Se generalizó la pregunta sobre ubicación geográfica remitiendo a entornos locales, nacionales e internacionales en lugar de opciones fijas en Rosario.
 
 ### Componentes creados
 
