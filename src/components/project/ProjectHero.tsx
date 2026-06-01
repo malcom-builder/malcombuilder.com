@@ -17,8 +17,8 @@ export function ProjectHero({ title, category, tagline }: Props) {
   return (
     <section
       style={{
-        paddingTop: "8rem",
-        paddingBottom: "4rem",
+        paddingTop: "6rem",
+        paddingBottom: "2rem",
         display: "flex",
         alignItems: "center",
         borderBottom: "1px solid var(--color-border)",
@@ -62,7 +62,7 @@ export function ProjectHero({ title, category, tagline }: Props) {
         />
       </div>
 
-      <div className="container" style={{ position: "relative", zIndex: 1, paddingTop: "6rem", paddingBottom: "4rem" }}>
+      <div className="container" style={{ position: "relative", zIndex: 1 }}>
         <motion.div variants={container} initial="hidden" animate="show" style={{ maxWidth: "800px" }}>
           {/* Back link */}
           <motion.div variants={item}>
