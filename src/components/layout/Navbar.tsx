@@ -95,40 +95,67 @@ export function Navbar() {
                 transform: "translateX(-50%)",
               }}
             >
-              {navLinks.map((l) => (
-                <a
-                  key={l.href}
-                  href={isHome ? l.href : `/${locale}${l.href}`}
-                  style={{
-                    position: "relative",
-                    fontSize: "0.875rem",
-                    color: activeSection === l.id ? "var(--color-fg)" : "var(--color-muted)",
-                    textDecoration: "none",
-                    transition: "color 0.2s",
-                    fontWeight: activeSection === l.id ? 600 : 500,
-                    paddingBottom: "4px",
-                  }}
-                  onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--color-fg)")}
-                  onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = activeSection === l.id ? "var(--color-fg)" : "var(--color-muted)")}
-                >
-                  {l.label}
-                  {activeSection === l.id && (
-                    <motion.span
-                      layoutId="nav-indicator"
-                      style={{
-                        position: "absolute",
-                        bottom: 0,
-                        left: 0,
-                        right: 0,
-                        height: "2px",
-                        background: "var(--color-accent)",
-                        borderRadius: "1px",
-                      }}
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                    />
-                  )}
-                </a>
-              ))}
+              {navLinks.map((l) => {
+                const commonStyle = {
+                  position: "relative",
+                  fontSize: "0.875rem",
+                  color: activeSection === l.id ? "var(--color-fg)" : "var(--color-muted)",
+                  textDecoration: "none",
+                  transition: "color 0.2s",
+                  fontWeight: activeSection === l.id ? 600 : 500,
+                  paddingBottom: "4px",
+                } as React.CSSProperties;
+
+                const handleMouseEnter = (e: any) => ((e.currentTarget as HTMLElement).style.color = "var(--color-fg)");
+                const handleMouseLeave = (e: any) => ((e.currentTarget as HTMLElement).style.color = activeSection === l.id ? "var(--color-fg)" : "var(--color-muted)");
+
+                const content = (
+                  <>
+                    {l.label}
+                    {activeSection === l.id && (
+                      <motion.span
+                        layoutId="nav-indicator"
+                        style={{
+                          position: "absolute",
+                          bottom: 0,
+                          left: 0,
+                          right: 0,
+                          height: "2px",
+                          background: "var(--color-accent)",
+                          borderRadius: "1px",
+                        }}
+                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                  </>
+                );
+
+                if (isHome) {
+                  return (
+                    <a
+                      key={l.href}
+                      href={l.href}
+                      style={commonStyle}
+                      onMouseEnter={handleMouseEnter}
+                      onMouseLeave={handleMouseLeave}
+                    >
+                      {content}
+                    </a>
+                  );
+                }
+
+                return (
+                  <Link
+                    key={l.href}
+                    href={`/${l.href}` as any}
+                    style={commonStyle}
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    {content}
+                  </Link>
+                );
+              })}
             </div>
 
             {/* Controls */}
