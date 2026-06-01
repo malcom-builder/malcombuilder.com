@@ -2,7 +2,24 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ArrowLeft, Send, CheckCircle, Calendar, DollarSign, MessageSquare, AlertCircle } from "lucide-react";
+import {
+  ArrowRight,
+  ArrowLeft,
+  Send,
+  CheckCircle,
+  Calendar,
+  DollarSign,
+  MessageSquare,
+  AlertCircle,
+  Globe,
+  ShoppingBag,
+  LayoutDashboard,
+  Cpu,
+  Server,
+  Sparkles,
+  HelpCircle,
+  Sparkle
+} from "lucide-react";
 
 // Project type paths
 type PathType = "A" | "B" | "C" | "D" | "E" | "F" | "G";
@@ -114,8 +131,48 @@ const initialFormState: FormState = {
   honeypot: "",
 };
 
+// Map build choices to aesthetic visual icons
+const buildOptions = [
+  {
+    label: "Presencia digital (web, landing page)",
+    desc: "Landing pages optimizadas, sitios corporativos y portfolios de alto impacto.",
+    icon: Globe,
+  },
+  {
+    label: "Tienda online (e-commerce)",
+    desc: "Catálogo de productos, carrito de compras, envíos y pasarelas de pago.",
+    icon: ShoppingBag,
+  },
+  {
+    label: "Sistema con panel de gestión (admin, dashboard)",
+    desc: "Paneles personalizados, gestión de clientes, reservas o bases de datos.",
+    icon: LayoutDashboard,
+  },
+  {
+    label: "Automatización o agente de IA",
+    desc: "Flujos de WhatsApp automáticos, recordatorios automáticos o soporte inteligente.",
+    icon: Cpu,
+  },
+  {
+    label: "API o backend para mi aplicación",
+    desc: "Servicios robustos, integraciones de software y bases de datos escalables.",
+    icon: Server,
+  },
+  {
+    label: "MVP de producto digital",
+    desc: "La versión beta de tu idea para lanzar rápido y validar con usuarios reales.",
+    icon: Sparkles,
+  },
+  {
+    label: "No tengo claro — necesito orientación",
+    desc: "Contanos tu problema general y te ayudamos a diseñar la arquitectura ideal.",
+    icon: HelpCircle,
+  },
+];
+
 export function BriefForm() {
   const [step, setStep] = useState<number>(0);
+  const [direction, setDirection] = useState<number>(1); // 1 = forward, -1 = back
   const [formData, setFormData] = useState<FormState>(initialFormState);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
@@ -149,8 +206,6 @@ export function BriefForm() {
     }
   };
 
-  // Determine total steps
-  // 0: Header, 1: Tu Negocio, 2: Tu Proyecto, 3: Camino (A-G), 4: Tiempos y Presupuesto, 5: Tu Contacto
   const TOTAL_STEPS = 5;
 
   const getProgressPercent = () => {
@@ -188,7 +243,6 @@ export function BriefForm() {
       newValues = currentValues.filter((v) => v !== value);
     } else {
       if (maxSelection && currentValues.length >= maxSelection) {
-        // Remove first and add the new one or reject
         newValues = [...currentValues.slice(1), value];
       } else {
         newValues = [...currentValues, value];
@@ -289,11 +343,13 @@ export function BriefForm() {
 
   const handleNext = () => {
     if (validateStep()) {
+      setDirection(1);
       setStep((prev) => prev + 1);
     }
   };
 
   const handleBack = () => {
+    setDirection(-1);
     setStep((prev) => prev - 1);
   };
 
@@ -303,7 +359,6 @@ export function BriefForm() {
 
     setIsSubmitting(true);
 
-    // Prepare path data payload
     const path = getPath();
     let proyecto_respuestas: Record<string, any> = {};
 
@@ -356,7 +411,7 @@ export function BriefForm() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          negocio_nombre: formData.negocio_actividad, // Activity also serving as business description
+          negocio_nombre: formData.negocio_actividad,
           rubro: formData.negocio_rubro,
           ubicacion: formData.negocio_ubicacion,
           proyecto_tipo: formData.proyecto_tipo,
@@ -369,7 +424,7 @@ export function BriefForm() {
           contacto_whatsapp: formData.contacto_whatsapp,
           contacto_origen: formData.contacto_origen,
           contacto_notas: formData.contacto_notas,
-          honeypot: formData.honeypot, // Honeypot field
+          honeypot: formData.honeypot,
         }),
       });
 
@@ -387,46 +442,83 @@ export function BriefForm() {
     }
   };
 
+  // Slide transition setup for wizard
+  const slideVariants = {
+    enter: (dir: number) => ({
+      x: dir > 0 ? 100 : -100,
+      opacity: 0,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        x: { type: "spring", stiffness: 350, damping: 30 },
+        opacity: { duration: 0.2 },
+      },
+    },
+    exit: (dir: number) => ({
+      x: dir > 0 ? -100 : 100,
+      opacity: 0,
+      transition: {
+        x: { type: "spring", stiffness: 350, damping: 30 },
+        opacity: { duration: 0.15 },
+      },
+    }),
+  };
+
   return (
-    <div ref={topRef} className="w-full max-w-2xl mx-auto px-4 py-8 text-[var(--color-fg)]">
-      {/* ProgressBar */}
+    <div ref={topRef} className="w-full max-w-2xl mx-auto px-4 py-6 text-[var(--color-fg)]">
+      {/* Progress Bar & Badges */}
       {step > 0 && step < 6 && (
-        <div className="w-full h-1.5 bg-[#242428] rounded-full mb-8 overflow-hidden">
-          <motion.div
-            className="h-full bg-[var(--color-accent)]"
-            initial={{ width: 0 }}
-            animate={{ width: `${getProgressPercent()}%` }}
-            transition={{ duration: 0.3 }}
-          />
+        <div className="mb-10 space-y-4">
+          <div className="flex justify-between items-center text-xs font-mono text-[var(--color-muted)]">
+            <span className="text-[var(--color-accent)] font-semibold">PASO {step} DE {TOTAL_STEPS}</span>
+            <span>{getProgressPercent()}% COMPLETADO</span>
+          </div>
+          <div className="w-full h-1.5 bg-[#1F1F26] rounded-full overflow-hidden relative">
+            <motion.div
+              className="h-full bg-[var(--color-accent)] shadow-[0_0_12px_rgba(123,97,255,0.6)]"
+              initial={{ width: 0 }}
+              animate={{ width: `${getProgressPercent()}%` }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+            />
+          </div>
         </div>
       )}
 
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait" custom={direction}>
         {/* STEP 0: Welcome / Header */}
         {step === 0 && (
           <motion.div
             key="step0"
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
             className="text-center space-y-8"
           >
-            <div className="space-y-4">
-              <span className="inline-block px-3 py-1 text-xs font-mono text-[var(--color-emerald)] border border-[rgba(16,185,129,0.3)] rounded-full bg-[rgba(16,185,129,0.05)]">
-                ⏱ 3 minutos
-              </span>
-              <h1 className="heading text-4xl md:text-5xl font-black">
+            <div className="space-y-4 relative">
+              <div className="absolute inset-0 bg-radial-gradient(circle, rgba(123,97,255,0.12) 0%, transparent 60%) pointer-events-none -top-12" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-mono text-[var(--color-emerald)] border border-[rgba(16,185,129,0.25)] rounded-full bg-[rgba(16,185,129,0.04)]">
+                <Sparkle className="w-3.5 h-3.5 animate-pulse" />
+                ⏱ 3 minutos de duración
+              </div>
+              <h1 className="heading text-4xl md:text-5xl font-black tracking-tight leading-tight">
                 Contanos sobre tu proyecto
               </h1>
-              <p className="text-lg text-[var(--color-muted)] max-w-lg mx-auto">
+              <p className="text-base md:text-lg text-[var(--color-muted)] max-w-lg mx-auto leading-relaxed">
                 Completá este formulario y te respondemos con una propuesta en menos de 24 horas. Sin compromisos.
               </p>
             </div>
 
             <div className="pt-6">
               <button
-                onClick={() => setStep(1)}
-                className="w-full md:w-auto px-8 py-4 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white font-bold rounded-lg transition-all transform hover:-translate-y-0.5 inline-flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-[rgba(123,97,255,0.25)]"
+                onClick={() => {
+                  setDirection(1);
+                  setStep(1);
+                }}
+                className="w-full md:w-auto px-8 py-4 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white font-bold rounded-md transition-all duration-200 transform hover:-translate-y-0.5 inline-flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-[rgba(123,97,255,0.25)] focus:ring-2 focus:ring-[var(--color-accent)] focus:ring-offset-2 focus:ring-offset-[#0E0E14] outline-none"
               >
                 Comenzar brief
                 <ArrowRight className="w-5 h-5" />
@@ -443,37 +535,47 @@ export function BriefForm() {
         {step === 1 && (
           <motion.div
             key="step1"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
             className="space-y-8"
           >
             <div className="space-y-2">
               <span className="text-xs font-mono text-[var(--color-accent)] uppercase tracking-wider">Paso 1 / 5</span>
-              <h2 className="text-2xl md:text-3xl font-extrabold">Sobre tu negocio</h2>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-white">Sobre tu negocio</h2>
             </div>
 
             <div className="space-y-6">
               {/* Q1.1 */}
               <div className="space-y-2">
-                <label className="block text-sm font-semibold">¿A qué se dedica tu negocio? *</label>
+                <label className="block text-sm font-semibold text-[#F0EFF8]">¿A qué se dedica tu negocio? *</label>
                 <textarea
                   name="negocio_actividad"
                   value={formData.negocio_actividad}
                   onChange={handleTextChange}
                   placeholder="Ej: Clínica de medicina estética en Rosario"
                   maxLength={200}
-                  className="w-full p-4 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-md focus:border-[var(--color-accent)] outline-none transition-colors h-24 resize-none"
+                  className="w-full p-4 bg-[#18181F]/80 border border-[#242428] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(123,97,255,0.15)] outline-none transition-all duration-200 h-24 resize-none text-sm text-[var(--color-fg)]"
                 />
-                <div className="flex justify-between items-center text-xs text-[var(--color-muted)]">
-                  <span>{errors.negocio_actividad ? <span className="text-red-500">{errors.negocio_actividad}</span> : "Sé lo más descriptivo posible."}</span>
-                  <span>{formData.negocio_actividad.length}/200</span>
+                <div className="flex justify-between items-center text-xs">
+                  <span>
+                    {errors.negocio_actividad ? (
+                      <span className="text-red-400 font-medium">{errors.negocio_actividad}</span>
+                    ) : (
+                      <span className="text-[var(--color-muted)]">Sé lo más descriptivo posible.</span>
+                    )}
+                  </span>
+                  <span className={formData.negocio_actividad.length >= 180 ? "text-red-400 font-semibold" : "text-[var(--color-muted)]"}>
+                    {formData.negocio_actividad.length}/200
+                  </span>
                 </div>
               </div>
 
               {/* Q1.2 */}
               <div className="space-y-2">
-                <label className="block text-sm font-semibold">¿En qué rubro estás? *</label>
+                <label className="block text-sm font-semibold text-[#F0EFF8]">¿En qué rubro estás? *</label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {[
                     "Salud y medicina",
@@ -491,22 +593,22 @@ export function BriefForm() {
                       key={rubro}
                       type="button"
                       onClick={() => handleSelectSingle("negocio_rubro", rubro)}
-                      className={`p-3 text-left rounded border text-sm transition-all cursor-pointer ${
+                      className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer ${
                         formData.negocio_rubro === rubro
-                          ? "bg-[rgba(123,97,255,0.15)] border-[var(--color-accent)] text-white"
-                          : "bg-[var(--color-surface)] border-[var(--color-border)] hover:border-gray-600"
+                          ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
+                          : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                       }`}
                     >
                       {rubro}
                     </button>
                   ))}
                 </div>
-                {errors.negocio_rubro && <p className="text-xs text-red-500">{errors.negocio_rubro}</p>}
+                {errors.negocio_rubro && <p className="text-xs text-red-400 font-medium">{errors.negocio_rubro}</p>}
               </div>
 
               {/* Q1.3 */}
               <div className="space-y-2">
-                <label className="block text-sm font-semibold">¿Dónde operás? *</label>
+                <label className="block text-sm font-semibold text-[#F0EFF8]">¿Dónde operás? *</label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {[
                     "Solo en Rosario",
@@ -519,32 +621,32 @@ export function BriefForm() {
                       key={loc}
                       type="button"
                       onClick={() => handleSelectSingle("negocio_ubicacion", loc)}
-                      className={`p-3 text-left rounded border text-sm transition-all cursor-pointer ${
+                      className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer ${
                         formData.negocio_ubicacion === loc
-                          ? "bg-[rgba(123,97,255,0.15)] border-[var(--color-accent)] text-white"
-                          : "bg-[var(--color-surface)] border-[var(--color-border)] hover:border-gray-600"
+                          ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
+                          : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                       }`}
                     >
                       {loc}
                     </button>
                   ))}
                 </div>
-                {errors.negocio_ubicacion && <p className="text-xs text-red-500">{errors.negocio_ubicacion}</p>}
+                {errors.negocio_ubicacion && <p className="text-xs text-red-400 font-medium">{errors.negocio_ubicacion}</p>}
               </div>
             </div>
 
             {/* Navigation */}
-            <div className="flex justify-between pt-6 border-t border-[var(--color-border)]">
+            <div className="flex justify-between pt-6 border-t border-[#242428]">
               <button
                 onClick={handleBack}
-                className="px-6 py-3 border border-[var(--color-border)] rounded hover:border-[var(--color-accent)] transition-all flex items-center gap-2 text-sm cursor-pointer"
+                className="px-5 py-3 border border-[#242428] rounded hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-200 flex items-center gap-2 text-sm cursor-pointer text-[var(--color-muted)]"
               >
                 <ArrowLeft className="w-4 h-4" />
                 Atrás
               </button>
               <button
                 onClick={handleNext}
-                className="px-6 py-3 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white font-bold rounded transition-all flex items-center gap-2 text-sm cursor-pointer"
+                className="px-6 py-3 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white font-bold rounded transition-all duration-200 flex items-center gap-2 text-sm cursor-pointer"
               >
                 Siguiente
                 <ArrowRight className="w-4 h-4" />
@@ -553,65 +655,74 @@ export function BriefForm() {
           </motion.div>
         )}
 
-        {/* STEP 2: Tu Proyecto */}
+        {/* STEP 2: Tu Proyecto (Redesigned with custom icons) */}
         {step === 2 && (
           <motion.div
             key="step2"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
             className="space-y-8"
           >
             <div className="space-y-2">
               <span className="text-xs font-mono text-[var(--color-accent)] uppercase tracking-wider">Paso 2 / 5</span>
-              <h2 className="text-2xl md:text-3xl font-extrabold">Tu proyecto</h2>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-white">Tu proyecto</h2>
             </div>
 
             <div className="space-y-6">
-              {/* Q2.1 */}
-              <div className="space-y-2">
-                <label className="block text-sm font-semibold">¿Qué necesitás construir? *</label>
-                <p className="text-xs text-[var(--color-muted)] mb-4">Esta respuesta definirá el camino condicional del formulario.</p>
-                <div className="grid grid-cols-1 gap-2.5">
-                  {[
-                    "Presencia digital (web, landing page)",
-                    "Tienda online (e-commerce)",
-                    "Sistema con panel de gestión (admin, dashboard)",
-                    "Automatización o agente de IA",
-                    "API o backend para mi aplicación",
-                    "MVP de producto digital",
-                    "No tengo claro — necesito orientación",
-                  ].map((tipo) => (
-                    <button
-                      key={tipo}
-                      type="button"
-                      onClick={() => handleSelectSingle("proyecto_tipo", tipo)}
-                      className={`p-4 text-left rounded border text-sm md:text-base font-semibold transition-all cursor-pointer ${
-                        formData.proyecto_tipo === tipo
-                          ? "bg-[rgba(123,97,255,0.15)] border-[var(--color-accent)] text-white shadow-md shadow-[rgba(123,97,255,0.1)]"
-                          : "bg-[var(--color-surface)] border-[var(--color-border)] hover:border-gray-600"
-                      }`}
-                    >
-                      {tipo}
-                    </button>
-                  ))}
+              <div className="space-y-3">
+                <label className="block text-sm font-semibold text-[#F0EFF8]">¿Qué necesitás construir? *</label>
+                <p className="text-xs text-[var(--color-muted)]">Seleccioná la opción principal para estructurar el resto del brief.</p>
+                <div className="grid grid-cols-1 gap-3">
+                  {buildOptions.map((opt) => {
+                    const IconComponent = opt.icon;
+                    const isSelected = formData.proyecto_tipo === opt.label;
+                    return (
+                      <button
+                        key={opt.label}
+                        type="button"
+                        onClick={() => handleSelectSingle("proyecto_tipo", opt.label)}
+                        className={`p-4 text-left rounded-lg border transition-all duration-300 flex items-start gap-4 cursor-pointer relative overflow-hidden group ${
+                          isSelected
+                            ? "bg-[rgba(123,97,255,0.08)] border-[var(--color-accent)] text-white shadow-[0_0_20px_rgba(123,97,255,0.08)]"
+                            : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700"
+                        }`}
+                      >
+                        <div
+                          className={`p-2.5 rounded-md shrink-0 transition-colors ${
+                            isSelected ? "bg-[var(--color-accent)] text-white" : "bg-[#1f1f26] text-[var(--color-muted)] group-hover:text-white"
+                          }`}
+                        >
+                          <IconComponent className="w-5 h-5" />
+                        </div>
+                        <div className="space-y-1">
+                          <h3 className={`text-sm font-bold transition-colors ${isSelected ? "text-white" : "text-[var(--color-fg)]"}`}>
+                            {opt.label}
+                          </h3>
+                          <p className="text-xs text-[var(--color-muted)] leading-relaxed">{opt.desc}</p>
+                        </div>
+                      </button>
+                    );
+                  })}
                 </div>
-                {errors.proyecto_tipo && <p className="text-xs text-red-500">{errors.proyecto_tipo}</p>}
+                {errors.proyecto_tipo && <p className="text-xs text-red-400 font-medium">{errors.proyecto_tipo}</p>}
               </div>
             </div>
 
             {/* Navigation */}
-            <div className="flex justify-between pt-6 border-t border-[var(--color-border)]">
+            <div className="flex justify-between pt-6 border-t border-[#242428]">
               <button
                 onClick={handleBack}
-                className="px-6 py-3 border border-[var(--color-border)] rounded hover:border-[var(--color-accent)] transition-all flex items-center gap-2 text-sm cursor-pointer"
+                className="px-5 py-3 border border-[#242428] rounded hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-200 flex items-center gap-2 text-sm cursor-pointer text-[var(--color-muted)]"
               >
                 <ArrowLeft className="w-4 h-4" />
                 Atrás
               </button>
               <button
                 onClick={handleNext}
-                className="px-6 py-3 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white font-bold rounded transition-all flex items-center gap-2 text-sm cursor-pointer"
+                className="px-6 py-3 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white font-bold rounded transition-all duration-200 flex items-center gap-2 text-sm cursor-pointer"
               >
                 Siguiente
                 <ArrowRight className="w-4 h-4" />
@@ -620,26 +731,27 @@ export function BriefForm() {
           </motion.div>
         )}
 
-        {/* STEP 3: Camino Condicional (A-G) */}
+        {/* STEP 3: Camino Condicional */}
         {step === 3 && (
           <motion.div
             key="step3"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
             className="space-y-8"
           >
             <div className="space-y-2">
               <span className="text-xs font-mono text-[var(--color-accent)] uppercase tracking-wider">Paso 3 / 5</span>
-              <h2 className="text-2xl md:text-3xl font-extrabold">Especificaciones del proyecto</h2>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-white">Especificaciones del proyecto</h2>
             </div>
 
             {/* CAMINO A: Presencia digital */}
             {getPath() === "A" && (
               <div className="space-y-6">
-                {/* A.1 */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold">¿Cuál es tu situación digital actual? *</label>
+                  <label className="block text-sm font-semibold text-[#F0EFF8]">¿Cuál es tu situación digital actual? *</label>
                   <div className="grid grid-cols-1 gap-2">
                     {[
                       "No tengo nada — arranco desde cero",
@@ -652,22 +764,21 @@ export function BriefForm() {
                         key={opt}
                         type="button"
                         onClick={() => handleSelectSingle("a1_situacion", opt)}
-                        className={`p-3 text-left rounded border text-sm transition-all cursor-pointer ${
+                        className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer ${
                           formData.a1_situacion === opt
-                            ? "bg-[rgba(123,97,255,0.15)] border-[var(--color-accent)] text-white"
-                            : "bg-[var(--color-surface)] border-[var(--color-border)] hover:border-gray-600"
+                            ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
+                            : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                         }`}
                       >
                         {opt}
                       </button>
                     ))}
                   </div>
-                  {errors.a1_situacion && <p className="text-xs text-red-500">{errors.a1_situacion}</p>}
+                  {errors.a1_situacion && <p className="text-xs text-red-400 font-medium">{errors.a1_situacion}</p>}
                 </div>
 
-                {/* A.2 */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold">¿Qué querés lograr con tu presencia digital? (Elegí hasta 3) *</label>
+                  <label className="block text-sm font-semibold text-[#F0EFF8]">¿Qué querés lograr con tu presencia digital? (Elegí hasta 3) *</label>
                   <div className="grid grid-cols-1 gap-2">
                     {[
                       "Aparecer en Google cuando me buscan",
@@ -684,10 +795,10 @@ export function BriefForm() {
                           key={opt}
                           type="button"
                           onClick={() => handleSelectMultiple("a2_objetivos", opt, 3)}
-                          className={`p-3 text-left rounded border text-sm transition-all cursor-pointer flex justify-between items-center ${
+                          className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer flex justify-between items-center ${
                             isSelected
-                              ? "bg-[rgba(123,97,255,0.15)] border-[var(--color-accent)] text-white"
-                              : "bg-[var(--color-surface)] border-[var(--color-border)] hover:border-gray-600"
+                              ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
+                              : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                           }`}
                         >
                           <span>{opt}</span>
@@ -696,12 +807,11 @@ export function BriefForm() {
                       );
                     })}
                   </div>
-                  {errors.a2_objetivos && <p className="text-xs text-red-500">{errors.a2_objetivos}</p>}
+                  {errors.a2_objetivos && <p className="text-xs text-red-400 font-medium">{errors.a2_objetivos}</p>}
                 </div>
 
-                {/* A.3 */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold">¿Necesitás panel de administración propio? *</label>
+                  <label className="block text-sm font-semibold text-[#F0EFF8]">¿Necesitás panel de administración propio? *</label>
                   <div className="grid grid-cols-1 gap-2">
                     {[
                       "Sí — quiero poder actualizar el contenido sin depender de nadie",
@@ -712,22 +822,21 @@ export function BriefForm() {
                         key={opt}
                         type="button"
                         onClick={() => handleSelectSingle("a3_panel", opt)}
-                        className={`p-3 text-left rounded border text-sm transition-all cursor-pointer ${
+                        className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer ${
                           formData.a3_panel === opt
-                            ? "bg-[rgba(123,97,255,0.15)] border-[var(--color-accent)] text-white"
-                            : "bg-[var(--color-surface)] border-[var(--color-border)] hover:border-gray-600"
+                            ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
+                            : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                         }`}
                       >
                         {opt}
                       </button>
                     ))}
                   </div>
-                  {errors.a3_panel && <p className="text-xs text-red-500">{errors.a3_panel}</p>}
+                  {errors.a3_panel && <p className="text-xs text-red-400 font-medium">{errors.a3_panel}</p>}
                 </div>
 
-                {/* A.4 */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold">¿Tenés identidad visual definida? *</label>
+                  <label className="block text-sm font-semibold text-[#F0EFF8]">¿Tenés identidad visual definida? *</label>
                   <div className="grid grid-cols-1 gap-2">
                     {[
                       "Sí — tengo logo, colores y tipografía",
@@ -738,17 +847,17 @@ export function BriefForm() {
                         key={opt}
                         type="button"
                         onClick={() => handleSelectSingle("a4_identidad", opt)}
-                        className={`p-3 text-left rounded border text-sm transition-all cursor-pointer ${
+                        className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer ${
                           formData.a4_identidad === opt
-                            ? "bg-[rgba(123,97,255,0.15)] border-[var(--color-accent)] text-white"
-                            : "bg-[var(--color-surface)] border-[var(--color-border)] hover:border-gray-600"
+                            ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
+                            : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                         }`}
                       >
                         {opt}
                       </button>
                     ))}
                   </div>
-                  {errors.a4_identidad && <p className="text-xs text-red-500">{errors.a4_identidad}</p>}
+                  {errors.a4_identidad && <p className="text-xs text-red-400 font-medium">{errors.a4_identidad}</p>}
                 </div>
               </div>
             )}
@@ -756,9 +865,8 @@ export function BriefForm() {
             {/* CAMINO B: E-commerce */}
             {getPath() === "B" && (
               <div className="space-y-6">
-                {/* B.1 */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold">¿Qué vas a vender? *</label>
+                  <label className="block text-sm font-semibold text-[#F0EFF8]">¿Qué vas a vender? *</label>
                   <div className="grid grid-cols-1 gap-2">
                     {[
                       "Productos físicos con envío",
@@ -770,66 +878,63 @@ export function BriefForm() {
                         key={opt}
                         type="button"
                         onClick={() => handleSelectSingle("b1_venta", opt)}
-                        className={`p-3 text-left rounded border text-sm transition-all cursor-pointer ${
+                        className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer ${
                           formData.b1_venta === opt
-                            ? "bg-[rgba(123,97,255,0.15)] border-[var(--color-accent)] text-white"
-                            : "bg-[var(--color-surface)] border-[var(--color-border)] hover:border-gray-600"
+                            ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
+                            : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                         }`}
                       >
                         {opt}
                       </button>
                     ))}
                   </div>
-                  {errors.b1_venta && <p className="text-xs text-red-500">{errors.b1_venta}</p>}
+                  {errors.b1_venta && <p className="text-xs text-red-400 font-medium">{errors.b1_venta}</p>}
                 </div>
 
-                {/* B.2 */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold">¿Cuántos productos tenés aproximadamente? *</label>
+                  <label className="block text-sm font-semibold text-[#F0EFF8]">¿Cuántos productos tenés aproximadamente? *</label>
                   <div className="grid grid-cols-1 gap-2">
                     {["Menos de 20", "Entre 20 y 100", "Más de 100", "No tengo claro todavía"].map((opt) => (
                       <button
                         key={opt}
                         type="button"
                         onClick={() => handleSelectSingle("b2_cantidad", opt)}
-                        className={`p-3 text-left rounded border text-sm transition-all cursor-pointer ${
+                        className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer ${
                           formData.b2_cantidad === opt
-                            ? "bg-[rgba(123,97,255,0.15)] border-[var(--color-accent)] text-white"
-                            : "bg-[var(--color-surface)] border-[var(--color-border)] hover:border-gray-600"
+                            ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
+                            : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                         }`}
                       >
                         {opt}
                       </button>
                     ))}
                   </div>
-                  {errors.b2_cantidad && <p className="text-xs text-red-500">{errors.b2_cantidad}</p>}
+                  {errors.b2_cantidad && <p className="text-xs text-red-400 font-medium">{errors.b2_cantidad}</p>}
                 </div>
 
-                {/* B.3 */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold">¿Necesitás gestión de inventario? *</label>
+                  <label className="block text-sm font-semibold text-[#F0EFF8]">¿Necesitás gestión de inventario? *</label>
                   <div className="grid grid-cols-1 gap-2">
                     {["Sí — necesito controlar stock", "No — son servicios o digitales sin stock", "No sé"].map((opt) => (
                       <button
                         key={opt}
                         type="button"
                         onClick={() => handleSelectSingle("b3_inventario", opt)}
-                        className={`p-3 text-left rounded border text-sm transition-all cursor-pointer ${
+                        className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer ${
                           formData.b3_inventario === opt
-                            ? "bg-[rgba(123,97,255,0.15)] border-[var(--color-accent)] text-white"
-                            : "bg-[var(--color-surface)] border-[var(--color-border)] hover:border-gray-600"
+                            ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
+                            : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                         }`}
                       >
                         {opt}
                       </button>
                     ))}
                   </div>
-                  {errors.b3_inventario && <p className="text-xs text-red-500">{errors.b3_inventario}</p>}
+                  {errors.b3_inventario && <p className="text-xs text-red-400 font-medium">{errors.b3_inventario}</p>}
                 </div>
 
-                {/* B.4 */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold">¿Cómo querés recibir los pagos? *</label>
+                  <label className="block text-sm font-semibold text-[#F0EFF8]">¿Cómo querés recibir los pagos? *</label>
                   <div className="grid grid-cols-1 gap-2">
                     {[
                       "Mercado Pago",
@@ -844,10 +949,10 @@ export function BriefForm() {
                           key={opt}
                           type="button"
                           onClick={() => handleSelectMultiple("b4_pagos", opt)}
-                          className={`p-3 text-left rounded border text-sm transition-all cursor-pointer flex justify-between items-center ${
+                          className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer flex justify-between items-center ${
                             isSelected
-                              ? "bg-[rgba(123,97,255,0.15)] border-[var(--color-accent)] text-white"
-                              : "bg-[var(--color-surface)] border-[var(--color-border)] hover:border-gray-600"
+                              ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
+                              : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                           }`}
                         >
                           <span>{opt}</span>
@@ -856,7 +961,7 @@ export function BriefForm() {
                       );
                     })}
                   </div>
-                  {errors.b4_pagos && <p className="text-xs text-red-500">{errors.b4_pagos}</p>}
+                  {errors.b4_pagos && <p className="text-xs text-red-400 font-medium">{errors.b4_pagos}</p>}
                 </div>
               </div>
             )}
@@ -864,9 +969,8 @@ export function BriefForm() {
             {/* CAMINO C: Sistema con panel de gestión */}
             {getPath() === "C" && (
               <div className="space-y-6">
-                {/* C.1 */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold">¿Qué necesitás gestionar? (Elegí hasta 3) *</label>
+                  <label className="block text-sm font-semibold text-[#F0EFF8]">¿Qué necesitás gestionar? (Elegí hasta 3) *</label>
                   <div className="grid grid-cols-1 gap-2">
                     {[
                       "Clientes o pacientes",
@@ -885,10 +989,10 @@ export function BriefForm() {
                           key={opt}
                           type="button"
                           onClick={() => handleSelectMultiple("c1_gestionar", opt, 3)}
-                          className={`p-3 text-left rounded border text-sm transition-all cursor-pointer flex justify-between items-center ${
+                          className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer flex justify-between items-center ${
                             isSelected
-                              ? "bg-[rgba(123,97,255,0.15)] border-[var(--color-accent)] text-white"
-                              : "bg-[var(--color-surface)] border-[var(--color-border)] hover:border-gray-600"
+                              ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
+                              : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                           }`}
                         >
                           <span>{opt}</span>
@@ -897,12 +1001,11 @@ export function BriefForm() {
                       );
                     })}
                   </div>
-                  {errors.c1_gestionar && <p className="text-xs text-red-500">{errors.c1_gestionar}</p>}
+                  {errors.c1_gestionar && <p className="text-xs text-red-400 font-medium">{errors.c1_gestionar}</p>}
                 </div>
 
-                {/* C.2 */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold">¿Ya tenés una web o arrancamos todo desde cero? *</label>
+                  <label className="block text-sm font-semibold text-[#F0EFF8]">¿Ya tenés una web o arrancamos todo desde cero? *</label>
                   <div className="grid grid-cols-1 gap-2">
                     {[
                       "Arrancamos desde cero — necesito web y panel",
@@ -913,39 +1016,38 @@ export function BriefForm() {
                         key={opt}
                         type="button"
                         onClick={() => handleSelectSingle("c2_inicio", opt)}
-                        className={`p-3 text-left rounded border text-sm transition-all cursor-pointer ${
+                        className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer ${
                           formData.c2_inicio === opt
-                            ? "bg-[rgba(123,97,255,0.15)] border-[var(--color-accent)] text-white"
-                            : "bg-[var(--color-surface)] border-[var(--color-border)] hover:border-gray-600"
+                            ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
+                            : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                         }`}
                       >
                         {opt}
                       </button>
                     ))}
                   </div>
-                  {errors.c2_inicio && <p className="text-xs text-red-500">{errors.c2_inicio}</p>}
+                  {errors.c2_inicio && <p className="text-xs text-red-400 font-medium">{errors.c2_inicio}</p>}
                 </div>
 
-                {/* C.3 */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold">¿Cuántas personas van a usar el sistema? *</label>
+                  <label className="block text-sm font-semibold text-[#F0EFF8]">¿Cuántas personas van a usar el sistema? *</label>
                   <div className="grid grid-cols-1 gap-2">
                     {["Solo yo", "2 a 5 personas", "Más de 5 personas"].map((opt) => (
                       <button
                         key={opt}
                         type="button"
                         onClick={() => handleSelectSingle("c3_usuarios", opt)}
-                        className={`p-3 text-left rounded border text-sm transition-all cursor-pointer ${
+                        className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer ${
                           formData.c3_usuarios === opt
-                            ? "bg-[rgba(123,97,255,0.15)] border-[var(--color-accent)] text-white"
-                            : "bg-[var(--color-surface)] border-[var(--color-border)] hover:border-gray-600"
+                            ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
+                            : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                         }`}
                       >
                         {opt}
                       </button>
                     ))}
                   </div>
-                  {errors.c3_usuarios && <p className="text-xs text-red-500">{errors.c3_usuarios}</p>}
+                  {errors.c3_usuarios && <p className="text-xs text-red-400 font-medium">{errors.c3_usuarios}</p>}
                 </div>
               </div>
             )}
@@ -953,9 +1055,8 @@ export function BriefForm() {
             {/* CAMINO D: Automatización o Agente de IA */}
             {getPath() === "D" && (
               <div className="space-y-6">
-                {/* D.1 */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold">¿Qué proceso querés automatizar? (Elegí hasta 3) *</label>
+                  <label className="block text-sm font-semibold text-[#F0EFF8]">¿Qué proceso querés automatizar? (Elegí hasta 3) *</label>
                   <div className="grid grid-cols-1 gap-2">
                     {[
                       "Respuesta a consultas por WhatsApp",
@@ -973,10 +1074,10 @@ export function BriefForm() {
                           key={opt}
                           type="button"
                           onClick={() => handleSelectMultiple("d1_automatizar", opt, 3)}
-                          className={`p-3 text-left rounded border text-sm transition-all cursor-pointer flex justify-between items-center ${
+                          className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer flex justify-between items-center ${
                             isSelected
-                              ? "bg-[rgba(123,97,255,0.15)] border-[var(--color-accent)] text-white"
-                              : "bg-[var(--color-surface)] border-[var(--color-border)] hover:border-gray-600"
+                              ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
+                              : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                           }`}
                         >
                           <span>{opt}</span>
@@ -985,12 +1086,11 @@ export function BriefForm() {
                       );
                     })}
                   </div>
-                  {errors.d1_automatizar && <p className="text-xs text-red-500">{errors.d1_automatizar}</p>}
+                  {errors.d1_automatizar && <p className="text-xs text-red-400 font-medium">{errors.d1_automatizar}</p>}
                 </div>
 
-                {/* D.2 */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold">¿Tenés algún sistema digital actualmente? *</label>
+                  <label className="block text-sm font-semibold text-[#F0EFF8]">¿Tenés algún sistema digital actualmente? *</label>
                   <div className="grid grid-cols-1 gap-2">
                     {[
                       "Sí — tengo web, CRM o herramientas activas",
@@ -1001,22 +1101,21 @@ export function BriefForm() {
                         key={opt}
                         type="button"
                         onClick={() => handleSelectSingle("d2_sistema_actual", opt)}
-                        className={`p-3 text-left rounded border text-sm transition-all cursor-pointer ${
+                        className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer ${
                           formData.d2_sistema_actual === opt
-                            ? "bg-[rgba(123,97,255,0.15)] border-[var(--color-accent)] text-white"
-                            : "bg-[var(--color-surface)] border-[var(--color-border)] hover:border-gray-600"
+                            ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
+                            : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                         }`}
                       >
                         {opt}
                       </button>
                     ))}
                   </div>
-                  {errors.d2_sistema_actual && <p className="text-xs text-red-500">{errors.d2_sistema_actual}</p>}
+                  {errors.d2_sistema_actual && <p className="text-xs text-red-400 font-medium">{errors.d2_sistema_actual}</p>}
                 </div>
 
-                {/* D.3 */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold">¿Usás WhatsApp Business actualmente? *</label>
+                  <label className="block text-sm font-semibold text-[#F0EFF8]">¿Usás WhatsApp Business actualmente? *</label>
                   <div className="grid grid-cols-1 gap-2">
                     {[
                       "Sí — es mi canal principal de atención",
@@ -1027,17 +1126,17 @@ export function BriefForm() {
                         key={opt}
                         type="button"
                         onClick={() => handleSelectSingle("d3_whatsapp_business", opt)}
-                        className={`p-3 text-left rounded border text-sm transition-all cursor-pointer ${
+                        className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer ${
                           formData.d3_whatsapp_business === opt
-                            ? "bg-[rgba(123,97,255,0.15)] border-[var(--color-accent)] text-white"
-                            : "bg-[var(--color-surface)] border-[var(--color-border)] hover:border-gray-600"
+                            ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
+                            : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                         }`}
                       >
                         {opt}
                       </button>
                     ))}
                   </div>
-                  {errors.d3_whatsapp_business && <p className="text-xs text-red-500">{errors.d3_whatsapp_business}</p>}
+                  {errors.d3_whatsapp_business && <p className="text-xs text-red-400 font-medium">{errors.d3_whatsapp_business}</p>}
                 </div>
               </div>
             )}
@@ -1045,9 +1144,8 @@ export function BriefForm() {
             {/* CAMINO E: API o Backend */}
             {getPath() === "E" && (
               <div className="space-y-6">
-                {/* E.1 */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold">¿Para qué es la API o backend? *</label>
+                  <label className="block text-sm font-semibold text-[#F0EFF8]">¿Para qué es la API o backend? *</label>
                   <div className="grid grid-cols-1 gap-2">
                     {[
                       "Para una app móvil que estoy desarrollando",
@@ -1060,22 +1158,21 @@ export function BriefForm() {
                         key={opt}
                         type="button"
                         onClick={() => handleSelectSingle("e1_proposito", opt)}
-                        className={`p-3 text-left rounded border text-sm transition-all cursor-pointer ${
+                        className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer ${
                           formData.e1_proposito === opt
-                            ? "bg-[rgba(123,97,255,0.15)] border-[var(--color-accent)] text-white"
-                            : "bg-[var(--color-surface)] border-[var(--color-border)] hover:border-gray-600"
+                            ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
+                            : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                         }`}
                       >
                         {opt}
                       </button>
                     ))}
                   </div>
-                  {errors.e1_proposito && <p className="text-xs text-red-500">{errors.e1_proposito}</p>}
+                  {errors.e1_proposito && <p className="text-xs text-red-400 font-medium">{errors.e1_proposito}</p>}
                 </div>
 
-                {/* E.2 */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold">¿Tenés documentación o requerimientos definidos? *</label>
+                  <label className="block text-sm font-semibold text-[#F0EFF8]">¿Tenés documentación o requerimientos definidos? *</label>
                   <div className="grid grid-cols-1 gap-2">
                     {[
                       "Sí — tengo todo documentado",
@@ -1086,29 +1183,28 @@ export function BriefForm() {
                         key={opt}
                         type="button"
                         onClick={() => handleSelectSingle("e2_documentacion", opt)}
-                        className={`p-3 text-left rounded border text-sm transition-all cursor-pointer ${
+                        className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer ${
                           formData.e2_documentacion === opt
-                            ? "bg-[rgba(123,97,255,0.15)] border-[var(--color-accent)] text-white"
-                            : "bg-[var(--color-surface)] border-[var(--color-border)] hover:border-gray-600"
+                            ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
+                            : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                         }`}
                       >
                         {opt}
                       </button>
                     ))}
                   </div>
-                  {errors.e2_documentacion && <p className="text-xs text-red-500">{errors.e2_documentacion}</p>}
+                  {errors.e2_documentacion && <p className="text-xs text-red-400 font-medium">{errors.e2_documentacion}</p>}
                 </div>
 
-                {/* E.3 */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold">¿Cuál es tu stack tecnológico actual? (Opcional)</label>
+                  <label className="block text-sm font-semibold text-[#F0EFF8]">¿Cuál es tu stack tecnológico actual? (Opcional)</label>
                   <input
                     type="text"
                     name="e3_stack"
                     value={formData.e3_stack}
                     onChange={handleTextChange}
                     placeholder="Ej: React Native para mobile, necesito backend en Node o .NET"
-                    className="w-full p-3 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-md focus:border-[var(--color-accent)] outline-none transition-colors text-sm"
+                    className="w-full p-3 bg-[#18181F]/80 border border-[#242428] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(123,97,255,0.15)] outline-none transition-colors text-sm text-[var(--color-fg)]"
                   />
                 </div>
               </div>
@@ -1117,9 +1213,8 @@ export function BriefForm() {
             {/* CAMINO F: MVP de producto digital */}
             {getPath() === "F" && (
               <div className="space-y-6">
-                {/* F.1 */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold">¿En qué etapa está tu idea? *</label>
+                  <label className="block text-sm font-semibold text-[#F0EFF8]">¿En qué etapa está tu idea? *</label>
                   <div className="grid grid-cols-1 gap-2">
                     {[
                       "Solo tengo la idea — nada más",
@@ -1132,39 +1227,37 @@ export function BriefForm() {
                         key={opt}
                         type="button"
                         onClick={() => handleSelectSingle("f1_etapa", opt)}
-                        className={`p-3 text-left rounded border text-sm transition-all cursor-pointer ${
+                        className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer ${
                           formData.f1_etapa === opt
-                            ? "bg-[rgba(123,97,255,0.15)] border-[var(--color-accent)] text-white"
-                            : "bg-[var(--color-surface)] border-[var(--color-border)] hover:border-gray-600"
+                            ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
+                            : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                         }`}
                       >
                         {opt}
                       </button>
                     ))}
                   </div>
-                  {errors.f1_etapa && <p className="text-xs text-red-500">{errors.f1_etapa}</p>}
+                  {errors.f1_etapa && <p className="text-xs text-red-400 font-medium">{errors.f1_etapa}</p>}
                 </div>
 
-                {/* F.2 */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold">¿Cuál es el problema central que resuelve tu producto? *</label>
+                  <label className="block text-sm font-semibold text-[#F0EFF8]">¿Cuál es el problema central que resuelve tu producto? *</label>
                   <textarea
                     name="f2_problema"
                     value={formData.f2_problema}
                     onChange={handleTextChange}
                     placeholder="Ej: Los gimnasios pierden clientes porque no tienen sistema de seguimiento de rutinas simple"
                     maxLength={300}
-                    className="w-full p-3 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-md focus:border-[var(--color-accent)] outline-none transition-colors h-24 resize-none text-sm"
+                    className="w-full p-3 bg-[#18181F]/80 border border-[#242428] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(123,97,255,0.15)] outline-none transition-colors h-24 resize-none text-sm text-[var(--color-fg)]"
                   />
-                  <div className="flex justify-between items-center text-xs text-[var(--color-muted)]">
-                    <span>{errors.f2_problema ? <span className="text-red-500">{errors.f2_problema}</span> : ""}</span>
-                    <span>{formData.f2_problema.length}/300</span>
+                  <div className="flex justify-between items-center text-xs">
+                    <span>{errors.f2_problema && <span className="text-red-400 font-medium">{errors.f2_problema}</span>}</span>
+                    <span className="text-[var(--color-muted)]">{formData.f2_problema.length}/300</span>
                   </div>
                 </div>
 
-                {/* F.3 */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold">¿Tenés financiamiento para el proyecto? *</label>
+                  <label className="block text-sm font-semibold text-[#F0EFF8]">¿Tenés financiamiento para el proyecto? *</label>
                   <div className="grid grid-cols-1 gap-2">
                     {[
                       "Sí — tengo presupuesto propio",
@@ -1176,17 +1269,17 @@ export function BriefForm() {
                         key={opt}
                         type="button"
                         onClick={() => handleSelectSingle("f3_financiamiento", opt)}
-                        className={`p-3 text-left rounded border text-sm transition-all cursor-pointer ${
+                        className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer ${
                           formData.f3_financiamiento === opt
-                            ? "bg-[rgba(123,97,255,0.15)] border-[var(--color-accent)] text-white"
-                            : "bg-[var(--color-surface)] border-[var(--color-border)] hover:border-gray-600"
+                            ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
+                            : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                         }`}
                       >
                         {opt}
                       </button>
                     ))}
                   </div>
-                  {errors.f3_financiamiento && <p className="text-xs text-red-500">{errors.f3_financiamiento}</p>}
+                  {errors.f3_financiamiento && <p className="text-xs text-red-400 font-medium">{errors.f3_financiamiento}</p>}
                 </div>
               </div>
             )}
@@ -1194,37 +1287,36 @@ export function BriefForm() {
             {/* CAMINO G: No tengo claro */}
             {getPath() === "G" && (
               <div className="space-y-6">
-                {/* G.1 */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold">Contanos en tus palabras qué problema querés resolver con tecnología: *</label>
+                  <label className="block text-sm font-semibold text-[#F0EFF8]">Contanos en tus palabras qué problema querés resolver con tecnología: *</label>
                   <textarea
                     name="g1_problema"
                     value={formData.g1_problema}
                     onChange={handleTextChange}
                     placeholder="Ej: Tengo una clínica y mis pacientes no me encuentran en Google. Además no puedo actualizar la información de mi web solo."
                     maxLength={500}
-                    className="w-full p-4 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-md focus:border-[var(--color-accent)] outline-none transition-colors h-36 resize-none text-sm"
+                    className="w-full p-4 bg-[#18181F]/80 border border-[#242428] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(123,97,255,0.15)] outline-none transition-colors h-36 resize-none text-sm text-[var(--color-fg)]"
                   />
-                  <div className="flex justify-between items-center text-xs text-[var(--color-muted)]">
-                    <span>{errors.g1_problema ? <span className="text-red-500">{errors.g1_problema}</span> : ""}</span>
-                    <span>{formData.g1_problema.length}/500</span>
+                  <div className="flex justify-between items-center text-xs">
+                    <span>{errors.g1_problema && <span className="text-red-400 font-medium">{errors.g1_problema}</span>}</span>
+                    <span className="text-[var(--color-muted)]">{formData.g1_problema.length}/500</span>
                   </div>
                 </div>
               </div>
             )}
 
             {/* Navigation */}
-            <div className="flex justify-between pt-6 border-t border-[var(--color-border)]">
+            <div className="flex justify-between pt-6 border-t border-[#242428]">
               <button
                 onClick={handleBack}
-                className="px-6 py-3 border border-[var(--color-border)] rounded hover:border-[var(--color-accent)] transition-all flex items-center gap-2 text-sm cursor-pointer"
+                className="px-5 py-3 border border-[#242428] rounded hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-200 flex items-center gap-2 text-sm cursor-pointer text-[var(--color-muted)]"
               >
                 <ArrowLeft className="w-4 h-4" />
                 Atrás
               </button>
               <button
                 onClick={handleNext}
-                className="px-6 py-3 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white font-bold rounded transition-all flex items-center gap-2 text-sm cursor-pointer"
+                className="px-6 py-3 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white font-bold rounded transition-all duration-200 flex items-center gap-2 text-sm cursor-pointer"
               >
                 Siguiente
                 <ArrowRight className="w-4 h-4" />
@@ -1237,20 +1329,22 @@ export function BriefForm() {
         {step === 4 && (
           <motion.div
             key="step4"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
             className="space-y-8"
           >
             <div className="space-y-2">
               <span className="text-xs font-mono text-[var(--color-accent)] uppercase tracking-wider">Paso 4 / 5</span>
-              <h2 className="text-2xl md:text-3xl font-extrabold">Tiempos y presupuesto</h2>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-white">Tiempos y presupuesto</h2>
             </div>
 
             <div className="space-y-6">
               {/* Q3.1 */}
               <div className="space-y-2">
-                <label className="block text-sm font-semibold flex items-center gap-2">
+                <label className="block text-sm font-semibold flex items-center gap-2 text-[#F0EFF8]">
                   <Calendar className="w-4 h-4 text-[var(--color-accent)]" />
                   ¿Cuándo necesitás tenerlo listo? *
                 </label>
@@ -1260,22 +1354,22 @@ export function BriefForm() {
                       key={opt}
                       type="button"
                       onClick={() => handleSelectSingle("tiempos_urgencia", opt)}
-                      className={`p-3 text-left rounded border text-sm transition-all cursor-pointer ${
+                      className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer ${
                         formData.tiempos_urgencia === opt
-                          ? "bg-[rgba(123,97,255,0.15)] border-[var(--color-accent)] text-white"
-                          : "bg-[var(--color-surface)] border-[var(--color-border)] hover:border-gray-600"
+                          ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
+                          : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                       }`}
                     >
                       {opt}
                     </button>
                   ))}
                 </div>
-                {errors.tiempos_urgencia && <p className="text-xs text-red-500">{errors.tiempos_urgencia}</p>}
+                {errors.tiempos_urgencia && <p className="text-xs text-red-400 font-medium">{errors.tiempos_urgencia}</p>}
               </div>
 
               {/* Q3.2 */}
               <div className="space-y-2">
-                <label className="block text-sm font-semibold flex items-center gap-2">
+                <label className="block text-sm font-semibold flex items-center gap-2 text-[#F0EFF8]">
                   <DollarSign className="w-4 h-4 text-[var(--color-accent)]" />
                   ¿Cuál es tu presupuesto aproximado? *
                 </label>
@@ -1292,15 +1386,15 @@ export function BriefForm() {
                       key={opt}
                       type="button"
                       onClick={() => handleSelectSingle("tiempos_presupuesto", opt)}
-                      className={`p-3 text-left rounded border text-sm transition-all cursor-pointer ${
+                      className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer flex flex-col items-start ${
                         formData.tiempos_presupuesto === opt
-                          ? "bg-[rgba(123,97,255,0.15)] border-[var(--color-accent)] text-white"
-                          : "bg-[var(--color-surface)] border-[var(--color-border)] hover:border-gray-600"
+                          ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
+                          : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                       }`}
                     >
                       <span>{opt}</span>
                       {opt === "Menos de $800 USD" && (
-                        <span className="block text-xs text-[var(--color-muted)] font-normal mt-0.5">
+                        <span className="block text-[11px] text-[var(--color-muted)] font-normal mt-0.5 leading-tight">
                           Este rango está por debajo de nuestro mínimo de proyecto. Igualmente completá el formulario y lo evaluamos.
                         </span>
                       )}
@@ -1313,7 +1407,7 @@ export function BriefForm() {
                   <motion.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
-                    className="p-3 bg-[rgba(245,158,11,0.08)] border border-[rgba(245,158,11,0.3)] rounded text-xs text-amber-400 flex gap-2 items-start"
+                    className="p-3 bg-[rgba(245,158,11,0.06)] border border-[rgba(245,158,11,0.25)] rounded text-xs text-amber-300 flex gap-2 items-start"
                   >
                     <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
                     <span>
@@ -1321,12 +1415,12 @@ export function BriefForm() {
                     </span>
                   </motion.div>
                 )}
-                {errors.tiempos_presupuesto && <p className="text-xs text-red-500">{errors.tiempos_presupuesto}</p>}
+                {errors.tiempos_presupuesto && <p className="text-xs text-red-400 font-medium">{errors.tiempos_presupuesto}</p>}
               </div>
 
               {/* Q3.3 */}
               <div className="space-y-2">
-                <label className="block text-sm font-semibold">¿Estás invirtiendo en publicidad digital? (Opcional)</label>
+                <label className="block text-sm font-semibold text-[#F0EFF8]">¿Estás invirtiendo en publicidad digital? (Opcional)</label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {[
                     "Sí — Meta Ads (Facebook/Instagram)",
@@ -1339,10 +1433,10 @@ export function BriefForm() {
                       key={opt}
                       type="button"
                       onClick={() => handleSelectSingle("tiempos_publicidad", opt)}
-                      className={`p-3 text-left rounded border text-sm transition-all cursor-pointer ${
+                      className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer ${
                         formData.tiempos_publicidad === opt
-                          ? "bg-[rgba(123,97,255,0.15)] border-[var(--color-accent)] text-white"
-                          : "bg-[var(--color-surface)] border-[var(--color-border)] hover:border-gray-600"
+                          ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
+                          : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                       }`}
                     >
                       {opt}
@@ -1353,17 +1447,17 @@ export function BriefForm() {
             </div>
 
             {/* Navigation */}
-            <div className="flex justify-between pt-6 border-t border-[var(--color-border)]">
+            <div className="flex justify-between pt-6 border-t border-[#242428]">
               <button
                 onClick={handleBack}
-                className="px-6 py-3 border border-[var(--color-border)] rounded hover:border-[var(--color-accent)] transition-all flex items-center gap-2 text-sm cursor-pointer"
+                className="px-5 py-3 border border-[#242428] rounded hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-200 flex items-center gap-2 text-sm cursor-pointer text-[var(--color-muted)]"
               >
                 <ArrowLeft className="w-4 h-4" />
                 Atrás
               </button>
               <button
                 onClick={handleNext}
-                className="px-6 py-3 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white font-bold rounded transition-all flex items-center gap-2 text-sm cursor-pointer"
+                className="px-6 py-3 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white font-bold rounded transition-all duration-200 flex items-center gap-2 text-sm cursor-pointer"
               >
                 Siguiente
                 <ArrowRight className="w-4 h-4" />
@@ -1376,17 +1470,19 @@ export function BriefForm() {
         {step === 5 && (
           <motion.div
             key="step5"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
             className="space-y-8"
           >
             <div className="space-y-2">
               <span className="text-xs font-mono text-[var(--color-accent)] uppercase tracking-wider">Paso 5 / 5</span>
-              <h2 className="text-2xl md:text-3xl font-extrabold">Datos de contacto</h2>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-white">Datos de contacto</h2>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-5">
               {/* Honeypot field (hidden for spam prevention) */}
               <div className="absolute opacity-0 -z-50 pointer-events-none w-0 h-0 overflow-hidden">
                 <input
@@ -1402,59 +1498,59 @@ export function BriefForm() {
 
               {/* Q4.1 */}
               <div className="space-y-1">
-                <label className="block text-sm font-semibold">Nombre completo *</label>
+                <label className="block text-sm font-semibold text-[#F0EFF8]">Nombre completo *</label>
                 <input
                   type="text"
                   name="contacto_nombre"
                   value={formData.contacto_nombre}
                   onChange={handleTextChange}
                   placeholder="Tu nombre completo"
-                  className="w-full p-3 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-md focus:border-[var(--color-accent)] outline-none transition-colors text-sm"
+                  className="w-full p-3 bg-[#18181F]/80 border border-[#242428] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(123,97,255,0.15)] outline-none transition-all duration-200 text-sm text-[var(--color-fg)]"
                 />
-                {errors.contacto_nombre && <p className="text-xs text-red-500">{errors.contacto_nombre}</p>}
+                {errors.contacto_nombre && <p className="text-xs text-red-400 font-medium">{errors.contacto_nombre}</p>}
               </div>
 
               {/* Q4.2 */}
               <div className="space-y-1">
-                <label className="block text-sm font-semibold">Email *</label>
+                <label className="block text-sm font-semibold text-[#F0EFF8]">Email *</label>
                 <input
                   type="email"
                   name="contacto_email"
                   value={formData.contacto_email}
                   onChange={handleTextChange}
                   placeholder="nombre@empresa.com"
-                  className="w-full p-3 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-md focus:border-[var(--color-accent)] outline-none transition-colors text-sm"
+                  className="w-full p-3 bg-[#18181F]/80 border border-[#242428] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(123,97,255,0.15)] outline-none transition-all duration-200 text-sm text-[var(--color-fg)]"
                 />
-                {errors.contacto_email && <p className="text-xs text-red-500">{errors.contacto_email}</p>}
+                {errors.contacto_email && <p className="text-xs text-red-400 font-medium">{errors.contacto_email}</p>}
               </div>
 
               {/* Q4.3 */}
               <div className="space-y-1">
-                <label className="block text-sm font-semibold">WhatsApp *</label>
+                <label className="block text-sm font-semibold text-[#F0EFF8]">WhatsApp *</label>
                 <input
                   type="tel"
                   name="contacto_whatsapp"
                   value={formData.contacto_whatsapp}
                   onChange={handleTextChange}
                   placeholder="+54 9 341 XXXXXXX"
-                  className="w-full p-3 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-md focus:border-[var(--color-accent)] outline-none transition-colors text-sm"
+                  className="w-full p-3 bg-[#18181F]/80 border border-[#242428] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(123,97,255,0.15)] outline-none transition-all duration-200 text-sm text-[var(--color-fg)]"
                 />
-                {errors.contacto_whatsapp && <p className="text-xs text-red-500">{errors.contacto_whatsapp}</p>}
+                {errors.contacto_whatsapp && <p className="text-xs text-red-400 font-medium">{errors.contacto_whatsapp}</p>}
               </div>
 
               {/* Q4.4 */}
               <div className="space-y-2">
-                <label className="block text-sm font-semibold">¿Cómo llegaste a malcom.builder? (Opcional)</label>
+                <label className="block text-sm font-semibold text-[#F0EFF8]">¿Cómo llegaste a malcom.builder? (Opcional)</label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {["Instagram (@malcombuilder)", "LinkedIn", "Me recomendaron", "Google", "Otro"].map((opt) => (
                     <button
                       key={opt}
                       type="button"
                       onClick={() => handleSelectSingle("contacto_origen", opt)}
-                      className={`p-3 text-left rounded border text-sm transition-all cursor-pointer ${
+                      className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer ${
                         formData.contacto_origen === opt
-                          ? "bg-[rgba(123,97,255,0.15)] border-[var(--color-accent)] text-white"
-                          : "bg-[var(--color-surface)] border-[var(--color-border)] hover:border-gray-600"
+                          ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
+                          : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                       }`}
                     >
                       {opt}
@@ -1465,28 +1561,28 @@ export function BriefForm() {
 
               {/* Q4.5 */}
               <div className="space-y-1">
-                <label className="block text-sm font-semibold">¿Algo más que quieras contarnos? (Opcional)</label>
+                <label className="block text-sm font-semibold text-[#F0EFF8]">¿Algo más que quieras contarnos? (Opcional)</label>
                 <textarea
                   name="contacto_notas"
                   value={formData.contacto_notas}
                   onChange={handleTextChange}
                   placeholder="Contexto adicional, referencias visuales, urgencias especiales..."
-                  className="w-full p-3 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-md focus:border-[var(--color-accent)] outline-none transition-colors h-24 resize-none text-sm"
+                  className="w-full p-3 bg-[#18181F]/80 border border-[#242428] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(123,97,255,0.15)] outline-none transition-all duration-200 h-24 resize-none text-sm text-[var(--color-fg)]"
                 />
               </div>
 
               {errors.submit && (
-                <div className="p-3 bg-red-900/30 border border-red-700 rounded text-xs text-red-400">
+                <div className="p-3 bg-red-900/20 border border-red-700/55 rounded text-xs text-red-400">
                   {errors.submit}
                 </div>
               )}
 
               {/* Navigation */}
-              <div className="flex justify-between pt-6 border-t border-[var(--color-border)]">
+              <div className="flex justify-between pt-6 border-t border-[#242428]">
                 <button
                   type="button"
                   onClick={handleBack}
-                  className="px-6 py-3 border border-[var(--color-border)] rounded hover:border-[var(--color-accent)] transition-all flex items-center gap-2 text-sm cursor-pointer"
+                  className="px-5 py-3 border border-[#242428] rounded hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-200 flex items-center gap-2 text-sm cursor-pointer text-[var(--color-muted)]"
                   disabled={isSubmitting}
                 >
                   <ArrowLeft className="w-4 h-4" />
@@ -1495,7 +1591,7 @@ export function BriefForm() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="px-6 py-3 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white font-bold rounded transition-all flex items-center gap-2 text-sm cursor-pointer disabled:opacity-50"
+                  className="px-6 py-3 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white font-bold rounded transition-all duration-200 flex items-center gap-2 text-sm cursor-pointer disabled:opacity-50"
                 >
                   {isSubmitting ? (
                     "Enviando..."
@@ -1515,41 +1611,43 @@ export function BriefForm() {
         {step === 6 && isSuccess && (
           <motion.div
             key="success"
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="text-center py-12 px-6 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg space-y-6 shadow-xl relative overflow-hidden"
+            transition={{ type: "spring", stiffness: 350, damping: 28 }}
+            className="text-center py-12 px-6 bg-[#18181F] border border-[#242428] rounded-lg space-y-6 shadow-2xl relative overflow-hidden"
           >
-            {/* Soft emerald pulse glow */}
-            <div className="absolute inset-0 bg-radial-gradient(circle, rgba(16,185,129,0.05) 0%, transparent 70%) pointer-events-none" />
+            <div className="absolute inset-0 bg-radial-gradient(circle, rgba(16,185,129,0.06) 0%, transparent 70%) pointer-events-none" />
             
             <div className="flex justify-center">
-              <CheckCircle className="w-16 h-16 text-[var(--color-emerald)]" />
+              <div className="p-3 bg-[rgba(16,185,129,0.1)] rounded-full border border-[rgba(16,185,129,0.2)]">
+                <CheckCircle className="w-12 h-12 text-[var(--color-emerald)]" />
+              </div>
             </div>
             
             <div className="space-y-3">
               <h2 className="text-2xl md:text-3xl font-extrabold text-white">✅ Recibimos tu brief</h2>
-              <p className="text-[var(--color-fg)] text-base max-w-md mx-auto">
+              <p className="text-[var(--color-fg)] text-sm md:text-base max-w-md mx-auto leading-relaxed">
                 Te respondemos en menos de 24 horas hábiles con una propuesta personalizada para{" "}
                 <span className="font-bold text-[var(--color-accent)]">{formData.negocio_actividad}</span>.
               </p>
             </div>
 
-            <div className="pt-6 border-t border-[var(--color-border)] space-y-4 max-w-sm mx-auto">
-              <p className="text-xs text-[var(--color-muted)] font-medium">¿Querés hablar antes? Escribinos directo:</p>
+            <div className="pt-8 border-t border-[#242428] space-y-4 max-w-sm mx-auto">
+              <p className="text-xs text-[var(--color-muted)] font-semibold uppercase tracking-wider">¿Querés hablar antes? Escribinos directo:</p>
               
               <div className="grid grid-cols-1 gap-2">
                 <a
                   href="https://wa.me/543412282853"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 p-3 bg-[#10b981]/10 border border-[#10b981]/30 hover:bg-[#10b981]/20 rounded text-sm text-[var(--color-emerald)] transition-all font-semibold"
+                  className="flex items-center justify-center gap-2 p-3.5 bg-[#10b981]/8 hover:bg-[#10b981]/12 border border-[#10b981]/25 hover:border-[#10b981]/40 rounded text-sm text-[var(--color-emerald)] transition-all duration-200 font-bold"
                 >
                   <MessageSquare className="w-4 h-4" />
                   Escribir por WhatsApp
                 </a>
                 <a
                   href="mailto:contact@malcombuilder.com"
-                  className="flex items-center justify-center gap-2 p-3 bg-[var(--color-border)] hover:bg-gray-800 rounded text-sm text-[var(--color-fg)] transition-all font-medium"
+                  className="flex items-center justify-center gap-2 p-3.5 bg-[#1f1f26] hover:bg-gray-800 border border-[#242428] rounded text-sm text-[var(--color-fg)] transition-all duration-200 font-semibold"
                 >
                   contact@malcombuilder.com
                 </a>

@@ -285,17 +285,21 @@ title: 'malcom.builder — AI-native system builder'
 - **Emerald:** Token `--color-emerald: #10B981` para detalles puntuales (números en project cards, hover del marquee CTA).
 - **Navbar CTA:** `width: 130px` fijo para evitar saltos de layout al cambiar ES/EN.
 - **Tipografía:** Clase `.heading` en títulos de sección. Espaciado entre secciones: `10rem` mobile / `16rem` desktop.
+- **Rediseño Premium /brief:** Formulario de prospección con animaciones de deslizamiento direccionales (de izquierda a derecha o viceversa según el paso) mediante Framer Motion. Iconos interactivos integrados para cada opción de tipo de proyecto, selectores con contornos e iluminación indigo al enfocarse y alertas dinámicas en inputs.
 
 ### Componentes creados
 
 - **About:** Sección completa a 2 columnas con grid responsive. Foto de perfil con aspecto 4:5, `object-fit: cover`, bordes con glow índigo y badges flotantes con efecto glassmorphism (`backdropFilter`). Título alineado usando la clase `.heading`.
 - **Method:** Sección con track de `Marquee` animado infinitamente y componentes SVG personalizados (`StackSVGs`). Tarjetas transparentes para revelar el resplandor de fondo (orb índigo).
+- **BriefForm:** Asistente interactivo multi-paso con lógica de caminos condicionales y campos optimizados para captación de prospectos.
+- **Route /api/brief:** Endpoint de Next.js que calcula el plazo estimado de respuesta (+24 horas hábiles), valida el honeypot de spam, aplica limitación de peticiones por IP y despacha correos a través de Resend.
 
 ### Problemas resueltos
 
 - **Hydration React 19:** Mitigación del warning por inyección de `<script>` de `next-themes` usando un patch local en modo desarrollo dentro de `ThemeProvider.tsx`.
 - **Alineación About:** Se logró igualar perfectamente la altura de la imagen con el contenido de texto removiendo la elongación nativa del grid (`align-items: stretch` descartado). En su lugar se definió un alto fijo usando `aspect-ratio: 4/5` en la foto, y flexbox (`justify-content: space-between`) para distribuir el texto.
 - **Textos superpuestos:** Se resolvieron conflictos de padding al reemplazar el uso de `style` dinámico (ignorado por Framer Motion en `FadeIn`) con clases atómicas de Tailwind (`!pt-0`, `!pb-0`).
+- **Simulación vs Envíos reales:** Implementado comportamiento alternativo si la clave `RESEND_API_KEY` no está provista para desarrollo y validación visual.
 
 ### Pendientes próxima sesión
 
