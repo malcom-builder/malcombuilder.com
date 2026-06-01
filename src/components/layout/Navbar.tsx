@@ -1,7 +1,7 @@
 "use client";
 
-import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/routing";
+import { useTranslations, useLocale } from "next-intl";
+import { Link, usePathname } from "@/i18n/routing";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { LangToggle } from "@/components/ui/LangToggle";
 import { useState, useEffect, useRef } from "react";
@@ -36,6 +36,9 @@ function useActiveSection() {
 
 export function Navbar() {
   const t = useTranslations("nav");
+  const locale = useLocale();
+  const pathname = usePathname();
+  const isHome = pathname === "/";
   const [scrolled, setScrolled] = useState(false);
   const activeSection = useActiveSection();
 
@@ -95,7 +98,7 @@ export function Navbar() {
               {navLinks.map((l) => (
                 <a
                   key={l.href}
-                  href={l.href}
+                  href={isHome ? l.href : `/${locale}${l.href}`}
                   style={{
                     position: "relative",
                     fontSize: "0.875rem",
