@@ -17,7 +17,8 @@ export function ProjectHero({ title, category, tagline }: Props) {
   return (
     <section
       style={{
-        minHeight: "100svh",
+        paddingTop: "8rem",
+        paddingBottom: "4rem",
         display: "flex",
         alignItems: "center",
         borderBottom: "1px solid var(--color-border)",
