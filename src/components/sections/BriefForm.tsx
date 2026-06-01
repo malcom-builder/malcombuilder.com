@@ -124,7 +124,7 @@ const dict = {
     steps: {
       time: "⏱ 3 minutos de duración",
       confidential: "Tu información es confidencial y no se comparte con terceros.",
-      comenzar: "Comenzar brief",
+      comenzar: "Empezar",
       siguiente: "Siguiente",
       atras: "Atrás",
       enviar: "Enviar brief",
@@ -405,7 +405,7 @@ const dict = {
     steps: {
       time: "⏱ 3 minutes duration",
       confidential: "Your information is confidential and is not shared with third parties.",
-      comenzar: "Start brief",
+      comenzar: "Start",
       siguiente: "Next",
       atras: "Back",
       enviar: "Send brief",
@@ -1020,7 +1020,7 @@ export function BriefForm() {
             initial="enter"
             animate="center"
             exit="exit"
-            className="text-center space-y-8"
+            className="text-center space-y-8 mt-[-10vh]"
           >
             <div className="space-y-4 relative">
               <div className="absolute inset-0 bg-radial-gradient(circle, rgba(123,97,255,0.12) 0%, transparent 60%) pointer-events-none -top-12" />
