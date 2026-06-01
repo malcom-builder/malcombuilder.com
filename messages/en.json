@@ -91,24 +91,23 @@
       }
     },
     "authmotion": {
-      "tagline": "Enterprise IAM system with JWT, OAuth 2.0, 2FA and RBAC.",
-      "description": "Complete authentication and authorization system built with .NET 10 and Clean Architecture. Includes JWT HttpOnly, OAuth 2.0, two-factor authentication (2FA), and role-based access control (RBAC). Open source and production-ready.",
+      "tagline": "Control who enters your system. And what they can do.",
+      "description": "I built a production-ready authentication and permission system. Designed for businesses that manage users, roles, and sensitive data — and cannot afford a security breach.\n\nWHAT IT SOLVES\nEvery digital business faces the same challenge: controlling who accesses what. An employee shouldn't see what an admin sees. A client shouldn't touch what an operator touches.\nAuthMotion solves this from day one.",
+      "featuresLabel": "What's included",
       "features": [
-        "JWT HttpOnly with refresh tokens",
-        "OAuth 2.0 with multiple providers",
-        "Two-factor authentication (2FA)",
-        "RBAC with granular permissions",
-        "Clean Architecture + SOLID",
-        "Scalar API documentation",
-        "Open Source on GitHub"
+        { "title": "Secure login with two-factor verification", "desc": "Your account protected with a second layer. If someone steals the password, it's not enough." },
+        { "title": "Access with Google or GitHub", "desc": "Your users log in with one click using their existing accounts. Frictionless." },
+        { "title": "Custom roles and permissions", "desc": "Admins, editors, clients. Each sees and does only what they are supposed to." },
+        { "title": "Designed to scale", "desc": "If you go from 100 to 100,000 users, the system won't break or slow down." },
+        { "title": "Secure by default", "desc": "Complies with the highest industry standards to protect your customer data." }
       ],
       "metrics": {
-        "title": "Architecture & Security",
+        "title": "Architecture & Control",
         "cards": [
-          { "label": "JWT Scheme", "value": "RS256", "desc": "Asymmetric secure cryptography signatures" },
-          { "label": "Core Architecture", "value": "Clean", "desc": "DDD, SOLID & CQRS decoupled core" },
-          { "label": "OAuth 2.0 Flow", "value": "Federated", "desc": "Google & GitHub integration ready", "isPositive": true },
-          { "label": "MFA Factor", "value": "2FA TOTP", "desc": "Robust security app authentication", "isPositive": true }
+          { "label": "License", "value": "Free", "desc": "Open Source with no recurring licensing costs" },
+          { "label": "Authentication", "value": "Two-Factor", "desc": "Reinforced security for administrative accounts", "isPositive": true },
+          { "label": "Integration", "value": "Social Login", "desc": "One-click connection with Google and GitHub", "isPositive": true },
+          { "label": "Deployment", "value": "Docker", "desc": "Deployable on any public or private cloud" }
         ]
       }
     },

@@ -61,7 +61,7 @@ export default async function ProjectPage({
       <ProjectOverview description={pageData.description} />
       <ProjectMetrics slug={project.slug} metrics={pageData.metrics} />
       <ProjectTechStack techStack={project.techStack} />
-      <ProjectFeatures features={pageData.features} />
+      <ProjectFeatures features={pageData.features} sectionLabel={pageData.featuresLabel} />
       <ProjectLinks url={project.url} github={project.github} />
     </article>
   );
