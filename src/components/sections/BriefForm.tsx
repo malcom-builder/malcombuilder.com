@@ -1020,7 +1020,7 @@ export function BriefForm() {
             initial="enter"
             animate="center"
             exit="exit"
-            className="text-center space-y-8"
+            className="text-center space-y-8 flex flex-col justify-center min-h-[75vh]"
           >
             <div className="space-y-4 relative">
               <div className="absolute inset-0 bg-radial-gradient(circle, rgba(123,97,255,0.12) 0%, transparent 60%) pointer-events-none -top-12" />
