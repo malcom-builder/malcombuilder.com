@@ -31,15 +31,15 @@
   },
   "projectPages": {
     "zolfo-medicina-estetica": {
-      "tagline": "Premium medical portal with admin panel and individual SEO per treatment.",
-      "description": "Complete portal for Zolfo Medicina Estética. 21 treatment pages with individual SEO, content management admin panel, and WhatsApp-integrated contact system.",
+      "tagline": "Your medical clinic open 24/7. Designed to convert visits into patients.",
+      "description": "I designed and developed a premium portal for Zolfo Medicina Estética with a clear goal: capture high-value patients organically. With an ultra-fast structure optimized for Google, the site positions each individual treatment and guides users to contact the clinic in seconds.\n\nWHAT IT SOLVES\nMost medical clinics depend 100% on paid ads or Instagram to get bookings. If the algorithm changes or ad budget drops, inquiries crash. Zolfo now has its own organic channel that attracts patients every day automatically.",
+      "featuresLabel": "What's included",
       "features": [
-        "Lighthouse 100/100 desktop and 98/100 mobile",
-        "32% WhatsApp conversion rate",
-        "21 treatment pages with individual SEO",
-        "Average session time: 17 min 46 sec",
-        "Complete admin panel",
-        "100% uptime"
+        { "title": "Individual SEO per treatment", "desc": "Each medical service has its own Google-optimized page. If someone searches for a specific treatment in the area, Zolfo appears first." },
+        { "title": "Direct WhatsApp conversion", "desc": "The navigation flow is designed so users can book an appointment or consult with one click, reducing friction to a minimum." },
+        { "title": "Simple admin panel", "desc": "Total control of text, photos, and treatments without relying on a developer. Uploading new content takes less than a minute." },
+        { "title": "Extreme speed & Lighthouse 100", "desc": "The site loads instantly on any mobile phone, improving patient experience and search ranking." },
+        { "title": "Total safety & stability", "desc": "Hosted on global servers with 100% uptime. Zero maintenance overhead or downtime." }
       ],
       "metrics": {
         "title": "Metrics & Outcomes",
@@ -70,23 +70,23 @@
       }
     },
     "nurestetica": {
-      "tagline": "Modern institutional website with extreme performance and flawless UX.",
-      "description": "Institutional website for NurEstética. Clean professional design focused on conversion. Optimized for maximum performance with perfect user experience metrics.",
+      "tagline": "A premium online presence. Designed to build immediate trust.",
+      "description": "I developed NurEstética's corporate site focusing on a premium visual experience and instant loading speeds. In the aesthetic industry, first impressions are everything; this web reflects the clinic's quality, cleanliness, and professionalism from the very first millisecond.\n\nWHAT IT SOLVES\nA slow website or a neglected design scares off high-value clients and ruins your brand's credibility. NurEstética eliminates this friction with a polished interface and speed that outpaces 99% of competitors, ensuring more visitors complete the booking form.",
+      "featuresLabel": "What's included",
       "features": [
-        "Real Experience Score: 100",
-        "TTFB: 0.35 seconds",
-        "CLS: 0 (zero layout shift)",
-        "Responsive and optimized design",
-        "Social media integration",
-        "Vercel edge network hosting"
+        { "title": "High-end visual design", "desc": "A clean, interactive aesthetic aligned with the clinic's identity. Looks beautiful on any mobile or tablet." },
+        { "title": "Instant page loads", "desc": "Extreme optimizations so the site opens in under half a second, keeping impatient users engaged." },
+        { "title": "Booking-oriented layout", "desc": "Clear and strategic call-to-actions to easily guide users to book a consultation." },
+        { "title": "Perfect visual stability", "desc": "No annoying layout shifts while loading. Everything looks fluid and stable from the start." },
+        { "title": "Cloud infrastructure", "desc": "State-of-the-art hosting with zero maintenance, so you can forget about server crashes and updates." }
       ],
       "metrics": {
         "title": "Metrics & Performance",
         "cards": [
-          { "label": "Real Experience Score", "value": "100/100", "desc": "Vercel Edge Real-user Experience Score", "isPositive": true },
-          { "label": "TTFB (Time to First Byte)", "value": "0.35s", "desc": "Ultra fast edge-delivered response", "isPositive": true },
-          { "label": "CLS (Layout Shift)", "value": "0.00", "desc": "Perfect visual layout stability", "isPositive": true },
-          { "label": "Lighthouse Performance", "value": "100/100", "desc": "Google optimization audit score" }
+          { "label": "User Experience", "value": "100/100", "desc": "Real user performance score on Vercel Edge", "isPositive": true },
+          { "label": "Load Speed", "value": "0.35s", "desc": "Ultra-fast server response time (TTFB)", "isPositive": true },
+          { "label": "Visual Stability", "value": "Perfect", "desc": "0.00 CLS, no annoying screen shifts while loading", "isPositive": true },
+          { "label": "SEO Optimization", "value": "100/100", "desc": "Max score on Google's Lighthouse audit" }
         ]
       }
     },
@@ -112,67 +112,65 @@
       }
     },
     "smartwallet": {
-      "tagline": "Financial engine with double-entry bookkeeping and Azure Key Vault.",
-      "description": "Robust financial system with Double-Entry Bookkeeping architecture. Built with .NET 8, SQL Server, and Azure. Includes Azure Key Vault for secure secret management and encryption keys.",
+      "tagline": "The financial engine your business needs. Zero ledger errors, maximum security.",
+      "description": "I built SmartWallet, a bank-grade financial engine designed for businesses that need to process payments, payouts, and internal balances with absolute precision. It uses double-entry bookkeeping to ensure every cent is accounted for, preventing accounting gaps and fraud.\n\nWHAT IT SOLVES\nManaging the finances of a digital platform on spreadsheets or simple databases exposes your business to rounding errors, duplicate funds, and security gaps. SmartWallet automates ledger registration with total cryptographic integrity, protecting your company's most important asset.",
+      "featuresLabel": "What's included",
       "features": [
-        "Double-Entry Bookkeeping",
-        "Azure Key Vault for secrets",
-        "SQL Server with stored procedures",
-        "Documented RESTful API",
-        "Docker Compose for local development",
-        "CI/CD with GitHub Actions"
+        { "title": "Double-entry bookkeeping", "desc": "The standard used by banks. Every movement creates matching credit and debit logs that balance to zero. No ledger gaps." },
+        { "title": "Bank-grade security vault", "desc": "Maximum protection of credentials, encryption keys, and sensitive data on secure hardware modules." },
+        { "title": "Ultra-secure transactions", "desc": "Safe logic preventing double-spending or concurrent payout failures. Money is never lost in transit." },
+        { "title": "API connector for platforms", "desc": "Designed to easily connect with your existing sales system, e-commerce, or mobile app." },
+        { "title": "Full audit trail & history", "desc": "Unalterable logs for every transaction, allowing rapid accounting audits and fraud prevention." }
       ],
       "metrics": {
-        "title": "Cryptography & Controls",
+        "title": "Precision & Control",
         "cards": [
-          { "label": "Accounting Ledger", "value": "Double-Entry", "desc": "Perfect double-balance sheet integrity" },
-          { "label": "Data Security", "value": "Vaulted", "desc": "Credentials isolated inside Azure Key Vault", "isPositive": true },
-          { "label": "Database Engine", "value": "SQL Server", "desc": "Atomically safe and transactional database" },
-          { "label": "CI/CD Workflow", "value": "Automated", "desc": "GitHub Actions compiles Docker container", "isPositive": true }
+          { "label": "Ledger Precision", "value": "100%", "desc": "Double-entry standard, perfect balances with no lost cents" },
+          { "label": "Data Security", "value": "Vaulted", "desc": "Secrets and cryptographic keys protected at bank-grade level", "isPositive": true },
+          { "label": "Integrity", "value": "Atomic", "desc": "Operations shielded against network drops or system crashes", "isPositive": true },
+          { "label": "Integration", "value": "REST API", "desc": "Easy to connect to any modern web or mobile platform" }
         ]
       }
     },
     "malcombuilder": {
-      "tagline": "Studio website — AI-native, multilingual, built with Next.js 15 and Tailwind v4.",
-      "description": "Portfolio and storefront for malcom.builder. Built with the modern stack: Next.js 15 App Router, React 19, Tailwind CSS v4, Framer Motion 11. Multilingual ES/EN with next-intl, dark/light mode with next-themes. Designed to convert visits into clients.",
+      "tagline": "The showcase of my technical studio. Designed to convert visits into clients.",
+      "description": "This is my own platform. I designed and built it using advanced AI as an execution lever to achieve a flawless, ultra-fast, and premium multilingual site. It showcases my work philosophy: extreme speed, author design, and zero user friction.\n\nWHAT IT SOLVES\nA slow or generic portfolio fails to convince anyone. This site serves as a living proof of concept of what I can build for your business: an interactive experience that loads in milliseconds, speaks your client's language, and builds immediate trust to close the sale.",
+      "featuresLabel": "What's included",
       "features": [
-        "Next.js 15 App Router with RSC",
-        "React 19 with server components",
-        "Tailwind CSS v4 with @theme",
-        "Multilingual ES/EN with next-intl",
-        "Dark/light mode with next-themes",
-        "Animations with Framer Motion 11",
-        "Lighthouse 95+ target"
+        { "title": "Premium interactive experience", "desc": "Fluid animations and micro-interactions that capture attention without slowing navigation." },
+        { "title": "Native multi-locale (ES/EN)", "desc": "Automatic detection and instant server-side language switching without page reloads." },
+        { "title": "State-of-the-art performance", "desc": "Perfect scores on Google's performance audits, ensuring top organic ranking." },
+        { "title": "Smooth Dark / Light toggle", "desc": "Intelligent adaptation to the user's color scheme with smooth, natural transitions." },
+        { "title": "Total SEO optimization", "desc": "Fully indexable site structure, automated sitemap, and dynamic metadata for maximum visibility." }
       ],
       "metrics": {
-        "title": "Optimization & Core",
+        "title": "Optimization & Conversion",
         "cards": [
-          { "label": "Frame Core", "value": "Next.js 15", "desc": "State-of-the-art App Router & RSC" },
-          { "label": "Styles Engine", "value": "Tailwind v4", "desc": "Ultra-fast lightning compiled CSS", "isPositive": true },
-          { "label": "Localization", "value": "Edge i18n", "desc": "next-intl localized directly at edge router speed", "isPositive": true },
-          { "label": "Lighthouse Performance", "value": "100/100", "desc": "Perfect optimization and SEO audit results" }
+          { "label": "Conversion", "value": "Optimized", "desc": "Step-by-step interactive onboarding and one-click contact" },
+          { "label": "Localization", "value": "Edge i18n", "desc": "next-intl translating directly from the closest CDN edge server", "isPositive": true },
+          { "label": "Visual Style", "value": "Premium", "desc": "Minimalist dark Void & Chalk layout with dynamic accents", "isPositive": true },
+          { "label": "Performance", "value": "Lighthouse", "desc": "Extreme optimization loved by both Google and your users" }
         ]
       }
     },
     "pulse": {
-      "tagline": "24/7 web monitoring with Telegram alerts, monthly reports and real-time dashboard.",
-      "description": "Website monitoring system with 5-minute check intervals. Instant Telegram alerts when a site goes down. Monthly PDF reports with uptime, response time, and SSL statistics. Interactive real-time dashboard with live charts.",
+      "tagline": "Protect your revenue. Constant website monitoring with instant alerts.",
+      "description": "I created Pulse to solve a critical issue: finding out that your website or online store went down before your customers do. It checks your platform's status continuously every 5 minutes and immediately notifies you via Telegram if something goes wrong, letting you react before losing sales.\n\nWHAT IT SOLVES\nEvery minute of downtime is lost money and frustrated customers. Relying on someone to tell you or checking manually is unsustainable. Pulse automates this 24/7 watch, giving you full visibility of your digital business's stability.",
+      "featuresLabel": "What's included",
       "features": [
-        "Uptime monitoring every 5 minutes",
-        "Real-time Telegram alerts",
-        "Automatic SSL verification",
-        "Monthly PDF reports via email",
-        "Dashboard with stats and charts",
-        "Incident history with duration",
-        "Response time metrics"
+        { "title": "Active 24/7 watch", "desc": "Automatic pings every 5 minutes to ensure your site is always online and reachable." },
+        { "title": "Instant notifications", "desc": "Alerts sent directly to your Telegram account in under a second if your website fails." },
+        { "title": "SSL certificate monitoring", "desc": "Pre-expiry alerts preventing browsers from blocking your site with a red \"insecure website\" screen." },
+        { "title": "Automated monthly reports", "desc": "Detailed PDF reports delivered to your inbox with response times and server stability statistics." },
+        { "title": "Integrated control panel", "desc": "A visual dashboard to inspect incident history and real-time response times." }
       ],
       "metrics": {
-        "title": "Monitoring & Ping",
+        "title": "Vigilance & Alerts",
         "cards": [
-          { "label": "Monitor Rate", "value": "5 min", "desc": "Constant site ping and check rate" },
-          { "label": "Alerting Engine", "value": "Telegram API", "desc": "Instant failure notification in <1 second", "isPositive": true },
-          { "label": "Average Uptime", "value": "100%", "desc": "Flawless site uptime history log", "isPositive": true },
-          { "label": "SSL Cert Monitor", "value": "Automatic", "desc": "Pre-vandalism and expiration safety alerts" }
+          { "label": "Check Frequency", "value": "5 min", "desc": "Continuous uptime verification from global server endpoints" },
+          { "label": "Alert Channel", "value": "Telegram API", "desc": "Instant notification to your phone at the slightest downtime", "isPositive": true },
+          { "label": "Uptime History", "value": "100%", "desc": "Detailed incident log to audit and monitor your hosting providers", "isPositive": true },
+          { "label": "SSL Monitoring", "value": "Automatic", "desc": "Prevents scary warning pages on your customers' browsers" }
         ]
       }
     }
