@@ -34,13 +34,34 @@ interface Props {
   metrics?: Metrics;
 }
 
+const listContainer = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.08,
+    },
+  },
+};
+
+const cardItem = {
+  hidden: { opacity: 0, y: 30 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.65,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+};
+
 export function ProjectMetrics({ slug, metrics }: Props) {
   const [metricTab, setMetricTab] = useState<"overview" | "channels" | "treatments">("overview");
 
   if (!metrics) return null;
 
   return (
-    <section className="section" style={{ borderBottom: "1px solid var(--color-border)", overflow: "hidden" }}>
+    <section className="section" style={{ borderBottom: "1px solid var(--color-border)", overflow: "hidden", backgroundColor: "var(--color-bg)" }}>
       <div className="container">
         <span className="label" style={{ display: "inline-block", marginBottom: "2rem" }}>
           {metrics.title}
@@ -48,94 +69,88 @@ export function ProjectMetrics({ slug, metrics }: Props) {
 
         {/* Tab Selection for Zolfo with Full GA Data */}
         {slug === "zolfo-medicina-estetica" && metrics.channels && metrics.treatments && (
-          <div style={{ display: "flex", gap: "0.5rem", marginBottom: "3rem", borderBottom: "1px solid var(--color-border)", paddingBottom: "1rem" }}>
-            <button
-              onClick={() => setMetricTab("overview")}
-              style={{
-                background: "transparent",
-                border: "none",
-                color: metricTab === "overview" ? "var(--color-accent)" : "var(--color-muted)",
-                fontSize: "0.9rem",
-                fontWeight: 600,
-                cursor: "pointer",
-                paddingBottom: "1rem",
-                marginBottom: "-1.05rem",
-                borderBottom: metricTab === "overview" ? "2px solid var(--color-accent)" : "none",
-                transition: "color 0.2s",
-              }}
-            >
-              {metrics.tab_overview || "Overview"}
-            </button>
-            <button
-              onClick={() => setMetricTab("channels")}
-              style={{
-                background: "transparent",
-                border: "none",
-                color: metricTab === "channels" ? "var(--color-accent)" : "var(--color-muted)",
-                fontSize: "0.9rem",
-                fontWeight: 600,
-                cursor: "pointer",
-                paddingBottom: "1rem",
-                marginBottom: "-1.05rem",
-                borderBottom: metricTab === "channels" ? "2px solid var(--color-accent)" : "none",
-                transition: "color 0.2s",
-                marginLeft: "1.5rem",
-              }}
-            >
-              {metrics.tab_channels || "Traffic Channels"}
-            </button>
-            <button
-              onClick={() => setMetricTab("treatments")}
-              style={{
-                background: "transparent",
-                border: "none",
-                color: metricTab === "treatments" ? "var(--color-accent)" : "var(--color-muted)",
-                fontSize: "0.9rem",
-                fontWeight: 600,
-                cursor: "pointer",
-                paddingBottom: "1rem",
-                marginBottom: "-1.05rem",
-                borderBottom: metricTab === "treatments" ? "2px solid var(--color-accent)" : "none",
-                transition: "color 0.2s",
-                marginLeft: "1.5rem",
-              }}
-            >
-              {metrics.tab_treatments || "Popular Sections"}
-            </button>
+          <div
+            style={{
+              display: "flex",
+              gap: "1.5rem",
+              marginBottom: "3rem",
+              borderBottom: "1px solid var(--color-border)",
+              paddingBottom: "1px",
+              position: "relative",
+            }}
+          >
+            {[
+              { id: "overview", label: metrics.tab_overview || "Overview" },
+              { id: "channels", label: metrics.tab_channels || "Traffic Channels" },
+              { id: "treatments", label: metrics.tab_treatments || "Popular Sections" },
+            ].map((tab) => {
+              const isActive = metricTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setMetricTab(tab.id as any)}
+                  style={{
+                    background: "transparent",
+                    border: "none",
+                    color: isActive ? "var(--color-accent)" : "var(--color-muted)",
+                    fontSize: "0.9rem",
+                    fontWeight: 600,
+                    cursor: "pointer",
+                    paddingBottom: "1rem",
+                    position: "relative",
+                    transition: "color 0.3s ease",
+                  }}
+                >
+                  <span style={{ position: "relative", zIndex: 2 }}>{tab.label}</span>
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeMetricTab"
+                      style={{
+                        position: "absolute",
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        height: "2px",
+                        background: "var(--color-accent)",
+                        zIndex: 1,
+                      }}
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </button>
+              );
+            })}
           </div>
         )}
 
         {/* ─── TAB 1: OVERVIEW CARD GRID ─── */}
         {metricTab === "overview" && (
-          <div
-            style={{
-              display: "grid",
-              gap: "1.5rem",
-              gridTemplateColumns: "repeat(1, 1fr)",
-            }}
-            className="sm:grid-cols-2 lg:grid-cols-4"
+          <motion.div
+            variants={listContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
           >
             {metrics.cards.map((card, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
+                variants={cardItem}
                 style={{
-                  padding: "2rem",
+                  padding: "2.25rem 2rem",
                   border: "1px solid var(--color-border)",
                   borderRadius: "12px",
                   background: "var(--color-card)",
                   position: "relative",
                   overflow: "hidden",
-                  transition: "border-color 0.25s ease",
+                  transition: "border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease",
                 }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = card.isPositive ? "var(--color-emerald)" : "var(--color-accent)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = "var(--color-border)";
+                whileHover={{
+                  y: -5,
+                  borderColor: card.isPositive ? "var(--color-emerald)" : "var(--color-accent)",
+                  boxShadow: card.isPositive 
+                    ? "0 16px 40px rgba(16, 185, 129, 0.04)" 
+                    : "0 16px 40px rgba(123, 97, 255, 0.04)",
                 }}
               >
                 {/* Accent glow line on top */}
@@ -171,17 +186,23 @@ export function ProjectMetrics({ slug, metrics }: Props) {
                 </p>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         )}
 
         {/* ─── TAB 2: CHANNELS VISUALIZER (Zolfo Only) ─── */}
         {metricTab === "channels" && metrics.channels && (
-          <div style={{ maxWidth: "700px", display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+          <motion.div 
+            variants={listContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            style={{ maxWidth: "700px", display: "flex", flexDirection: "column", gap: "1.5rem" }}
+          >
             <div style={{ color: "var(--color-muted)", fontSize: "0.85rem", marginBottom: "0.5rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
               <Users size={16} /> {metrics.channels_desc}
             </div>
             {metrics.channels.map((chan, i) => (
-              <div key={chan.name} style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+              <motion.div key={chan.name} variants={cardItem} style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.9rem", color: "var(--color-fg)", fontWeight: 600 }}>
                   <span>{chan.name}</span>
                   <div style={{ display: "flex", gap: "1.5rem" }}>
@@ -195,23 +216,29 @@ export function ProjectMetrics({ slug, metrics }: Props) {
                     initial={{ width: 0 }}
                     whileInView={{ width: chan.percent }}
                     viewport={{ once: true }}
-                    transition={{ duration: 1, ease: "easeOut", delay: i * 0.1 }}
+                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
                     style={{ height: "100%", background: "var(--color-accent)", borderRadius: "99px" }}
                   />
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         )}
 
         {/* ─── TAB 3: POPULAR TREATMENTS (Zolfo Only) ─── */}
         {metricTab === "treatments" && metrics.treatments && (
-          <div style={{ maxWidth: "700px", display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+          <motion.div 
+            variants={listContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            style={{ maxWidth: "700px", display: "flex", flexDirection: "column", gap: "1.5rem" }}
+          >
             <div style={{ color: "var(--color-muted)", fontSize: "0.85rem", marginBottom: "0.5rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
               <Eye size={16} /> {metrics.treatments_desc}
             </div>
             {metrics.treatments.map((t, i) => (
-              <div key={t.name} style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+              <motion.div key={t.name} variants={cardItem} style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.9rem", color: "var(--color-fg)", fontWeight: 600 }}>
                   <span>{t.name}</span>
                   <div style={{ display: "flex", gap: "1.5rem" }}>
@@ -225,13 +252,13 @@ export function ProjectMetrics({ slug, metrics }: Props) {
                     initial={{ width: 0 }}
                     whileInView={{ width: t.percent }}
                     viewport={{ once: true }}
-                    transition={{ duration: 1, ease: "easeOut", delay: i * 0.1 }}
+                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
                     style={{ height: "100%", background: "var(--color-emerald)", borderRadius: "99px" }}
                   />
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         )}
       </div>
     </section>

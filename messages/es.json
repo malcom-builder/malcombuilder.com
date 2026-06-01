@@ -31,15 +31,15 @@
   },
   "projectPages": {
     "zolfo-medicina-estetica": {
-      "tagline": "Tu consultorio médico abierto 24/7. Diseñado para convertir visitas en pacientes.",
-      "description": "Diseñé y desarrollé un portal premium para Zolfo Medicina Estética con un objetivo claro: captar pacientes de alto valor de manera orgánica. Con una estructura ultra rápida optimizada para Google, el sitio posiciona cada tratamiento individualmente y guía al usuario hacia la consulta médica en segundos.\n\nQUÉ RESUELVE\nLa mayoría de las clínicas médicas dependen 100% de la pauta paga o de Instagram para conseguir turnos. Si el algoritmo cambia o el presupuesto de anuncios baja, las consultas caen. Zolfo ahora tiene un canal orgánico propio que atrae consultas todos los días de manera automática.",
+      "tagline": "Cada paciente que busca un tratamiento en Google y no te encuentra, va a tu competencia.",
+      "description": "Zolfo tenía una clínica de alto nivel y una presencia digital que no lo reflejaba. El resultado: pacientes que buscaban sus tratamientos en Google y llegaban a otra clínica.\n\nHoy el sitio convierte el 47% de las visitas en consultas reales. Cada tratamiento tiene su propia página optimizada para Google. El paciente llega, navega, y agenda — sin fricción.\n\n765 usuarios activos en el primer mes. 444 contactos generados. Uptime del 100%.",
       "featuresLabel": "Qué incluye",
       "features": [
-        { "title": "SEO individual por tratamiento", "desc": "Cada servicio médico tiene su propia página optimizada para Google. Si alguien busca un tratamiento específico en la zona, Zolfo aparece primero." },
-        { "title": "Conversión directa a WhatsApp", "desc": "El flujo de navegación está diseñado para que el usuario pueda reservar su turno o consultar con un clic, reduciendo la fricción al mínimo." },
-        { "title": "Panel de administración simple", "desc": "Gestión total de textos, fotos y tratamientos sin depender de un programador. Subir contenido nuevo toma menos de un minuto." },
-        { "title": "Velocidad extrema y Lighthouse 100", "desc": "El sitio carga instantáneamente en cualquier celular, mejorando la experiencia del paciente y el posicionamiento web." },
-        { "title": "Seguridad y estabilidad total", "desc": "Alojado en servidores globales con 100% de disponibilidad. Sin caídas ni mantenimiento costoso." }
+        { "title": "SEO individual", "desc": "Cuando alguien busca 'ácido hialurónico en Rosario', aparece Zolfo — no la competencia." },
+        { "title": "Conversión WhatsApp", "desc": "El 47% de quienes entran al sitio terminan escribiendo por WhatsApp. Sin formularios complicados, sin fricción." },
+        { "title": "Panel admin", "desc": "Subís una foto nueva, cambiás un precio, agregás un tratamiento. Solo. Sin llamar a nadie." },
+        { "title": "Velocidad", "desc": "Google penaliza los sitios lentos. Este carga en menos de un segundo. Eso es posicionamiento sin pagar pauta." },
+        { "title": "Estabilidad", "desc": "Ni una caída en todo el período. Cada hora que un sitio está caído es plata que se pierde." }
       ],
       "metrics": {
         "title": "Métricas & Resultados",
@@ -49,10 +49,10 @@
         "channels_desc": "Desglose de canales de adquisición (Sesiones GA)",
         "treatments_desc": "Distribución de vistas por tratamiento (Páginas vistas GA)",
         "cards": [
-          { "label": "Conversión de Leads", "value": "47.0%", "desc": "De visitas a clics en WhatsApp", "isPositive": true },
-          { "label": "Leads de Reserva", "value": "444", "desc": "Contactos generados en 30 días", "isPositive": true },
-          { "label": "Usuarios Activos", "value": "765", "desc": "Audiencia mensual única" },
-          { "label": "Páginas Vistas", "value": "5.456", "desc": "Tráfico de navegación acumulado" }
+          { "label": "Conversión de Leads", "value": "47.0%", "desc": "Casi 1 de cada 2 visitantes termina escribiendo para agendar. El sitio vende solo.", "isPositive": true },
+          { "label": "Leads de Reserva", "value": "444", "desc": "444 pacientes potenciales en un mes. Sin pauta adicional, sin esfuerzo extra.", "isPositive": true },
+          { "label": "Usuarios Activos", "value": "765", "desc": "765 personas visitaron la clínica digitalmente. Muchos más que en persona." },
+          { "label": "Páginas Vistas", "value": "5.456", "desc": "5.456 veces alguien exploró un tratamiento. Cada vista es una intención de compra." }
         ],
         "channels": [
           { "name": "Referencia (Recomendación)", "value": 332, "percent": "35%" },
@@ -65,70 +65,70 @@
           { "name": "Catálogo de Tratamientos", "value": 1323, "percent": "24%" },
           { "name": "Ácido Hialurónico", "value": 383, "percent": "7%" },
           { "name": "Toxina Botulínica (Bótox)", "value": 188, "percent": "3.5%" },
-          { "name": "Bioestimuladores", "value": 102, "percent": "2%" }
+          { "name": "Bioestimadores", "value": 102, "percent": "2%" }
         ]
       }
     },
     "nurestetica": {
-      "tagline": "Una presencia online premium. Diseñada para generar confianza inmediata.",
-      "description": "Desarrollé el sitio institucional de NurEstética enfocándome en una experiencia visual premium y una velocidad de carga instantánea. En el mercado estético, la primera impresión lo es todo; esta web refleja la calidad, pulcritud y profesionalismo de la clínica desde el primer milisegundo.\n\nQUÉ RESUELVE\nUn sitio web lento o con un diseño descuidado espanta a los clientes de alto valor y arruina la credibilidad de tu marca. NurEstética elimina esa fricción con una interfaz pulida y una velocidad que supera al 99% de sus competidores, logrando que más visitas completen el formulario de reserva.",
+      "tagline": "Los pacientes eligen por confianza. La confianza entra por los ojos, en los primeros tres segundos.",
+      "description": "El paciente de estética es exigente. Antes de agendar un turno, ya revisó el Instagram, buscó en Google y entró al sitio de al menos tres clínicas.\n\nNurEstética necesitaba una presencia que convenciera en los primeros segundos. Sin texto de más. Sin carga lenta. Sin diseño genérico.\n\nEl resultado: 100/100 en experiencia de usuario, carga en 0.35 segundos, cero saltos de pantalla. El sitio se siente tan cuidado como la clínica.",
       "featuresLabel": "Qué incluye",
       "features": [
-        { "title": "Diseño visual de alta gama", "desc": "Una estética limpia e interactiva alineada a la identidad de la clínica. Atractiva en cualquier celular o tablet." },
-        { "title": "Velocidad de carga instantánea", "desc": "Optimización extrema para que el sitio abra en menos de medio segundo, reteniendo a los usuarios impacientes." },
-        { "title": "Estructura orientada a la reserva", "desc": "Puntos de contacto claros y estratégicos para guiar a los usuarios a agendar consultas fácilmente." },
-        { "title": "Estabilidad visual perfecta", "desc": "La página no se desplaza ni tiene saltos molestos mientras carga. Todo se ve fluido desde el inicio." },
-        { "title": "Infraestructura en la nube", "desc": "Alojamiento de última generación con mantenimiento cero, para que te olvides de actualizaciones y caídas del servidor." }
+        { "title": "Diseño", "desc": "El diseño no es decoración. Es el primer filtro que el paciente usa para decidir si confía." },
+        { "title": "Velocidad", "desc": "0.35 segundos de carga. El paciente que entra desde el celular no espera — y este sitio no lo hace esperar." },
+        { "title": "Reserva", "desc": "Cada sección termina en un paso claro: agendar, consultar, o ver más. El camino al turno está siempre a un clic." },
+        { "title": "Estabilidad visual", "desc": "CLS perfecto: nada se mueve mientras carga. Pequeño detalle técnico, gran diferencia en percepción de calidad." },
+        { "title": "Infraestructura", "desc": "Funciona. Siempre. Sin que nadie tenga que acordarse de actualizarlo o renovar nada." }
       ],
       "metrics": {
         "title": "Métricas & Rendimiento",
         "cards": [
-          { "label": "Experiencia de Usuario", "value": "100/100", "desc": "Puntuación de rendimiento real de usuarios en Vercel Edge", "isPositive": true },
-          { "label": "Velocidad de Carga", "value": "0.35s", "desc": "Tiempo de respuesta del servidor (TTFB) ultra veloz", "isPositive": true },
-          { "label": "Estabilidad Visual", "value": "Perfecta", "desc": "CLS de 0.00, sin saltos molestos de pantalla al cargar", "isPositive": true },
-          { "label": "Optimización SEO", "value": "100/100", "desc": "Puntaje máximo de auditoría Lighthouse de Google" }
+          { "label": "Experiencia de Usuario", "value": "100/100", "desc": "La puntuación máxima posible. Medida en usuarios reales, no en laboratorio.", "isPositive": true },
+          { "label": "Velocidad de Carga", "value": "0.35s", "desc": "El sitio responde en un tercio de segundo. El paciente no espera y no cierra la pestaña.", "isPositive": true },
+          { "label": "Estabilidad Visual", "value": "Perfecta", "desc": "Nada salta, nada se mueve mientras carga. El usuario confía desde el primer segundo.", "isPositive": true },
+          { "label": "Optimización SEO", "value": "100/100", "desc": "Puntaje máximo de Google. Máxima visibilidad orgánica sin pagar pauta." }
         ]
       }
     },
     "authmotion": {
-      "tagline": "Controla quién entra a tu sistema. Y qué puede hacer.",
-      "description": "Construí un sistema de autenticación y permisos listo para producción. Diseñado para negocios que manejan usuarios, roles y datos sensibles — y no pueden permitirse una brecha de seguridad.\n\nQUÉ RESUELVE\nCada negocio digital tiene el mismo problema: necesita controlar quién accede a qué. Un empleado no debería ver lo que ve un administrador. Un cliente no debería tocar lo que toca un operador.\nAuthMotion resuelve eso desde el día uno.",
+      "tagline": "Controla quién entra a tu plataforma, qué ve, y qué puede hacer. Sin depender de soluciones genéricas.",
+      "description": "Cuando tu plataforma crece, el acceso se vuelve un problema. ¿Quién puede ver los datos de facturación? ¿Quién puede editar? ¿Quién solo puede leer?\n\nAuthMotion es la respuesta. Un sistema de autenticación y permisos de grado empresarial, listo para integrarse a cualquier plataforma. Login con doble factor, acceso con Google o GitHub, roles a medida.\n\nSin pagar licencias. Sin depender de terceros. Sin reinventar la rueda cada vez.",
       "featuresLabel": "Qué incluye",
       "features": [
-        { "title": "Login seguro con doble verificación", "desc": "Tu cuenta protegida con una segunda capa. Si alguien roba la contraseña, no alcanza." },
-        { "title": "Acceso con Google o GitHub", "desc": "Tus usuarios entran con un clic usando sus cuentas existentes. Sin fricción." },
-        { "title": "Roles y permisos a medida", "desc": "Administradores, editores, clientes. Cada uno ve y hace solo lo que le corresponde." },
-        { "title": "Diseñado para escalar", "desc": "Si pasás de 100 a 100.000 usuarios, el sistema no se rompe ni se ralentiza." },
-        { "title": "Seguro por defecto", "desc": "Cumple con los estándares más altos de la industria para proteger los datos de tus clientes." }
+        { "title": "2FA", "desc": "La contraseña sola no es suficiente. El doble factor bloquea el 99% de los accesos no autorizados — aunque la clave sea conocida." },
+        { "title": "Social login", "desc": "Menos fricción al registrarse = más usuarios que completan el proceso. Un clic con Google basta." },
+        { "title": "Roles", "desc": "Definís exactamente quién ve qué. El empleado nuevo no accede a lo que no tiene que ver. El cliente no modifica lo que no debe." },
+        { "title": "Escalabilidad", "desc": "Funciona igual con 100 usuarios que con 100.000. La infraestructura crece con el negocio, no al revés." },
+        { "title": "Seguridad", "desc": "Los datos de tus clientes no son tuyos para perder. Encriptación, tokens seguros y buenas prácticas de la industria, desde el día uno." }
       ],
       "metrics": {
         "title": "Arquitectura & Control",
         "cards": [
-          { "label": "Licencia", "value": "Gratuita", "desc": "Código abierto (Open Source) sin licencias recurrentes" },
-          { "label": "Autenticación", "value": "Doble Factor", "desc": "Seguridad reforzada para cuentas administrativas", "isPositive": true },
-          { "label": "Integración", "value": "Social Login", "desc": "Conexión directa con Google y GitHub en un clic", "isPositive": true },
-          { "label": "Despliegue", "value": "Docker", "desc": "Instalable en cualquier nube pública o privada" }
+          { "label": "Licencia", "value": "Gratuita", "desc": "Sin suscripciones mensuales. Sin depender de que otra empresa suba los precios." },
+          { "label": "Autenticación", "value": "Doble Factor", "desc": "Aunque roben la contraseña, no pueden entrar. El acceso requiere el celular del dueño.", "isPositive": true },
+          { "label": "Integración", "value": "Social Login", "desc": "Los usuarios se registran con Google. Sin formularios largos, sin contraseñas que olvidar.", "isPositive": true },
+          { "label": "Portabilidad", "value": "Docker", "desc": "Corre en AWS, Azure, o servidor propio. Sin quedar atado a ningún proveedor." }
         ]
       }
     },
     "smartwallet": {
-      "tagline": "El motor financiero que tu negocio necesita. Sin errores contables ni fallas de seguridad.",
-      "description": "Construí SmartWallet, un motor financiero de grado bancario diseñado para empresas que necesitan procesar cobros, pagos y balances internos con absoluta precisión. Utiliza el estándar de contabilidad de doble entrada para asegurar que cada centavo esté respaldado, previniendo descuadres contables y fraudes.\n\nQUÉ RESUELVE\nLlevar las finanzas de una plataforma digital en planillas de cálculo o bases de datos simples expone a tu negocio a errores de redondeo, dinero duplicado y vulnerabilidades de seguridad. SmartWallet automatiza el registro de transacciones con integridad contable total, protegiendo el activo más importante de tu empresa.",
+      "tagline": "Un error contable en producción no es un bug. Es plata que desaparece. O clientes que no vuelven.",
+      "description": "Cuando una plataforma maneja dinero, el margen de error es cero. Un cobro duplicado, un saldo descuadrado, una transacción perdida — cualquiera destruye la confianza en minutos.\n\nSmartWallet es el motor financiero que resuelve eso. Contabilidad de doble entrada como usan los bancos. Bóveda de seguridad para credenciales sensibles. Transacciones atómicas que no se pierden aunque el servidor se caiga en el medio.\n\nListo para conectarse a cualquier plataforma existente vía API.",
       "featuresLabel": "Qué incluye",
       "features": [
-        { "title": "Contabilidad de doble entrada", "desc": "El estándar usado por bancos. Cada movimiento genera un registro de crédito y débito que balancea a cero. Cero descuadres." },
-        { "title": "Bóveda de seguridad bancaria", "desc": "Protección máxima de credenciales, claves de cifrado e información sensible en hardware seguro." },
-        { "title": "Transacciones ultra seguras", "desc": "Lógica a prueba de duplicación de saldo o pagos concurrentes. El dinero nunca se pierde en el camino." },
-        { "title": "Conector API para plataformas", "desc": "Diseñado para integrarse fácilmente con tu sistema de ventas, e-commerce o aplicación móvil actual." },
-        { "title": "Auditoría e historial completo", "desc": "Registro inalterable de cada transacción para auditorías contables rápidas y prevención de fraudes." }
+        { "title": "Doble entrada", "desc": "Cada peso que entra tiene un destino. Cada peso que sale tiene un origen. Imposible que el saldo se descuadre." },
+        { "title": "Bóveda", "desc": "Las claves de acceso, tokens y datos sensibles viven en una bóveda de hardware. No en una variable de entorno que alguien puede ver." },
+        { "title": "Transacciones", "desc": "Si dos usuarios hacen una operación al mismo tiempo, el sistema lo resuelve sin duplicar ni perder nada. El dinero siempre llega." },
+        { "title": "API", "desc": "Se conecta a lo que ya tenés. No hace falta reconstruir la plataforma — SmartWallet se integra como un módulo." },
+        { "title": "Auditoría", "desc": "Cada movimiento queda registrado para siempre. Si hay un reclamo, tenés el historial completo. Si hay fraude, se detecta." }
       ],
       "metrics": {
         "title": "Precisión & Control",
         "cards": [
-          { "label": "Precisión Contable", "value": "100%", "desc": "Garantía de doble entrada, balances perfectos sin centavos perdidos" },
-          { "label": "Seguridad de Datos", "value": "Bóveda", "desc": "Secretos y llaves criptográficas custodiados bajo nivel de grado bancario", "isPositive": true },
-          { "label": "Integridad", "value": "Atómica", "desc": "Operaciones blindadas contra fallos de red o caídas del sistema", "isPositive": true },
-          { "label": "Integración", "value": "API REST", "desc": "Fácil de conectar a cualquier plataforma móvil o web actual" }
+          { "label": "Precisión Contable", "value": "100%", "desc": "Cada centavo tiene origen y destino registrado. El saldo nunca se descuadre. Nunca." },
+          { "label": "Seguridad de Datos", "value": "Bóveda", "desc": "Las credenciales no viven en el código. Viven en hardware seguro. Como un banco.", "isPositive": true },
+          { "label": "Transacciones", "value": "Blindadas", "desc": "Si el servidor se cae en mitad de un pago, nada queda a medias. Todo pasa o nada pasa.", "isPositive": true },
+          { "label": "Integración", "value": "API REST", "desc": "Se conecta a tu app, tu web o tu sistema de ventas. Sin reescribir nada." }
         ]
       }
     },
@@ -146,31 +146,31 @@
       "metrics": {
         "title": "Optimización & Conversión",
         "cards": [
-          { "label": "Conversión", "value": "Optimizada", "desc": "Captación de prospectos guiada paso a paso y contacto en un clic" },
-          { "label": "Localización", "value": "Edge i18n", "desc": "next-intl traduciendo directamente desde la red CDN más cercana", "isPositive": true },
-          { "label": "Estilo Visual", "value": "Premium", "desc": "Diseño minimalista oscuro Void & Chalk con acentos dinámicos", "isPositive": true },
-          { "label": "Rendimiento", "value": "Lighthouse", "desc": "Optimización extrema que le encanta a Google y a tus usuarios" }
+          { "label": "Conversión", "value": "Optimizada", "desc": "Cada sección lleva al visitante al siguiente paso. El contacto es siempre visible." },
+          { "label": "Idiomas", "value": "ES / EN", "desc": "Español e inglés al instante. Sin recargar la página.", "isPositive": true },
+          { "label": "Estilo Visual", "value": "Premium", "desc": "Diseño editorial oscuro con tipografía bold. La primera impresión que convierte.", "isPositive": true },
+          { "label": "Performance", "value": "100/100", "desc": "Puntuación perfecta de Google. Carga instantánea, mejor posicionamiento orgánico." }
         ]
       }
     },
     "pulse": {
-      "tagline": "Protege tus ingresos. Monitoreo constante de tu web con alertas instantáneas.",
-      "description": "Creé Pulse para resolver un problema crítico: enterarte de que tu sitio web o tienda online se cayó antes que tus clientes. Verifica el estado de tu plataforma de manera ininterrumpida cada 5 minutos y te notifica de inmediato por Telegram si hay algún problema, permitiéndote reaccionar antes de perder ventas.\n\nQUÉ RESUELVE\nCada minuto que tu web está caída es dinero perdido y clientes frustrados. Depender de que alguien te avise o revisar manualmente es insostenible. Pulse automatiza esta vigilancia las 24 horas del día, dándote visibilidad completa de la estabilidad de tu negocio digital.",
+      "tagline": "Tu web se cayó. ¿Cuánto tardaste en enterarte? ¿Cuántos clientes perdiste mientras tanto?",
+      "description": "Un sitio caído sin que nadie lo sepa es peor que no tener sitio. El cliente intenta entrar, no puede, y va a otro lado. Vos te enterás horas después.\n\nPulse monitorea tu web cada 5 minutos. Si algo falla, te avisa al instante por Telegram. Si el certificado SSL está por vencer, te avisa antes de que los navegadores bloqueen el acceso.\n\nTambién genera reportes mensuales automáticos con métricas de disponibilidad — para que tengas el historial documentado y puedas exigirle a tu proveedor de hosting cuando algo falla.",
       "featuresLabel": "Qué incluye",
       "features": [
-        { "title": "Vigilancia activa 24/7", "desc": "Chequeos automáticos cada 5 minutos para garantizar que tu sitio web esté siempre disponible." },
-        { "title": "Notificaciones instantáneas", "desc": "Alertas directas a tu cuenta de Telegram en menos de un segundo si tu web presenta fallas." },
-        { "title": "Control de certificado SSL", "desc": "Alerta anticipada si tu certificado de seguridad va a expirar, evitando que los navegadores bloqueen tu web." },
-        { "title": "Reportes mensuales automáticos", "desc": "Estadísticas detalladas en PDF directo a tu email con los tiempos de respuesta y estabilidad de la plataforma." },
-        { "title": "Panel de control integrado", "desc": "Dashboard visual para ver el historial de actividad y tiempos de carga de tus servicios en tiempo real." }
+        { "title": "Monitoreo", "desc": "Cada 5 minutos, Pulse verifica que tu sitio responde. Si no responde, vos lo sabés antes que cualquier cliente." },
+        { "title": "Alertas", "desc": "El aviso llega a tu celular en segundos. No al otro día, no cuando alguien se queja — en el momento." },
+        { "title": "SSL", "desc": "Un certificado vencido hace que los navegadores muestren 'sitio inseguro' a todos tus visitantes. Pulse avisa antes de que pase." },
+        { "title": "Reportes", "desc": "Cada mes, un reporte en PDF con el historial de uptime. Si tu hosting falla seguido, tenés los datos para reclamarlo — o para cambiarlo." },
+        { "title": "Panel", "desc": "Un panel donde ves en tiempo real si todo está funcionando. Verde es verde. Rojo es problema." }
       ],
       "metrics": {
         "title": "Vigilancia & Alertas",
         "cards": [
-          { "label": "Frecuencia", "value": "5 min", "desc": "Chequeo continuo de disponibilidad en servidores globales" },
-          { "label": "Canal de Alerta", "value": "Telegram API", "desc": "Aviso instantáneo a tu celular ante la mínima caída del sistema", "isPositive": true },
-          { "label": "Historial de Uptime", "value": "100%", "desc": "Registro detallado de incidentes para auditar a tus proveedores", "isPositive": true },
-          { "label": "SSL Cert Monitor", "value": "Automático", "desc": "Evita pantallas de error rojas de sitio inseguro para tus visitas" }
+          { "label": "Frecuencia", "value": "5 min", "desc": "Verificación cada 5 minutos. Sabés antes que tus clientes si algo falla." },
+          { "label": "Canal de Alerta", "value": "Telegram", "desc": "Aviso instantáneo a tu celular ante la mínima caída del sistema", "isPositive": true },
+          { "label": "Historial de Uptime", "value": "100%", "desc": "Registro completo de disponibilidad. Si tu hosting falla, tenés los datos para reclamarlo.", "isPositive": true },
+          { "label": "Certificado SSL", "value": "Automático", "desc": "Avisa antes de que venza. Evita que los navegadores marquen tu sitio como inseguro." }
         ]
       }
     }

@@ -31,15 +31,15 @@
   },
   "projectPages": {
     "zolfo-medicina-estetica": {
-      "tagline": "Your medical clinic open 24/7. Designed to convert visits into patients.",
-      "description": "I designed and developed a premium portal for Zolfo Medicina Estética with a clear goal: capture high-value patients organically. With an ultra-fast structure optimized for Google, the site positions each individual treatment and guides users to contact the clinic in seconds.\n\nWHAT IT SOLVES\nMost medical clinics depend 100% on paid ads or Instagram to get bookings. If the algorithm changes or ad budget drops, inquiries crash. Zolfo now has its own organic channel that attracts patients every day automatically.",
+      "tagline": "Every patient who searches for a treatment on Google and doesn't find you, goes to your competitor.",
+      "description": "Zolfo had a high-end clinic but a digital presence that didn't reflect it. The result: patients searching for their treatments on Google ended up at another clinic.\n\nToday, the site converts 47% of visits into actual inquiries. Each treatment has its own page optimized for Google. The patient arrives, browses, and books — with zero friction.\n\n765 active users in the first month. 444 contacts generated. 100% uptime.",
       "featuresLabel": "What's included",
       "features": [
-        { "title": "Individual SEO per treatment", "desc": "Each medical service has its own Google-optimized page. If someone searches for a specific treatment in the area, Zolfo appears first." },
-        { "title": "Direct WhatsApp conversion", "desc": "The navigation flow is designed so users can book an appointment or consult with one click, reducing friction to a minimum." },
-        { "title": "Simple admin panel", "desc": "Total control of text, photos, and treatments without relying on a developer. Uploading new content takes less than a minute." },
-        { "title": "Extreme speed & Lighthouse 100", "desc": "The site loads instantly on any mobile phone, improving patient experience and search ranking." },
-        { "title": "Total safety & stability", "desc": "Hosted on global servers with 100% uptime. Zero maintenance overhead or downtime." }
+        { "title": "Individual SEO", "desc": "When someone searches for 'hyaluronic acid in Rosario', Zolfo appears — not the competition." },
+        { "title": "WhatsApp conversion", "desc": "47% of those who visit the site end up messaging via WhatsApp. No complicated forms, no friction." },
+        { "title": "Admin panel", "desc": "Upload a new photo, change a price, add a treatment. Solo. Without calling anyone." },
+        { "title": "Speed", "desc": "Google penalizes slow sites. This one loads in under a second. That is search positioning without paying for ads." },
+        { "title": "Stability", "desc": "Not a single crash over the entire period. Every hour a site is down is money lost." }
       ],
       "metrics": {
         "title": "Metrics & Outcomes",
@@ -49,10 +49,10 @@
         "channels_desc": "Acquisition channels split (GA Sessions)",
         "treatments_desc": "Views distribution per treatment (GA Page Views)",
         "cards": [
-          { "label": "Lead Conversion", "value": "47.0%", "desc": "From sessions to WhatsApp clicks", "isPositive": true },
-          { "label": "Booking Leads", "value": "444", "desc": "Inquiries generated in 30 days", "isPositive": true },
-          { "label": "Active Users", "value": "765", "desc": "Monthly unique audience" },
-          { "label": "Page Views", "value": "5,456", "desc": "Cumulative navigation traffic" }
+          { "label": "Lead Conversion", "value": "47.0%", "desc": "Nearly 1 out of 2 visitors ends up messaging to book. The site sells itself.", "isPositive": true },
+          { "label": "Booking Leads", "value": "444", "desc": "444 potential patients in a month. No additional ads, no extra effort.", "isPositive": true },
+          { "label": "Active Users", "value": "765", "desc": "765 people visited the clinic digitally. Far more than in person." },
+          { "label": "Page Views", "value": "5,456", "desc": "5,456 times someone explored a treatment. Every view is a purchase intent." }
         ],
         "channels": [
           { "name": "Referral (Recommendations)", "value": 332, "percent": "35%" },
@@ -70,65 +70,65 @@
       }
     },
     "nurestetica": {
-      "tagline": "A premium online presence. Designed to build immediate trust.",
-      "description": "I developed NurEstética's corporate site focusing on a premium visual experience and instant loading speeds. In the aesthetic industry, first impressions are everything; this web reflects the clinic's quality, cleanliness, and professionalism from the very first millisecond.\n\nWHAT IT SOLVES\nA slow website or a neglected design scares off high-value clients and ruins your brand's credibility. NurEstética eliminates this friction with a polished interface and speed that outpaces 99% of competitors, ensuring more visitors complete the booking form.",
+      "tagline": "Patients choose based on trust. Trust enters through the eyes in the first three seconds.",
+      "description": "Aesthetic patients are demanding. Before booking an appointment, they have already checked Instagram, searched on Google, and visited the site of at least three clinics.\n\nNurEstética needed a presence that convinced in the first few seconds. No excess text. No slow loading. No generic design.\n\nThe result: 100/100 in user experience, loads in 0.35 seconds, zero layout shifts. The site feels as meticulously cared for as the clinic itself.",
       "featuresLabel": "What's included",
       "features": [
-        { "title": "High-end visual design", "desc": "A clean, interactive aesthetic aligned with the clinic's identity. Looks beautiful on any mobile or tablet." },
-        { "title": "Instant page loads", "desc": "Extreme optimizations so the site opens in under half a second, keeping impatient users engaged." },
-        { "title": "Booking-oriented layout", "desc": "Clear and strategic call-to-actions to easily guide users to book a consultation." },
-        { "title": "Perfect visual stability", "desc": "No annoying layout shifts while loading. Everything looks fluid and stable from the start." },
-        { "title": "Cloud infrastructure", "desc": "State-of-the-art hosting with zero maintenance, so you can forget about server crashes and updates." }
+        { "title": "Design", "desc": "Design is not decoration. It is the first filter the patient uses to decide whether to trust." },
+        { "title": "Speed", "desc": "0.35 seconds load time. The patient visiting from a phone doesn't wait — and this site doesn't make them wait." },
+        { "title": "Booking", "desc": "Every section ends with a clear action step: book, consult, or see more. The path to an appointment is always just one click away." },
+        { "title": "Visual stability", "desc": "Perfect CLS: nothing shifts while loading. A small technical detail that makes a huge difference in perceived quality." },
+        { "title": "Infrastructure", "desc": "It works. Always. Without anyone having to remember to update or renew anything." }
       ],
       "metrics": {
         "title": "Metrics & Performance",
         "cards": [
-          { "label": "User Experience", "value": "100/100", "desc": "Real user performance score on Vercel Edge", "isPositive": true },
-          { "label": "Load Speed", "value": "0.35s", "desc": "Ultra-fast server response time (TTFB)", "isPositive": true },
-          { "label": "Visual Stability", "value": "Perfect", "desc": "0.00 CLS, no annoying screen shifts while loading", "isPositive": true },
-          { "label": "SEO Optimization", "value": "100/100", "desc": "Max score on Google's Lighthouse audit" }
+          { "label": "User Experience", "value": "100/100", "desc": "The maximum score possible. Measured on real users, not in a lab.", "isPositive": true },
+          { "label": "Load Speed", "value": "0.35s", "desc": "The site responds in a third of a second. The patient doesn't wait or close the tab.", "isPositive": true },
+          { "label": "Visual Stability", "value": "Perfect", "desc": "Nothing jumps, nothing shifts while loading. The user trusts from the first second.", "isPositive": true },
+          { "label": "SEO Optimization", "value": "100/100", "desc": "Max score from Google. Maximum organic visibility without paying for ads." }
         ]
       }
     },
     "authmotion": {
-      "tagline": "Control who enters your system. And what they can do.",
-      "description": "I built a production-ready authentication and permission system. Designed for businesses that manage users, roles, and sensitive data — and cannot afford a security breach.\n\nWHAT IT SOLVES\nEvery digital business faces the same challenge: controlling who accesses what. An employee shouldn't see what an admin sees. A client shouldn't touch what an operator touches.\nAuthMotion solves this from day one.",
+      "tagline": "Control who enters your platform, what they see, and what they can do. Without relying on generic solutions.",
+      "description": "As your platform grows, access becomes a challenge. Who can view billing data? Who can edit? Who should only have read-only access?\n\nAuthMotion is the answer. An enterprise-grade authentication and permissions system, ready to integrate into any platform. Two-factor authentication, Google or GitHub login, custom roles.\n\nWithout paying for licenses. Without depending on third parties. Without reinventing the wheel every time.",
       "featuresLabel": "What's included",
       "features": [
-        { "title": "Secure login with two-factor verification", "desc": "Your account protected with a second layer. If someone steals the password, it's not enough." },
-        { "title": "Access with Google or GitHub", "desc": "Your users log in with one click using their existing accounts. Frictionless." },
-        { "title": "Custom roles and permissions", "desc": "Admins, editors, clients. Each sees and does only what they are supposed to." },
-        { "title": "Designed to scale", "desc": "If you go from 100 to 100,000 users, the system won't break or slow down." },
-        { "title": "Secure by default", "desc": "Complies with the highest industry standards to protect your customer data." }
+        { "title": "2FA", "desc": "A password alone is not enough. Two-factor authentication blocks 99% of unauthorized access — even if the password is known." },
+        { "title": "Social login", "desc": "Less friction at signup = more users completing the process. A single click with Google is enough." },
+        { "title": "Roles", "desc": "Define exactly who sees what. The new employee doesn't access what they shouldn't. The client doesn't modify what they mustn't." },
+        { "title": "Scalability", "desc": "Works exactly the same with 100 users as with 100,000. The infrastructure grows with the business, not the other way around." },
+        { "title": "Security", "desc": "Your customers' data is not yours to lose. Encryption, secure tokens, and industry best practices from day one." }
       ],
       "metrics": {
         "title": "Architecture & Control",
         "cards": [
-          { "label": "License", "value": "Free", "desc": "Open Source with no recurring licensing costs" },
-          { "label": "Authentication", "value": "Two-Factor", "desc": "Reinforced security for administrative accounts", "isPositive": true },
-          { "label": "Integration", "value": "Social Login", "desc": "One-click connection with Google and GitHub", "isPositive": true },
-          { "label": "Deployment", "value": "Docker", "desc": "Deployable on any public or private cloud" }
+          { "label": "License", "value": "Free", "desc": "No monthly subscriptions. No depending on another company raising their prices." },
+          { "label": "Authentication", "value": "Two-Factor", "desc": "Even if they steal the password, they can't get in. Access requires the owner's phone.", "isPositive": true },
+          { "label": "Integration", "value": "Social Login", "desc": "Users register with Google. No long forms, no passwords to forget.", "isPositive": true },
+          { "label": "Portability", "value": "Docker", "desc": "Runs on AWS, Azure, or your own server. Without being locked into any provider." }
         ]
       }
     },
     "smartwallet": {
-      "tagline": "The financial engine your business needs. Zero ledger errors, maximum security.",
-      "description": "I built SmartWallet, a bank-grade financial engine designed for businesses that need to process payments, payouts, and internal balances with absolute precision. It uses double-entry bookkeeping to ensure every cent is accounted for, preventing accounting gaps and fraud.\n\nWHAT IT SOLVES\nManaging the finances of a digital platform on spreadsheets or simple databases exposes your business to rounding errors, duplicate funds, and security gaps. SmartWallet automates ledger registration with total cryptographic integrity, protecting your company's most important asset.",
+      "tagline": "An accounting error in production is not a bug. It's money disappearing. Or customers who don't return.",
+      "description": "When a platform handles money, the margin of error is zero. A duplicate charge, an unbalanced ledger, a lost transaction — any of these destroys trust in minutes.\n\nSmartWallet is the financial engine that solves this. Double-entry bookkeeping as used by banks. A security vault for sensitive credentials. Atomic transactions that aren't lost even if the server crashes mid-process.\n\nReady to connect to any existing platform via API.",
       "featuresLabel": "What's included",
       "features": [
-        { "title": "Double-entry bookkeeping", "desc": "The standard used by banks. Every movement creates matching credit and debit logs that balance to zero. No ledger gaps." },
-        { "title": "Bank-grade security vault", "desc": "Maximum protection of credentials, encryption keys, and sensitive data on secure hardware modules." },
-        { "title": "Ultra-secure transactions", "desc": "Safe logic preventing double-spending or concurrent payout failures. Money is never lost in transit." },
-        { "title": "API connector for platforms", "desc": "Designed to easily connect with your existing sales system, e-commerce, or mobile app." },
-        { "title": "Full audit trail & history", "desc": "Unalterable logs for every transaction, allowing rapid accounting audits and fraud prevention." }
+        { "title": "Double-entry", "desc": "Every dollar that enters has a destination. Every dollar that leaves has an origin. Impossible for the balance to become offset." },
+        { "title": "Vault", "desc": "Access keys, tokens, and sensitive data live in a hardware vault. Not in an environment variable that someone could inspect." },
+        { "title": "Transactions", "desc": "If two users perform an operation simultaneously, the system resolves it without duplicating or losing anything. The money always arrives." },
+        { "title": "API", "desc": "Connects to what you already have. No need to rebuild the platform — SmartWallet integrates as a module." },
+        { "title": "Audit", "desc": "Every movement is recorded forever. If there is a dispute, you have the complete history. If there is fraud, it is detected." }
       ],
       "metrics": {
         "title": "Precision & Control",
         "cards": [
-          { "label": "Ledger Precision", "value": "100%", "desc": "Double-entry standard, perfect balances with no lost cents" },
-          { "label": "Data Security", "value": "Vaulted", "desc": "Secrets and cryptographic keys protected at bank-grade level", "isPositive": true },
-          { "label": "Integrity", "value": "Atomic", "desc": "Operations shielded against network drops or system crashes", "isPositive": true },
-          { "label": "Integration", "value": "REST API", "desc": "Easy to connect to any modern web or mobile platform" }
+          { "label": "Ledger Precision", "value": "100%", "desc": "Every cent has a registered origin and destination. The balance never offsets. Never." },
+          { "label": "Data Security", "value": "Vaulted", "desc": "Credentials do not live in the code. They live in secure hardware. Just like a bank.", "isPositive": true },
+          { "label": "Transactions", "value": "Shielded", "desc": "If the server crashes mid-payment, nothing is left half-done. Everything goes through or nothing does.", "isPositive": true },
+          { "label": "Integration", "value": "REST API", "desc": "Connects to your app, website, or sales system. Without rebuilding anything." }
         ]
       }
     },
@@ -146,31 +146,31 @@
       "metrics": {
         "title": "Optimization & Conversion",
         "cards": [
-          { "label": "Conversion", "value": "Optimized", "desc": "Step-by-step interactive onboarding and one-click contact" },
-          { "label": "Localization", "value": "Edge i18n", "desc": "next-intl translating directly from the closest CDN edge server", "isPositive": true },
-          { "label": "Visual Style", "value": "Premium", "desc": "Minimalist dark Void & Chalk layout with dynamic accents", "isPositive": true },
-          { "label": "Performance", "value": "Lighthouse", "desc": "Extreme optimization loved by both Google and your users" }
+          { "label": "Conversion", "value": "Optimized", "desc": "Each section guides the visitor to the next step. Contact details are always visible." },
+          { "label": "Languages", "value": "ES / EN", "desc": "Spanish and English instantly. Without reloading the page.", "isPositive": true },
+          { "label": "Visual Style", "value": "Premium", "desc": "Editorial dark design with bold typography. The first impression that converts.", "isPositive": true },
+          { "label": "Performance", "value": "100/100", "desc": "Perfect score from Google. Instant loading, better organic ranking." }
         ]
       }
     },
     "pulse": {
-      "tagline": "Protect your revenue. Constant website monitoring with instant alerts.",
-      "description": "I created Pulse to solve a critical issue: finding out that your website or online store went down before your customers do. It checks your platform's status continuously every 5 minutes and immediately notifies you via Telegram if something goes wrong, letting you react before losing sales.\n\nWHAT IT SOLVES\nEvery minute of downtime is lost money and frustrated customers. Relying on someone to tell you or checking manually is unsustainable. Pulse automates this 24/7 watch, giving you full visibility of your digital business's stability.",
+      "tagline": "Your website went down. How long did it take you to find out? How many customers did you lose in the meantime?",
+      "description": "A site that goes down without anyone knowing is worse than not having a website. The client tries to enter, fails, and goes elsewhere. You find out hours later.\n\nPulse monitors your site every 5 minutes. If something fails, it alerts you instantly on Telegram. If the SSL certificate is about to expire, it warns you before browsers block access.\n\nIt also generates automatic monthly uptime reports — so you have documented history to hold your hosting provider accountable when failures occur.",
       "featuresLabel": "What's included",
       "features": [
-        { "title": "Active 24/7 watch", "desc": "Automatic pings every 5 minutes to ensure your site is always online and reachable." },
-        { "title": "Instant notifications", "desc": "Alerts sent directly to your Telegram account in under a second if your website fails." },
-        { "title": "SSL certificate monitoring", "desc": "Pre-expiry alerts preventing browsers from blocking your site with a red \"insecure website\" screen." },
-        { "title": "Automated monthly reports", "desc": "Detailed PDF reports delivered to your inbox with response times and server stability statistics." },
-        { "title": "Integrated control panel", "desc": "A visual dashboard to inspect incident history and real-time response times." }
+        { "title": "Monitoring", "desc": "Every 5 minutes, Pulse verifies that your site responds. If it doesn't, you know it before any customer does." },
+        { "title": "Alerts", "desc": "The warning reaches your phone in seconds. Not the next day, not when someone complains — in the moment." },
+        { "title": "SSL", "desc": "An expired certificate makes browsers show 'insecure site' to all your visitors. Pulse warns you before it happens." },
+        { "title": "Reports", "desc": "Each month, a PDF report with your uptime history. If your hosting fails frequently, you have the data to complain — or to switch." },
+        { "title": "Dashboard", "desc": "A panel where you can see in real time if everything is working. Green is green. Red is trouble." }
       ],
       "metrics": {
         "title": "Vigilance & Alerts",
         "cards": [
-          { "label": "Check Frequency", "value": "5 min", "desc": "Continuous uptime verification from global server endpoints" },
-          { "label": "Alert Channel", "value": "Telegram API", "desc": "Instant notification to your phone at the slightest downtime", "isPositive": true },
-          { "label": "Uptime History", "value": "100%", "desc": "Detailed incident log to audit and monitor your hosting providers", "isPositive": true },
-          { "label": "SSL Monitoring", "value": "Automatic", "desc": "Prevents scary warning pages on your customers' browsers" }
+          { "label": "Frequency", "value": "5 min", "desc": "Uptime check every 5 minutes. You know before your customers if something fails." },
+          { "label": "Alert Channel", "value": "Telegram", "desc": "Instant notification to your phone at the slightest downtime", "isPositive": true },
+          { "label": "Uptime History", "value": "100%", "desc": "Complete uptime log. If your hosting provider fails, you have the data to file a claim.", "isPositive": true },
+          { "label": "SSL Certificate", "value": "Automatic", "desc": "Warns before it expires. Prevents browsers from flagging your site as insecure." }
         ]
       }
     }

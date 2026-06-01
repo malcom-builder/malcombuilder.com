@@ -62,7 +62,7 @@ export function ProjectMockup({ slug }: Props) {
   if (!projectMockup) {
     // If no screens are available, show the beautiful abstract interactive canvas
     return (
-      <section className="section" style={{ paddingTop: "0rem", paddingBottom: "2rem", borderBottom: "1px solid var(--color-border)" }}>
+      <section className="section" style={{ paddingBlock: "4rem", borderBottom: "1px solid var(--color-border)" }}>
         <div className="container">
           <span className="label" style={{ display: "inline-block", marginBottom: "2rem" }}>Interactive Preview</span>
           <div 
@@ -85,7 +85,7 @@ export function ProjectMockup({ slug }: Props) {
   }
 
   return (
-    <section className="section" style={{ paddingTop: "0rem", paddingBottom: "4rem", borderBottom: "1px solid var(--color-border)", overflow: "hidden" }}>
+    <section className="section" style={{ paddingBlock: "6rem", borderBottom: "1px solid var(--color-border)", overflow: "hidden" }}>
       <div className="container">
         <span className="label" style={{ display: "inline-block", marginBottom: "2rem" }}>Showcase</span>
 
