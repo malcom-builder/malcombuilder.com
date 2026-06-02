@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-import { Play, Shield, Cpu, RefreshCw, Layers } from "lucide-react";
+import { motion, AnimatePresence, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import { Shield, Cpu, RefreshCw, QrCode, Layers } from "lucide-react";
 
 interface Tab {
   id: string;
@@ -17,6 +17,15 @@ interface Props {
 
 export function ProjectMockup({ slug }: Props) {
   const [activeTab, setActiveTab] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
+  const shouldReduce = useReducedMotion();
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const mainY = useTransform(scrollYProgress, [0, 1], shouldReduce ? [0, 0] : [0, -20]);
+  const phoneY = useTransform(scrollYProgress, [0, 1], shouldReduce ? [0, 0] : [0, 30]);
 
   // Define mockups and configurations based on project slug
   const mockups: Record<string, { tabs: Tab[]; mobile?: string; url: string }> = {
@@ -62,7 +71,7 @@ export function ProjectMockup({ slug }: Props) {
   if (!projectMockup) {
     // If no screens are available, show the beautiful abstract interactive canvas
     return (
-      <section className="section" style={{ paddingBlock: "4rem", borderBottom: "1px solid var(--color-border)" }}>
+      <section ref={sectionRef} data-section="showcase" className="section" style={{ paddingBlock: "4rem", borderBottom: "1px solid var(--color-border)" }}>
         <div className="container">
           <span className="label" style={{ display: "inline-block", marginBottom: "2rem" }}>Interactive Preview</span>
           <div 
@@ -85,7 +94,7 @@ export function ProjectMockup({ slug }: Props) {
   }
 
   return (
-    <section className="section" style={{ paddingBlock: "6rem", borderBottom: "1px solid var(--color-border)", overflow: "hidden" }}>
+    <section ref={sectionRef} data-section="showcase" className="section" style={{ paddingBlock: "6rem", borderBottom: "1px solid var(--color-border)", overflow: "hidden" }}>
       <div className="container">
         <span className="label" style={{ display: "inline-block", marginBottom: "2rem" }}>Showcase</span>
 
@@ -127,7 +136,7 @@ export function ProjectMockup({ slug }: Props) {
         {/* Mockups overlapping container */}
         <div style={{ position: "relative", width: "100%", maxWidth: "1000px", marginInline: "auto" }}>
           {/* Main MacBook / Browser container */}
-          <div
+          <motion.div
             style={{
               position: "relative",
               width: "100%",
@@ -139,6 +148,7 @@ export function ProjectMockup({ slug }: Props) {
               overflow: "hidden",
               boxShadow: "0 4px 30px rgba(0, 0, 0, 0.5), 0 0 80px rgba(123, 97, 255, 0.15)",
               zIndex: 1,
+              y: mainY,
             }}
           >
             {/* macOS Top Bar */}
@@ -186,10 +196,10 @@ export function ProjectMockup({ slug }: Props) {
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeTab}
-                  initial={{ opacity: 0, scale: 1.01 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.35, ease: "easeInOut" }}
+                  initial={{ opacity: 0, x: 40, scale: 0.98 }}
+                  animate={{ opacity: 1, x: 0, scale: 1 }}
+                  exit={{ opacity: 0, x: -30, scale: 0.98 }}
+                  transition={{ duration: 0.4, ease: [0.21, 0.47, 0.32, 0.98] }}
                   style={{ position: "absolute", inset: 0 }}
                 >
                   <Image
@@ -203,7 +213,7 @@ export function ProjectMockup({ slug }: Props) {
                 </motion.div>
               </AnimatePresence>
             </div>
-          </div>
+          </motion.div>
 
           {/* Overlapping mobile iPhone container */}
           {projectMockup.mobile && (
@@ -224,6 +234,7 @@ export function ProjectMockup({ slug }: Props) {
                 background: "#08080c",
                 overflow: "hidden",
                 boxShadow: "-12px 16px 50px rgba(0, 0, 0, 0.65), 0 0 40px rgba(123, 97, 255, 0.1)",
+                y: phoneY,
               }}
               className="hidden md:block"
             >
@@ -274,6 +285,9 @@ function AuthMotionWidget() {
       "MFA [2FA] - Token validation requested (TOTP)",
       "MFA [2FA] - Token valid. Handshaking context.",
       "TOKEN_ENGINE - Exchanged Code for AccessToken (HttpOnly, secure)",
+      "TOKEN_ENGINE - RefreshToken rotated. Old: r_8f3a... → New: r_c2e7...",
+      "QR_2FA - Session QR generated. Scanned by device (iPhone 15)",
+      "QR_2FA - OOB code verified. TOTP seed linked to account.",
       "RBAC_ENGINE - Assigned Roles: [Administrator, LeadDeveloper]",
       "SESSION - Session started for 'malcom.builder'. Token expires in 3600s.",
     ];
@@ -311,9 +325,15 @@ function AuthMotionWidget() {
           </div>
         </div>
         <div>
-          <div style={{ color: "var(--color-muted)", fontSize: "0.75rem", textTransform: "uppercase" }}>OAuth 2.0 State</div>
+          <div style={{ color: "var(--color-muted)", fontSize: "0.75rem", textTransform: "uppercase" }}>Token Refresh</div>
           <div style={{ fontSize: "1.25rem", color: "var(--color-fg)", fontWeight: 600, display: "flex", alignItems: "center", gap: "0.5rem", marginTop: "0.25rem" }}>
-            <Shield size={16} style={{ color: "var(--color-accent)" }} /> Secure Shake
+            <RefreshCw size={16} style={{ color: "var(--color-emerald)" }} /> Auto-Rotate
+          </div>
+        </div>
+        <div>
+          <div style={{ color: "var(--color-muted)", fontSize: "0.75rem", textTransform: "uppercase" }}>QR 2FA</div>
+          <div style={{ fontSize: "1.25rem", color: "var(--color-fg)", fontWeight: 600, display: "flex", alignItems: "center", gap: "0.5rem", marginTop: "0.25rem" }}>
+            <QrCode size={16} style={{ color: "var(--color-accent)" }} /> Bound & Active
           </div>
         </div>
         <div>

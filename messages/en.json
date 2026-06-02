@@ -8,20 +8,20 @@
     "cta": "Let's Build"
   },
   "hero": {
-    "tagline": "AI-native",
+    "tagline": "Digital Product Studio",
     "headline": "I build digital products.",
     "headline_accent": "Solo.",
-    "subheadline": "Faster than an agency. Sharper than a freelancer.",
+    "subheadline": "Webs and platforms that convert. Fixed price. Delivered in weeks.",
     "cta_primary": "View projects"
   },
   "services": {
     "badge": "Services",
     "title": "How I build",
     "items": [
-      { "title": "Strategy",      "desc": "Thesis, positioning and business model. I define the direction before writing a line of code." },
-      { "title": "Architecture",  "desc": "Identity, visual system and full brand. Design as a competitive advantage." },
-      { "title": "Product",       "desc": "Web, e-commerce, platform or app. I build what your business needs." },
-      { "title": "Growth",        "desc": "AI-powered content, ads, and automations. I make the product work for you." }
+      { "title": "Strategy",      "desc": "Before building anything, we define who it's for, what problem it solves, and how it pays off. Without this, the best code in the world won't convert." },
+      { "title": "Architecture",  "desc": "Your brand is the first filter. A design that doesn't convey trust loses clients before they read a single line." },
+      { "title": "Product",       "desc": "The site your clients visit before calling you. The platform that processes your sales. What makes the business work digitally." },
+      { "title": "Growth",        "desc": "A launched product is not a selling product. Growth is the difference between having a presence and generating demand." }
     ]
   },
   "projects": {
@@ -183,25 +183,25 @@
     "label": "ABOUT",
     "headline": "One builder. One stack. One result.",
     "thesis": {
-      "text": "I build digital products solo. Solid architecture, AI-powered execution, shipped in weeks. No team, no overhead, no detours."
+      "text": "I build digital products solo. Solid architecture, AI-powered execution, shipped in weeks. No team, no inflated costs, no detours."
     },
     "who": {
       "label": "WHO",
       "name": "Malcom Foca",
       "role": "Associate Degree in Software Development — UTN Rosario",
-      "location": "Rosario → Argentina → Latam"
+      "location": "Rosario → Argentina → Latam",
+      "combined": "Malcom Foca · Associate Degree in Software Development — UTN Rosario · Rosario → Argentina → Latam"
     },
     "does": {
       "label": "WHAT I DO",
-      "bold": "I build digital products powered by AI.",
-      "line1": "Websites, platforms, systems, APIs and automations.",
-      "line2": "Faster than an agency. Sharper than a freelancer."
+      "bold": "I build digital products. AI is the execution lever, not the product.",
+      "line1": "Websites, platforms, APIs and systems that work. No technical debt, no surprises."
     },
     "how": {
       "label": "HOW I DO IT",
       "bold": "Solo. From architecture to deployment.",
       "line1": "Solid tech stack + AI agents as an execution lever.",
-      "line2": "Fixed price. Closed scope. No unnecessary meetings."
+      "line2": "Custom workflows. Every project runs on standardized processes — documented context, deliverables per iteration, nothing improvised."
     },
     "social": {
       "instagram": "INSTAGRAM",
@@ -210,13 +210,13 @@
     }
   },
   "cta": {
-    "marquee": "LET'S TALK — LET'S COLLABORATE — SAY HELLO — WANNA BE STARTING SOMETHING? ",
+    "marquee": "LET'S TALK — LET'S BUILD SOMETHING — YOU HAVE A PROJECT — WRITE TO ME — LET'S START",
     "btn_text": "Let's Build.",
     "email": "contact@malcombuilder.com"
   },
   "footer": {
-    "tagline": "AI-native system builder",
-    "description": "Building systems from the ground up with AI at the core.",
+    "tagline": "Digital Product Studio · Rosario, Argentina",
+    "description": "Webs, platforms and systems. Solo. With conviction.",
     "nav_title": "Navigation",
     "social_title": "Social",
     "bottom": "© 2026 malcom.builder · Rosario, Argentina · Built with Next.js & AI"

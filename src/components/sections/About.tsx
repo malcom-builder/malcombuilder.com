@@ -27,7 +27,7 @@ export function About() {
               color: "var(--color-muted)",
               borderLeft: "3px solid var(--color-accent)",
               paddingLeft: "1.5rem",
-              marginBottom: "3rem",
+              marginBottom: "7rem",
               fontStyle: "italic",
             }}
           >
@@ -73,31 +73,43 @@ export function About() {
           </FadeIn>
 
           {/* RIGHT COLUMN: Content */}
-          <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
 
             {/* Row 1: WHO */}
             <FadeIn delay={0.3} direction="up" className="about-row !pt-0">
-              <div className="about-row-label">{t("who.label")}</div>
+              <div className="about-row-label">
+                <span style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem" }}>
+                  <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: "#10B981", boxShadow: "0 0 8px rgba(16,185,129,0.5)", display: "inline-block" }} />
+                  {t("who.label")}
+                </span>
+              </div>
               <div className="about-row-content">
-                <strong>{t("who.name")}</strong>
-                <span>{t("who.role")}</span>
-                <span>{t("who.location")}</span>
+                <span>{t("who.combined")}</span>
               </div>
             </FadeIn>
 
             {/* Row 2: WHAT HE DOES */}
             <FadeIn delay={0.4} direction="up" className="about-row">
-              <div className="about-row-label">{t("does.label")}</div>
+              <div className="about-row-label">
+                <span style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem" }}>
+                  <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: "#10B981", boxShadow: "0 0 8px rgba(16,185,129,0.5)", display: "inline-block" }} />
+                  {t("does.label")}
+                </span>
+              </div>
               <div className="about-row-content">
                 <strong>{t("does.bold")}</strong>
                 <span>{t("does.line1")}</span>
-                <span>{t("does.line2")}</span>
               </div>
             </FadeIn>
 
             {/* Row 3: HOW */}
             <FadeIn delay={0.5} direction="up" className="about-row !pb-0 !border-b-0">
-              <div className="about-row-label">{t("how.label")}</div>
+              <div className="about-row-label">
+                <span style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem" }}>
+                  <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: "#10B981", boxShadow: "0 0 8px rgba(16,185,129,0.5)", display: "inline-block" }} />
+                  {t("how.label")}
+                </span>
+              </div>
               <div className="about-row-content">
                 <strong>{t("how.bold")}</strong>
                 <span>{t("how.line1")}</span>

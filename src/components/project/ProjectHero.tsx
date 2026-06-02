@@ -1,9 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from "framer-motion";
 import { Link } from "@/i18n/routing";
 import { useParams } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
+import { useRef, useCallback } from "react";
 
 const container = {
   hidden: {},
@@ -37,9 +38,32 @@ export function ProjectHero({ title, category, tagline }: Props) {
   const params = useParams();
   const locale = params?.locale as string;
   const backLabel = locale === "en" ? "Back to home" : "Volver al inicio";
+  const shouldReduce = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+
+  const mouseX = useMotionValue(0.5);
+  const mouseY = useMotionValue(0.5);
+  const springX = useSpring(mouseX, { stiffness: 80, damping: 25 });
+  const springY = useSpring(mouseY, { stiffness: 80, damping: 25 });
+  const glowX = useTransform(springX, [0, 1], ["30%", "70%"]);
+  const glowY = useTransform(springY, [0, 1], ["5%", "30%"]);
+
+  const handleMouseMove = useCallback(
+    (e: React.MouseEvent) => {
+      if (shouldReduce) return;
+      const rect = sectionRef.current?.getBoundingClientRect();
+      if (!rect) return;
+      mouseX.set((e.clientX - rect.left) / rect.width);
+      mouseY.set((e.clientY - rect.top) / rect.height);
+    },
+    [mouseX, mouseY, shouldReduce]
+  );
 
   return (
     <section
+      ref={sectionRef}
+      onMouseMove={handleMouseMove}
+      data-section="hero"
       style={{
         minHeight: "85svh",
         display: "flex",
@@ -50,7 +74,7 @@ export function ProjectHero({ title, category, tagline }: Props) {
         backgroundColor: "var(--color-bg)",
       }}
     >
-      {/* Premium Background Mesh with Interactive-like Gradient Orbs */}
+      {/* Background Mesh with Interactive Gradient Orbs */}
       <div
         style={{
           position: "absolute",
@@ -77,12 +101,16 @@ export function ProjectHero({ title, category, tagline }: Props) {
           }}
         />
         
-        {/* Radial Ambient Glow */}
+        {/* Radial Ambient Glow - follows mouse */}
         <motion.div
-          animate={{
-            scale: [1, 1.15, 1],
-            opacity: [0.12, 0.18, 0.12],
-          }}
+          animate={
+            shouldReduce
+              ? undefined
+              : {
+                  scale: [1, 1.15, 1],
+                  opacity: [0.12, 0.18, 0.12],
+                }
+          }
           transition={{
             duration: 10,
             repeat: Infinity,
@@ -91,8 +119,8 @@ export function ProjectHero({ title, category, tagline }: Props) {
           aria-hidden="true"
           style={{
             position: "absolute",
-            top: "15%",
-            left: "50%",
+            top: glowY,
+            left: glowX,
             width: "70vw",
             height: "70vw",
             maxWidth: "700px",
@@ -100,7 +128,7 @@ export function ProjectHero({ title, category, tagline }: Props) {
             background: "radial-gradient(circle, var(--color-accent) 0%, transparent 60%)",
             filter: "blur(90px)",
             borderRadius: "50%",
-            transform: "translateX(-50%)",
+            transform: "translate(-50%, -50%)",
           }}
         />
       </div>

@@ -8,20 +8,20 @@
     "cta": "Construyamos"
   },
   "hero": {
-    "tagline": "AI-native",
+    "tagline": "Studio de producto digital",
     "headline": "Construyo productos digitales.",
     "headline_accent": "Solo.",
-    "subheadline": "Más rápido que una agencia. Más criterio que un freelancer.",
+    "subheadline": "Webs y plataformas que convierten. Precio fijo. Entrega en semanas.",
     "cta_primary": "Ver proyectos"
   },
   "services": {
     "badge": "Servicios",
     "title": "Así construyo",
     "items": [
-      { "title": "Estrategia",     "desc": "Tesis, posicionamiento y modelo de negocio. Defino la dirección antes de escribir una línea de código." },
-      { "title": "Arquitectura",   "desc": "Identidad, sistema visual y marca completa. El diseño como ventaja competitiva." },
-      { "title": "Producto",       "desc": "Web, e-commerce, plataforma o app. Construyo lo que tu negocio necesita." },
-      { "title": "Crecimiento",    "desc": "Contenido con IA, pauta y automatizaciones. Hago que el producto trabaje para vos." }
+      { "title": "Estrategia",     "desc": "Antes de construir cualquier cosa, definimos para quién es, qué problema resuelve y cómo se paga. Sin esto, el mejor código del mundo no convierte." },
+      { "title": "Arquitectura",   "desc": "Tu marca es el primer filtro. Un diseño que no transmite confianza pierde clientes antes de que lean una sola línea." },
+      { "title": "Producto",       "desc": "El sitio que tus clientes visitan antes de llamarte. La plataforma que procesa tus ventas. Lo que hace que el negocio funcione digitalmente." },
+      { "title": "Crecimiento",    "desc": "Un producto lanzado no es un producto que vende. El crecimiento es la diferencia entre tener presencia y generar demanda." }
     ]
   },
   "projects": {
@@ -183,25 +183,25 @@
     "label": "ABOUT",
     "headline": "Un builder. Un stack. Un resultado.",
     "thesis": {
-      "text": "Construyo productos digitales solo. Arquitectura sólida, ejecución con IA, entrega en semanas. Sin equipo, sin overhead, sin vueltas."
+      "text": "Construyo productos digitales solo. Arquitectura sólida, ejecución con IA, entrega en semanas. Sin equipo, sin costos inflados, sin vueltas."
     },
     "who": {
       "label": "QUIÉN",
       "name": "Malcom Foca",
       "role": "Técnico Universitario en Programación — UTN Rosario",
-      "location": "Rosario → Argentina → Latam"
+      "location": "Rosario → Argentina → Latam",
+      "combined": "Malcom Foca · Técnico Universitario en Programación — UTN Rosario · Rosario → Argentina → Latam"
     },
     "does": {
       "label": "QUÉ HAGO",
-      "bold": "Construyo productos digitales potenciados con IA.",
-      "line1": "Webs, plataformas, sistemas, APIs y automatizaciones.",
-      "line2": "Más rápido que una agencia. Con más criterio que un freelancer."
+      "bold": "Construyo productos digitales. La IA es la palanca de ejecución, no el producto.",
+      "line1": "Webs, plataformas, APIs y sistemas que funcionan. Sin deuda técnica, sin sorpresas."
     },
     "how": {
       "label": "CÓMO LO HAGO",
       "bold": "Solo. Desde la arquitectura hasta el deploy.",
       "line1": "Stack técnico sólido + agentes de IA como palanca de ejecución.",
-      "line2": "Precio fijo. Scope cerrado. Sin reuniones innecesarias."
+      "line2": "Workflows propios. Cada proyecto corre sobre procesos estandarizados — contexto documentado, entregables por iteración, nada improvisado."
     },
     "social": {
       "instagram": "INSTAGRAM",
@@ -210,13 +210,13 @@
     }
   },
   "cta": {
-    "marquee": "HABLEMOS — COLABOREMOS — SALUDA — ¿QUIERES EMPEZAR ALGO? ",
+    "marquee": "HABLEMOS — CONSTRUYAMOS ALGO — TENÉS UN PROYECTO — ESCRIBIME — EMPECEMOS",
     "btn_text": "Construyamos.",
     "email": "contact@malcombuilder.com"
   },
   "footer": {
-    "tagline": "AI-native system builder",
-    "description": "Construyo sistemas desde cero con IA en el núcleo.",
+    "tagline": "Studio de producto digital · Rosario, Argentina",
+    "description": "Webs, plataformas y sistemas. Solo. Con criterio.",
     "nav_title": "Navegación",
     "social_title": "Redes",
     "bottom": "© 2026 malcom.builder · Rosario, Argentina · Built with Next.js & AI"

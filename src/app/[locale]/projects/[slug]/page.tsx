@@ -8,6 +8,8 @@ import { ProjectMetrics } from "@/components/project/ProjectMetrics";
 import { ProjectTechStack } from "@/components/project/ProjectTechStack";
 import { ProjectFeatures } from "@/components/project/ProjectFeatures";
 import { ProjectLinks } from "@/components/project/ProjectLinks";
+import { ProjectPrevNext } from "@/components/project/ProjectPrevNext";
+import { StaggeredPage } from "@/components/project/StaggeredPage";
 
 export async function generateStaticParams() {
   const locales = ["es", "en"];
@@ -54,15 +56,24 @@ export default async function ProjectPage({
   const pageData = messages.projectPages?.[slug];
   if (!pageData) notFound();
 
+  const currentIndex = projects.findIndex((p) => p.slug === slug);
+  const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
+  const nextProject = currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
+
   return (
     <article>
-      <ProjectHero title={project.title} category={project.category} tagline={pageData.tagline} />
-      <ProjectMockup slug={project.slug} />
-      <ProjectOverview description={pageData.description} />
-      <ProjectMetrics slug={project.slug} metrics={pageData.metrics} />
-      <ProjectTechStack techStack={project.techStack} />
-      <ProjectFeatures features={pageData.features} sectionLabel={pageData.featuresLabel} />
-      <ProjectLinks url={project.url} github={project.github} />
+      <StaggeredPage>
+        <ProjectHero title={project.title} category={project.category} tagline={pageData.tagline} />
+        <ProjectMockup slug={project.slug} />
+        <ProjectOverview description={pageData.description} />
+        <ProjectMetrics slug={project.slug} metrics={pageData.metrics} />
+        <ProjectTechStack techStack={project.techStack} />
+        <ProjectFeatures features={pageData.features} sectionLabel={pageData.featuresLabel} />
+        <ProjectLinks url={project.url} github={project.github} />
+        {(prevProject || nextProject) && (
+          <ProjectPrevNext prev={prevProject} next={nextProject} locale={locale} />
+        )}
+      </StaggeredPage>
     </article>
   );
 }

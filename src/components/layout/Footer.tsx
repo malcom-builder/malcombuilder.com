@@ -5,6 +5,7 @@ import { Link } from "@/i18n/routing";
 import { socialLinks } from "@/lib/constants";
 
 export function Footer() {
+  const t = useTranslations("footer");
   const socials = [
     { href: socialLinks.instagram, label: "Instagram" },
     { href: socialLinks.linkedin,  label: "LinkedIn"  },
@@ -66,7 +67,7 @@ export function Footer() {
           }}
         >
           <span style={{ fontSize: "0.75rem", color: "var(--color-muted)", opacity: 0.5, letterSpacing: "0.02em" }}>
-            Rosario, Argentina · Next.js & AI
+            {t("tagline")}
           </span>
         </div>
       </div>

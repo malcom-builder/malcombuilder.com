@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, useMotionValue, useSpring, useTransform, useInView, useReducedMotion } from "framer-motion";
 import { Users, Eye } from "lucide-react";
+import { useSpotlight, SpotlightGlow } from "./SpotlightGlow";
 
 interface MetricCard {
   label: string;
@@ -55,13 +56,135 @@ const cardItem = {
   },
 };
 
+// ─── Animated metric value ───────────────────────────────────────────────────
+
+function AnimatedValue({ value }: { value: string }) {
+  const shouldReduce = useReducedMotion();
+
+  // Extract numeric part from strings like "1,248", "98.7%", "4.2 min", "100/100"
+  const numMatch = value.match(/^[\d,.]+/);
+  const numStr = numMatch ? numMatch[0].replace(/,/g, "") : "0";
+  const num = parseFloat(numStr);
+  const suffix = value.replace(/^[\d,./]+/, "").trim();
+
+  if (shouldReduce || isNaN(num) || !numMatch) {
+    return <>{value}</>;
+  }
+
+  const isDecimal = numStr.includes(".");
+  const decimals = isDecimal ? numStr.split(".")[1]?.length || 1 : 0;
+  const isFraction = value.includes("/");
+  const hasK = num >= 1000 && !isDecimal && !isFraction;
+
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "0px 0px -20% 0px" });
+  const mv = useMotionValue(0);
+  const spring = useSpring(mv, { stiffness: 40, damping: 18 });
+  const [display, setDisplay] = useState(isFraction ? value : "0");
+
+  useEffect(() => {
+    const unsub = spring.on("change", (v) => {
+      let formatted: string;
+      if (hasK) {
+        formatted = (v / 1000).toFixed(1) + "k";
+      } else if (isFraction) {
+        formatted = value;
+      } else if (num >= 100) {
+        formatted = Math.round(v).toLocaleString();
+      } else if (decimals > 0) {
+        formatted = v.toFixed(decimals);
+      } else {
+        formatted = String(Math.round(v));
+      }
+      setDisplay(suffix ? `${formatted} ${suffix}` : formatted);
+    });
+    return unsub;
+  }, [spring, value, num, suffix, hasK, isFraction, decimals]);
+
+  useEffect(() => {
+    if (inView) mv.set(num);
+  }, [inView, num, mv]);
+
+  return <span ref={ref}>{display}</span>;
+}
+
+function MetricCard({ card }: { card: MetricCard }) {
+  const spotlight = useSpotlight();
+
+  return (
+    <motion.div
+      variants={cardItem}
+      ref={spotlight.cardRef}
+      onMouseMove={spotlight.handleMouseMove}
+      onMouseEnter={() => spotlight.setIsHovered(true)}
+      onMouseLeave={spotlight.resetGlow}
+      style={{
+        padding: "2.25rem 2rem",
+        border: "1px solid var(--color-border)",
+        borderRadius: "12px",
+        background: "var(--color-card)",
+        position: "relative",
+        overflow: "hidden",
+        cursor: "default",
+      }}
+      whileHover={{
+        y: -5,
+        borderColor: card.isPositive ? "var(--color-emerald)" : "var(--color-accent)",
+        boxShadow: card.isPositive
+          ? "0 16px 40px rgba(16, 185, 129, 0.04)"
+          : "0 16px 40px rgba(123, 97, 255, 0.04)",
+        transition: { duration: 0.3, ease: [0.21, 0.47, 0.32, 0.98] },
+      }}
+    >
+      <SpotlightGlow
+        spotlightBg={spotlight.spotlightBg}
+        isHovered={spotlight.isHovered}
+        borderRadius="12px"
+      />
+      {/* Accent glow line on top */}
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          height: "3px",
+          background: card.isPositive ? "var(--color-emerald)" : "var(--color-accent)",
+          opacity: 0.8,
+          zIndex: 1,
+        }}
+      />
+      <div style={{ position: "relative", zIndex: 1 }}>
+        <div style={{ color: "var(--color-muted)", fontSize: "0.8rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "0.5rem" }}>
+          {card.label}
+        </div>
+        <div
+          className="display"
+          style={{
+            fontSize: "clamp(2rem, 3.5vw, 2.75rem)",
+            fontWeight: 800,
+            color: card.isPositive ? "var(--color-emerald)" : "var(--color-fg)",
+            lineHeight: 1,
+            marginBottom: "0.5rem",
+          }}
+        >
+          <AnimatedValue value={card.value} />
+        </div>
+        <p style={{ color: "var(--color-muted)", fontSize: "0.85rem", lineHeight: 1.4, margin: 0 }}>
+          {card.desc}
+        </p>
+      </div>
+    </motion.div>
+  );
+}
+
 export function ProjectMetrics({ slug, metrics }: Props) {
   const [metricTab, setMetricTab] = useState<"overview" | "channels" | "treatments">("overview");
 
   if (!metrics) return null;
 
   return (
-    <section className="section" style={{ borderBottom: "1px solid var(--color-border)", overflow: "hidden", backgroundColor: "var(--color-bg)" }}>
+    <section data-section="metrics" className="section" style={{ borderBottom: "1px solid var(--color-border)", overflow: "hidden", backgroundColor: "var(--color-bg)" }}>
       <div className="container">
         <span className="label" style={{ display: "inline-block", marginBottom: "2rem" }}>
           {metrics.title}
@@ -133,58 +256,7 @@ export function ProjectMetrics({ slug, metrics }: Props) {
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
           >
             {metrics.cards.map((card, i) => (
-              <motion.div
-                key={i}
-                variants={cardItem}
-                style={{
-                  padding: "2.25rem 2rem",
-                  border: "1px solid var(--color-border)",
-                  borderRadius: "12px",
-                  background: "var(--color-card)",
-                  position: "relative",
-                  overflow: "hidden",
-                  transition: "border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease",
-                }}
-                whileHover={{
-                  y: -5,
-                  borderColor: card.isPositive ? "var(--color-emerald)" : "var(--color-accent)",
-                  boxShadow: card.isPositive 
-                    ? "0 16px 40px rgba(16, 185, 129, 0.04)" 
-                    : "0 16px 40px rgba(123, 97, 255, 0.04)",
-                }}
-              >
-                {/* Accent glow line on top */}
-                <div
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    height: "3px",
-                    background: card.isPositive ? "var(--color-emerald)" : "var(--color-accent)",
-                    opacity: 0.8,
-                  }}
-                />
-
-                <div style={{ color: "var(--color-muted)", fontSize: "0.8rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "0.5rem" }}>
-                  {card.label}
-                </div>
-                <div
-                  className="display"
-                  style={{
-                    fontSize: "clamp(2rem, 3.5vw, 2.75rem)",
-                    fontWeight: 800,
-                    color: card.isPositive ? "var(--color-emerald)" : "var(--color-fg)",
-                    lineHeight: 1,
-                    marginBottom: "0.5rem",
-                  }}
-                >
-                  {card.value}
-                </div>
-                <p style={{ color: "var(--color-muted)", fontSize: "0.85rem", lineHeight: 1.4, margin: 0 }}>
-                  {card.desc}
-                </p>
-              </motion.div>
+              <MetricCard key={i} card={card} />
             ))}
           </motion.div>
         )}
