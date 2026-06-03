@@ -288,6 +288,11 @@ title: 'malcom.builder — AI-native system builder'
 - **Rediseño Premium /brief:** Formulario de prospección con animaciones de deslizamiento direccionales (de izquierda a derecha o viceversa según el paso) mediante Framer Motion. Iconos interactivos integrados para cada opción de tipo de proyecto, selectores con contornos e iluminación indigo al enfocarse y alertas dinámicas en inputs.
 - **Localización Completa /brief:** Integración de diccionarios paralelos en español e inglés basados en `useLocale()` de `next-intl` en el asistente. Se generalizó la pregunta sobre ubicación geográfica remitiendo a entornos locales, nacionales e internacionales en lugar de opciones fijas en Rosario.
 - **Alineación Vertical /brief:** Reestructuración de la página en un contenedor flex-column de `min-h-screen` con main en `flex-1` y paddings reducidos (`pt-12 pb-16`). Esto alinea verticalmente el formulario en el centro de la pantalla y previene que el footer genere espacio de scroll redundante en pantallas medianas y grandes.
+- **SpotlightButton text-only:** CTAs convertidos de pills a texto plano con inner wrapper pattern. Overlay usa `background-clip: text` para iluminar solo texto; iconos SVG visibles porque overlay es transparente en área no-texto.
+- **CTA final como heading:** Heading "construyamos" es el CTA link a /brief. Se eliminó botón separado + aura central decorativa.
+- **Spotlight gradient preciso:** Falloff reducido de `transparent 50%` a `transparent 20%`. Drop-shadow de 24px a 12px. Spotlight ilumina solo el área del cursor, no toda la palabra.
+- **SpotlightHeading default glow:** Cambiado de emerald `rgb(16,185,129)` a índigo `rgb(123,97,255)` para alinear con `--color-accent`.
+- **Copy CTAs:** Navbar "Construyamos" → "Construir" / "Let's Build" → "Build". CTA final heading "¿empezamos?" → "construyamos" / "ready?" → "let's build".
 
 ### Componentes creados
 
@@ -295,6 +300,7 @@ title: 'malcom.builder — AI-native system builder'
 - **AmbientOrb:** Orb flotante animado de fondo (índigo translúcido) que se mueve lentamente con `useMotionValue` + `useSpring`, visible solo en desktop.
 - **FadeIn:** Soporta prop `rotate` para animación de entrada con tilt (usado en Services cards).
 - **ScrollIndicator:** Flecha animada al final del Hero que pulsa e invita a scrollear.
+- **SpotlightButton:** Componente client-side que envuelve un Link con overlay spotlight text-only (`background-clip: text` + gradiente radial cursor-following + drop-shadow). Inner wrapper pattern para compatibilidad con iconos SVG. Gradiente apretado (transparent 20%) para spotlight preciso.
 
 - **About:** Sección completa a 2 columnas con grid responsive. Foto de perfil con aspecto 4:5, `object-fit: cover`, bordes con glow índigo y badges flotantes con efecto glassmorphism (`backdropFilter`). Título alineado usando la clase `.heading`.
 - **Method:** Sección con track de `Marquee` animado infinitamente y componentes SVG personalizados (`StackSVGs`). Tarjetas transparentes para revelar el resplandor de fondo (orb índigo).
@@ -314,6 +320,8 @@ title: 'malcom.builder — AI-native system builder'
 - **Alineación About:** Se logró igualar perfectamente la altura de la imagen con el contenido de texto removiendo la elongación nativa del grid (`align-items: stretch` descartado). En su lugar se definió un alto fijo usando `aspect-ratio: 4/5` en la foto, y flexbox (`justify-content: space-between`) para distribuir el texto.
 - **Textos superpuestos:** Se resolvieron conflictos de padding al reemplazar el uso de `style` dinámico (ignorado por Framer Motion en `FadeIn`) con clases atómicas de Tailwind (`!pt-0`, `!pb-0`).
 - **Simulación vs Envíos reales:** Implementado comportamiento alternativo si la clave `RESEND_API_KEY` no está provista para desarrollo y validación visual.
+- **Iconos SVG en SpotlightButton:** Overlay con `background-clip: text` y `color: transparent` invisibilizaba SVG por herencia `currentColor`. Resuelto con inner wrapper: overlay y base comparten wrapper, área no-texto transparente deja ver capa base.
+- **Spotlight en texto grande:** Gradiente `transparent 50%` iluminaba toda la palabra en headings. Resuelto: falloff apretado a 20% + drop-shadow reducido de 24px a 12px para spotlight localizado en el cursor.
 
 ### Pendientes próxima sesión
 
