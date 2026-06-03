@@ -52,12 +52,17 @@ quién soy, qué construyo, por qué contratarme a mí y no a una agencia.
 }
 
 .light {
-  --color-bg: #f0eff8; /* Chalk como fondo claro */
-  --color-fg: #0e0e14; /* Void como texto */
-  --color-accent: #7b61ff; /* Indigo — mismo token */
+  --color-bg:           #e8e7f2; /* Chalk oscurecido */
+  --color-surface:      #f0eff8; /* Chalk original como surface */
+  --color-fg:           #0e0e14; /* Void como texto */
+  --color-accent:       #7b61ff; /* Indigo — mismo token */
   --color-accent-hover: #6246ff;
-  --color-muted: #888896; /* Mist */
-  --color-border: #242428;
+  --color-muted:        #6b6a7a; /* Mist más oscuro para contraste */
+  --color-border:       #cccbd8;
+  --color-card:         #f0eff8;
+  --color-glass-bg:     rgba(232, 231, 242, 0.6);
+  --color-emerald:      #0d9668;
+  --color-emerald-hover: #10b981;
 }
 ```
 
@@ -278,21 +283,21 @@ title: 'malcom.builder — AI-native system builder'
 ### Decisiones UI/UX tomadas durante desarrollo
 
 - **Navbar blur:** Abandonado — problemas de renderizado. Navbar 100% opaco con `box-shadow` + `border-bottom` al scroll.
-- **Microinteracciones:** Botones de ícono (`LangToggle`, `ThemeToggle`) con `transform: scale(0.9)` en `:active`.
+- **Microinteracciones:** ThemeToggle y LangToggle ahora son ghost buttons (sin fondo, sin borde) — solo el ícono visible. Color muted en reposo → fg al hover.
 - **Hero layout:** `marginTop: "-10vh"` para que el CTA quede above the fold sin scroll.
-- **Copywriting ES:** Traducciones naturales, no literales. "Desarrollo sistemas con IA" > "AI-native systems builder". "Solo" se mantiene igual en ambos idiomas — es firma de marca.
+- **Copywriting ES:** Traducciones naturales, no literales. "Solo" se mantiene igual en ambos idiomas — es firma de marca.
 - **Color accent:** `#7B61FF` (Indigo) + hover `#6246FF` — alineado con token global de marca.
 - **Emerald:** Token `--color-emerald: #10B981` para detalles puntuales (números en project cards, hover del marquee CTA, section badges, spotlight en headings).
-- **Navbar CTA:** `width: 130px` fijo para evitar saltos de layout al cambiar ES/EN.
+- **Navbar CTA:** Pill outline ghost — fondo transparent en reposo, borde indigo 0.3 opacity. Al hover: borde intenso + background sutil + box-shadow triple (exterior + difuso + inner glow) + texto a fg. Sin motion values — CSS transitions puras.
 - **Tipografía:** Body font DM Sans → Sora (más distintivo). Clase `.heading` + text-shadow en títulos de sección. Espaciado entre secciones: `10rem` mobile / `16rem` desktop.
-- **Rediseño Premium /brief:** Formulario de prospección con animaciones de deslizamiento direccionales (de izquierda a derecha o viceversa según el paso) mediante Framer Motion. Iconos interactivos integrados para cada opción de tipo de proyecto, selectores con contornos e iluminación indigo al enfocarse y alertas dinámicas en inputs.
-- **Localización Completa /brief:** Integración de diccionarios paralelos en español e inglés basados en `useLocale()` de `next-intl` en el asistente. Se generalizó la pregunta sobre ubicación geográfica remitiendo a entornos locales, nacionales e internacionales en lugar de opciones fijas en Rosario.
-- **Alineación Vertical /brief:** Reestructuración de la página en un contenedor flex-column de `min-h-screen` con main en `flex-1` y paddings reducidos (`pt-12 pb-16`). Esto alinea verticalmente el formulario en el centro de la pantalla y previene que el footer genere espacio de scroll redundante en pantallas medianas y grandes.
-- **SpotlightButton text-only:** CTAs convertidos de pills a texto plano con inner wrapper pattern. Overlay usa `background-clip: text` para iluminar solo texto; iconos SVG visibles porque overlay es transparente en área no-texto.
-- **CTA final como heading:** Heading "construyamos" es el CTA link a /brief. Se eliminó botón separado + aura central decorativa.
-- **Spotlight gradient preciso:** Falloff reducido de `transparent 50%` a `transparent 20%`. Drop-shadow de 24px a 12px. Spotlight ilumina solo el área del cursor, no toda la palabra.
-- **SpotlightHeading default glow:** Cambiado de emerald `rgb(16,185,129)` a índigo `rgb(123,97,255)` para alinear con `--color-accent`.
-- **Copy CTAs:** Navbar "Construyamos" → "Construir" / "Let's Build" → "Build". CTA final heading "¿empezamos?" → "construyamos" / "ready?" → "let's build".
+- **Rediseño Premium /brief:** Formulario de prospección con animaciones de deslizamiento direccionales (de izquierda a derecha o viceversa según el paso) mediante Framer Motion.
+- **SpotlightButton text-only:** CTAs convertidos de pills a texto plano con inner wrapper pattern. Overlay usa `background-clip: text` para iluminar solo texto.
+- **CTA final como heading:** Heading "listo?" (ES) / "ready?" (EN) es el CTA link a /brief. textShadow igual al de `.heading` — `rgba(158,80,247,0.35)` a 40px y 80px.
+- **Spotlight gradient preciso:** Falloff `transparent 50%`. Spotlight ilumina con cursor-tracking.
+- **SpotlightHeading default glow:** Índigo `rgb(123,97,255)` para alinear con `--color-accent`.
+- **Copy CTAs:** Navbar "Construir" / "Build". CTA final heading "listo?" (ES) / "ready?" (EN).
+- **Footer wordmark dual spotlight:** Componente `SpotlightWord` con `hoverTextShadow` — "malcom" resplandece indigo, ".builder" resplandece emerald al hover. Aura base = mismo textShadow que `.heading`. Sin scale (removido de `.footer-wordmark:hover`).
+- **Light mode atenuado:** bg bajado a `#e8e7f2`, surface/card a `#f0eff8`, border a `#cccbd8`, muted a `#6b6a7a`. Menos blanco, tono lavanda-tiza.
 
 ### Componentes creados
 
@@ -312,7 +317,7 @@ title: 'malcom.builder — AI-native system builder'
 - **Noise texture:** `body::after` con SVG `data:image/svg+xml` base64 como `background-image` para textura grano sutil en todo el sitio.
 - **Ambient orb:** `AmbientOrb.tsx` renderizado en `app/[locale]/layout.tsx` como fondo decorativo (solo desktop).
 - **Section transitions:** Secciones pares tienen un gradiente glow en `::before` en el borde superior para separación visual.
-- **Footer wordmark glow:** Text-shadow triple (accent) + color fg para protagonismo.
+- **Footer wordmark:** Componente `SpotlightWord` — cada palabra tiene ref independiente + overlay `background-clip: text` + `hoverTextShadow` en su propio color. textShadow base = `.heading` (rgba 158,80,247). Sin clipPath, sin drop-shadow en overlay (causaba aura cuadrada).
 
 ### Problemas resueltos
 

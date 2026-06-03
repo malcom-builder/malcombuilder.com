@@ -16,9 +16,24 @@ export function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="icon-btn"
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-      style={{ position: "relative", overflow: "hidden" }}
+      style={{
+        position: "relative",
+        overflow: "hidden",
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: "center",
+        width: "2rem",
+        height: "2rem",
+        background: "none",
+        border: "none",
+        cursor: "pointer",
+        color: "var(--color-muted)",
+        transition: "color 0.2s ease",
+        padding: 0,
+      }}
+      onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--color-fg)")}
+      onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--color-muted)")}  
     >
       <AnimatePresence mode="wait" initial={false}>
         <motion.div

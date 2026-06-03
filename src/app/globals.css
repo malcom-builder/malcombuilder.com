@@ -15,18 +15,19 @@
 }
 
 .light {
-  --color-bg:           #f0eff8; /* Chalk como fondo claro */
-  --color-surface:      #ffffff;
+  --color-bg:           #e8e7f2; /* Chalk oscurecido */
+  --color-surface:      #f0eff8; /* Chalk original como surface */
   --color-fg:           #0e0e14; /* Void como texto */
   --color-accent:       #7b61ff; /* Indigo — mismo token */
   --color-accent-hover: #6246ff;
-  --color-muted:        #888896; /* Mist */
-  --color-border:       #242428;
-  --color-card:         #ffffff;
-  --color-glass-bg:     rgba(240, 239, 248, 0.45);
+  --color-muted:        #6b6a7a; /* Mist más oscuro para contraste */
+  --color-border:       #cccbd8;
+  --color-card:         #f0eff8;
+  --color-glass-bg:     rgba(232, 231, 242, 0.6);
   --color-emerald:      #0d9668;
   --color-emerald-hover: #10b981;
 }
+
 
 /* ─── Base ───────────────────────────────────────────────────────────────── */
 *,
@@ -378,35 +379,6 @@ body {
 .footer-wordmark {
   display: inline-block;
   cursor: pointer;
-  transition:
-    transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
-    letter-spacing 0.25s ease;
-  will-change: transform;
-}
-.footer-wordmark:hover {
-  transform: translateY(-3px) scale(1.03);
-  letter-spacing: -0.005em;
-}
-
-.fw-malcom,
-.fw-dot,
-.fw-builder {
-  transition: color 0.25s ease, text-shadow 0.25s ease;
-}
-
-.footer-wordmark:hover .fw-malcom {
-  color: var(--color-accent);
-  text-shadow: 0 0 40px rgba(123,97,255,0.35), 0 0 80px rgba(123,97,255,0.15);
-}
-
-.footer-wordmark:hover .fw-dot {
-  color: #ffffff;
-  text-shadow: 0 0 30px rgba(255,255,255,0.4);
-}
-
-.footer-wordmark:hover .fw-builder {
-  color: var(--color-emerald);
-  text-shadow: 0 0 40px rgba(16,185,129,0.35), 0 0 80px rgba(16,185,129,0.15);
 }
 
 .footer-link {

@@ -4,8 +4,7 @@ import { useTranslations, useLocale } from "next-intl";
 import { Link, usePathname } from "@/i18n/routing";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { LangToggle } from "@/components/ui/LangToggle";
-import { useState, useEffect, useRef } from "react";
-import { SpotlightButton } from "@/components/ui/SpotlightButton";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const SECTION_IDS = ["services", "projects", "method", "about"];
@@ -42,7 +41,6 @@ export function Navbar() {
   const isHome = pathname === "/";
   const [scrolled, setScrolled] = useState(false);
   const activeSection = useActiveSection();
-
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16);
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -163,19 +161,44 @@ export function Navbar() {
             <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
               <LangToggle />
               <ThemeToggle />
-              <SpotlightButton
-                href="/brief"
-                glowColor="rgb(255,255,255)"
-                style={{
-                  fontSize: "0.9rem",
-                  fontWeight: 600,
-                  color: "var(--color-accent)",
-                  textDecoration: "none",
-                  marginLeft: "0.5rem",
-                }}
-              >
-                {t("cta")}
-              </SpotlightButton>
+              <Link href="/brief" style={{ textDecoration: "none", marginLeft: "0.5rem" }}>
+                <span
+                  className="navbar-cta"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    padding: "0.45rem 1.1rem",
+                    borderRadius: "9999px",
+                    border: "1px solid rgba(123,97,255,0.3)",
+                    background: "transparent",
+                    fontSize: "0.875rem",
+                    fontWeight: 600,
+                    color: "var(--color-accent)",
+                    letterSpacing: "0.01em",
+                    transition:
+                      "border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease, color 0.25s ease",
+                    cursor: "pointer",
+                    whiteSpace: "nowrap",
+                  }}
+                  onMouseEnter={(e) => {
+                    const el = e.currentTarget as HTMLElement;
+                    el.style.borderColor = "rgba(123,97,255,0.7)";
+                    el.style.background = "rgba(123,97,255,0.08)";
+                    el.style.boxShadow =
+                      "0 0 16px rgba(123,97,255,0.2), 0 0 32px rgba(123,97,255,0.08), inset 0 0 12px rgba(123,97,255,0.06)";
+                    el.style.color = "var(--color-fg)";
+                  }}
+                  onMouseLeave={(e) => {
+                    const el = e.currentTarget as HTMLElement;
+                    el.style.borderColor = "rgba(123,97,255,0.3)";
+                    el.style.background = "transparent";
+                    el.style.boxShadow = "none";
+                    el.style.color = "var(--color-accent)";
+                  }}
+                >
+                  {t("cta")}
+                </span>
+              </Link>
             </div>
           </nav>
         </div>
