@@ -5,10 +5,10 @@
     "projects": "Projects",
     "method": "Method",
     "about": "About",
-    "cta": "Construyamos"
+    "cta": "Construir"
   },
   "hero": {
-    "tagline": "Studio de producto digital",
+    "tagline": "Digital Product Studio",
     "headline": "Construyo productos digitales.",
     "headline_accent": "Solo.",
     "subheadline": "Webs y plataformas que convierten. Precio fijo. Entrega en semanas.",
@@ -18,10 +18,22 @@
     "badge": "Servicios",
     "title": "Así construyo",
     "items": [
-      { "title": "Estrategia",     "desc": "Antes de construir cualquier cosa, definimos para quién es, qué problema resuelve y cómo se paga. Sin esto, el mejor código del mundo no convierte." },
-      { "title": "Arquitectura",   "desc": "Tu marca es el primer filtro. Un diseño que no transmite confianza pierde clientes antes de que lean una sola línea." },
-      { "title": "Producto",       "desc": "El sitio que tus clientes visitan antes de llamarte. La plataforma que procesa tus ventas. Lo que hace que el negocio funcione digitalmente." },
-      { "title": "Crecimiento",    "desc": "Un producto lanzado no es un producto que vende. El crecimiento es la diferencia entre tener presencia y generar demanda." }
+      {
+        "title": "Estrategia",
+        "desc": "Antes de construir cualquier cosa, definimos para quién es, qué problema resuelve y cómo se paga. Sin esto, el mejor código del mundo no convierte."
+      },
+      {
+        "title": "Arquitectura",
+        "desc": "Tu marca es el primer filtro. Un diseño que no transmite confianza pierde clientes antes de que lean una sola línea."
+      },
+      {
+        "title": "Producto",
+        "desc": "El sitio que tus clientes visitan antes de llamarte. La plataforma que procesa tus ventas. Lo que hace que el negocio funcione digitalmente."
+      },
+      {
+        "title": "Crecimiento",
+        "desc": "Un producto lanzado no es un producto que vende. El crecimiento es la diferencia entre tener presencia y generar demanda."
+      }
     ]
   },
   "projects": {
@@ -35,11 +47,26 @@
       "description": "Zolfo tenía una clínica de alto nivel y una presencia digital que no lo reflejaba. El resultado: pacientes que buscaban sus tratamientos en Google y llegaban a otra clínica.\n\nHoy el sitio convierte el 47% de las visitas en consultas reales. Cada tratamiento tiene su propia página optimizada para Google. El paciente llega, navega, y agenda — sin fricción.\n\n765 usuarios activos en el primer mes. 444 contactos generados. Uptime del 100%.",
       "featuresLabel": "Qué incluye",
       "features": [
-        { "title": "SEO individual", "desc": "Cuando alguien busca 'ácido hialurónico en Rosario', aparece Zolfo — no la competencia." },
-        { "title": "Conversión WhatsApp", "desc": "El 47% de quienes entran al sitio terminan escribiendo por WhatsApp. Sin formularios complicados, sin fricción." },
-        { "title": "Panel admin", "desc": "Subís una foto nueva, cambiás un precio, agregás un tratamiento. Solo. Sin llamar a nadie." },
-        { "title": "Velocidad", "desc": "Google penaliza los sitios lentos. Este carga en menos de un segundo. Eso es posicionamiento sin pagar pauta." },
-        { "title": "Estabilidad", "desc": "Ni una caída en todo el período. Cada hora que un sitio está caído es plata que se pierde." }
+        {
+          "title": "SEO individual",
+          "desc": "Cuando alguien busca 'ácido hialurónico en Rosario', aparece Zolfo — no la competencia."
+        },
+        {
+          "title": "Conversión WhatsApp",
+          "desc": "El 47% de quienes entran al sitio terminan escribiendo por WhatsApp. Sin formularios complicados, sin fricción."
+        },
+        {
+          "title": "Panel admin",
+          "desc": "Subís una foto nueva, cambiás un precio, agregás un tratamiento. Solo. Sin llamar a nadie."
+        },
+        {
+          "title": "Velocidad",
+          "desc": "Google penaliza los sitios lentos. Este carga en menos de un segundo. Eso es posicionamiento sin pagar pauta."
+        },
+        {
+          "title": "Estabilidad",
+          "desc": "Ni una caída en todo el período. Cada hora que un sitio está caído es plata que se pierde."
+        }
       ],
       "metrics": {
         "title": "Métricas & Resultados",
@@ -49,22 +76,64 @@
         "channels_desc": "Desglose de canales de adquisición (Sesiones GA)",
         "treatments_desc": "Distribución de vistas por tratamiento (Páginas vistas GA)",
         "cards": [
-          { "label": "Conversión de Leads", "value": "47.0%", "desc": "Casi 1 de cada 2 visitantes termina escribiendo para agendar. El sitio vende solo.", "isPositive": true },
-          { "label": "Leads de Reserva", "value": "444", "desc": "444 pacientes potenciales en un mes. Sin pauta adicional, sin esfuerzo extra.", "isPositive": true },
-          { "label": "Usuarios Activos", "value": "765", "desc": "765 personas visitaron la clínica digitalmente. Muchos más que en persona." },
-          { "label": "Páginas Vistas", "value": "5.456", "desc": "5.456 veces alguien exploró un tratamiento. Cada vista es una intención de compra." }
+          {
+            "label": "Conversión de Leads",
+            "value": "47.0%",
+            "desc": "Casi 1 de cada 2 visitantes termina escribiendo para agendar. El sitio vende solo.",
+            "isPositive": true
+          },
+          {
+            "label": "Leads de Reserva",
+            "value": "444",
+            "desc": "444 pacientes potenciales en un mes. Sin pauta adicional, sin esfuerzo extra.",
+            "isPositive": true
+          },
+          {
+            "label": "Usuarios Activos",
+            "value": "765",
+            "desc": "765 personas visitaron la clínica digitalmente. Muchos más que en persona."
+          },
+          {
+            "label": "Páginas Vistas",
+            "value": "5.456",
+            "desc": "5.456 veces alguien exploró un tratamiento. Cada vista es una intención de compra."
+          }
         ],
         "channels": [
-          { "name": "Referencia (Recomendación)", "value": 332, "percent": "35%" },
-          { "name": "Redes Sociales (Instagram)", "value": 256, "percent": "27%" },
+          {
+            "name": "Referencia (Recomendación)",
+            "value": 332,
+            "percent": "35%"
+          },
+          {
+            "name": "Redes Sociales (Instagram)",
+            "value": 256,
+            "percent": "27%"
+          },
           { "name": "Tráfico Directo", "value": 239, "percent": "25%" },
-          { "name": "Búsqueda Orgánica (Google)", "value": 99, "percent": "13%" }
+          {
+            "name": "Búsqueda Orgánica (Google)",
+            "value": 99,
+            "percent": "13%"
+          }
         ],
         "treatments": [
-          { "name": "Página de Inicio (Home)", "value": 2271, "percent": "42%" },
-          { "name": "Catálogo de Tratamientos", "value": 1323, "percent": "24%" },
+          {
+            "name": "Página de Inicio (Home)",
+            "value": 2271,
+            "percent": "42%"
+          },
+          {
+            "name": "Catálogo de Tratamientos",
+            "value": 1323,
+            "percent": "24%"
+          },
           { "name": "Ácido Hialurónico", "value": 383, "percent": "7%" },
-          { "name": "Toxina Botulínica (Bótox)", "value": 188, "percent": "3.5%" },
+          {
+            "name": "Toxina Botulínica (Bótox)",
+            "value": 188,
+            "percent": "3.5%"
+          },
           { "name": "Bioestimadores", "value": 102, "percent": "2%" }
         ]
       }
@@ -74,19 +143,53 @@
       "description": "El paciente de estética es exigente. Antes de agendar un turno, ya revisó el Instagram, buscó en Google y entró al sitio de al menos tres clínicas.\n\nNurEstética necesitaba una presencia que convenciera en los primeros segundos. Sin texto de más. Sin carga lenta. Sin diseño genérico.\n\nEl resultado: 100/100 en experiencia de usuario, carga en 0.35 segundos, cero saltos de pantalla. El sitio se siente tan cuidado como la clínica.",
       "featuresLabel": "Qué incluye",
       "features": [
-        { "title": "Diseño", "desc": "El diseño no es decoración. Es el primer filtro que el paciente usa para decidir si confía." },
-        { "title": "Velocidad", "desc": "0.35 segundos de carga. El paciente que entra desde el celular no espera — y este sitio no lo hace esperar." },
-        { "title": "Reserva", "desc": "Cada sección termina en un paso claro: agendar, consultar, o ver más. El camino al turno está siempre a un clic." },
-        { "title": "Estabilidad visual", "desc": "CLS perfecto: nada se mueve mientras carga. Pequeño detalle técnico, gran diferencia en percepción de calidad." },
-        { "title": "Infraestructura", "desc": "Funciona. Siempre. Sin que nadie tenga que acordarse de actualizarlo o renovar nada." }
+        {
+          "title": "Diseño",
+          "desc": "El diseño no es decoración. Es el primer filtro que el paciente usa para decidir si confía."
+        },
+        {
+          "title": "Velocidad",
+          "desc": "0.35 segundos de carga. El paciente que entra desde el celular no espera — y este sitio no lo hace esperar."
+        },
+        {
+          "title": "Reserva",
+          "desc": "Cada sección termina en un paso claro: agendar, consultar, o ver más. El camino al turno está siempre a un clic."
+        },
+        {
+          "title": "Estabilidad visual",
+          "desc": "CLS perfecto: nada se mueve mientras carga. Pequeño detalle técnico, gran diferencia en percepción de calidad."
+        },
+        {
+          "title": "Infraestructura",
+          "desc": "Funciona. Siempre. Sin que nadie tenga que acordarse de actualizarlo o renovar nada."
+        }
       ],
       "metrics": {
         "title": "Métricas & Rendimiento",
         "cards": [
-          { "label": "Experiencia de Usuario", "value": "100/100", "desc": "La puntuación máxima posible. Medida en usuarios reales, no en laboratorio.", "isPositive": true },
-          { "label": "Velocidad de Carga", "value": "0.35s", "desc": "El sitio responde en un tercio de segundo. El paciente no espera y no cierra la pestaña.", "isPositive": true },
-          { "label": "Estabilidad Visual", "value": "Perfecta", "desc": "Nada salta, nada se mueve mientras carga. El usuario confía desde el primer segundo.", "isPositive": true },
-          { "label": "Optimización SEO", "value": "100/100", "desc": "Puntaje máximo de Google. Máxima visibilidad orgánica sin pagar pauta." }
+          {
+            "label": "Experiencia de Usuario",
+            "value": "100/100",
+            "desc": "La puntuación máxima posible. Medida en usuarios reales, no en laboratorio.",
+            "isPositive": true
+          },
+          {
+            "label": "Velocidad de Carga",
+            "value": "0.35s",
+            "desc": "El sitio responde en un tercio de segundo. El paciente no espera y no cierra la pestaña.",
+            "isPositive": true
+          },
+          {
+            "label": "Estabilidad Visual",
+            "value": "Perfecta",
+            "desc": "Nada salta, nada se mueve mientras carga. El usuario confía desde el primer segundo.",
+            "isPositive": true
+          },
+          {
+            "label": "Optimización SEO",
+            "value": "100/100",
+            "desc": "Puntaje máximo de Google. Máxima visibilidad orgánica sin pagar pauta."
+          }
         ]
       }
     },
@@ -95,19 +198,52 @@
       "description": "Cuando tu plataforma crece, el acceso se vuelve un problema. ¿Quién puede ver los datos de facturación? ¿Quién puede editar? ¿Quién solo puede leer?\n\nAuthMotion es la respuesta. Un sistema de autenticación y permisos de grado empresarial, listo para integrarse a cualquier plataforma. Login con doble factor, acceso con Google o GitHub, roles a medida.\n\nSin pagar licencias. Sin depender de terceros. Sin reinventar la rueda cada vez.",
       "featuresLabel": "Qué incluye",
       "features": [
-        { "title": "2FA", "desc": "La contraseña sola no es suficiente. El doble factor bloquea el 99% de los accesos no autorizados — aunque la clave sea conocida." },
-        { "title": "Social login", "desc": "Menos fricción al registrarse = más usuarios que completan el proceso. Un clic con Google basta." },
-        { "title": "Roles", "desc": "Definís exactamente quién ve qué. El empleado nuevo no accede a lo que no tiene que ver. El cliente no modifica lo que no debe." },
-        { "title": "Escalabilidad", "desc": "Funciona igual con 100 usuarios que con 100.000. La infraestructura crece con el negocio, no al revés." },
-        { "title": "Seguridad", "desc": "Los datos de tus clientes no son tuyos para perder. Encriptación, tokens seguros y buenas prácticas de la industria, desde el día uno." }
+        {
+          "title": "2FA",
+          "desc": "La contraseña sola no es suficiente. El doble factor bloquea el 99% de los accesos no autorizados — aunque la clave sea conocida."
+        },
+        {
+          "title": "Social login",
+          "desc": "Menos fricción al registrarse = más usuarios que completan el proceso. Un clic con Google basta."
+        },
+        {
+          "title": "Roles",
+          "desc": "Definís exactamente quién ve qué. El empleado nuevo no accede a lo que no tiene que ver. El cliente no modifica lo que no debe."
+        },
+        {
+          "title": "Escalabilidad",
+          "desc": "Funciona igual con 100 usuarios que con 100.000. La infraestructura crece con el negocio, no al revés."
+        },
+        {
+          "title": "Seguridad",
+          "desc": "Los datos de tus clientes no son tuyos para perder. Encriptación, tokens seguros y buenas prácticas de la industria, desde el día uno."
+        }
       ],
       "metrics": {
         "title": "Arquitectura & Control",
         "cards": [
-          { "label": "Licencia", "value": "Gratuita", "desc": "Sin suscripciones mensuales. Sin depender de que otra empresa suba los precios." },
-          { "label": "Autenticación", "value": "Doble Factor", "desc": "Aunque roben la contraseña, no pueden entrar. El acceso requiere el celular del dueño.", "isPositive": true },
-          { "label": "Integración", "value": "Social Login", "desc": "Los usuarios se registran con Google. Sin formularios largos, sin contraseñas que olvidar.", "isPositive": true },
-          { "label": "Portabilidad", "value": "Docker", "desc": "Corre en AWS, Azure, o servidor propio. Sin quedar atado a ningún proveedor." }
+          {
+            "label": "Licencia",
+            "value": "Gratuita",
+            "desc": "Sin suscripciones mensuales. Sin depender de que otra empresa suba los precios."
+          },
+          {
+            "label": "Autenticación",
+            "value": "Doble Factor",
+            "desc": "Aunque roben la contraseña, no pueden entrar. El acceso requiere el celular del dueño.",
+            "isPositive": true
+          },
+          {
+            "label": "Integración",
+            "value": "Social Login",
+            "desc": "Los usuarios se registran con Google. Sin formularios largos, sin contraseñas que olvidar.",
+            "isPositive": true
+          },
+          {
+            "label": "Portabilidad",
+            "value": "Docker",
+            "desc": "Corre en AWS, Azure, o servidor propio. Sin quedar atado a ningún proveedor."
+          }
         ]
       }
     },
@@ -116,19 +252,52 @@
       "description": "Cuando una plataforma maneja dinero, el margen de error es cero. Un cobro duplicado, un saldo descuadrado, una transacción perdida — cualquiera destruye la confianza en minutos.\n\nSmartWallet es el motor financiero que resuelve eso. Contabilidad de doble entrada como usan los bancos. Bóveda de seguridad para credenciales sensibles. Transacciones atómicas que no se pierden aunque el servidor se caiga en el medio.\n\nListo para conectarse a cualquier plataforma existente vía API.",
       "featuresLabel": "Qué incluye",
       "features": [
-        { "title": "Doble entrada", "desc": "Cada peso que entra tiene un destino. Cada peso que sale tiene un origen. Imposible que el saldo se descuadre." },
-        { "title": "Bóveda", "desc": "Las claves de acceso, tokens y datos sensibles viven en una bóveda de hardware. No en una variable de entorno que alguien puede ver." },
-        { "title": "Transacciones", "desc": "Si dos usuarios hacen una operación al mismo tiempo, el sistema lo resuelve sin duplicar ni perder nada. El dinero siempre llega." },
-        { "title": "API", "desc": "Se conecta a lo que ya tenés. No hace falta reconstruir la plataforma — SmartWallet se integra como un módulo." },
-        { "title": "Auditoría", "desc": "Cada movimiento queda registrado para siempre. Si hay un reclamo, tenés el historial completo. Si hay fraude, se detecta." }
+        {
+          "title": "Doble entrada",
+          "desc": "Cada peso que entra tiene un destino. Cada peso que sale tiene un origen. Imposible que el saldo se descuadre."
+        },
+        {
+          "title": "Bóveda",
+          "desc": "Las claves de acceso, tokens y datos sensibles viven en una bóveda de hardware. No en una variable de entorno que alguien puede ver."
+        },
+        {
+          "title": "Transacciones",
+          "desc": "Si dos usuarios hacen una operación al mismo tiempo, el sistema lo resuelve sin duplicar ni perder nada. El dinero siempre llega."
+        },
+        {
+          "title": "API",
+          "desc": "Se conecta a lo que ya tenés. No hace falta reconstruir la plataforma — SmartWallet se integra como un módulo."
+        },
+        {
+          "title": "Auditoría",
+          "desc": "Cada movimiento queda registrado para siempre. Si hay un reclamo, tenés el historial completo. Si hay fraude, se detecta."
+        }
       ],
       "metrics": {
         "title": "Precisión & Control",
         "cards": [
-          { "label": "Precisión Contable", "value": "100%", "desc": "Cada centavo tiene origen y destino registrado. El saldo nunca se descuadre. Nunca." },
-          { "label": "Seguridad de Datos", "value": "Bóveda", "desc": "Las credenciales no viven en el código. Viven en hardware seguro. Como un banco.", "isPositive": true },
-          { "label": "Transacciones", "value": "Blindadas", "desc": "Si el servidor se cae en mitad de un pago, nada queda a medias. Todo pasa o nada pasa.", "isPositive": true },
-          { "label": "Integración", "value": "API REST", "desc": "Se conecta a tu app, tu web o tu sistema de ventas. Sin reescribir nada." }
+          {
+            "label": "Precisión Contable",
+            "value": "100%",
+            "desc": "Cada centavo tiene origen y destino registrado. El saldo nunca se descuadre. Nunca."
+          },
+          {
+            "label": "Seguridad de Datos",
+            "value": "Bóveda",
+            "desc": "Las credenciales no viven en el código. Viven en hardware seguro. Como un banco.",
+            "isPositive": true
+          },
+          {
+            "label": "Transacciones",
+            "value": "Blindadas",
+            "desc": "Si el servidor se cae en mitad de un pago, nada queda a medias. Todo pasa o nada pasa.",
+            "isPositive": true
+          },
+          {
+            "label": "Integración",
+            "value": "API REST",
+            "desc": "Se conecta a tu app, tu web o tu sistema de ventas. Sin reescribir nada."
+          }
         ]
       }
     },
@@ -137,19 +306,52 @@
       "description": "Esta es mi propia plataforma. La diseñé y construí utilizando inteligencia artificial avanzada como palanca de ejecución para lograr un sitio multi-idioma impecable, ultra rápido y estéticamente premium. Muestra mi filosofía de trabajo: velocidad extrema, diseño de autor y cero fricción para el usuario.\n\nQUÉ RESUELVE\nUn portfolio lento o genérico no convence a nadie. Esta web sirve como prueba de concepto viviente de lo que puedo construir para tu negocio: una experiencia interactiva que carga en milisegundos, habla en el idioma de tu cliente y genera confianza inmediata para cerrar la venta.",
       "featuresLabel": "Qué incluye",
       "features": [
-        { "title": "Experiencia interactiva premium", "desc": "Animaciones fluidas y microinteracciones que cautivan la atención del usuario sin ralentizar la navegación." },
-        { "title": "Multi-idioma nativo (ES/EN)", "desc": "Detección automática e intercambio de idioma instantáneo a nivel de servidor, sin recargar la página." },
-        { "title": "Rendimiento de vanguardia", "desc": "Puntuaciones perfectas en las auditorías de rendimiento de Google, asegurando el mejor posicionamiento orgánico." },
-        { "title": "Modo Oscuro / Claro fluido", "desc": "Adaptación inteligente al esquema visual del usuario con transiciones suaves y naturales." },
-        { "title": "Optimización SEO total", "desc": "Estructura indexable por Google, mapa del sitio automático y metadatos dinámicos para máxima visibilidad." }
+        {
+          "title": "Experiencia interactiva premium",
+          "desc": "Animaciones fluidas y microinteracciones que cautivan la atención del usuario sin ralentizar la navegación."
+        },
+        {
+          "title": "Multi-idioma nativo (ES/EN)",
+          "desc": "Detección automática e intercambio de idioma instantáneo a nivel de servidor, sin recargar la página."
+        },
+        {
+          "title": "Rendimiento de vanguardia",
+          "desc": "Puntuaciones perfectas en las auditorías de rendimiento de Google, asegurando el mejor posicionamiento orgánico."
+        },
+        {
+          "title": "Modo Oscuro / Claro fluido",
+          "desc": "Adaptación inteligente al esquema visual del usuario con transiciones suaves y naturales."
+        },
+        {
+          "title": "Optimización SEO total",
+          "desc": "Estructura indexable por Google, mapa del sitio automático y metadatos dinámicos para máxima visibilidad."
+        }
       ],
       "metrics": {
         "title": "Optimización & Conversión",
         "cards": [
-          { "label": "Conversión", "value": "Optimizada", "desc": "Cada sección lleva al visitante al siguiente paso. El contacto es siempre visible." },
-          { "label": "Idiomas", "value": "ES / EN", "desc": "Español e inglés al instante. Sin recargar la página.", "isPositive": true },
-          { "label": "Estilo Visual", "value": "Premium", "desc": "Diseño editorial oscuro con tipografía bold. La primera impresión que convierte.", "isPositive": true },
-          { "label": "Performance", "value": "100/100", "desc": "Puntuación perfecta de Google. Carga instantánea, mejor posicionamiento orgánico." }
+          {
+            "label": "Conversión",
+            "value": "Optimizada",
+            "desc": "Cada sección lleva al visitante al siguiente paso. El contacto es siempre visible."
+          },
+          {
+            "label": "Idiomas",
+            "value": "ES / EN",
+            "desc": "Español e inglés al instante. Sin recargar la página.",
+            "isPositive": true
+          },
+          {
+            "label": "Estilo Visual",
+            "value": "Premium",
+            "desc": "Diseño editorial oscuro con tipografía bold. La primera impresión que convierte.",
+            "isPositive": true
+          },
+          {
+            "label": "Performance",
+            "value": "100/100",
+            "desc": "Puntuación perfecta de Google. Carga instantánea, mejor posicionamiento orgánico."
+          }
         ]
       }
     },
@@ -158,50 +360,83 @@
       "description": "Un sitio caído sin que nadie lo sepa es peor que no tener sitio. El cliente intenta entrar, no puede, y va a otro lado. Vos te enterás horas después.\n\nPulse monitorea tu web cada 5 minutos. Si algo falla, te avisa al instante por Telegram. Si el certificado SSL está por vencer, te avisa antes de que los navegadores bloqueen el acceso.\n\nTambién genera reportes mensuales automáticos con métricas de disponibilidad — para que tengas el historial documentado y puedas exigirle a tu proveedor de hosting cuando algo falla.",
       "featuresLabel": "Qué incluye",
       "features": [
-        { "title": "Monitoreo", "desc": "Cada 5 minutos, Pulse verifica que tu sitio responde. Si no responde, vos lo sabés antes que cualquier cliente." },
-        { "title": "Alertas", "desc": "El aviso llega a tu celular en segundos. No al otro día, no cuando alguien se queja — en el momento." },
-        { "title": "SSL", "desc": "Un certificado vencido hace que los navegadores muestren 'sitio inseguro' a todos tus visitantes. Pulse avisa antes de que pase." },
-        { "title": "Reportes", "desc": "Cada mes, un reporte en PDF con el historial de uptime. Si tu hosting falla seguido, tenés los datos para reclamarlo — o para cambiarlo." },
-        { "title": "Panel", "desc": "Un panel donde ves en tiempo real si todo está funcionando. Verde es verde. Rojo es problema." }
+        {
+          "title": "Monitoreo",
+          "desc": "Cada 5 minutos, Pulse verifica que tu sitio responde. Si no responde, vos lo sabés antes que cualquier cliente."
+        },
+        {
+          "title": "Alertas",
+          "desc": "El aviso llega a tu celular en segundos. No al otro día, no cuando alguien se queja — en el momento."
+        },
+        {
+          "title": "SSL",
+          "desc": "Un certificado vencido hace que los navegadores muestren 'sitio inseguro' a todos tus visitantes. Pulse avisa antes de que pase."
+        },
+        {
+          "title": "Reportes",
+          "desc": "Cada mes, un reporte en PDF con el historial de uptime. Si tu hosting falla seguido, tenés los datos para reclamarlo — o para cambiarlo."
+        },
+        {
+          "title": "Panel",
+          "desc": "Un panel donde ves en tiempo real si todo está funcionando. Verde es verde. Rojo es problema."
+        }
       ],
       "metrics": {
         "title": "Vigilancia & Alertas",
         "cards": [
-          { "label": "Frecuencia", "value": "5 min", "desc": "Verificación cada 5 minutos. Sabés antes que tus clientes si algo falla." },
-          { "label": "Canal de Alerta", "value": "Telegram", "desc": "Aviso instantáneo a tu celular ante la mínima caída del sistema", "isPositive": true },
-          { "label": "Historial de Uptime", "value": "100%", "desc": "Registro completo de disponibilidad. Si tu hosting falla, tenés los datos para reclamarlo.", "isPositive": true },
-          { "label": "Certificado SSL", "value": "Automático", "desc": "Avisa antes de que venza. Evita que los navegadores marquen tu sitio como inseguro." }
+          {
+            "label": "Frecuencia",
+            "value": "5 min",
+            "desc": "Verificación cada 5 minutos. Sabés antes que tus clientes si algo falla."
+          },
+          {
+            "label": "Canal de Alerta",
+            "value": "Telegram",
+            "desc": "Aviso instantáneo a tu celular ante la mínima caída del sistema",
+            "isPositive": true
+          },
+          {
+            "label": "Historial de Uptime",
+            "value": "100%",
+            "desc": "Registro completo de disponibilidad. Si tu hosting falla, tenés los datos para reclamarlo.",
+            "isPositive": true
+          },
+          {
+            "label": "Certificado SSL",
+            "value": "Automático",
+            "desc": "Avisa antes de que venza. Evita que los navegadores marquen tu sitio como inseguro."
+          }
         ]
       }
     }
   },
   "method": {
-    "badge": "Método",
-    "title": "Herramientas"
+    "badge": "Stack",
+    "title": "Herramientas",
+    "subtitle": "El stack que uso para construir"
   },
   "about": {
     "label": "ABOUT",
-    "headline": "Un builder. Un stack. Un resultado.",
+    "headline": "Un builder. Un stack. Un resultado. Precisión.",
     "thesis": {
-      "text": "Construyo productos digitales solo. Arquitectura sólida, ejecución con IA, entrega en semanas. Sin equipo, sin costos inflados, sin vueltas."
+      "text": "Construyo productos digitales, solo. Arquitectura sólida, ejecución con IA, entrega en semanas. Sin equipo, sin costos inflados, con criterio."
     },
     "who": {
       "label": "QUIÉN",
       "name": "Malcom Foca",
       "role": "Técnico Universitario en Programación — UTN Rosario",
-      "location": "Rosario → Argentina → Latam",
-      "combined": "Malcom Foca · Técnico Universitario en Programación — UTN Rosario · Rosario → Argentina → Latam"
+      "location": "Rosario → World"
     },
     "does": {
       "label": "QUÉ HAGO",
-      "bold": "Construyo productos digitales. La IA es la palanca de ejecución, no el producto.",
-      "line1": "Webs, plataformas, APIs y sistemas que funcionan. Sin deuda técnica, sin sorpresas."
+      "bold": "Construyo productos digitales.",
+      "line1": "Webs, plataformas, sistemas y APIs. Lo que el negocio necesita para funcionar digitalmente."
     },
     "how": {
       "label": "CÓMO LO HAGO",
       "bold": "Solo. Desde la arquitectura hasta el deploy.",
-      "line1": "Stack técnico sólido + agentes de IA como palanca de ejecución.",
-      "line2": "Workflows propios. Cada proyecto corre sobre procesos estandarizados — contexto documentado, entregables por iteración, nada improvisado."
+      "line1": "Arquitectura sólida + IA como agente de ejecución.",
+      "line2": "Workflows propios. Procesos estandarizados — contexto documentado, entregables por iteración, nada improvisado."
     },
     "social": {
       "instagram": "INSTAGRAM",
@@ -210,24 +445,25 @@
     }
   },
   "cta": {
-    "marquee": "HABLEMOS — CONSTRUYAMOS ALGO — TENÉS UN PROYECTO — ESCRIBIME — EMPECEMOS",
-    "btn_text": "Construyamos.",
-    "email": "contact@malcombuilder.com"
+    "marquee": "HABLEMOS — TENÉS UN PROYECTO — ESCALEMOS — ESCRIBIME — EMPECEMOS — TRANSFORMEMOS — ",
+    "heading": "¿empezamos?",
+    "action": "empezamos",
+    "sub": "sin compromiso · respuesta en 24h"
   },
   "footer": {
-    "tagline": "Studio de producto digital · Rosario, Argentina",
+    "tagline": "Digital Product Studio",
     "description": "Webs, plataformas y sistemas. Solo. Con criterio.",
     "nav_title": "Navegación",
     "social_title": "Redes",
     "bottom": "© 2026 malcom.builder · Rosario, Argentina · Built with Next.js & AI"
   },
   "toggle": {
-    "theme_dark":  "Cambiar a modo oscuro",
+    "theme_dark": "Cambiar a modo oscuro",
     "theme_light": "Cambiar a modo claro",
     "lang": "Switch to English"
   },
   "meta": {
-    "title": "malcom.builder — Studio de producto digital",
+    "title": "malcom.builder — Digital Product Studio",
     "description": "Construyo productos digitales potenciados con IA. Más rápido que una agencia. Con más criterio que un freelancer."
   }
 }

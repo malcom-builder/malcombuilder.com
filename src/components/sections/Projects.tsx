@@ -13,6 +13,7 @@ import {
 } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { SpotlightHeading } from "@/components/ui/SpotlightHeading";
 
 // ─── Container variants ──────────────────────────────────────────────────────
 
@@ -33,11 +34,11 @@ const cardVariants = {
 // ─── Heading mask-reveal ─────────────────────────────────────────────────────
 
 const headingVariants = {
-  hidden: { clipPath: "polygon(0 0, 0 0, 0 100%, 0 100%)", y: 24 },
+  hidden: { opacity: 0, y: 24 },
   visible: {
-    clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+    opacity: 1,
     y: 0,
-    transition: { duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] },
+    transition: { duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] },
   },
 };
 
@@ -403,17 +404,15 @@ export function Projects() {
               },
             }}
             className="label"
-            style={{ display: "inline-block", marginBottom: "1rem" }}
+            style={{ display: "inline-block", marginBottom: "1rem", color: "var(--color-emerald)" }}
           >
             {t("badge")}
           </motion.span>
-          <motion.h2
-            variants={headingVariants}
-            className="heading"
-            style={{ color: "var(--color-fg)", marginBottom: "3rem" }}
-          >
-            {t("title")}
-          </motion.h2>
+          <motion.div variants={headingVariants}>
+            <SpotlightHeading as="h2" className="heading" style={{ color: "var(--color-fg)", marginBottom: "3rem", textTransform: "lowercase" }}>
+              {t("title")}
+            </SpotlightHeading>
+          </motion.div>
         </motion.div>
 
         <motion.div

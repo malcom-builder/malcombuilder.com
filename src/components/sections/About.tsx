@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { SpotlightHeading } from "@/components/ui/SpotlightHeading";
 
 export function About() {
   const t = useTranslations("about");
@@ -12,27 +13,50 @@ export function About() {
       <div className="container" style={{ position: "relative", zIndex: 1 }}>
 
         {/* TOP: Title — uses .heading class for the same text-shadow glow as other sections */}
-        <FadeIn delay={0.1} direction="up" className="mb-12 md:mb-20">
+        <FadeIn delay={0.1} direction="up" className="mb-16 md:mb-28">
           <span className="about-section-label">{t("label")}</span>
-          <h2 className="heading" style={{ marginBottom: 0 }}>{t("headline")}</h2>
+          <SpotlightHeading as="h2" className="heading" style={{ marginBottom: 0, textTransform: "lowercase" }}>{t("headline")}</SpotlightHeading>
         </FadeIn>
 
-        {/* La tesis — GLOBAL.md §04 */}
+        {/* La tesis — editorial pullquote */}
         <FadeIn delay={0.15} direction="up">
-          <blockquote
-            style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "clamp(1.1rem, 2vw, 1.35rem)",
-              lineHeight: 1.7,
-              color: "var(--color-muted)",
-              borderLeft: "3px solid var(--color-accent)",
-              paddingLeft: "1.5rem",
-              marginBottom: "7rem",
-              fontStyle: "italic",
-            }}
-          >
-            {t("thesis.text")}
-          </blockquote>
+          <div style={{ position: "relative", marginBottom: "10rem" }}>
+            {/* Decorative opening mark */}
+            <span
+              aria-hidden="true"
+              style={{
+                position: "absolute",
+                top: "-0.6em",
+                left: "-0.15em",
+                fontFamily: "var(--font-display)",
+                fontSize: "clamp(3rem, 8vw, 5rem)",
+                fontWeight: 800,
+                lineHeight: 1,
+                color: "var(--color-emerald)",
+                opacity: 0.3,
+                pointerEvents: "none",
+                userSelect: "none",
+              }}
+            >
+              "
+            </span>
+            <blockquote
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "clamp(1.3rem, 2.5vw, 1.75rem)",
+                lineHeight: 1.6,
+                color: "var(--color-fg)",
+                fontStyle: "italic",
+                fontWeight: 500,
+                letterSpacing: "-0.01em",
+                position: "relative",
+                zIndex: 1,
+                textShadow: "0 0 30px rgba(158, 80, 247, 0.08)",
+              }}
+            >
+              {t("thesis.text")}
+            </blockquote>
+          </div>
         </FadeIn>
 
         <div className="about-grid">
@@ -84,7 +108,8 @@ export function About() {
                 </span>
               </div>
               <div className="about-row-content">
-                <span>{t("who.combined")}</span>
+                <strong>{t("who.name")}</strong>
+                <span>{t("who.role")} · {t("who.location")}</span>
               </div>
             </FadeIn>
 

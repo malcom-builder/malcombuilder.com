@@ -1,11 +1,12 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion, useReducedMotion, useMotionValue, useSpring } from "framer-motion";
+import { motion, useReducedMotion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { TextReveal } from "@/components/ui/TextReveal";
 import { MagneticButton } from "@/components/ui/MagneticButton";
-import { useEffect, useRef } from "react";
+import { SpotlightButton } from "@/components/ui/SpotlightButton";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 const container = { hidden: {}, show: { transition: { staggerChildren: 0.12, delayChildren: 0.2 } } };
 const item      = { hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] } } };
@@ -15,7 +16,34 @@ export function Hero() {
   const shouldReduceMotion = useReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
 
-  // Cursor tracking for orb
+  // ── "Solo" white spotlight ──
+  const soloRef = useRef<HTMLDivElement>(null);
+  const [soloHovered, setSoloHovered] = useState(false);
+  const soloRawX = useMotionValue(50);
+  const soloRawY = useMotionValue(50);
+  const soloGlowX = useSpring(soloRawX, { stiffness: 120, damping: 20 });
+  const soloGlowY = useSpring(soloRawY, { stiffness: 120, damping: 20 });
+  const soloBg = useTransform(
+    [soloGlowX, soloGlowY],
+    ([x, y]: number[]) =>
+      `radial-gradient(circle at ${x}% ${y}%, rgb(255,255,255) 0%, rgb(255,255,255) 10%, transparent 50%)`
+  );
+  const handleSoloEnter = useCallback(() => setSoloHovered(true), []);
+  const handleSoloMove = useCallback(
+    (e: React.MouseEvent) => {
+      if (shouldReduceMotion) return;
+      const rect = soloRef.current?.getBoundingClientRect();
+      if (!rect) return;
+      soloRawX.set(((e.clientX - rect.left) / rect.width) * 100);
+      soloRawY.set(((e.clientY - rect.top) / rect.height) * 100);
+    },
+    [shouldReduceMotion, soloRawX, soloRawY]
+  );
+  const handleSoloLeave = useCallback(() => {
+    soloRawX.set(50);
+    soloRawY.set(50);
+    setSoloHovered(false);
+  }, [soloRawX, soloRawY]);
   const rawX = useMotionValue(0);
   const rawY = useMotionValue(0);
   const orbX = useSpring(rawX, { stiffness: 40, damping: 20 });
@@ -142,28 +170,57 @@ export function Hero() {
           <h1 className="display" style={{ color: "var(--color-fg)", marginBottom: "1rem", whiteSpace: "pre-line" }}>
             <TextReveal text={t("headline")} delay={0.2} />
             <br />
-            <motion.span
-              variants={item}
-              style={{
-                color: "var(--color-accent)",
-                display: "inline-block",
-                transition: "color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease",
-                cursor: "default",
-                textShadow: "0 0 40px rgba(158, 80, 247, 0.5), 0 0 80px rgba(158, 80, 247, 0.25)"
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.color = "var(--color-accent-hover)";
-                (e.currentTarget as HTMLElement).style.transform = "scale(1.02) translateX(4px)";
-                (e.currentTarget as HTMLElement).style.textShadow = "0 0 50px rgba(158, 80, 247, 0.7), 0 0 100px rgba(158, 80, 247, 0.4)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.color = "var(--color-accent)";
-                (e.currentTarget as HTMLElement).style.transform = "scale(1) translateX(0)";
-                (e.currentTarget as HTMLElement).style.textShadow = "0 0 40px rgba(158, 80, 247, 0.5), 0 0 80px rgba(158, 80, 247, 0.25)";
-              }}
+            <div
+              ref={soloRef}
+              onMouseEnter={handleSoloEnter}
+              onMouseMove={handleSoloMove}
+              onMouseLeave={handleSoloLeave}
+              style={{ position: "relative", display: "inline-block" }}
             >
-              {t("headline_accent")}
-            </motion.span>
+              <motion.span
+                variants={item}
+                style={{
+                  color: "var(--color-accent)",
+                  display: "inline-block",
+                  transition: "color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease",
+                  cursor: "default",
+                  textShadow: "0 0 40px rgba(158, 80, 247, 0.5), 0 0 80px rgba(158, 80, 247, 0.25)",
+                }}
+                onMouseEnter={(e) => {
+                  handleSoloEnter();
+                  (e.currentTarget as HTMLElement).style.color = "var(--color-accent-hover)";
+                  (e.currentTarget as HTMLElement).style.transform = "scale(1.02) translateX(4px)";
+                  (e.currentTarget as HTMLElement).style.textShadow = "0 0 50px rgba(158, 80, 247, 0.7), 0 0 100px rgba(158, 80, 247, 0.4)";
+                }}
+                onMouseLeave={(e) => {
+                  handleSoloLeave();
+                  (e.currentTarget as HTMLElement).style.color = "var(--color-accent)";
+                  (e.currentTarget as HTMLElement).style.transform = "scale(1) translateX(0)";
+                  (e.currentTarget as HTMLElement).style.textShadow = "0 0 40px rgba(158, 80, 247, 0.5), 0 0 80px rgba(158, 80, 247, 0.25)";
+                }}
+              >
+                {t("headline_accent")}
+              </motion.span>
+              {!shouldReduceMotion && (
+                <motion.span
+                  aria-hidden
+                  animate={{ opacity: soloHovered ? 1 : 0 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    pointerEvents: "none",
+                    color: "transparent",
+                    backgroundClip: "text",
+                    WebkitBackgroundClip: "text",
+                    backgroundImage: soloBg,
+                    filter: "drop-shadow(0 0 12px rgba(255,255,255,0.5)) drop-shadow(0 0 30px rgba(255,255,255,0.25))",
+                  }}
+                >
+                  {t("headline_accent")}
+                </motion.span>
+              )}
+            </div>
           </h1>
 
           {/* Subheadline */}
@@ -183,44 +240,77 @@ export function Hero() {
 
           {/* CTAs */}
           <motion.div variants={item} style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-            <MagneticButton>
-              <a
-                href="#projects"
-                id="hero-cta-primary"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.75rem",
-                  background: "var(--color-fg)",
-                  color: "var(--color-bg)",
-                  border: "none",
-                  fontSize: "1rem",
-                  fontWeight: 700,
-                  padding: "1rem 2.5rem",
-                  borderRadius: "9999px",
-                  textDecoration: "none",
-                  boxShadow: "0 10px 30px rgba(16, 185, 129, 0.05)",
-                  transition: "background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease"
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.backgroundColor = "var(--color-emerald)";
-                  (e.currentTarget as HTMLElement).style.color = "#ffffff";
-                  (e.currentTarget as HTMLElement).style.boxShadow = "0 12px 35px rgba(16, 185, 129, 0.45)";
-                  (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.backgroundColor = "var(--color-fg)";
-                  (e.currentTarget as HTMLElement).style.color = "var(--color-bg)";
-                  (e.currentTarget as HTMLElement).style.boxShadow = "0 10px 30px rgba(16, 185, 129, 0.05)";
-                  (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
-                }}
-              >
-                {t("cta_primary")} <ArrowRight size={18} />
-              </a>
-            </MagneticButton>
+              <MagneticButton>
+                <SpotlightButton
+                  href="#projects"
+                  id="hero-cta-primary"
+                  glowColor="rgb(255,255,255)"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "0.75rem",
+                    color: "var(--color-emerald)",
+                    fontSize: "1rem",
+                    fontWeight: 700,
+                    textDecoration: "none",
+                  }}
+                >
+                  {t("cta_primary")} <ArrowRight size={18} />
+                </SpotlightButton>
+              </MagneticButton>
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        variants={item}
+        style={{
+          position: "absolute",
+          bottom: "2rem",
+          left: "50%",
+          translateX: "-50%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "0.375rem",
+          opacity: 0.35,
+        }}
+        aria-hidden="true"
+      >
+        <motion.span
+          style={{
+            display: "block",
+            width: "1px",
+            height: "1.25rem",
+            background: "linear-gradient(to bottom, var(--color-accent), transparent)",
+          }}
+          animate={{ opacity: [0.6, 0.2, 0.6], scaleY: [1, 0.6, 1] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.span
+          style={{
+            display: "block",
+            width: "1px",
+            height: "0.75rem",
+            background: "linear-gradient(to bottom, var(--color-accent), transparent)",
+            opacity: 0.3,
+          }}
+          animate={{ opacity: [0.4, 0.1, 0.4], scaleY: [1, 0.5, 1] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
+        />
+        <motion.span
+          style={{
+            display: "block",
+            width: "1px",
+            height: "0.375rem",
+            background: "linear-gradient(to bottom, var(--color-accent), transparent)",
+            opacity: 0.15,
+          }}
+          animate={{ opacity: [0.2, 0.05, 0.2], scaleY: [1, 0.4, 1] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
+        />
+      </motion.div>
     </section>
   );
 }

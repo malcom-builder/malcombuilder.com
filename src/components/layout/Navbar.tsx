@@ -5,6 +5,7 @@ import { Link, usePathname } from "@/i18n/routing";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { LangToggle } from "@/components/ui/LangToggle";
 import { useState, useEffect, useRef } from "react";
+import { SpotlightButton } from "@/components/ui/SpotlightButton";
 import { motion, AnimatePresence } from "framer-motion";
 
 const SECTION_IDS = ["services", "projects", "method", "about"];
@@ -162,37 +163,19 @@ export function Navbar() {
             <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
               <LangToggle />
               <ThemeToggle />
-              <Link
+              <SpotlightButton
                 href="/brief"
+                glowColor="rgb(255,255,255)"
                 style={{
-                  display: "inline-flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  width: "130px",
-                  fontSize: "0.8rem",
+                  fontSize: "0.9rem",
                   fontWeight: 600,
-                  color: "#ffffff",
-                  backgroundColor: "var(--color-accent)",
-                  padding: "0.45rem 1.1rem",
-                  borderRadius: "9999px",
+                  color: "var(--color-accent)",
                   textDecoration: "none",
-                  transition: "transform 0.2s, background-color 0.2s, box-shadow 0.2s",
                   marginLeft: "0.5rem",
-                  boxShadow: "0 4px 14px rgba(158, 80, 247, 0.25)",
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.backgroundColor = "var(--color-accent-hover)";
-                  (e.currentTarget as HTMLElement).style.transform = "translateY(-1px) scale(1.03)";
-                  (e.currentTarget as HTMLElement).style.boxShadow = "0 6px 20px rgba(158, 80, 247, 0.4)";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.backgroundColor = "var(--color-accent)";
-                  (e.currentTarget as HTMLElement).style.transform = "scale(1)";
-                  (e.currentTarget as HTMLElement).style.boxShadow = "0 4px 14px rgba(158, 80, 247, 0.25)";
                 }}
               >
                 {t("cta")}
-              </Link>
+              </SpotlightButton>
             </div>
           </nav>
         </div>

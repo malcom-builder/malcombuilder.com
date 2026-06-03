@@ -282,19 +282,31 @@ title: 'malcom.builder — AI-native system builder'
 - **Hero layout:** `marginTop: "-10vh"` para que el CTA quede above the fold sin scroll.
 - **Copywriting ES:** Traducciones naturales, no literales. "Desarrollo sistemas con IA" > "AI-native systems builder". "Solo" se mantiene igual en ambos idiomas — es firma de marca.
 - **Color accent:** `#7B61FF` (Indigo) + hover `#6246FF` — alineado con token global de marca.
-- **Emerald:** Token `--color-emerald: #10B981` para detalles puntuales (números en project cards, hover del marquee CTA).
+- **Emerald:** Token `--color-emerald: #10B981` para detalles puntuales (números en project cards, hover del marquee CTA, section badges, spotlight en headings).
 - **Navbar CTA:** `width: 130px` fijo para evitar saltos de layout al cambiar ES/EN.
-- **Tipografía:** Clase `.heading` en títulos de sección. Espaciado entre secciones: `10rem` mobile / `16rem` desktop.
+- **Tipografía:** Body font DM Sans → Sora (más distintivo). Clase `.heading` + text-shadow en títulos de sección. Espaciado entre secciones: `10rem` mobile / `16rem` desktop.
 - **Rediseño Premium /brief:** Formulario de prospección con animaciones de deslizamiento direccionales (de izquierda a derecha o viceversa según el paso) mediante Framer Motion. Iconos interactivos integrados para cada opción de tipo de proyecto, selectores con contornos e iluminación indigo al enfocarse y alertas dinámicas en inputs.
 - **Localización Completa /brief:** Integración de diccionarios paralelos en español e inglés basados en `useLocale()` de `next-intl` en el asistente. Se generalizó la pregunta sobre ubicación geográfica remitiendo a entornos locales, nacionales e internacionales en lugar de opciones fijas en Rosario.
 - **Alineación Vertical /brief:** Reestructuración de la página en un contenedor flex-column de `min-h-screen` con main en `flex-1` y paddings reducidos (`pt-12 pb-16`). Esto alinea verticalmente el formulario en el centro de la pantalla y previene que el footer genere espacio de scroll redundante en pantallas medianas y grandes.
 
 ### Componentes creados
 
+- **SpotlightHeading:** Componente client-side que envuelve cualquier heading y agrega un overlay con `background-clip: text` + gradiente radial que sigue al cursor (efecto spotlight esmeralda). Respeta `prefers-reduced-motion`.
+- **AmbientOrb:** Orb flotante animado de fondo (índigo translúcido) que se mueve lentamente con `useMotionValue` + `useSpring`, visible solo en desktop.
+- **FadeIn:** Soporta prop `rotate` para animación de entrada con tilt (usado en Services cards).
+- **ScrollIndicator:** Flecha animada al final del Hero que pulsa e invita a scrollear.
+
 - **About:** Sección completa a 2 columnas con grid responsive. Foto de perfil con aspecto 4:5, `object-fit: cover`, bordes con glow índigo y badges flotantes con efecto glassmorphism (`backdropFilter`). Título alineado usando la clase `.heading`.
 - **Method:** Sección con track de `Marquee` animado infinitamente y componentes SVG personalizados (`StackSVGs`). Tarjetas transparentes para revelar el resplandor de fondo (orb índigo).
 - **BriefForm:** Asistente interactivo multi-paso con lógica de caminos condicionales y campos optimizados para captación de prospectos.
 - **Route /api/brief:** Endpoint de Next.js que calcula el plazo estimado de respuesta (+24 horas hábiles), valida el honeypot de spam, aplica limitación de peticiones por IP y despacha correos a través de Resend.
+
+### Efectos visuales globales
+
+- **Noise texture:** `body::after` con SVG `data:image/svg+xml` base64 como `background-image` para textura grano sutil en todo el sitio.
+- **Ambient orb:** `AmbientOrb.tsx` renderizado en `app/[locale]/layout.tsx` como fondo decorativo (solo desktop).
+- **Section transitions:** Secciones pares tienen un gradiente glow en `::before` en el borde superior para separación visual.
+- **Footer wordmark glow:** Text-shadow triple (accent) + color fg para protagonismo.
 
 ### Problemas resueltos
 

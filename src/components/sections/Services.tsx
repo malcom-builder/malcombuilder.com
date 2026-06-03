@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { SpotlightHeading } from "@/components/ui/SpotlightHeading";
 import { Building2, Cpu, Layers, Zap } from "lucide-react";
 import { useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
@@ -120,6 +121,7 @@ function BentoCard({ svc, index, t }: { svc: { id: string; icon: string }; index
             letterSpacing: "-0.02em",
             color: "var(--color-fg)",
             marginBottom: "1rem",
+            textTransform: "lowercase",
           }}
         >
           {t(`items.${index}.title` as any)}
@@ -146,17 +148,17 @@ export function Services() {
     <section id="services" className="section" style={{ borderBottom: "1px solid var(--color-border)" }}>
       <div className="container">
         <FadeIn>
-          <span className="label" style={{ display: "inline-block", marginBottom: "1rem", color: "var(--color-accent)" }}>
+          <span className="label" style={{ display: "inline-block", marginBottom: "1rem", color: "var(--color-emerald)" }}>
             {t("badge")}
           </span>
-          <h2 className="heading" style={{ color: "var(--color-fg)", marginBottom: "4rem" }}>
+          <SpotlightHeading as="h2" className="heading" style={{ color: "var(--color-fg)", marginBottom: "4rem", textTransform: "lowercase" }}>
             {t("title")}
-          </h2>
+          </SpotlightHeading>
         </FadeIn>
 
         <div style={{ display: "grid", gap: "1rem" }} className="grid-cols-1 md:grid-cols-3">
           {items.map((svc, i) => (
-            <FadeIn key={svc.id} delay={i * 0.1} className={i === 0 || i === 3 ? "md:col-span-2" : "md:col-span-1"}>
+            <FadeIn key={svc.id} delay={i * 0.1} rotate={i % 2 === 0 ? 1.5 : -1.5} className={i === 0 || i === 3 ? "md:col-span-2" : "md:col-span-1"}>
               <BentoCard svc={svc} index={i} t={t} />
             </FadeIn>
           ))}

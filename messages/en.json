@@ -5,7 +5,7 @@
     "projects": "Projects",
     "method": "Method",
     "about": "About",
-    "cta": "Let's Build"
+    "cta": "Build"
   },
   "hero": {
     "tagline": "Digital Product Studio",
@@ -176,32 +176,32 @@
     }
   },
   "method": {
-    "badge": "Method",
-    "title": "Tools"
+    "badge": "Stack",
+    "title": "Tools",
+    "subtitle": "The stack I use to build"
   },
   "about": {
     "label": "ABOUT",
-    "headline": "One builder. One stack. One result.",
+    "headline": "One builder. One stack. One result. Precision.",
     "thesis": {
-      "text": "I build digital products solo. Solid architecture, AI-powered execution, shipped in weeks. No team, no inflated costs, no detours."
+      "text": "I build digital products, solo. Solid architecture, AI as the execution agent, shipped in weeks. No team, no inflated costs. With conviction."
     },
     "who": {
       "label": "WHO",
       "name": "Malcom Foca",
       "role": "Associate Degree in Software Development — UTN Rosario",
-      "location": "Rosario → Argentina → Latam",
-      "combined": "Malcom Foca · Associate Degree in Software Development — UTN Rosario · Rosario → Argentina → Latam"
+      "location": "Rosario → World"
     },
     "does": {
       "label": "WHAT I DO",
-      "bold": "I build digital products. AI is the execution lever, not the product.",
-      "line1": "Websites, platforms, APIs and systems that work. No technical debt, no surprises."
+      "bold": "I build digital products.",
+      "line1": "Websites, platforms, systems and APIs. What the business needs to work digitally."
     },
     "how": {
       "label": "HOW I DO IT",
       "bold": "Solo. From architecture to deployment.",
-      "line1": "Solid tech stack + AI agents as an execution lever.",
-      "line2": "Custom workflows. Every project runs on standardized processes — documented context, deliverables per iteration, nothing improvised."
+      "line1": "Solid architecture + AI as the execution agent.",
+      "line2": "Custom workflows. Standardized processes — documented context, deliverables per iteration, nothing improvised."
     },
     "social": {
       "instagram": "INSTAGRAM",
@@ -211,11 +211,12 @@
   },
   "cta": {
     "marquee": "LET'S TALK — LET'S BUILD SOMETHING — YOU HAVE A PROJECT — WRITE TO ME — LET'S START",
-    "btn_text": "Let's Build.",
-    "email": "contact@malcombuilder.com"
+    "heading": "ready?",
+    "action": "let's start",
+    "sub": "no commitment · 24h reply"
   },
   "footer": {
-    "tagline": "Digital Product Studio · Rosario, Argentina",
+    "tagline": "Digital Product Studio",
     "description": "Webs, platforms and systems. Solo. With conviction.",
     "nav_title": "Navigation",
     "social_title": "Social",

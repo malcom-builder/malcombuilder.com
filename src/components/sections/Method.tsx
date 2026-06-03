@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { SpotlightHeading } from "@/components/ui/SpotlightHeading";
 import { stackItems } from "@/lib/constants";
 import { motion } from "framer-motion";
 import React from "react";
@@ -142,8 +143,18 @@ export function Method() {
 
       <div className="container" style={{ position: "relative", zIndex: 1 }}>
         <FadeIn>
-          <span className="label" style={{ display: "inline-block", marginBottom: "1rem" }}>{t("badge")}</span>
-          <h2 className="heading" style={{ color: "var(--color-fg)", marginBottom: "4rem" }}>{t("title")}</h2>
+          <span className="label" style={{ display: "inline-block", marginBottom: "1rem", color: "var(--color-emerald)" }}>{t("badge")}</span>
+          <SpotlightHeading as="h2" className="heading" style={{ color: "var(--color-fg)", marginBottom: "0.5rem", textTransform: "lowercase" }}>{t("title")}</SpotlightHeading>
+          <p style={{
+            fontSize: "0.9rem",
+            color: "var(--color-muted)",
+            maxWidth: "24rem",
+            marginBottom: "4rem",
+            lineHeight: 1.6,
+            fontWeight: 400,
+          }}>
+            {t("subtitle")}
+          </p>
         </FadeIn>
       </div>
 

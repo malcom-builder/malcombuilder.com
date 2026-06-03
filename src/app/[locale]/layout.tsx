@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { HtmlLang } from "@/components/ui/HtmlLang";
 import { CustomCursor } from "@/components/ui/CustomCursor";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
+import { AmbientOrb } from "@/components/ui/AmbientOrb";
 // globals.css is imported in the root layout
 
 type Locale = "es" | "en";
@@ -80,6 +81,7 @@ export default async function LocaleLayout({
       <NextIntlClientProvider messages={messages}>
         {/* Sets document.documentElement.lang on the client */}
         <HtmlLang locale={locale} />
+        <AmbientOrb />
         <ScrollProgress />
         <CustomCursor />
         {children}
