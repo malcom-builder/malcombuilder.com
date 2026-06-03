@@ -1,5 +1,6 @@
 "use client";
 
+import { memo } from "react";
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import { useSpotlight, SpotlightGlow } from "./SpotlightGlow";
@@ -32,7 +33,7 @@ const cardItem = {
   },
 };
 
-function FeatureCard({ feature, i }: { feature: FeatureItem; i: number }) {
+const FeatureCard = memo(function FeatureCard({ feature, i }: { feature: FeatureItem; i: number }) {
   const spotlight = useSpotlight();
   const isRich = typeof feature === "object";
 
@@ -117,7 +118,7 @@ function FeatureCard({ feature, i }: { feature: FeatureItem; i: number }) {
       )}
     </motion.div>
   );
-}
+});
 
 export function ProjectFeatures({ features, sectionLabel = "Logros" }: Props) {
   return (

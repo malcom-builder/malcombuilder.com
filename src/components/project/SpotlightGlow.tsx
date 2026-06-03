@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from "framer-motion";
-import { useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 
 export function useSpotlight() {
   const shouldReduce = useReducedMotion();
@@ -17,19 +17,19 @@ export function useSpotlight() {
       `radial-gradient(circle at ${x}% ${y}%, rgba(123, 97, 255, 0.14), transparent 65%)`
   );
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     if (shouldReduce) return;
     const rect = cardRef.current?.getBoundingClientRect();
     if (!rect) return;
     rawX.set(((e.clientX - rect.left) / rect.width) * 100);
     rawY.set(((e.clientY - rect.top) / rect.height) * 100);
-  };
+  }, [shouldReduce, rawX, rawY]);
 
-  const resetGlow = () => {
+  const resetGlow = useCallback(() => {
     rawX.set(50);
     rawY.set(0);
     setIsHovered(false);
-  };
+  }, [rawX, rawY]);
 
   return {
     cardRef,

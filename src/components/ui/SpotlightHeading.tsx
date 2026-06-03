@@ -3,6 +3,8 @@
 import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from "framer-motion";
 import { ReactNode, useRef, useCallback, CSSProperties, useState } from "react";
 
+const RGB_REGEX = /^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/;
+
 interface Props {
   as?: "h1" | "h2" | "h3" | "h4" | "span" | "div";
   children: ReactNode;
@@ -12,7 +14,7 @@ interface Props {
 }
 
 function parseRgb(color: string): [number, number, number] {
-  const m = color.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+  const m = color.match(RGB_REGEX);
   return m ? [parseInt(m[1]), parseInt(m[2]), parseInt(m[3])] : [16, 185, 129];
 }
 

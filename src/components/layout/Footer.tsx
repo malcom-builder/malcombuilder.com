@@ -2,11 +2,11 @@
 
 import { useTranslations } from "next-intl";
 import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from "framer-motion";
-import { useRef, useState, useCallback } from "react";
+import { memo, useRef, useState, useCallback } from "react";
 import { socialLinks } from "@/lib/constants";
 
 // ── Isolated spotlight per word ──────────────────────────────────────────────
-function SpotlightWord({
+const SpotlightWord = memo(function SpotlightWord({
   children,
   glowColor,
   textShadow,
@@ -102,7 +102,7 @@ function SpotlightWord({
       )}
     </span>
   );
-}
+});
 
 // ── Footer ────────────────────────────────────────────────────────────────────
 export function Footer() {

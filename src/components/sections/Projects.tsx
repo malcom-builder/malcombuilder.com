@@ -12,7 +12,7 @@ import {
   useReducedMotion,
 } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import { SpotlightHeading } from "@/components/ui/SpotlightHeading";
 
 // ─── Container variants ──────────────────────────────────────────────────────
@@ -44,7 +44,7 @@ const headingVariants = {
 
 // ─── Animated counter ────────────────────────────────────────────────────────
 
-function AnimatedCounter({ value }: { value: number }) {
+const AnimatedCounter = memo(function AnimatedCounter({ value }: { value: number }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "0px 0px -20% 0px" });
   const mv = useMotionValue(0);
@@ -62,11 +62,11 @@ function AnimatedCounter({ value }: { value: number }) {
   }, [inView, value, mv]);
 
   return <span ref={ref}>{display}</span>;
-}
+});
 
 // ─── Magnetic wrapper ────────────────────────────────────────────────────────
 
-function MagneticIcon({ children }: { children: React.ReactNode }) {
+const MagneticIcon = memo(function MagneticIcon({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -97,7 +97,7 @@ function MagneticIcon({ children }: { children: React.ReactNode }) {
       {children}
     </motion.div>
   );
-}
+});
 
 // ─── Tech colors ─────────────────────────────────────────────────────────────
 
@@ -123,7 +123,7 @@ const techColors: Record<string, string> = {
 
 // ─── Project Card ────────────────────────────────────────────────────────────
 
-function ProjectCard({ proj }: { proj: typeof projects[number]; index: number }) {
+const ProjectCard = memo(function ProjectCard({ proj }: { proj: typeof projects[number]; index: number }) {
   const num = parseInt(proj.id);
   const shouldReduce = useReducedMotion();
   const cardRef = useRef<HTMLDivElement>(null);
@@ -379,7 +379,7 @@ function ProjectCard({ proj }: { proj: typeof projects[number]; index: number })
       </div>
     </motion.div>
   );
-}
+});
 
 // ─── Main component ──────────────────────────────────────────────────────────
 

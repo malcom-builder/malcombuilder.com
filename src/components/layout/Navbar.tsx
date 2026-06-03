@@ -4,7 +4,7 @@ import { useTranslations, useLocale } from "next-intl";
 import { Link, usePathname } from "@/i18n/routing";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { LangToggle } from "@/components/ui/LangToggle";
-import { useState, useEffect } from "react";
+import { useCallback, useMemo, useState, useEffect, useTransition } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const SECTION_IDS = ["services", "projects", "method", "about"];
@@ -40,22 +40,24 @@ export function Navbar() {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const [scrolled, setScrolled] = useState(false);
+  const [, startTransition] = useTransition();
   const activeSection = useActiveSection();
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 16);
+    const onScroll = () => startTransition(() => setScrolled(window.scrollY > 16));
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [startTransition]);
 
-  const navLinks = [
+  const navLinks = useMemo(() => [
     { href: "#services", label: t("services"), id: "services" },
     { href: "#projects", label: t("projects"), id: "projects" },
     { href: "#method",   label: t("method"),   id: "method"   },
     { href: "#about",    label: t("about"),    id: "about"    },
-  ];
+  ], [t]);
 
   return (
     <>
+      <style>{`.navbar-link:hover{color:var(--color-fg)!important}.navbar-cta:hover{border-color:rgba(123,97,255,0.7)!important;background:rgba(123,97,255,0.08)!important;box-shadow:0 0 16px rgba(123,97,255,0.2),0 0 32px rgba(123,97,255,0.08),inset 0 0 12px rgba(123,97,255,0.06)!important;color:var(--color-fg)!important}`}</style>
       <header className={`navbar ${scrolled ? "scrolled" : ""}`}>
         <div className="container">
           <nav
@@ -95,18 +97,16 @@ export function Navbar() {
               }}
             >
               {navLinks.map((l) => {
+                const isActive = activeSection === l.id;
                 const commonStyle = {
                   position: "relative",
                   fontSize: "0.875rem",
-                  color: activeSection === l.id ? "var(--color-fg)" : "var(--color-muted)",
+                  color: isActive ? "var(--color-fg)" : "var(--color-muted)",
                   textDecoration: "none",
                   transition: "color 0.2s",
-                  fontWeight: activeSection === l.id ? 600 : 500,
+                  fontWeight: isActive ? 600 : 500,
                   paddingBottom: "4px",
                 } as React.CSSProperties;
-
-                const handleMouseEnter = (e: any) => ((e.currentTarget as HTMLElement).style.color = "var(--color-fg)");
-                const handleMouseLeave = (e: any) => ((e.currentTarget as HTMLElement).style.color = activeSection === l.id ? "var(--color-fg)" : "var(--color-muted)");
 
                 const content = (
                   <>
@@ -135,8 +135,7 @@ export function Navbar() {
                       key={l.href}
                       href={l.href}
                       style={commonStyle}
-                      onMouseEnter={handleMouseEnter}
-                      onMouseLeave={handleMouseLeave}
+                      className="navbar-link"
                     >
                       {content}
                     </a>
@@ -148,8 +147,7 @@ export function Navbar() {
                     key={l.href}
                     href={`/${l.href}` as any}
                     style={commonStyle}
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
+                    className="navbar-link"
                   >
                     {content}
                   </Link>
@@ -179,21 +177,6 @@ export function Navbar() {
                       "border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease, color 0.25s ease",
                     cursor: "pointer",
                     whiteSpace: "nowrap",
-                  }}
-                  onMouseEnter={(e) => {
-                    const el = e.currentTarget as HTMLElement;
-                    el.style.borderColor = "rgba(123,97,255,0.7)";
-                    el.style.background = "rgba(123,97,255,0.08)";
-                    el.style.boxShadow =
-                      "0 0 16px rgba(123,97,255,0.2), 0 0 32px rgba(123,97,255,0.08), inset 0 0 12px rgba(123,97,255,0.06)";
-                    el.style.color = "var(--color-fg)";
-                  }}
-                  onMouseLeave={(e) => {
-                    const el = e.currentTarget as HTMLElement;
-                    el.style.borderColor = "rgba(123,97,255,0.3)";
-                    el.style.background = "transparent";
-                    el.style.boxShadow = "none";
-                    el.style.color = "var(--color-accent)";
                   }}
                 >
                   {t("cta")}

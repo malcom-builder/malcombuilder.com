@@ -1,5 +1,6 @@
 "use client";
 
+import { memo } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Link } from "@/i18n/routing";
@@ -21,7 +22,7 @@ const linkVariants = {
   }),
 };
 
-function PrevNextCard({
+const PrevNextCard = memo(function PrevNextCard({
   project,
   direction,
   locale,
@@ -136,7 +137,7 @@ function PrevNextCard({
       </Link>
     </motion.div>
   );
-}
+});
 
 export function ProjectPrevNext({ prev, next, locale }: Props) {
   const shouldReduce = useReducedMotion();

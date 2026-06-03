@@ -1,6 +1,14 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { BriefForm } from "@/components/sections/BriefForm";
+import dynamic from "next/dynamic";
+
+const BriefForm = dynamic(() => import("@/components/sections/BriefForm").then((mod) => mod.BriefForm), {
+  loading: () => (
+    <div style={{ textAlign: "center", padding: "3rem", color: "var(--color-muted)" }}>
+      Loading...
+    </div>
+  ),
+});
 import { setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";

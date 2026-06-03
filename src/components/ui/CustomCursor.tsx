@@ -30,28 +30,29 @@ export function CustomCursor() {
     document.addEventListener("mouseleave", handleMouseLeave);
     document.addEventListener("mouseenter", handleMouseEnter);
 
-    // Dynamic hover detection for all interactive elements
-    const handleHoverStart = () => setIsHovered(true);
-    const handleHoverEnd = () => setIsHovered(false);
-
-    const addHoverListeners = () => {
-      const interactives = document.querySelectorAll("a, button, [role='button'], input, select, textarea");
-      interactives.forEach((el) => {
-        el.addEventListener("mouseenter", handleHoverStart);
-        el.addEventListener("mouseleave", handleHoverEnd);
-      });
+    // Dynamic hover detection via event delegation — no MutationObserver needed
+    const handleHoverStart = (e: Event) => {
+      const target = e.target as HTMLElement;
+      if (target.matches("a, button, [role='button'], input, select, textarea")) {
+        setIsHovered(true);
+      }
+    };
+    const handleHoverEnd = (e: Event) => {
+      const target = e.target as HTMLElement;
+      if (target.matches("a, button, [role='button'], input, select, textarea")) {
+        setIsHovered(false);
+      }
     };
 
-    // Listeners are re-attached on mutation (when page changes or animations render new elements)
-    addHoverListeners();
-    const observer = new MutationObserver(addHoverListeners);
-    observer.observe(document.body, { childList: true, subtree: true });
+    document.body.addEventListener("mouseover", handleHoverStart);
+    document.body.addEventListener("mouseout", handleHoverEnd);
 
     return () => {
       window.removeEventListener("mousemove", moveCursor);
       document.removeEventListener("mouseleave", handleMouseLeave);
       document.removeEventListener("mouseenter", handleMouseEnter);
-      observer.disconnect();
+      document.body.removeEventListener("mouseover", handleHoverStart);
+      document.body.removeEventListener("mouseout", handleHoverEnd);
     };
   }, [cursorX, cursorY, visible]);
 

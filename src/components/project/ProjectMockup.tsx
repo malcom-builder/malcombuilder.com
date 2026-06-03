@@ -15,6 +15,28 @@ interface Props {
   slug: string;
 }
 
+const mockups: Record<string, { tabs: Tab[]; mobile?: string; url: string }> = {
+  "zolfo-medicina-estetica": {
+    url: "zolfoestetica.com.ar",
+    mobile: "/images/projects/zolfo-estetica/mobile-iphone.png",
+    tabs: [
+      { id: "home", label: "Home", img: "/images/projects/zolfo-estetica/hero-mcbook.png" },
+      { id: "admin", label: "Admin Panel", img: "/images/projects/zolfo-estetica/panel-admin-browser.png" },
+      { id: "perf", label: "Performance", img: "/images/projects/zolfo-estetica/lighthouse-browser.png" },
+      { id: "details", label: "Tratamientos", img: "/images/projects/zolfo-estetica/card-home-mcbook.png" },
+    ],
+  },
+  "nurestetica": {
+    url: "nurestetica.com.ar",
+    mobile: "/images/projects/nur-estetica/treatment-mobile.png",
+    tabs: [
+      { id: "home", label: "Home", img: "/images/projects/nur-estetica/hero-macbook.png" },
+      { id: "treatments", label: "Tratamientos", img: "/images/projects/nur-estetica/cards-treatment-macbook.png" },
+      { id: "about", label: "Nosotros", img: "/images/projects/nur-estetica/aboute-macbook.png" },
+    ],
+  },
+};
+
 export function ProjectMockup({ slug }: Props) {
   const [activeTab, setActiveTab] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
@@ -26,29 +48,6 @@ export function ProjectMockup({ slug }: Props) {
   });
   const mainY = useTransform(scrollYProgress, [0, 1], shouldReduce ? [0, 0] : [0, -20]);
   const phoneY = useTransform(scrollYProgress, [0, 1], shouldReduce ? [0, 0] : [0, 30]);
-
-  // Define mockups and configurations based on project slug
-  const mockups: Record<string, { tabs: Tab[]; mobile?: string; url: string }> = {
-    "zolfo-medicina-estetica": {
-      url: "zolfoestetica.com.ar",
-      mobile: "/images/projects/zolfo-estetica/mobile-iphone.png",
-      tabs: [
-        { id: "home", label: "Home", img: "/images/projects/zolfo-estetica/hero-mcbook.png" },
-        { id: "admin", label: "Admin Panel", img: "/images/projects/zolfo-estetica/panel-admin-browser.png" },
-        { id: "perf", label: "Performance", img: "/images/projects/zolfo-estetica/lighthouse-browser.png" },
-        { id: "details", label: "Tratamientos", img: "/images/projects/zolfo-estetica/card-home-mcbook.png" },
-      ],
-    },
-    "nurestetica": {
-      url: "nurestetica.com.ar",
-      mobile: "/images/projects/nur-estetica/treatment-mobile.png",
-      tabs: [
-        { id: "home", label: "Home", img: "/images/projects/nur-estetica/hero-macbook.png" },
-        { id: "treatments", label: "Tratamientos", img: "/images/projects/nur-estetica/cards-treatment-macbook.png" },
-        { id: "about", label: "Nosotros", img: "/images/projects/nur-estetica/aboute-macbook.png" },
-      ],
-    },
-  };
 
   const projectMockup = mockups[slug];
 

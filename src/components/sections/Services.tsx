@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SpotlightHeading } from "@/components/ui/SpotlightHeading";
 import { Building2, Cpu, Layers, Zap } from "lucide-react";
-import { useRef } from "react";
+import { memo, useCallback, useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
 const icons = {
@@ -14,7 +14,7 @@ const icons = {
   Zap: <Zap size={28} />,
 };
 
-function BentoCard({ svc, index, t }: { svc: { id: string; icon: string }; index: number; t: any }) {
+const BentoCard = memo(function BentoCard({ svc, index, t }: { svc: { id: string; icon: string }; index: number; t: any }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const isLarge = index === 0 || index === 3;
 
@@ -33,17 +33,17 @@ function BentoCard({ svc, index, t }: { svc: { id: string; icon: string }; index
       `radial-gradient(circle at ${x}% ${y}%, rgba(129, 140, 248, 0.14), transparent 65%)`
   );
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     const rect = cardRef.current?.getBoundingClientRect();
     if (!rect) return;
     rawX.set(((e.clientX - rect.left) / rect.width) * 100);
     rawY.set(((e.clientY - rect.top) / rect.height) * 100);
-  };
+  }, [rawX, rawY]);
 
-  const resetGlow = () => {
+  const resetGlow = useCallback(() => {
     rawX.set(50);
     rawY.set(0);
-  };
+  }, [rawX, rawY]);
 
   return (
     <motion.div
@@ -132,7 +132,7 @@ function BentoCard({ svc, index, t }: { svc: { id: string; icon: string }; index
       </div>
     </motion.div>
   );
-}
+});
 
 export function Services() {
   const t = useTranslations("services");

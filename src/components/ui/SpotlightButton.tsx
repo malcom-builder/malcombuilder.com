@@ -4,6 +4,8 @@ import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } fro
 import { ReactNode, useRef, useCallback, CSSProperties, useState } from "react";
 import { Link } from "@/i18n/routing";
 
+const RGB_REGEX = /^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/;
+
 interface Props {
   href: string;
   children: ReactNode;
@@ -14,7 +16,7 @@ interface Props {
 }
 
 function parseRgb(color: string): [number, number, number] {
-  const m = color.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+  const m = color.match(RGB_REGEX);
   return m ? [parseInt(m[1]), parseInt(m[2]), parseInt(m[3])] : [16, 185, 129];
 }
 

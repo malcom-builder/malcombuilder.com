@@ -191,21 +191,21 @@ export async function POST(request: Request) {
     `;
 
     if (resendApiKey) {
-      // Send internal notification
-      await resend.emails.send({
-        from: "brief@malcombuilder.com",
-        to: "contact@malcombuilder.com",
-        subject: subjectInternal,
-        html: internalEmailBody,
-      });
-
-      // Send client confirmation
-      await resend.emails.send({
-        from: "contact@malcombuilder.com",
-        to: contacto_email,
-        subject: "Recibí tu brief — malcom.builder",
-        html: clientEmailBody,
-      });
+      // Parallelize independent email sends
+      await Promise.all([
+        resend.emails.send({
+          from: "brief@malcombuilder.com",
+          to: "contact@malcombuilder.com",
+          subject: subjectInternal,
+          html: internalEmailBody,
+        }),
+        resend.emails.send({
+          from: "contact@malcombuilder.com",
+          to: contacto_email,
+          subject: "Recibí tu brief — malcom.builder",
+          html: clientEmailBody,
+        }),
+      ]);
     } else {
       console.log("--- MOCK EMAIL SEND ---");
       console.log("To Internal:", "contact@malcombuilder.com", "Subject:", subjectInternal);

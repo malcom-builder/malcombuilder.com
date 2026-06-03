@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages, getTranslations } from "next-intl/server";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { HtmlLang } from "@/components/ui/HtmlLang";
-import { CustomCursor } from "@/components/ui/CustomCursor";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
-import { AmbientOrb } from "@/components/ui/AmbientOrb";
+import { ClientOnly } from "@/components/ui/ClientOnly";
 // globals.css is imported in the root layout
 
 type Locale = "es" | "en";
@@ -65,8 +64,6 @@ export default async function LocaleLayout({
     notFound();
   }
 
-  // Explicitly set the locale for next-intl server components
-  const { setRequestLocale } = await import("next-intl/server");
   setRequestLocale(locale);
 
   const messages = await getMessages();
@@ -81,9 +78,8 @@ export default async function LocaleLayout({
       <NextIntlClientProvider messages={messages}>
         {/* Sets document.documentElement.lang on the client */}
         <HtmlLang locale={locale} />
-        <AmbientOrb />
+        <ClientOnly />
         <ScrollProgress />
-        <CustomCursor />
         {children}
       </NextIntlClientProvider>
     </ThemeProvider>

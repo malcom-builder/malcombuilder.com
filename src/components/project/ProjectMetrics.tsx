@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { memo, useState, useEffect, useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform, useInView, useReducedMotion } from "framer-motion";
 import { Users, Eye } from "lucide-react";
 import { useSpotlight, SpotlightGlow } from "./SpotlightGlow";
@@ -56,16 +56,18 @@ const cardItem = {
   },
 };
 
+const NUMERIC_VALUE_REGEX = /^[\d,.]+/;
+const NUMERIC_SUFFIX_REGEX = /^[\d,./]+/;
+
 // ─── Animated metric value ───────────────────────────────────────────────────
 
-function AnimatedValue({ value }: { value: string }) {
+const AnimatedValue = memo(function AnimatedValue({ value }: { value: string }) {
   const shouldReduce = useReducedMotion();
 
-  // Extract numeric part from strings like "1,248", "98.7%", "4.2 min", "100/100"
-  const numMatch = value.match(/^[\d,.]+/);
+  const numMatch = value.match(NUMERIC_VALUE_REGEX);
   const numStr = numMatch ? numMatch[0].replace(/,/g, "") : "0";
   const num = parseFloat(numStr);
-  const suffix = value.replace(/^[\d,./]+/, "").trim();
+  const suffix = value.replace(NUMERIC_SUFFIX_REGEX, "").trim();
 
   if (shouldReduce || isNaN(num) || !numMatch) {
     return <>{value}</>;
@@ -106,9 +108,9 @@ function AnimatedValue({ value }: { value: string }) {
   }, [inView, num, mv]);
 
   return <span ref={ref}>{display}</span>;
-}
+});
 
-function MetricCard({ card }: { card: MetricCard }) {
+const MetricCard = memo(function MetricCard({ card }: { card: MetricCard }) {
   const spotlight = useSpotlight();
 
   return (
@@ -176,7 +178,7 @@ function MetricCard({ card }: { card: MetricCard }) {
       </div>
     </motion.div>
   );
-}
+});
 
 export function ProjectMetrics({ slug, metrics }: Props) {
   const [metricTab, setMetricTab] = useState<"overview" | "channels" | "treatments">("overview");
