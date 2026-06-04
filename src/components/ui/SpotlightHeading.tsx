@@ -36,9 +36,18 @@ export function SpotlightHeading({ as: Tag = "h2", children, className = "", sty
       `radial-gradient(circle at ${x}% ${y}%, ${glowColor} 0%, ${glowColor} 10%, transparent 50%)`
   );
 
-  const handleMouseEnter = useCallback(() => {
+  const handleMouseEnter = useCallback((e: React.MouseEvent) => {
     setHovered(true);
-  }, []);
+    if (shouldReduce) return;
+    const rect = ref.current?.getBoundingClientRect();
+    if (!rect) return;
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    rawX.set(x);
+    rawY.set(y);
+    glowX.jump(x);
+    glowY.jump(y);
+  }, [shouldReduce, rawX, rawY, glowX, glowY]);
 
   const handleMouseMove = useCallback(
     (e: React.MouseEvent) => {
@@ -52,10 +61,8 @@ export function SpotlightHeading({ as: Tag = "h2", children, className = "", sty
   );
 
   const handleMouseLeave = useCallback(() => {
-    rawX.set(50);
-    rawY.set(50);
     setHovered(false);
-  }, [rawX, rawY]);
+  }, []);
 
   if (shouldReduce) {
     return <Tag className={className} style={style}>{children}</Tag>;
@@ -104,7 +111,7 @@ export function SpotlightHeading({ as: Tag = "h2", children, className = "", sty
         aria-hidden
         className={className}
         animate={{ opacity: hovered ? 1 : 0 }}
-        transition={{ duration: 0.3, ease: "easeOut" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
         style={{ ...tagStyle, ...overlayStyle, backgroundImage: background } as any}
       >
         {children}

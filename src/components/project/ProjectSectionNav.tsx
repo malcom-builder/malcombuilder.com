@@ -49,7 +49,7 @@ export function ProjectSectionNav() {
     el?.scrollIntoView({ behavior: "smooth" });
   };
 
-  if (shouldReduce) return null;
+  if (pathname === "/projects" || shouldReduce) return null;
 
   return (
     <nav

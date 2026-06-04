@@ -298,6 +298,10 @@ title: 'malcom.builder — AI-native system builder'
 - **Copy CTAs:** Navbar "Construir" / "Build". CTA final heading "listo?" (ES) / "ready?" (EN).
 - **Footer wordmark dual spotlight:** Componente `SpotlightWord` con `hoverTextShadow` — "malcom" resplandece indigo, ".builder" resplandece emerald al hover. Aura base = mismo textShadow que `.heading`. Sin scale (removido de `.footer-wordmark:hover`).
 - **Light mode atenuado:** bg bajado a `#e8e7f2`, surface/card a `#f0eff8`, border a `#cccbd8`, muted a `#6b6a7a`. Menos blanco, tono lavanda-tiza.
+- **Proporción de las cards:** Cambiado de `1:1` a `3:2` para darles un aspecto panorámico más equilibrado y profesional.
+- **Spotlight Snapping con `.jump()`:** Implementado cursor-snapping instantáneo en `onMouseEnter` para cards (proyectos y servicios), títulos y textos destacados del Hero ("Solo") y CTA final ("Listo?") para evitar el deslizamiento indeseado desde la posición inicial por defecto `(50, 0)` / `(50, 50)`.
+- **Salida limpia de Spotlight:** Removido el reinicio de coordenadas en `onMouseLeave` para evitar que el destello viaje bruscamente al centro o arriba al salir del elemento; ahora simplemente se desvanece de forma estática en su última posición.
+- **Suavizado de transición en títulos:** Se aumentó la duración del fade de `0.3s` a `0.6s` en los títulos para que el spotlight aparezca de manera más gradual y orgánica.
 
 ### Componentes creados
 
@@ -327,6 +331,8 @@ title: 'malcom.builder — AI-native system builder'
 - **Simulación vs Envíos reales:** Implementado comportamiento alternativo si la clave `RESEND_API_KEY` no está provista para desarrollo y validación visual.
 - **Iconos SVG en SpotlightButton:** Overlay con `background-clip: text` y `color: transparent` invisibilizaba SVG por herencia `currentColor`. Resuelto con inner wrapper: overlay y base comparten wrapper, área no-texto transparente deja ver capa base.
 - **Spotlight en texto grande:** Gradiente `transparent 50%` iluminaba toda la palabra en headings. Resuelto: falloff apretado a 20% + drop-shadow reducido de 24px a 12px para spotlight localizado en el cursor.
+- **Deslizamiento de spotlight corregido:** Solucionado el molesto movimiento del spotlight desde su coordenada por defecto en todos los elementos interactivos del sitio (Proyectos, Servicios, Títulos, Hero "Solo", CTA final "Listo?").
+- **Mockups de NurEstética e imágenes optimizadas:** Reemplazados los nombres antiguos de imágenes del proyecto NurEstética por sus nombres descriptivos finales y se actualizó la card spotlight para usar `nur-card-spotlight.jpg`. Se optimizó la card de Zolfo con la imagen `zolfo-card-spotlight.webp` de menor peso (reducción de 62%).
 
 ### Pendientes próxima sesión
 

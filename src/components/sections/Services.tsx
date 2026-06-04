@@ -33,6 +33,17 @@ const BentoCard = memo(function BentoCard({ svc, index, t }: { svc: { id: string
       `radial-gradient(circle at ${x}% ${y}%, rgba(129, 140, 248, 0.14), transparent 65%)`
   );
 
+  const handleMouseEnter = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = cardRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    rawX.set(x);
+    rawY.set(y);
+    glowX.jump(x);
+    glowY.jump(y);
+  }, [rawX, rawY, glowX, glowY]);
+
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     const rect = cardRef.current?.getBoundingClientRect();
     if (!rect) return;
@@ -40,16 +51,11 @@ const BentoCard = memo(function BentoCard({ svc, index, t }: { svc: { id: string
     rawY.set(((e.clientY - rect.top) / rect.height) * 100);
   }, [rawX, rawY]);
 
-  const resetGlow = useCallback(() => {
-    rawX.set(50);
-    rawY.set(0);
-  }, [rawX, rawY]);
-
   return (
     <motion.div
       ref={cardRef}
       onMouseMove={handleMouseMove}
-      onMouseLeave={resetGlow}
+      onMouseEnter={handleMouseEnter}
       initial="idle"
       whileHover="hovered"
       animate="idle"

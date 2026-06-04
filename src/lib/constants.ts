@@ -23,11 +23,12 @@ export interface Project {
   url: string;
   github?: string;
   techStack: string[];
+  spotlightImage?: string;
 }
 
 export const projects: Project[] = [
-  { id: '01', slug: 'zolfo-medicina-estetica', category: 'Portal Médico',      title: 'Zolfo Medicina Estética', metric: 'Lighthouse 100',   url: 'https://zolfoestetica.com.ar',                                            techStack: ['Next.js', 'React', 'Supabase', 'Vercel'] },
-  { id: '02', slug: 'nurestetica',              category: 'Web Institucional',  title: 'NurEstética',             metric: 'Real Score 100', url: 'https://nurestetica.com.ar',                                               techStack: ['Next.js', 'React', 'Tailwind', 'Vercel'] },
+  { id: '01', slug: 'zolfo-medicina-estetica', category: 'Portal Médico',      title: 'Zolfo Medicina Estética', metric: 'Lighthouse 100',   url: 'https://zolfoestetica.com.ar',                                            techStack: ['Next.js', 'React', 'Supabase', 'Vercel'], spotlightImage: '/images/projects/zolfo-estetica/zolfo-card-spotlight.webp' },
+  { id: '02', slug: 'nurestetica',              category: 'Web Institucional',  title: 'NurEstética',             metric: 'Real Score 100', url: 'https://nurestetica.com.ar',                                               techStack: ['Next.js', 'React', 'Tailwind', 'Vercel'], spotlightImage: '/images/projects/nur-estetica/nur-card-spotlight.jpg' },
   { id: '03', slug: 'authmotion',               category: 'IAM System',         title: 'AuthMotion',              metric: 'Open Source',    url: 'https://github.com/malcom-builder/AuthMotion',    github: 'https://github.com/malcom-builder/AuthMotion',    techStack: ['.NET 10', 'SQL Server', 'Docker', 'EF Core'] },
   { id: '04', slug: 'smartwallet',              category: 'Fintech',            title: 'SmartWallet',             metric: 'Double-Entry',   url: 'https://github.com/malcom-builder/SmartWallet',    github: 'https://github.com/malcom-builder/SmartWallet',    techStack: ['.NET 8', 'SQL Server', 'Azure', 'Docker'] },
   { id: '05', slug: 'malcombuilder',            category: 'Portfolio',          title: 'malcombuilder.com',       metric: 'AI-native',      url: 'https://malcombuilder.com',                                                techStack: ['Next.js', 'React', 'Tailwind', 'Framer Motion', 'next-intl', 'Vercel'] },

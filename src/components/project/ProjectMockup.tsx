@@ -18,21 +18,22 @@ interface Props {
 const mockups: Record<string, { tabs: Tab[]; mobile?: string; url: string }> = {
   "zolfo-medicina-estetica": {
     url: "zolfoestetica.com.ar",
-    mobile: "/images/projects/zolfo-estetica/mobile-iphone.png",
+    mobile: "/images/projects/zolfo-estetica/zolfo-mobile.png",
     tabs: [
-      { id: "home", label: "Home", img: "/images/projects/zolfo-estetica/hero-mcbook.png" },
-      { id: "admin", label: "Admin Panel", img: "/images/projects/zolfo-estetica/panel-admin-browser.png" },
-      { id: "perf", label: "Performance", img: "/images/projects/zolfo-estetica/lighthouse-browser.png" },
-      { id: "details", label: "Tratamientos", img: "/images/projects/zolfo-estetica/card-home-mcbook.png" },
+      { id: "home", label: "Home", img: "/images/projects/zolfo-estetica/zolfo-hero.png" },
+      { id: "admin", label: "Admin Panel", img: "/images/projects/zolfo-estetica/zolfo-panel-admin.png" },
+      { id: "perf", label: "Performance", img: "/images/projects/zolfo-estetica/zolfo-lighthouse-browser.png" },
+      { id: "details", label: "UI/UX", img: "/images/projects/zolfo-estetica/zolfo-card.png" },
     ],
   },
   "nurestetica": {
     url: "nurestetica.com.ar",
-    mobile: "/images/projects/nur-estetica/treatment-mobile.png",
+    mobile: "/images/projects/nur-estetica/nur-mobile.webp",
     tabs: [
-      { id: "home", label: "Home", img: "/images/projects/nur-estetica/hero-macbook.png" },
-      { id: "treatments", label: "Tratamientos", img: "/images/projects/nur-estetica/cards-treatment-macbook.png" },
-      { id: "about", label: "Nosotros", img: "/images/projects/nur-estetica/aboute-macbook.png" },
+      { id: "home", label: "Home", img: "/images/projects/nur-estetica/nur-hero.png" },
+      { id: "treatments", label: "UI/UX", img: "/images/projects/nur-estetica/nur-ui-ux.png" },
+      { id: "cards", label: "Cards", img: "/images/projects/nur-estetica/nur-cards.png" },
+      { id: "perf", label: "Performance", img: "/images/projects/nur-estetica/nur-lighthouse.png" },
     ],
   },
 };

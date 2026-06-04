@@ -27,7 +27,8 @@
   "projects": {
     "badge": "Projects",
     "title": "Selected",
-    "view": "View project"
+    "view": "View project",
+    "view_all": "View all projects"
   },
   "projectPages": {
     "zolfo-medicina-estetica": {
@@ -211,7 +212,7 @@
   },
   "cta": {
     "marquee": "LET'S TALK — LET'S BUILD SOMETHING — YOU HAVE A PROJECT — WRITE TO ME — LET'S START",
-    "heading": "build?",
+    "heading": "build!",
     "action": "let's start",
     "sub": "no commitment · 24h reply"
   },

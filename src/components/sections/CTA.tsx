@@ -24,7 +24,21 @@ export function CTA() {
       `radial-gradient(circle at ${x}% ${y}%, rgb(255,255,255) 0%, rgb(255,255,255) 10%, transparent 50%)`
   );
 
-  const handleWordEnter = useCallback(() => setWordHovered(true), []);
+  const handleWordEnter = useCallback(
+    (e: React.MouseEvent) => {
+      setWordHovered(true);
+      if (shouldReduceMotion) return;
+      const rect = wordRef.current?.getBoundingClientRect();
+      if (!rect) return;
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      wordRawX.set(x);
+      wordRawY.set(y);
+      wordGlowX.jump(x);
+      wordGlowY.jump(y);
+    },
+    [shouldReduceMotion, wordRawX, wordRawY, wordGlowX, wordGlowY]
+  );
   const handleWordMove = useCallback(
     (e: React.MouseEvent) => {
       if (shouldReduceMotion) return;
@@ -36,10 +50,8 @@ export function CTA() {
     [shouldReduceMotion, wordRawX, wordRawY]
   );
   const handleWordLeave = useCallback(() => {
-    wordRawX.set(50);
-    wordRawY.set(50);
     setWordHovered(false);
-  }, [wordRawX, wordRawY]);
+  }, []);
 
   return (
     <section id="cta" style={{ overflow: "hidden", position: "relative" }}>
@@ -80,7 +92,7 @@ export function CTA() {
                       textShadow: "0 0 40px rgba(158,80,247,0.35), 0 0 80px rgba(158,80,247,0.15)",
                     }}
                     onMouseEnter={(e) => {
-                      handleWordEnter();
+                      handleWordEnter(e);
                       (e.currentTarget as HTMLElement).style.color = "var(--color-emerald-hover)";
                       (e.currentTarget as HTMLElement).style.textShadow =
                         "0 0 40px rgba(158,80,247,0.35), 0 0 80px rgba(158,80,247,0.15)";
@@ -100,7 +112,7 @@ export function CTA() {
                     <motion.span
                       aria-hidden
                       animate={{ opacity: wordHovered ? 1 : 0 }}
-                      transition={{ duration: 0.3, ease: "easeOut" }}
+                      transition={{ duration: 0.6, ease: "easeOut" }}
                       className="heading"
                       style={{
                         position: "absolute",

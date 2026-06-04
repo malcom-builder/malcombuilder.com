@@ -39,7 +39,8 @@
   "projects": {
     "badge": "Proyectos",
     "title": "Selección",
-    "view": "Ver proyecto"
+    "view": "Ver proyecto",
+    "view_all": "Ver todos los proyectos"
   },
   "projectPages": {
     "zolfo-medicina-estetica": {
@@ -446,7 +447,7 @@
   },
   "cta": {
     "marquee": "HABLEMOS — TENÉS UN PROYECTO — ESCALEMOS — ESCRIBIME — EMPECEMOS — TRANSFORMEMOS — ",
-    "heading": "¿construimos?",
+    "heading": "¡construimos!",
     "action": "empezamos",
     "sub": "sin compromiso · respuesta en 24h"
   },

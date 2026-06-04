@@ -14,6 +14,8 @@ import {
 import { ArrowUpRight } from "lucide-react";
 import { memo, useEffect, useRef, useState } from "react";
 import { SpotlightHeading } from "@/components/ui/SpotlightHeading";
+import Image from "next/image";
+import { SpotlightButton } from "@/components/ui/SpotlightButton";
 
 // ─── Container variants ──────────────────────────────────────────────────────
 
@@ -140,6 +142,25 @@ const ProjectCard = memo(function ProjectCard({ proj }: { proj: typeof projects[
       `radial-gradient(circle at ${x}% ${y}%, rgba(123, 97, 255, 0.14), transparent 65%)`
   );
 
+  const imageSpotlightMask = useTransform(
+    [glowX, glowY],
+    ([x, y]: number[]) =>
+      `radial-gradient(circle 200px at ${x}% ${y}%, black 0%, transparent 100%)`
+  );
+
+  const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
+    setIsHovered(true);
+    if (shouldReduce) return;
+    const rect = cardRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    rawX.set(x);
+    rawY.set(y);
+    glowX.jump(x);
+    glowY.jump(y);
+  };
+
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (shouldReduce) return;
     const rect = cardRef.current?.getBoundingClientRect();
@@ -149,8 +170,6 @@ const ProjectCard = memo(function ProjectCard({ proj }: { proj: typeof projects[
   };
 
   const resetGlow = () => {
-    rawX.set(50);
-    rawY.set(0);
     setIsHovered(false);
   };
 
@@ -159,7 +178,7 @@ const ProjectCard = memo(function ProjectCard({ proj }: { proj: typeof projects[
       variants={cardVariants}
       ref={cardRef}
       onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
+      onMouseEnter={handleMouseEnter}
       onMouseLeave={resetGlow}
       style={{
         display: "flex",
@@ -169,6 +188,7 @@ const ProjectCard = memo(function ProjectCard({ proj }: { proj: typeof projects[
         background: "var(--color-card)",
         border: "1px solid var(--color-border)",
         borderRadius: "12px",
+        aspectRatio: "3 / 2",
         minHeight: "240px",
         textDecoration: "none",
         position: "relative",
@@ -181,6 +201,33 @@ const ProjectCard = memo(function ProjectCard({ proj }: { proj: typeof projects[
         transition: { duration: 0.3, ease: [0.21, 0.47, 0.32, 0.98] },
       }}
     >
+      {/* Spotlight image (reveals image on hover only where cursor is) */}
+      {proj.spotlightImage && !shouldReduce && (
+        <motion.div
+          style={{
+            position: "absolute",
+            inset: 0,
+            pointerEvents: "none",
+            zIndex: 0,
+            overflow: "hidden",
+            borderRadius: "12px",
+            maskImage: imageSpotlightMask,
+            WebkitMaskImage: imageSpotlightMask,
+          }}
+          animate={{ opacity: isHovered ? 0.99 : 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <Image
+            src={proj.spotlightImage}
+            alt={proj.title}
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            style={{ objectFit: "cover" }}
+            priority
+          />
+        </motion.div>
+      )}
+
       {/* Cursor-tracking spotlight glow — same as Services BentoCard */}
       {!shouldReduce && (
         <motion.div
@@ -422,16 +469,38 @@ export function Projects() {
           viewport={{ once: true, margin: "0px 0px -5% 0px" }}
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(1, 1fr)",
             gap: "1.5rem",
             marginTop: "2rem",
           }}
-          className="md:grid-cols-2"
+          className="grid-cols-1 md:grid-cols-2"
         >
-          {projects.map((proj, i) => (
+          {projects.slice(0, 4).map((proj, i) => (
             <ProjectCard key={proj.id} proj={proj} index={i} />
           ))}
         </motion.div>
+
+        <div style={{ display: "flex", justifyContent: "center", marginTop: "3.5rem" }}>
+          <SpotlightButton
+            href="/projects"
+            id="view-all-projects-btn"
+            glowColor="rgb(123, 97, 255)"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.5rem",
+              padding: "0.875rem 2.25rem",
+              border: "1px solid var(--color-border)",
+              borderRadius: "9999px",
+              color: "var(--color-fg)",
+              fontSize: "0.875rem",
+              fontWeight: 600,
+              textDecoration: "none",
+              transition: "border-color 0.2s",
+            }}
+          >
+            {t("view_all")}
+          </SpotlightButton>
+        </div>
       </div>
     </section>
   );

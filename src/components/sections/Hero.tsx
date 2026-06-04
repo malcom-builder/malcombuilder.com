@@ -28,7 +28,21 @@ export function Hero() {
     ([x, y]: number[]) =>
       `radial-gradient(circle at ${x}% ${y}%, rgb(255,255,255) 0%, rgb(255,255,255) 10%, transparent 50%)`
   );
-  const handleSoloEnter = useCallback(() => setSoloHovered(true), []);
+  const handleSoloEnter = useCallback(
+    (e: React.MouseEvent) => {
+      setSoloHovered(true);
+      if (shouldReduceMotion) return;
+      const rect = soloRef.current?.getBoundingClientRect();
+      if (!rect) return;
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      soloRawX.set(x);
+      soloRawY.set(y);
+      soloGlowX.jump(x);
+      soloGlowY.jump(y);
+    },
+    [shouldReduceMotion, soloRawX, soloRawY, soloGlowX, soloGlowY]
+  );
   const handleSoloMove = useCallback(
     (e: React.MouseEvent) => {
       if (shouldReduceMotion) return;
@@ -40,10 +54,8 @@ export function Hero() {
     [shouldReduceMotion, soloRawX, soloRawY]
   );
   const handleSoloLeave = useCallback(() => {
-    soloRawX.set(50);
-    soloRawY.set(50);
     setSoloHovered(false);
-  }, [soloRawX, soloRawY]);
+  }, []);
   const rawX = useMotionValue(0);
   const rawY = useMotionValue(0);
   const orbX = useSpring(rawX, { stiffness: 40, damping: 20 });
@@ -187,7 +199,7 @@ export function Hero() {
                   textShadow: "0 0 40px rgba(158, 80, 247, 0.5), 0 0 80px rgba(158, 80, 247, 0.25)",
                 }}
                 onMouseEnter={(e) => {
-                  handleSoloEnter();
+                  handleSoloEnter(e);
                   (e.currentTarget as HTMLElement).style.color = "var(--color-accent-hover)";
                   (e.currentTarget as HTMLElement).style.transform = "scale(1.02) translateX(4px)";
                   (e.currentTarget as HTMLElement).style.textShadow = "0 0 50px rgba(158, 80, 247, 0.7), 0 0 100px rgba(158, 80, 247, 0.4)";
@@ -205,7 +217,7 @@ export function Hero() {
                 <motion.span
                   aria-hidden
                   animate={{ opacity: soloHovered ? 1 : 0 }}
-                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
                   style={{
                     position: "absolute",
                     inset: 0,
