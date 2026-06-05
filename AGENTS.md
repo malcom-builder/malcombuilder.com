@@ -244,24 +244,7 @@ title: 'malcom.builder — AI-native system builder'
 7. SEO
    └── robots.ts · sitemap.ts · generateMetadata
 
-8. Verificación
-   └── pnpm run build sin errores
-   └── Recorrer checklist completo
-```
-
----
-
-## Reglas durante el build
-
-- **No interrumpir** para preguntas de estilo o copy — usar los valores de este documento
-- **Sí preguntar** antes de instalar dependencias no listadas
-- **Sí preguntar** antes de agregar secciones no especificadas
-- **No inventar** URLs, emails ni números — usar placeholders definidos
-- **Reportar** al final de cada etapa, no durante
-
----
-
-## Checklist post-build
+8. ## Checklist post-build
 
 - [ ] `pnpm run build` sin errores TypeScript ni ESLint
 - [ ] `localhost:3000` redirige a `/es`
@@ -296,12 +279,11 @@ title: 'malcom.builder — AI-native system builder'
 - **Spotlight gradient preciso:** Falloff `transparent 50%`. Spotlight ilumina con cursor-tracking.
 - **SpotlightHeading default glow:** Índigo `rgb(123,97,255)` para alinear con `--color-accent`.
 - **Copy CTAs:** Navbar "Construir" / "Build". CTA final heading "listo?" (ES) / "ready?" (EN).
-- **Footer wordmark dual spotlight:** Componente `SpotlightWord` con `hoverTextShadow` — "malcom" resplandece indigo, ".builder" resplandece emerald al hover. Aura base = mismo textShadow que `.heading`. Sin scale (removido de `.footer-wordmark:hover`).
-- **Light mode atenuado:** bg bajado a `#e8e7f2`, surface/card a `#f0eff8`, border a `#cccbd8`, muted a `#6b6a7a`. Menos blanco, tono lavanda-tiza.
-- **Proporción de las cards:** Cambiado de `1:1` a `3:2` para darles un aspecto panorámico más equilibrado y profesional.
 - **Spotlight Snapping con `.jump()`:** Implementado cursor-snapping instantáneo en `onMouseEnter` para cards (proyectos y servicios), títulos y textos destacados del Hero ("Solo") y CTA final ("Listo?") para evitar el deslizamiento indeseado desde la posición inicial por defecto `(50, 0)` / `(50, 50)`.
 - **Salida limpia de Spotlight:** Removido el reinicio de coordenadas en `onMouseLeave` para evitar que el destello viaje bruscamente al centro o arriba al salir del elemento; ahora simplemente se desvanece de forma estática en su última posición.
 - **Suavizado de transición en títulos:** Se aumentó la duración del fade de `0.3s` a `0.6s` en los títulos para que el spotlight aparezca de manera más gradual y orgánica.
+- **SpotlightHeading container display:** Cambiado de `block` a `table` para que el contenedor del título se ajuste exactamente al ancho del texto. Esto soluciona la asimetría de hover al aproximarse al título por la derecha, logrando consistencia en ambos lados.
+- **Footer wordmark color hover:** Reemplazado el efecto de cursor-tracking spotlight del footer wordmark por una transición de color lenta (`0.6s ease`) al hacer hover por palabra (`malcom` a índigo, `.builder` a emerald).
 
 ### Componentes creados
 
@@ -310,18 +292,18 @@ title: 'malcom.builder — AI-native system builder'
 - **FadeIn:** Soporta prop `rotate` para animación de entrada con tilt (usado en Services cards).
 - **ScrollIndicator:** Flecha animada al final del Hero que pulsa e invita a scrollear.
 - **SpotlightButton:** Componente client-side que envuelve un Link con overlay spotlight text-only (`background-clip: text` + gradiente radial cursor-following + drop-shadow). Inner wrapper pattern para compatibilidad con iconos SVG. Gradiente apretado (transparent 20%) para spotlight preciso.
-
-- **About:** Sección completa a 2 columnas con grid responsive. Foto de perfil con aspecto 4:5, `object-fit: cover`, bordes con glow índigo y badges flotantes con efecto glassmorphism (`backdropFilter`). Título alineado usando la clase `.heading`.
+- **WordmarkWord:** Componente client-side simple para el footer que maneja la transición de color lenta al hover.
+- **About:** Sección completa a 2 columnas con grid responsive. Foto de perfil con aspecto 4:5, `object-fit: cover`, bordes con glow índigo y badges flotantes con efecto glassmorphism.
 - **Method:** Sección con track de `Marquee` animado infinitamente y componentes SVG personalizados (`StackSVGs`). Tarjetas transparentes para revelar el resplandor de fondo (orb índigo).
 - **BriefForm:** Asistente interactivo multi-paso con lógica de caminos condicionales y campos optimizados para captación de prospectos.
-- **Route /api/brief:** Endpoint de Next.js que calcula el plazo estimado de respuesta (+24 horas hábiles), valida el honeypot de spam, aplica limitación de peticiones por IP y despacha correos a través de Resend.
+- **Route /api/brief:** Endpoint de Next.js que calcula el plazo estimado de respuesta, valida honeypot, aplica rate limit y despacha correos a través de Resend.
 
 ### Efectos visuales globales
 
 - **Noise texture:** `body::after` con SVG `data:image/svg+xml` base64 como `background-image` para textura grano sutil en todo el sitio.
 - **Ambient orb:** `AmbientOrb.tsx` renderizado en `app/[locale]/layout.tsx` como fondo decorativo (solo desktop).
 - **Section transitions:** Secciones pares tienen un gradiente glow en `::before` en el borde superior para separación visual.
-- **Footer wordmark:** Componente `SpotlightWord` — cada palabra tiene ref independiente + overlay `background-clip: text` + `hoverTextShadow` en su propio color. textShadow base = `.heading` (rgba 158,80,247). Sin clipPath, sin drop-shadow en overlay (causaba aura cuadrada).
+- **Footer wordmark transition:** Cada palabra resplandece en su color de hover (`malcom` → índigo, `.builder` → emerald) con una transición lenta y suave de `0.6s`.
 
 ### Problemas resueltos
 
@@ -329,10 +311,11 @@ title: 'malcom.builder — AI-native system builder'
 - **Alineación About:** Se logró igualar perfectamente la altura de la imagen con el contenido de texto removiendo la elongación nativa del grid (`align-items: stretch` descartado). En su lugar se definió un alto fijo usando `aspect-ratio: 4/5` en la foto, y flexbox (`justify-content: space-between`) para distribuir el texto.
 - **Textos superpuestos:** Se resolvieron conflictos de padding al reemplazar el uso de `style` dinámico (ignorado por Framer Motion en `FadeIn`) con clases atómicas de Tailwind (`!pt-0`, `!pb-0`).
 - **Simulación vs Envíos reales:** Implementado comportamiento alternativo si la clave `RESEND_API_KEY` no está provista para desarrollo y validación visual.
-- **Iconos SVG en SpotlightButton:** Overlay con `background-clip: text` y `color: transparent` invisibilizaba SVG por herencia `currentColor`. Resuelto con inner wrapper: overlay y base comparten wrapper, área no-texto transparente deja ver capa base.
+- **Iconos SVG en SpotlightButton:** Overlay con `background-clip: text` y `color: transparent` invisibilizaba SVG por herencia `currentColor`. Resuelto con inner wrapper: overlay and base comparten wrapper, área no-texto transparente deja ver capa base.
 - **Spotlight en texto grande:** Gradiente `transparent 50%` iluminaba toda la palabra en headings. Resuelto: falloff apretado a 20% + drop-shadow reducido de 24px a 12px para spotlight localizado en el cursor.
 - **Deslizamiento de spotlight corregido:** Solucionado el molesto movimiento del spotlight desde su coordenada por defecto en todos los elementos interactivos del sitio (Proyectos, Servicios, Títulos, Hero "Solo", CTA final "Listo?").
 - **Mockups de NurEstética e imágenes optimizadas:** Reemplazados los nombres antiguos de imágenes del proyecto NurEstética por sus nombres descriptivos finales y se actualizó la card spotlight para usar `nur-card-spotlight.jpg`. Se optimizó la card de Zolfo con la imagen `zolfo-card-spotlight.webp` de menor peso (reducción de 62%).
+- **Asimetría de hover en títulos resuelta:** Se corrigió el problema por el cual el hover del spotlight del título se activaba antes al acercarse desde la derecha que por la izquierda cambiando el contenedor a `display: "table"`.
 
 ### Pendientes próxima sesión
 

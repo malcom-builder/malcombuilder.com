@@ -73,7 +73,7 @@ export function SpotlightHeading({ as: Tag = "h2", children, className = "", sty
 
   const containerStyle: CSSProperties = {
     position: position || "relative",
-    display: "block",
+    display: "table",
     zIndex,
     ...(margin !== undefined ? { margin } : {}),
     ...(marginTop !== undefined ? { marginTop } : {}),
