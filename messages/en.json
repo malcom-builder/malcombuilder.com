@@ -183,7 +183,8 @@
   },
   "about": {
     "label": "ABOUT",
-    "headline": "One builder. One stack. One result. Precision.",
+    "headline_part1": "One builder. One stack.",
+    "headline_part2": "One result. Precision.",
     "thesis": {
       "text": "I build digital products, solo. Solid architecture, AI as the execution agent, shipped in weeks. No team, no inflated costs. With conviction."
     },

@@ -284,6 +284,7 @@ title: 'malcom.builder — AI-native system builder'
 - **Suavizado de transición en títulos:** Se aumentó la duración del fade de `0.3s` a `0.6s` en los títulos para que el spotlight aparezca de manera más gradual y orgánica.
 - **SpotlightHeading container display:** Cambiado de `block` a `table` para que el contenedor del título se ajuste exactamente al ancho del texto. Esto soluciona la asimetría de hover al aproximarse al título por la derecha, logrando consistencia en ambos lados.
 - **Footer wordmark color hover:** Reemplazado el efecto de cursor-tracking spotlight del footer wordmark por una transición de color lenta (`0.6s ease`) al hacer hover por palabra (`malcom` a índigo, `.builder` a emerald).
+- **División del título en la sección About:** Dado que el título "Un builder. Un stack. Un resultado. Precisión." es largo y genera un salto de línea (wrapping), el contenedor `display: "table"` se ensanchaba al 100% de la caja de contenido del parent. Se solucionó dividiendo el titular en dos líneas independientes (`headline_part1` y `headline_part2`) representadas por dos `SpotlightHeading`s distintos. Esto asegura que cada línea se encoja exactamente a la longitud de sus caracteres y que la activación de la luz sea simétrica al aproximarse por la derecha en ambas líneas.
 
 ### Componentes creados
 

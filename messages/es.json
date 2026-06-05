@@ -418,7 +418,8 @@
   },
   "about": {
     "label": "ABOUT",
-    "headline": "Un builder. Un stack. Un resultado. Precisión.",
+    "headline_part1": "Un builder. Un stack.",
+    "headline_part2": "Un resultado. Precisión.",
     "thesis": {
       "text": "Construyo productos digitales, solo. Arquitectura sólida, ejecución con IA, entrega en semanas. Sin equipo, sin costos inflados, con criterio."
     },

@@ -15,7 +15,14 @@ export function About() {
         {/* TOP: Title — uses .heading class for the same text-shadow glow as other sections */}
         <FadeIn delay={0.1} direction="up" className="mb-16 md:mb-28">
           <span className="about-section-label">{t("label")}</span>
-          <SpotlightHeading as="h2" className="heading" style={{ marginBottom: 0, textTransform: "lowercase" }}>{t("headline")}</SpotlightHeading>
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.25rem" }}>
+            <SpotlightHeading as="h2" className="heading" style={{ marginBottom: 0, textTransform: "lowercase" }}>
+              {t("headline_part1")}
+            </SpotlightHeading>
+            <SpotlightHeading as="h2" className="heading" style={{ marginBottom: 0, textTransform: "lowercase" }}>
+              {t("headline_part2")}
+            </SpotlightHeading>
+          </div>
         </FadeIn>
 
         {/* La tesis — editorial pullquote */}
