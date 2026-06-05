@@ -1,105 +1,37 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from "framer-motion";
-import { memo, useRef, useState, useCallback } from "react";
+import { memo, useState } from "react";
 import { socialLinks } from "@/lib/constants";
 
-// ── Isolated spotlight per word ──────────────────────────────────────────────
-const SpotlightWord = memo(function SpotlightWord({
+// ── Simple word with slow color transition on hover ───────────────────────────
+const WordmarkWord = memo(function WordmarkWord({
   children,
-  glowColor,
-  textShadow,
-  hoverTextShadow,
+  hoverColor,
 }: {
   children: string;
-  glowColor: string;
-  textShadow: string;
-  hoverTextShadow: string;
+  hoverColor: string;
 }) {
-  const shouldReduceMotion = useReducedMotion();
-  const ref = useRef<HTMLSpanElement>(null);
   const [hovered, setHovered] = useState(false);
-
-  const rawX = useMotionValue(50);
-  const rawY = useMotionValue(50);
-  const glowX = useSpring(rawX, { stiffness: 120, damping: 20 });
-  const glowY = useSpring(rawY, { stiffness: 120, damping: 20 });
-
-  const bg = useTransform(
-    [glowX, glowY],
-    ([x, y]: number[]) =>
-      `radial-gradient(circle at ${x}% ${y}%, ${glowColor} 0%, ${glowColor} 10%, transparent 50%)`
-  );
-
-  const handleEnter = useCallback(() => setHovered(true), []);
-  const handleMove = useCallback(
-    (e: React.MouseEvent) => {
-      if (shouldReduceMotion) return;
-      const rect = ref.current?.getBoundingClientRect();
-      if (!rect) return;
-      rawX.set(((e.clientX - rect.left) / rect.width) * 100);
-      rawY.set(((e.clientY - rect.top) / rect.height) * 100);
-    },
-    [shouldReduceMotion, rawX, rawY]
-  );
-  const handleLeave = useCallback(() => {
-    rawX.set(50);
-    rawY.set(50);
-    setHovered(false);
-  }, [rawX, rawY]);
-
-  const sharedStyle: React.CSSProperties = {
-    fontFamily: "var(--font-display)",
-    fontSize: "clamp(1.75rem, 4vw, 2.5rem)",
-    fontWeight: 700,
-    letterSpacing: "-0.03em",
-    lineHeight: 1.2,
-    whiteSpace: "nowrap",
-  };
 
   return (
     <span
-      ref={ref}
-      onMouseEnter={handleEnter}
-      onMouseMove={handleMove}
-      onMouseLeave={handleLeave}
-      style={{ position: "relative", display: "inline-block" }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        fontFamily: "var(--font-display)",
+        fontSize: "clamp(1.75rem, 4vw, 2.5rem)",
+        fontWeight: 700,
+        letterSpacing: "-0.03em",
+        lineHeight: 1.2,
+        whiteSpace: "nowrap",
+        display: "inline-block",
+        color: hovered ? hoverColor : "var(--color-fg)",
+        transition: "color 0.6s ease",
+        cursor: "default",
+      }}
     >
-      {/* Base text — textShadow transitions to glowColor on hover */}
-      <span
-        style={{
-          ...sharedStyle,
-          color: "var(--color-fg)",
-          textShadow: hovered ? hoverTextShadow : textShadow,
-          transition: "text-shadow 0.35s ease",
-          display: "inline-block",
-        }}
-      >
-        {children}
-      </span>
-
-      {/* Cursor-following spotlight overlay */}
-      {!shouldReduceMotion && (
-        <motion.span
-          aria-hidden
-          animate={{ opacity: hovered ? 1 : 0 }}
-          transition={{ duration: 0.3, ease: "easeOut" }}
-          style={{
-            ...sharedStyle,
-            position: "absolute",
-            inset: 0,
-            pointerEvents: "none",
-            color: "transparent",
-            backgroundClip: "text",
-            WebkitBackgroundClip: "text",
-            backgroundImage: bg,
-            display: "inline-block",
-          }}
-        >
-          {children}
-        </motion.span>
-      )}
+      {children}
     </span>
   );
 });
@@ -134,13 +66,7 @@ export function Footer() {
             transform: "none",
           }}
         >
-          <SpotlightWord
-            glowColor="rgb(123,97,255)"
-            textShadow="0 0 40px rgba(158,80,247,0.35), 0 0 80px rgba(158,80,247,0.15)"
-            hoverTextShadow="0 0 20px rgba(123,97,255,0.9), 0 0 60px rgba(123,97,255,0.6), 0 0 120px rgba(123,97,255,0.3), 0 0 200px rgba(123,97,255,0.15)"
-          >
-            malcom
-          </SpotlightWord>
+          <WordmarkWord hoverColor="var(--color-accent)">malcom</WordmarkWord>
           <span
             style={{
               fontFamily: "var(--font-display)",
@@ -153,13 +79,7 @@ export function Footer() {
           >
             .
           </span>
-          <SpotlightWord
-            glowColor="rgb(16,185,129)"
-            textShadow="0 0 40px rgba(158,80,247,0.35), 0 0 80px rgba(158,80,247,0.15)"
-            hoverTextShadow="0 0 20px rgba(16,185,129,0.9), 0 0 60px rgba(16,185,129,0.6), 0 0 120px rgba(16,185,129,0.3), 0 0 200px rgba(16,185,129,0.15)"
-          >
-            builder
-          </SpotlightWord>
+          <WordmarkWord hoverColor="var(--color-emerald)">builder</WordmarkWord>
         </a>
 
         <p
