@@ -141,7 +141,8 @@ Datos en `lib/constants.ts`:
 ### Stack — grid de logos
 
 Next.js · React · TypeScript · C# · .NET · Docker · SQL Server · Azure · Vercel · Tailwind · Framer Motion · Supabase · GitHub
-Hover: grayscale → color (acento indigo)
+Hover: Inversión de alto contraste (pastilla blanca con texto/icono en negro)
+
 
 ### About — La tesis + profile
 
@@ -278,6 +279,8 @@ title: 'malcom.builder — AI-native system builder'
 - **División del título en la sección About:** Dado que el título "Un builder. Un stack. Un resultado. Precisión." es largo y genera un salto de línea (wrapping), el contenedor `display: "table"` se ensanchaba al 100% de la caja de contenido del parent. Se solucionó dividiendo el titular en dos líneas independientes (`headline_part1` y `headline_part2`) representadas por dos `SpotlightHeading`s distintos. Esto asegura que cada línea se encoja exactamente a la longitud de sus caracteres y que la activación de la luz sea simétrica al aproximarse por la derecha en ambas líneas.
 - **Ajustes de CTA y Localización:** Se actualizó el título del CTA final en español a `"construyamos!"` (removiendo el signo de exclamación inicial) y se incrementó significativamente la intensidad y capas del resplandor de fondo (`text-shadow` y `drop-shadow` de hasta `120px` y opacidades más altas) tanto en reposo como en hover para una visualización premium e impactante.
 - **Restauración de Física de Spotlight:** Se restauró y estabilizó la física del cursor tracking y el restablecimiento suave de coordenadas en los spotlights del sitio, adaptándolos para trabajar con el esquema monocromático puro (blanco sobre negro puro) sin duplicados de texto ni artefactos visuales.
+- **Marquee de Stack Monocromático:** Refactorizado el track de logos de tecnologías en la sección Method. Se rediseñaron todos los SVGs para ser siluetas monocromáticas vectoriales que heredan color (`currentColor`). En hover, la pastilla (pill) se invierte a fondo blanco puro (`#FFFFFF`) y el texto e icono cambian a negro puro (`#000000`) con un leve drop-shadow blanco.
+
 
 ### Componentes creados
 
