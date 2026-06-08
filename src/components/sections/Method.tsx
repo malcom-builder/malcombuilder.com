@@ -10,84 +10,56 @@ import React from "react";
 const StackSVGs: Record<string, React.ReactNode> = {
   "Next.js": (
     <svg viewBox="0 0 180 180" width="36" height="36" fill="currentColor" aria-hidden="true">
-      <mask id="njs-mask" style={{ maskType: "alpha" }}>
-        <circle cx="90" cy="90" r="90" />
-      </mask>
-      <g mask="url(#njs-mask)">
-        <circle cx="90" cy="90" r="90" fill="#000" />
-        <path d="M149.508 157.52L69.142 54H54v71.908h14.374V72.576l73.43 94.457A90.129 90.129 0 00149.508 157.52z" fill="url(#njs-grad)" />
-        <rect x="112" y="54" width="14" height="72" fill="url(#njs-grad2)" />
-        <defs>
-          <linearGradient id="njs-grad" x1="109" y1="116.5" x2="144.5" y2="160.5" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#fff" /><stop offset="1" stopColor="#fff" stopOpacity="0" />
-          </linearGradient>
-          <linearGradient id="njs-grad2" x1="112" y1="54" x2="112" y2="106.5" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#fff" /><stop offset="1" stopColor="#fff" stopOpacity="0" />
-          </linearGradient>
-        </defs>
-      </g>
+      <path d="M90 0a90 90 0 1 0 90 90A90.1 90.1 0 0 0 90 0zM54 54h14.38v18.58L112.08 126H126V54h-14v53.42L68.38 54H54zm58 72V72.58l14 18.57V126z" />
     </svg>
   ),
   "React": (
-    <svg viewBox="-11.5 -10.232 23 20.463" width="36" height="36" aria-hidden="true">
-      <circle cx="0" cy="0" r="2.05" fill="#61DAFB"/>
-      <g stroke="#61DAFB" strokeWidth="1" fill="none">
-        <ellipse rx="11" ry="4.2"/>
-        <ellipse rx="11" ry="4.2" transform="rotate(60)"/>
-        <ellipse rx="11" ry="4.2" transform="rotate(120)"/>
-      </g>
+    <svg viewBox="-11.5 -10.232 23 20.463" width="36" height="36" fill="none" stroke="currentColor" strokeWidth="1.2" aria-hidden="true">
+      <circle cx="0" cy="0" r="2.05" fill="currentColor"/>
+      <ellipse rx="11" ry="4.2"/>
+      <ellipse rx="11" ry="4.2" transform="rotate(60)"/>
+      <ellipse rx="11" ry="4.2" transform="rotate(120)"/>
     </svg>
   ),
   "TypeScript": (
-    <svg viewBox="0 0 400 400" width="36" height="36" aria-hidden="true">
-      <rect width="400" height="400" rx="8" fill="#3178C6"/>
-      <path d="M87.7 200.7V217h52v148h36.9V217h52v-16.3c0-9 0-16.5-.4-16.7-.3-.3-31.7-.4-70-.4l-69.6.1v16z" fill="#fff"/>
-      <path d="M321.4 184.1c10.7 2.7 18.8 7.6 26.3 15.5 3.9 4.2 9.6 11.7 10.1 13.5.1.6-18.2 12.8-29.3 19.7-.4.3-2-1.6-3.8-4.5-5.4-7.8-11-11.2-19.6-11.8-12.6-.8-20.8 5.7-20.7 16.4 0 3.2.5 5 1.8 7.6 2.8 5.8 8 9.3 23.2 16.4 28.6 12.3 40.9 20.4 48.5 31.9 8.5 12.8 10.4 33.3 4.6 48.6-6.3 16.6-22 27.8-44.2 31.5-6.8 1.2-23.1 1-30.5-.3-16.1-2.9-31.4-11-40.8-21.7-3.9-4.5-11.4-16.1-10.9-16.9.2-.3 1.9-1.3 3.8-2.4 1.9-1 9.1-5.2 16-9.4l12.5-7.6 2.6 3.8c3.6 5.5 11.5 13 16.2 15.5 13.6 7.1 32.3 6.1 41.5-2.1 3.9-3.6 5.5-7.3 5.5-12.8 0-4.9-.6-7.1-3.2-10.8-3.3-4.7-10-8.7-29.2-17.2-21.9-9.4-31.3-15.2-39.8-24.4-5-5.4-9.7-14.4-11.6-22.1-1.6-6.5-2-22.5-.7-29.1 4.7-24.2 21.4-40.9 44.8-45.1 7.7-1.4 25.7-.8 33.2 1.2z" fill="#fff"/>
+    <svg viewBox="0 0 400 400" width="36" height="36" fill="currentColor" aria-hidden="true">
+      <rect x="25" y="25" width="350" height="350" rx="30" fill="none" stroke="currentColor" strokeWidth="30" />
+      <path d="M110 135v25h45v110h30V160h45v-25H110z M275 135c-25 0-45 15-45 40v15c0 20 15 30 35 35s35 15 35 30c0 15-15 25-30 25s-30-10-35-25h-30c5 30 25 50 65 50s60-20 60-50c0-30-20-35-40-40s-35-15-35-25c0-15 15-20 25-20s25 10 25 20h30c0-30-25-50-65-50z" />
     </svg>
   ),
   "C#": (
-    <svg viewBox="0 0 512 512" width="36" height="36" fill="#68217A" aria-hidden="true">
-      <path d="M464,128V384L320,464,176,384V128L320,48ZM320,85,213,144V368L320,427,427,368V144Z"/>
-      <text x="50%" y="55%" textAnchor="middle" fill="#fff" fontSize="160" fontFamily="sans-serif" fontWeight="800" dy=".3em">C#</text>
+    <svg viewBox="0 0 512 512" width="36" height="36" fill="none" stroke="currentColor" strokeWidth="32" aria-hidden="true">
+      <path d="M464,128V384L320,464,176,384V128L320,48ZM320,85,213,144V368L320,427,427,368V144Z" fill="currentColor" stroke="none" />
+      <text x="50%" y="55%" textAnchor="middle" fill="currentColor" fontSize="160" fontFamily="sans-serif" fontWeight="800" dy=".3em" stroke="none">C#</text>
     </svg>
   ),
   ".NET": (
-    <svg viewBox="0 0 512 512" width="36" height="36" fill="#512BD4" aria-hidden="true">
-      <rect width="512" height="512" rx="64"/>
-      <text x="50%" y="50%" textAnchor="middle" fill="#fff" fontSize="180" fontFamily="sans-serif" fontWeight="800" dy=".3em">.NET</text>
+    <svg viewBox="0 0 512 512" width="36" height="36" fill="none" stroke="currentColor" strokeWidth="32" aria-hidden="true">
+      <rect x="16" y="16" width="480" height="480" rx="64" />
+      <text x="50%" y="50%" textAnchor="middle" fill="currentColor" fontSize="180" fontFamily="sans-serif" fontWeight="800" dy=".3em" stroke="none">.NET</text>
     </svg>
   ),
   "Docker": (
-    <svg viewBox="0 0 24 24" width="36" height="36" fill="#2496ED" aria-hidden="true">
-      <path d="M22.25 10.155c-.266-.188-.636-.217-.936-.073-.62.302-1.345.459-2.09.459-1.272 0-2.483-.414-3.473-1.155-.386-.289-1.026-.08-1.07.411-.073.805-.28 1.57-.6 2.292-.266.6-.74 1.106-1.353 1.455-.613.35-1.32.535-2.043.535-1.127 0-2.2-.41-3.047-1.157-.393-.346-.99-.214-1.135.297a7.228 7.228 0 00-.236 1.838c0 3.99 3.245 7.235 7.235 7.235h7.32c3.548 0 6.425-2.877 6.425-6.425a6.41 6.41 0 00-4.02-5.96z"/>
-      <path d="M8.25 8.78h2.62a.49.49 0 00.49-.49v-2.62a.49.49 0 00-.49-.49H8.25a.49.49 0 00-.49.49v2.62c0 .27.22.49.49.49zm4.27 0h2.62a.49.49 0 00.49-.49v-2.62a.49.49 0 00-.49-.49h-2.62a.49.49 0 00-.49.49v2.62c0 .27.22.49.49.49zm0-4.27h2.62a.49.49 0 00.49-.49V1.4a.49.49 0 00-.49-.49h-2.62a.49.49 0 00-.49.49v2.62c0 .27.22.49.49.49zm-8.54 4.27H6.6a.49.49 0 00.49-.49v-2.62a.49.49 0 00-.49-.49H3.98a.49.49 0 00-.49.49v2.62c0 .27.22.49.49.49z"/>
+    <svg viewBox="0 0 24 24" width="36" height="36" fill="currentColor" aria-hidden="true">
+      <path d="M22.25 10.155c-.266-.188-.636-.217-.936-.073-.62.302-1.345.459-2.09.459-1.272 0-2.483-.414-3.473-1.155-.386-.289-1.026-.08-1.07.411-.073.805-.28 1.57-.6 2.292-.266.6-.74 1.106-1.353 1.455-.613.35-1.32.535-2.043.535-1.127 0-2.2-.41-3.047-1.157-.393-.346-.99-.214-1.135.297a7.228 7.228 0 00-.236 1.838c0 3.99 3.245 7.235 7.235 7.235h7.32c3.548 0 6.425-2.877 6.425-6.425a6.41 6.41 0 00-4.02-5.96zM8.25 8.78h2.62a.49.49 0 00.49-.49v-2.62a.49.49 0 00-.49-.49H8.25a.49.49 0 00-.49.49v2.62c0 .27.22.49.49.49zm4.27 0h2.62a.49.49 0 00.49-.49v-2.62a.49.49 0 00-.49-.49h-2.62a.49.49 0 00-.49.49v2.62c0 .27.22.49.49.49zm0-4.27h2.62a.49.49 0 00.49-.49V1.4a.49.49 0 00-.49-.49h-2.62a.49.49 0 00-.49.49v2.62c0 .27.22.49.49.49zm-8.54 4.27H6.6a.49.49 0 00.49-.49v-2.62a.49.49 0 00-.49-.49H3.98a.49.49 0 00-.49.49v2.62c0 .27.22.49.49.49z"/>
     </svg>
   ),
   "SQL Server": (
-    <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="#CC292B" strokeWidth="2" aria-hidden="true">
+    <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
       <ellipse cx="12" cy="5" rx="9" ry="3"/>
       <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
       <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
     </svg>
   ),
   "Azure": (
-    <svg viewBox="0 0 24 24" width="36" height="36" fill="#0078D4" aria-hidden="true">
+    <svg viewBox="0 0 24 24" width="36" height="36" fill="currentColor" aria-hidden="true">
       <path d="M5.483 21.3H24L14.025 4.013l-3.3 5.41zM13.06 4.908L3.134 22.5H0L9.811 5.15z"/>
     </svg>
   ),
   "Supabase": (
-    <svg viewBox="0 0 109 113" width="36" height="36" aria-hidden="true">
-      <defs>
-        <linearGradient id="sb1" x1="53.974" y1="54.974" x2="94.163" y2="71.218" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#249361"/><stop offset="1" stopColor="#3ECF8E"/>
-        </linearGradient>
-        <linearGradient id="sb2" x1="36.156" y1="30.578" x2="54.484" y2="65.038" gradientUnits="userSpaceOnUse">
-          <stop/><stop offset="1" stopOpacity="0"/>
-        </linearGradient>
-      </defs>
-      <path d="M63.708 110.284c-2.86 3.601-8.658 1.628-8.727-2.97l-1.007-67.251h45.22c8.19 0 12.758 9.46 7.665 15.8l-43.151 54.421z" fill="url(#sb1)"/>
-      <path d="M63.708 110.284c-2.86 3.601-8.658 1.628-8.727-2.97l-1.007-67.251h45.22c8.19 0 12.758 9.46 7.665 15.8l-43.151 54.421z" fill="url(#sb2)" fillOpacity=".2"/>
-      <path d="M45.317 2.071C48.177-1.53 53.976.443 54.045 5.041l.922 67.251H9.83c-8.19 0-12.759-9.46-7.665-15.8L45.317 2.071z" fill="#3ECF8E"/>
+    <svg viewBox="0 0 109 113" width="36" height="36" fill="currentColor" aria-hidden="true">
+      <path d="M63.708 110.284c-2.86 3.601-8.658 1.628-8.727-2.97l-1.007-67.251h45.22c8.19 0 12.758 9.46 7.665 15.8l-43.151 54.421z" opacity="0.6"/>
+      <path d="M45.317 2.071C48.177-1.53 53.976.443 54.045 5.041l.922 67.251H9.83c-8.19 0-12.759-9.46-7.665-15.8L45.317 2.071z"/>
     </svg>
   ),
   "Vercel": (
@@ -96,20 +68,15 @@ const StackSVGs: Record<string, React.ReactNode> = {
     </svg>
   ),
   "Tailwind": (
-    <svg viewBox="0 0 54 33" width="40" height="24" aria-hidden="true">
-      <defs>
-        <linearGradient id="tw" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#2298BD"/><stop offset="100%" stopColor="#0ED7B5"/>
-        </linearGradient>
-      </defs>
-      <path fill="url(#tw)" d="M27 0C19.8 0 15.3 3.6 13.5 10.8c2.7-3.6 5.85-4.95 9.45-4.05 2.054.513 3.522 2.004 5.147 3.653C30.744 12.672 33.808 16 40.5 16c7.2 0 11.7-3.6 13.5-10.8-2.7 3.6-5.85 4.95-9.45 4.05-2.054-.513-3.522-2.004-5.147-3.653C36.756 3.328 33.692 0 27 0zM13.5 16.2C6.3 16.2 1.8 19.8 0 27c2.7-3.6 5.85-4.95 9.45-4.05 2.054.514 3.522 2.004 5.147 3.653C17.244 28.872 20.308 32.2 27 32.2c7.2 0 11.7-3.6 13.5-10.8-2.7 3.6-5.85 4.95-9.45 4.05-2.054-.513-3.522-2.003-5.147-3.653C23.256 19.528 20.192 16.2 13.5 16.2z"/>
+    <svg viewBox="0 0 54 33" width="40" height="24" fill="currentColor" aria-hidden="true">
+      <path d="M27 0C19.8 0 15.3 3.6 13.5 10.8c2.7-3.6 5.85-4.95 9.45-4.05 2.054.513 3.522 2.004 5.147 3.653C30.744 12.672 33.808 16 40.5 16c7.2 0 11.7-3.6 13.5-10.8-2.7 3.6-5.85 4.95-9.45 4.05-2.054-.513-3.522-2.004-5.147-3.653C36.756 3.328 33.692 0 27 0zM13.5 16.2C6.3 16.2 1.8 19.8 0 27c2.7-3.6 5.85-4.95 9.45-4.05 2.054.514 3.522 2.004 5.147 3.653C17.244 28.872 20.308 32.2 27 32.2c7.2 0 11.7-3.6 13.5-10.8-2.7 3.6-5.85 4.95-9.45 4.05-2.054-.513-3.522-2.003-5.147-3.653C23.256 19.528 20.192 16.2 13.5 16.2z"/>
     </svg>
   ),
   "Framer Motion": (
-    <svg viewBox="0 0 14 21" width="28" height="36" fill="none" aria-hidden="true">
-      <path d="M0 0h14v7H7z" fill="#FF4154"/>
-      <path d="M0 7h7l7 7H0z" fill="#FF8163"/>
-      <path d="M0 14h7v7z" fill="#FF4154"/>
+    <svg viewBox="0 0 14 21" width="28" height="36" fill="currentColor" aria-hidden="true">
+      <path d="M0 0h14v7H7z" />
+      <path d="M0 7h7l7 7H0z" opacity="0.6" />
+      <path d="M0 14h7v7z" />
     </svg>
   ),
   "GitHub": (
@@ -173,52 +140,78 @@ export function Method() {
           transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
           style={{ display: "flex", gap: "1rem", width: "fit-content", paddingLeft: "1.5rem" }}
         >
-          {marqueeItems.map((item, i) => (
-            <motion.div
-              key={`${item.label}-${i}`}
-              whileHover={{
+          {marqueeItems.map((item, i) => {
+            const pillVariants = {
+              rest: {
+                backgroundColor: "rgba(255, 255, 255, 0.03)",
+                borderColor: "rgba(255, 255, 255, 0.05)",
+                color: "var(--color-muted)",
+                y: 0,
+                scale: 1,
+              },
+              hover: {
+                backgroundColor: "#FFFFFF",
+                borderColor: "#FFFFFF",
+                color: "#000000",
                 y: -6,
                 scale: 1.06,
-                borderColor: "var(--color-accent)",
-                boxShadow: "0 8px 24px rgba(var(--spotlight-color), 0.12)",
-              }}
-              transition={{ type: "spring", stiffness: 400, damping: 15 }}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "1rem",
-                padding: "1rem 2rem",
-                background: "var(--card-icon-bg)",
-                border: "1px solid var(--card-icon-border)",
-                borderRadius: "999px",
-                whiteSpace: "nowrap",
-                cursor: "default",
-                backdropFilter: "blur(4px)",
-              }}
-            >
+                boxShadow: "0 10px 30px rgba(255, 255, 255, 0.15)",
+              }
+            };
+
+            const iconVariants = {
+              rest: {
+                opacity: 0.6,
+              },
+              hover: {
+                opacity: 1,
+              }
+            };
+
+            return (
               <motion.div
-                whileHover={{ filter: "grayscale(0) opacity(1)" }}
+                key={`${item.label}-${i}`}
+                variants={pillVariants}
+                initial="rest"
+                whileHover="hover"
+                transition={{ type: "spring", stiffness: 400, damping: 15 }}
                 style={{
-                  width: 28,
-                  height: 28,
                   display: "flex",
                   alignItems: "center",
-                  justifyContent: "center",
-                  filter: "grayscale(0.6) opacity(0.7)",
-                  transition: "filter 0.25s",
+                  gap: "1rem",
+                  padding: "1rem 2rem",
+                  borderRadius: "999px",
+                  whiteSpace: "nowrap",
+                  cursor: "default",
+                  backdropFilter: "blur(4px)",
+                  borderWidth: "1px",
+                  borderStyle: "solid",
                 }}
               >
-                {StackSVGs[item.label] ?? (
-                  <span style={{ fontFamily: "monospace", fontSize: "0.85rem", color: "var(--color-muted)", fontWeight: 700 }}>
-                    {item.label[0]}
-                  </span>
-                )}
+                <motion.div
+                  variants={iconVariants}
+                  style={{
+                    width: 28,
+                    height: 28,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    transition: "color 0.2s, opacity 0.2s",
+                    color: "inherit",
+                  }}
+                >
+                  {StackSVGs[item.label] ?? (
+                    <span style={{ fontFamily: "monospace", fontSize: "0.85rem", fontWeight: 700, color: "inherit" }}>
+                      {item.label[0]}
+                    </span>
+                  )}
+                </motion.div>
+                <span style={{ fontSize: "1rem", fontWeight: 600, color: "inherit", transition: "color 0.2s" }}>
+                  {item.label}
+                </span>
               </motion.div>
-              <span style={{ fontSize: "1rem", fontWeight: 600, color: "var(--color-fg)" }}>
-                {item.label}
-              </span>
-            </motion.div>
-          ))}
+            );
+          })}
         </motion.div>
       </div>
     </section>
