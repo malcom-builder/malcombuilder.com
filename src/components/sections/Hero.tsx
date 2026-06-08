@@ -111,18 +111,8 @@ export function Hero() {
 
         {/* Breathing + cursor-tracking AI Glow Orb */}
         <motion.div
+          className="hero-orb"
           style={{
-            position: "absolute",
-            top: "var(--hero-orb-top)",
-            left: "var(--hero-orb-left)",
-            width: "var(--hero-orb-width)",
-            height: "var(--hero-orb-width)",
-            maxWidth: "750px",
-            maxHeight: "750px",
-            background: "radial-gradient(circle, var(--color-accent) 0%, transparent 60%)",
-            filter: "blur(80px)",
-            borderRadius: "50%",
-            translateX: "calc(-50% + var(--orb-shift-x, 0px))",
             x: orbX,
             y: orbY,
           }}
