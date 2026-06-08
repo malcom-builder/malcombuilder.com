@@ -43,6 +43,18 @@
   --photo-glow-radial: radial-gradient(ellipse at 40% 60%, rgba(255, 255, 255, 0.28) 0%, rgba(228, 228, 231, 0.08) 50%, transparent 68%);
   --photo-border: rgba(255, 255, 255, 0.5);
   --photo-shadow-glow: 0 0 0 1px rgba(255, 255, 255, 0.15), 0 0 40px rgba(255, 255, 255, 0.25), 0 32px 80px rgba(0, 0, 0, 0.55);
+  
+  --hero-orb-top: -12%;
+  --hero-orb-left: 65%;
+  --hero-orb-width: 80vw;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --hero-orb-top: -16%;
+    --hero-orb-left: 78%;
+    --hero-orb-width: 70vw;
+  }
 }
 
 html.light {

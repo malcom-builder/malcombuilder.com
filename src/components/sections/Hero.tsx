@@ -88,11 +88,10 @@ export function Hero() {
         paddingBottom: "4rem",
         borderBottom: "1px solid var(--color-border)",
         position: "relative",
-        overflow: "hidden",
       }}
     >
       {/* Dynamic Background */}
-      <div style={{ position: "absolute", inset: 0, overflow: "hidden", zIndex: 0, pointerEvents: "none" }}>
+      <div style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }}>
         {/* Grid */}
         <div
           aria-hidden="true"
@@ -114,12 +113,12 @@ export function Hero() {
         <motion.div
           style={{
             position: "absolute",
-            top: "10%",
-            left: "50%",
-            width: "80vw",
-            height: "80vw",
-            maxWidth: "800px",
-            maxHeight: "800px",
+            top: "var(--hero-orb-top)",
+            left: "var(--hero-orb-left)",
+            width: "var(--hero-orb-width)",
+            height: "var(--hero-orb-width)",
+            maxWidth: "750px",
+            maxHeight: "750px",
             background: "radial-gradient(circle, var(--color-accent) 0%, transparent 60%)",
             filter: "blur(80px)",
             borderRadius: "50%",
@@ -127,21 +126,21 @@ export function Hero() {
             x: orbX,
             y: orbY,
           }}
-          initial={{ opacity: 0, scale: 0.8 }}
+          initial={{ opacity: 0, scale: 0.95 }}
           animate={
             shouldReduceMotion
               ? { opacity: 0.12, scale: 1 }
               : {
-                  opacity: [0, 0.12, 0.18, 0.12],
-                  scale: [0.8, 1, 1.05, 1],
+                  opacity: [0.07, 0.15, 0.07],
+                  scale: [0.96, 1.04, 0.96],
                 }
           }
           transition={
             shouldReduceMotion
               ? { duration: 2, ease: "easeOut" }
               : {
-                  opacity: { duration: 6, repeat: Infinity, ease: "easeInOut", times: [0, 0.3, 0.6, 1] },
-                  scale:   { duration: 6, repeat: Infinity, ease: "easeInOut", times: [0, 0.3, 0.6, 1] },
+                  opacity: { duration: 8, repeat: Infinity, ease: "easeInOut" },
+                  scale:   { duration: 8, repeat: Infinity, ease: "easeInOut" },
                 }
           }
         />
