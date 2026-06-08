@@ -47,7 +47,7 @@
 
 .hero-orb {
   position: absolute;
-  top: -50px;
+  top: 15%;
   right: -80px;
   width: 380px;
   height: 380px;
@@ -60,7 +60,7 @@
 
 @media (min-width: 768px) {
   .hero-orb {
-    top: -80px;
+    top: 15%;
     right: -100px;
     width: 600px;
     height: 600px;
