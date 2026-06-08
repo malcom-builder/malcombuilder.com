@@ -8,9 +8,11 @@ import { socialLinks } from "@/lib/constants";
 const WordmarkWord = memo(function WordmarkWord({
   children,
   hoverColor,
+  defaultColor = "var(--color-fg)",
 }: {
   children: string;
   hoverColor: string;
+  defaultColor?: string;
 }) {
   const [hovered, setHovered] = useState(false);
 
@@ -26,7 +28,7 @@ const WordmarkWord = memo(function WordmarkWord({
         lineHeight: 1.2,
         whiteSpace: "nowrap",
         display: "inline-block",
-        color: hovered ? hoverColor : "var(--color-fg)",
+        color: hovered ? hoverColor : defaultColor,
         transition: "color 0.6s ease",
         cursor: "default",
       }}
@@ -52,6 +54,8 @@ export function Footer() {
         background: "var(--color-bg)",
         paddingTop: "6rem",
         paddingBottom: "6rem",
+        position: "relative",
+        zIndex: 10,
       }}
     >
       <div className="container" style={{ textAlign: "center" }}>
@@ -66,20 +70,21 @@ export function Footer() {
             transform: "none",
           }}
         >
-          <WordmarkWord hoverColor="var(--color-accent)">malcom</WordmarkWord>
+          <WordmarkWord hoverColor="var(--color-muted)">malcom</WordmarkWord>
           <span
             style={{
-              fontFamily: "var(--font-display)",
+              fontFamily: "var(--font-mono), monospace",
               fontSize: "clamp(1.75rem, 4vw, 2.5rem)",
-              fontWeight: 700,
+              fontWeight: 600,
               letterSpacing: "-0.03em",
               lineHeight: 1.2,
-              color: "var(--color-fg)",
+              color: "var(--color-muted)",
+              display: "inline-block",
             }}
           >
             .
           </span>
-          <WordmarkWord hoverColor="var(--color-emerald)">builder</WordmarkWord>
+          <WordmarkWord defaultColor="var(--color-muted)" hoverColor="var(--color-fg)">builder</WordmarkWord>
         </a>
 
         <p

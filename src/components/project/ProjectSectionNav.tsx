@@ -64,7 +64,7 @@ export function ProjectSectionNav() {
         flexDirection: "column",
         gap: "0.75rem",
         padding: "0.75rem 0.5rem",
-        background: "rgba(14, 14, 20, 0.6)",
+        background: "var(--color-surface)",
         backdropFilter: "blur(12px)",
         border: "1px solid var(--color-border)",
         borderRadius: "9999px",
@@ -84,7 +84,7 @@ export function ProjectSectionNav() {
             cursor: "pointer",
             padding: 0,
             transition: "all 0.3s cubic-bezier(0.21, 0.47, 0.32, 0.98)",
-            boxShadow: i === active ? "0 0 12px rgba(123, 97, 255, 0.4)" : "none",
+            boxShadow: i === active ? "0 0 12px rgba(var(--spotlight-color), 0.4)" : "none",
           }}
         />
       ))}

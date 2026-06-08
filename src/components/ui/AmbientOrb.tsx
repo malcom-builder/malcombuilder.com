@@ -18,7 +18,7 @@ export function AmbientOrb() {
         height: "min(600px, 80vw)",
         borderRadius: "50%",
         background:
-          "radial-gradient(circle, rgba(123,97,255,0.12) 0%, rgba(16,185,129,0.03) 40%, transparent 65%)",
+          "radial-gradient(circle at 30% 30%, var(--orb-color-1) 0%, transparent 60%), radial-gradient(circle at 70% 70%, var(--orb-color-2) 0%, transparent 60%)",
         filter: "blur(80px)",
         pointerEvents: "none",
         zIndex: 0,

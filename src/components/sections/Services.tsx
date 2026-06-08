@@ -30,7 +30,7 @@ const BentoCard = memo(function BentoCard({ svc, index, t }: { svc: { id: string
   const background = useTransform(
     [glowX, glowY],
     ([x, y]: number[]) =>
-      `radial-gradient(circle at ${x}% ${y}%, rgba(129, 140, 248, 0.14), transparent 65%)`
+      `radial-gradient(circle at ${x}% ${y}%, rgba(var(--spotlight-color), 0.14), transparent 65%)`
   );
 
   const handleMouseEnter = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
@@ -96,7 +96,7 @@ const BentoCard = memo(function BentoCard({ svc, index, t }: { svc: { id: string
           position: "absolute",
           inset: 0,
           borderRadius: "1rem",
-          border: "1px solid rgba(129, 140, 248, 0.35)",
+          border: "1px solid var(--card-glow-border)",
           pointerEvents: "none",
           zIndex: 0,
         }}
@@ -111,9 +111,9 @@ const BentoCard = memo(function BentoCard({ svc, index, t }: { svc: { id: string
             display: "inline-block",
             marginBottom: "2rem",
             padding: "1rem",
-            background: "rgba(255,255,255,0.03)",
+            background: "var(--card-icon-bg)",
             borderRadius: "12px",
-            border: "1px solid rgba(255,255,255,0.05)",
+            border: "1px solid var(--card-icon-border)",
           }}
         >
           {icons[svc.icon as keyof typeof icons]}
@@ -154,12 +154,16 @@ export function Services() {
     <section id="services" className="section" style={{ borderBottom: "1px solid var(--color-border)" }}>
       <div className="container">
         <FadeIn>
-          <span className="label" style={{ display: "inline-block", marginBottom: "1rem", color: "var(--color-emerald)" }}>
-            {t("badge")}
-          </span>
-          <SpotlightHeading as="h2" className="heading" style={{ color: "var(--color-fg)", marginBottom: "4rem", textTransform: "lowercase" }}>
-            {t("title")}
-          </SpotlightHeading>
+          <div style={{ marginBottom: "1rem" }}>
+            <span className="label" style={{ display: "inline-block", color: "var(--color-lime)" }}>
+              {t("badge")}
+            </span>
+          </div>
+          <div style={{ marginBottom: "4rem" }}>
+            <SpotlightHeading as="h2" className="heading" style={{ color: "var(--color-fg)", textTransform: "lowercase" }}>
+              {t("title")}
+            </SpotlightHeading>
+          </div>
         </FadeIn>
 
         <div style={{ display: "grid", gap: "1rem" }} className="grid-cols-1 md:grid-cols-3">

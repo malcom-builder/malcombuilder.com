@@ -14,7 +14,7 @@ export function useSpotlight() {
   const spotlightBg = useTransform(
     [glowX, glowY],
     ([x, y]: number[]) =>
-      `radial-gradient(circle at ${x}% ${y}%, rgba(123, 97, 255, 0.14), transparent 65%)`
+      `radial-gradient(circle at ${x}% ${y}%, rgba(var(--spotlight-color), 0.14), transparent 65%)`
   );
 
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
@@ -72,7 +72,7 @@ export function SpotlightGlow({
           pointerEvents: "none",
           zIndex: 0,
           borderRadius,
-          border: "1px solid rgba(123, 97, 255, 0.35)",
+          border: "1px solid var(--card-glow-border)",
         }}
         animate={{ opacity: isHovered ? 1 : 0 }}
         transition={{ duration: 0.25 }}

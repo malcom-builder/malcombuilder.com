@@ -1,7 +1,8 @@
 "use client";
 
 import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from "framer-motion";
-import { ReactNode, useRef, useCallback, CSSProperties, useState } from "react";
+import { ReactNode, useRef, useCallback, CSSProperties, useState, useEffect } from "react";
+import { useTheme } from "next-themes";
 
 const RGB_REGEX = /^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/;
 
@@ -15,11 +16,21 @@ interface Props {
 
 function parseRgb(color: string): [number, number, number] {
   const m = color.match(RGB_REGEX);
-  return m ? [parseInt(m[1]), parseInt(m[2]), parseInt(m[3])] : [16, 185, 129];
+  return m ? [parseInt(m[1]), parseInt(m[2]), parseInt(m[3])] : [255, 255, 255];
 }
 
-export function SpotlightHeading({ as: Tag = "h2", children, className = "", style = {}, glowColor = "rgb(123,97,255)" }: Props) {
-  const [r, g, b] = parseRgb(glowColor);
+export function SpotlightHeading({ as: Tag = "h2", children, className = "", style = {}, glowColor = "rgb(255,255,255)" }: Props) {
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const activeGlowColor = mounted && resolvedTheme === "light" && glowColor === "rgb(255,255,255)"
+    ? "rgb(9,9,11)"
+    : glowColor;
+
+  const [r, g, b] = parseRgb(activeGlowColor);
   const shouldReduce = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
   const [hovered, setHovered] = useState(false);
@@ -33,7 +44,7 @@ export function SpotlightHeading({ as: Tag = "h2", children, className = "", sty
   const background = useTransform(
     [glowX, glowY],
     ([x, y]: number[]) =>
-      `radial-gradient(circle at ${x}% ${y}%, ${glowColor} 0%, ${glowColor} 10%, transparent 50%)`
+      `radial-gradient(circle at ${x}% ${y}%, ${activeGlowColor} 0%, ${activeGlowColor} 10%, transparent 50%)`
   );
 
   const handleMouseEnter = useCallback((e: React.MouseEvent) => {
@@ -104,7 +115,13 @@ export function SpotlightHeading({ as: Tag = "h2", children, className = "", sty
       onMouseLeave={handleMouseLeave}
       style={containerStyle}
     >
-      <Tag className={className} style={tagStyle}>
+      <Tag
+        className={className}
+        style={{
+          ...tagStyle,
+          textShadow: `0 0 40px rgba(${r}, ${g}, ${b}, 0.35), 0 0 80px rgba(${r}, ${g}, ${b}, 0.15)`,
+        }}
+      >
         {children}
       </Tag>
       <motion.span

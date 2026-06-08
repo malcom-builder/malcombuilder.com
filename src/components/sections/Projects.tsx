@@ -104,23 +104,23 @@ const MagneticIcon = memo(function MagneticIcon({ children }: { children: React.
 // ─── Tech colors ─────────────────────────────────────────────────────────────
 
 const techColors: Record<string, string> = {
-  "Next.js": "#ffffff",
-  React: "#61DAFB",
-  TypeScript: "#3178C6",
-  "C#": "#68217A",
-  ".NET": "#512BD4",
-  ".NET 10": "#512BD4",
-  ".NET 8": "#512BD4",
-  Docker: "#2496ED",
-  "SQL Server": "#CC292B",
-  Azure: "#0078D4",
-  Vercel: "#ffffff",
-  Tailwind: "#06B6D4",
-  "Framer Motion": "#FF4154",
-  Supabase: "#3ECF8E",
-  GitHub: "#ffffff",
-  "EF Core": "#FF6A00",
-  "Telegram API": "#26A5E4",
+  "Next.js": "var(--color-fg)",
+  React: "var(--color-fg)",
+  TypeScript: "var(--color-fg)",
+  "C#": "var(--color-fg)",
+  ".NET": "var(--color-fg)",
+  ".NET 10": "var(--color-fg)",
+  ".NET 8": "var(--color-fg)",
+  Docker: "var(--color-fg)",
+  "SQL Server": "var(--color-fg)",
+  Azure: "var(--color-fg)",
+  Vercel: "var(--color-fg)",
+  Tailwind: "var(--color-fg)",
+  "Framer Motion": "var(--color-fg)",
+  Supabase: "var(--color-fg)",
+  GitHub: "var(--color-fg)",
+  "EF Core": "var(--color-fg)",
+  "Telegram API": "var(--color-fg)",
 };
 
 // ─── Project Card ────────────────────────────────────────────────────────────
@@ -139,7 +139,7 @@ const ProjectCard = memo(function ProjectCard({ proj }: { proj: typeof projects[
   const spotlightBg = useTransform(
     [glowX, glowY],
     ([x, y]: number[]) =>
-      `radial-gradient(circle at ${x}% ${y}%, rgba(123, 97, 255, 0.14), transparent 65%)`
+      `radial-gradient(circle at ${x}% ${y}%, rgba(var(--spotlight-color), 0.14), transparent 65%)`
   );
 
   const imageSpotlightMask = useTransform(
@@ -197,7 +197,7 @@ const ProjectCard = memo(function ProjectCard({ proj }: { proj: typeof projects[
       whileHover={{
         y: -6,
         borderColor: "var(--color-accent)",
-        boxShadow: "0 20px 60px rgba(123, 97, 255, 0.08)",
+        boxShadow: "0 20px 60px rgba(var(--spotlight-color), 0.08)",
         transition: { duration: 0.3, ease: [0.21, 0.47, 0.32, 0.98] },
       }}
     >
@@ -250,7 +250,7 @@ const ProjectCard = memo(function ProjectCard({ proj }: { proj: typeof projects[
             position: "absolute",
             inset: 0,
             borderRadius: "12px",
-            border: "1px solid rgba(123, 97, 255, 0.35)",
+            border: "1px solid var(--card-glow-border)",
             pointerEvents: "none",
             zIndex: 0,
           }}
@@ -412,7 +412,7 @@ const ProjectCard = memo(function ProjectCard({ proj }: { proj: typeof projects[
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.color = "var(--color-accent)";
-                e.currentTarget.style.backgroundColor = "rgba(123, 97, 255, 0.08)";
+                e.currentTarget.style.backgroundColor = "rgba(var(--spotlight-color), 0.08)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.color = "var(--color-muted)";
@@ -434,7 +434,21 @@ export function Projects() {
   const t = useTranslations("projects");
 
   return (
-    <section id="projects" className="section" style={{ borderBottom: "1px solid var(--color-border)" }}>
+    <section id="projects" className="section" style={{ borderBottom: "1px solid var(--color-border)", position: "relative" }}>
+      {/* ── Accent orb replicated between Services and Projects ── */}
+      <div aria-hidden="true" style={{
+        position: "absolute",
+        top: "-350px",
+        right: "5%",
+        width: "50vw",
+        height: "50vw",
+        maxWidth: "600px",
+        maxHeight: "600px",
+        background: "radial-gradient(ellipse at 50% 50%, rgba(var(--spotlight-color),0.15) 0%, rgba(var(--spotlight-color),0.04) 45%, transparent 65%)",
+        filter: "blur(80px)",
+        pointerEvents: "none",
+        zIndex: 0,
+      }} />
       <div className="container">
         <motion.div
           initial="hidden"
@@ -451,7 +465,7 @@ export function Projects() {
               },
             }}
             className="label"
-            style={{ display: "inline-block", marginBottom: "1rem", color: "var(--color-emerald)" }}
+            style={{ display: "inline-block", marginBottom: "1rem", color: "var(--color-lime)" }}
           >
             {t("badge")}
           </motion.span>
@@ -483,7 +497,7 @@ export function Projects() {
           <SpotlightButton
             href="/projects"
             id="view-all-projects-btn"
-            glowColor="rgb(123, 97, 255)"
+            glowColor="rgb(255,255,255)"
             style={{
               display: "inline-flex",
               alignItems: "center",

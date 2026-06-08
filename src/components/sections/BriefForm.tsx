@@ -438,9 +438,9 @@ export function BriefForm() {
             <span className="text-[var(--color-accent)] font-semibold">{t.steps.step} {step} {t.steps.de} {TOTAL_STEPS}</span>
             <span>{getProgressPercent()}% {t.steps.completado}</span>
           </div>
-          <div className="w-full h-1.5 bg-[#1F1F26] rounded-full overflow-hidden relative">
+          <div className="w-full h-1.5 bg-[var(--color-border)] rounded-full overflow-hidden relative">
             <motion.div
-              className="h-full bg-[var(--color-accent)] shadow-[0_0_12px_rgba(123,97,255,0.6)]"
+              className="h-full bg-[var(--color-accent)] shadow-[0_0_12px_rgba(var(--spotlight-color),0.6)]"
               initial={{ width: 0 }}
               animate={{ width: `${getProgressPercent()}%` }}
               transition={{ duration: 0.4, ease: "easeOut" }}
@@ -462,8 +462,8 @@ export function BriefForm() {
             className="text-center space-y-8 flex flex-col justify-center min-h-[75vh]"
           >
             <div className="space-y-4 relative">
-              <div className="absolute inset-0 bg-radial-gradient(circle, rgba(123,97,255,0.12) 0%, transparent 60%) pointer-events-none -top-12" />
-              <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-mono text-[var(--color-emerald)] border border-[rgba(16,185,129,0.25)] rounded-full bg-[rgba(16,185,129,0.04)]">
+              <div className="absolute inset-0 bg-radial-gradient(circle, rgba(var(--spotlight-color),0.12) 0%, transparent 60%) pointer-events-none -top-12" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-mono text-[var(--color-lime)] border border-[rgba(228,228,231,0.25)] rounded-full bg-[rgba(228,228,231,0.04)]">
                 <Sparkle className="w-3.5 h-3.5 animate-pulse" />
                 {t.steps.time}
               </div>
@@ -483,7 +483,7 @@ export function BriefForm() {
                   setDirection(1);
                   setStep(1);
                 }}
-                className="w-full md:w-auto px-8 py-4 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white font-bold rounded-md transition-all duration-200 transform hover:-translate-y-0.5 inline-flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-[rgba(123,97,255,0.25)] focus:ring-2 focus:ring-[var(--color-accent)] focus:ring-offset-2 focus:ring-offset-[#0E0E14] outline-none"
+                className="w-full md:w-auto px-8 py-4 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white font-bold rounded-md transition-all duration-200 transform hover:-translate-y-0.5 inline-flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-[rgba(var(--spotlight-color),0.25)] focus:ring-2 focus:ring-[var(--color-accent)] focus:ring-offset-2 focus:ring-offset-[var(--color-bg)] outline-none"
               >
                 {t.steps.comenzar}
                 <ArrowRight className="w-5 h-5" />
@@ -515,14 +515,14 @@ export function BriefForm() {
             <div className="space-y-6">
               {/* Q1.1 */}
               <div className="space-y-2">
-                <label className="block text-sm font-semibold text-[#F0EFF8]">{t.step1.qActivity}</label>
+                <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.step1.qActivity}</label>
                 <textarea
                   name="negocio_actividad"
                   value={formData.negocio_actividad}
                   onChange={handleTextChange}
                   placeholder={t.step1.placeholderActivity}
                   maxLength={200}
-                  className="w-full p-4 bg-[#18181F]/80 border border-[#242428] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(123,97,255,0.15)] outline-none transition-all duration-200 h-24 resize-none text-sm text-[var(--color-fg)]"
+                  className="w-full p-4 bg-[var(--color-card)] border border-[var(--color-border)] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(var(--spotlight-color),0.15)] outline-none transition-all duration-200 h-24 resize-none text-sm text-[var(--color-fg)]"
                 />
                 <div className="flex justify-between items-center text-xs">
                   <span>
@@ -540,7 +540,7 @@ export function BriefForm() {
 
               {/* Q1.2 */}
               <div className="space-y-2">
-                <label className="block text-sm font-semibold text-[#F0EFF8]">{t.step1.qRubro}</label>
+                <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.step1.qRubro}</label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {t.step1.rubros.map((rubro) => (
                     <button
@@ -549,8 +549,8 @@ export function BriefForm() {
                       onClick={() => handleSelectSingle("negocio_rubro", rubro)}
                       className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer ${
                         formData.negocio_rubro === rubro
-                          ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
-                          : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
+                          ? "bg-[rgba(var(--spotlight-color),0.1)] border-[var(--color-accent)] text-white font-medium"
+                          : "bg-[var(--color-card)] border-[var(--color-border)] hover:border-[var(--color-muted)] text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                       }`}
                     >
                       {rubro}
@@ -562,7 +562,7 @@ export function BriefForm() {
 
               {/* Q1.3: Dónde operás */}
               <div className="space-y-2">
-                <label className="block text-sm font-semibold text-[#F0EFF8]">{t.step1.qUbicacion}</label>
+                <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.step1.qUbicacion}</label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {t.step1.ubicaciones.map((loc, idx) => {
                     // Match selection regardless of language by using Spanish reference for state consistency
@@ -574,8 +574,8 @@ export function BriefForm() {
                         onClick={() => handleSelectSingle("negocio_ubicacion", valueRef)}
                         className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer ${
                           formData.negocio_ubicacion === valueRef
-                            ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
-                            : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
+                            ? "bg-[rgba(var(--spotlight-color),0.1)] border-[var(--color-accent)] text-white font-medium"
+                            : "bg-[var(--color-card)] border-[var(--color-border)] hover:border-[var(--color-muted)] text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                         }`}
                       >
                         {loc}
@@ -588,10 +588,10 @@ export function BriefForm() {
             </div>
 
             {/* Navigation */}
-            <div className="flex justify-between pt-6 border-t border-[#242428]">
+            <div className="flex justify-between pt-6 border-t border-[var(--color-border)]">
               <button
                 onClick={handleBack}
-                className="px-5 py-3 border border-[#242428] rounded hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-200 flex items-center gap-2 text-sm cursor-pointer text-[var(--color-muted)]"
+                className="px-5 py-3 border border-[var(--color-border)] rounded hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-200 flex items-center gap-2 text-sm cursor-pointer text-[var(--color-muted)]"
               >
                 <ArrowLeft className="w-4 h-4" />
                 {t.steps.atras}
@@ -625,7 +625,7 @@ export function BriefForm() {
 
             <div className="space-y-6">
               <div className="space-y-3">
-                <label className="block text-sm font-semibold text-[#F0EFF8]">{t.step2.qBuild}</label>
+                <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.step2.qBuild}</label>
                 <p className="text-xs text-[var(--color-muted)]">{t.step2.descBuild}</p>
                 <div className="grid grid-cols-1 gap-3">
                   {t.step2.options.map((opt, idx) => {
@@ -639,8 +639,8 @@ export function BriefForm() {
                         onClick={() => handleSelectSingle("proyecto_tipo", valueRef)}
                         className={`p-4 text-left rounded-lg border transition-all duration-300 flex items-start gap-4 cursor-pointer relative overflow-hidden group ${
                           isSelected
-                            ? "bg-[rgba(123,97,255,0.08)] border-[var(--color-accent)] text-white shadow-[0_0_20px_rgba(123,97,255,0.08)]"
-                            : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700"
+                            ? "bg-[rgba(var(--spotlight-color),0.08)] border-[var(--color-accent)] text-white shadow-[0_0_20px_rgba(var(--spotlight-color),0.08)]"
+                            : "bg-[var(--color-card)] border-[var(--color-border)] hover:border-[var(--color-muted)]"
                         }`}
                       >
                         <div
@@ -665,10 +665,10 @@ export function BriefForm() {
             </div>
 
             {/* Navigation */}
-            <div className="flex justify-between pt-6 border-t border-[#242428]">
+            <div className="flex justify-between pt-6 border-t border-[var(--color-border)]">
               <button
                 onClick={handleBack}
-                className="px-5 py-3 border border-[#242428] rounded hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-200 flex items-center gap-2 text-sm cursor-pointer text-[var(--color-muted)]"
+                className="px-5 py-3 border border-[var(--color-border)] rounded hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-200 flex items-center gap-2 text-sm cursor-pointer text-[var(--color-muted)]"
               >
                 <ArrowLeft className="w-4 h-4" />
                 {t.steps.atras}
@@ -704,7 +704,7 @@ export function BriefForm() {
             {getPath === "A" && (
               <div className="space-y-6">
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-[#F0EFF8]">{t.caminoA.q1}</label>
+                  <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.caminoA.q1}</label>
                   <div className="grid grid-cols-1 gap-2">
                     {t.caminoA.q1Options.map((opt, idx) => {
                       const valueRef = dict.es.caminoA.q1Options[idx];
@@ -715,8 +715,8 @@ export function BriefForm() {
                           onClick={() => handleSelectSingle("a1_situacion", valueRef)}
                           className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer ${
                             formData.a1_situacion === valueRef
-                              ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
-                              : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
+                              ? "bg-[rgba(var(--spotlight-color),0.1)] border-[var(--color-accent)] text-white font-medium"
+                              : "bg-[var(--color-card)] border-[var(--color-border)] hover:border-[var(--color-muted)] text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                           }`}
                         >
                           {opt}
@@ -728,7 +728,7 @@ export function BriefForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-[#F0EFF8]">{t.caminoA.q2}</label>
+                  <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.caminoA.q2}</label>
                   <div className="grid grid-cols-1 gap-2">
                     {t.caminoA.q2Options.map((opt, idx) => {
                       const valueRef = dict.es.caminoA.q2Options[idx];
@@ -740,8 +740,8 @@ export function BriefForm() {
                           onClick={() => handleSelectMultiple("a2_objetivos", valueRef, 3)}
                           className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer flex justify-between items-center ${
                             isSelected
-                              ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
-                              : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
+                              ? "bg-[rgba(var(--spotlight-color),0.1)] border-[var(--color-accent)] text-white font-medium"
+                              : "bg-[var(--color-card)] border-[var(--color-border)] hover:border-[var(--color-muted)] text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                           }`}
                         >
                           <span>{opt}</span>
@@ -754,7 +754,7 @@ export function BriefForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-[#F0EFF8]">{t.caminoA.q3}</label>
+                  <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.caminoA.q3}</label>
                   <div className="grid grid-cols-1 gap-2">
                     {t.caminoA.q3Options.map((opt, idx) => {
                       const valueRef = dict.es.caminoA.q3Options[idx];
@@ -765,8 +765,8 @@ export function BriefForm() {
                           onClick={() => handleSelectSingle("a3_panel", valueRef)}
                           className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer ${
                             formData.a3_panel === valueRef
-                              ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
-                              : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
+                              ? "bg-[rgba(var(--spotlight-color),0.1)] border-[var(--color-accent)] text-white font-medium"
+                              : "bg-[var(--color-card)] border-[var(--color-border)] hover:border-[var(--color-muted)] text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                           }`}
                         >
                           {opt}
@@ -778,7 +778,7 @@ export function BriefForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-[#F0EFF8]">{t.caminoA.q4}</label>
+                  <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.caminoA.q4}</label>
                   <div className="grid grid-cols-1 gap-2">
                     {t.caminoA.q4Options.map((opt, idx) => {
                       const valueRef = dict.es.caminoA.q4Options[idx];
@@ -789,8 +789,8 @@ export function BriefForm() {
                           onClick={() => handleSelectSingle("a4_identidad", valueRef)}
                           className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer ${
                             formData.a4_identidad === valueRef
-                              ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
-                              : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
+                              ? "bg-[rgba(var(--spotlight-color),0.1)] border-[var(--color-accent)] text-white font-medium"
+                              : "bg-[var(--color-card)] border-[var(--color-border)] hover:border-[var(--color-muted)] text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                           }`}
                         >
                           {opt}
@@ -807,7 +807,7 @@ export function BriefForm() {
             {getPath === "B" && (
               <div className="space-y-6">
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-[#F0EFF8]">{t.caminoB.q1}</label>
+                  <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.caminoB.q1}</label>
                   <div className="grid grid-cols-1 gap-2">
                     {t.caminoB.q1Options.map((opt, idx) => {
                       const valueRef = dict.es.caminoB.q1Options[idx];
@@ -818,8 +818,8 @@ export function BriefForm() {
                           onClick={() => handleSelectSingle("b1_venta", valueRef)}
                           className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer ${
                             formData.b1_venta === valueRef
-                              ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
-                              : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
+                              ? "bg-[rgba(var(--spotlight-color),0.1)] border-[var(--color-accent)] text-white font-medium"
+                              : "bg-[var(--color-card)] border-[var(--color-border)] hover:border-[var(--color-muted)] text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                           }`}
                         >
                           {opt}
@@ -831,7 +831,7 @@ export function BriefForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-[#F0EFF8]">{t.caminoB.q2}</label>
+                  <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.caminoB.q2}</label>
                   <div className="grid grid-cols-1 gap-2">
                     {t.caminoB.q2Options.map((opt, idx) => {
                       const valueRef = dict.es.caminoB.q2Options[idx];
@@ -842,8 +842,8 @@ export function BriefForm() {
                           onClick={() => handleSelectSingle("b2_cantidad", valueRef)}
                           className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer ${
                             formData.b2_cantidad === valueRef
-                              ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
-                              : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
+                              ? "bg-[rgba(var(--spotlight-color),0.1)] border-[var(--color-accent)] text-white font-medium"
+                              : "bg-[var(--color-card)] border-[var(--color-border)] hover:border-[var(--color-muted)] text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                           }`}
                         >
                           {opt}
@@ -855,7 +855,7 @@ export function BriefForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-[#F0EFF8]">{t.caminoB.q3}</label>
+                  <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.caminoB.q3}</label>
                   <div className="grid grid-cols-1 gap-2">
                     {t.caminoB.q3Options.map((opt, idx) => {
                       const valueRef = dict.es.caminoB.q3Options[idx];
@@ -866,8 +866,8 @@ export function BriefForm() {
                           onClick={() => handleSelectSingle("b3_inventario", valueRef)}
                           className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer ${
                             formData.b3_inventario === valueRef
-                              ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
-                              : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
+                              ? "bg-[rgba(var(--spotlight-color),0.1)] border-[var(--color-accent)] text-white font-medium"
+                              : "bg-[var(--color-card)] border-[var(--color-border)] hover:border-[var(--color-muted)] text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                           }`}
                         >
                           {opt}
@@ -879,7 +879,7 @@ export function BriefForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-[#F0EFF8]">{t.caminoB.q4}</label>
+                  <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.caminoB.q4}</label>
                   <div className="grid grid-cols-1 gap-2">
                     {t.caminoB.q4Options.map((opt, idx) => {
                       const valueRef = dict.es.caminoB.q4Options[idx];
@@ -891,8 +891,8 @@ export function BriefForm() {
                           onClick={() => handleSelectMultiple("b4_pagos", valueRef)}
                           className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer flex justify-between items-center ${
                             isSelected
-                              ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
-                              : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
+                              ? "bg-[rgba(var(--spotlight-color),0.1)] border-[var(--color-accent)] text-white font-medium"
+                              : "bg-[var(--color-card)] border-[var(--color-border)] hover:border-[var(--color-muted)] text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                           }`}
                         >
                           <span>{opt}</span>
@@ -910,7 +910,7 @@ export function BriefForm() {
             {getPath === "C" && (
               <div className="space-y-6">
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-[#F0EFF8]">{t.caminoC.q1}</label>
+                  <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.caminoC.q1}</label>
                   <div className="grid grid-cols-1 gap-2">
                     {t.caminoC.q1Options.map((opt, idx) => {
                       const valueRef = dict.es.caminoC.q1Options[idx];
@@ -922,8 +922,8 @@ export function BriefForm() {
                           onClick={() => handleSelectMultiple("c1_gestionar", valueRef, 3)}
                           className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer flex justify-between items-center ${
                             isSelected
-                              ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
-                              : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
+                              ? "bg-[rgba(var(--spotlight-color),0.1)] border-[var(--color-accent)] text-white font-medium"
+                              : "bg-[var(--color-card)] border-[var(--color-border)] hover:border-[var(--color-muted)] text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                           }`}
                         >
                           <span>{opt}</span>
@@ -936,7 +936,7 @@ export function BriefForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-[#F0EFF8]">{t.caminoC.q2}</label>
+                  <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.caminoC.q2}</label>
                   <div className="grid grid-cols-1 gap-2">
                     {t.caminoC.q2Options.map((opt, idx) => {
                       const valueRef = dict.es.caminoC.q2Options[idx];
@@ -947,8 +947,8 @@ export function BriefForm() {
                           onClick={() => handleSelectSingle("c2_inicio", valueRef)}
                           className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer ${
                             formData.c2_inicio === valueRef
-                              ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
-                              : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
+                              ? "bg-[rgba(var(--spotlight-color),0.1)] border-[var(--color-accent)] text-white font-medium"
+                              : "bg-[var(--color-card)] border-[var(--color-border)] hover:border-[var(--color-muted)] text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                           }`}
                         >
                           {opt}
@@ -960,7 +960,7 @@ export function BriefForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-[#F0EFF8]">{t.caminoC.q3}</label>
+                  <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.caminoC.q3}</label>
                   <div className="grid grid-cols-1 gap-2">
                     {t.caminoC.q3Options.map((opt, idx) => {
                       const valueRef = dict.es.caminoC.q3Options[idx];
@@ -971,8 +971,8 @@ export function BriefForm() {
                           onClick={() => handleSelectSingle("c3_usuarios", valueRef)}
                           className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer ${
                             formData.c3_usuarios === valueRef
-                              ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
-                              : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
+                              ? "bg-[rgba(var(--spotlight-color),0.1)] border-[var(--color-accent)] text-white font-medium"
+                              : "bg-[var(--color-card)] border-[var(--color-border)] hover:border-[var(--color-muted)] text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                           }`}
                         >
                           {opt}
@@ -989,7 +989,7 @@ export function BriefForm() {
             {getPath === "D" && (
               <div className="space-y-6">
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-[#F0EFF8]">{t.caminoD.q1}</label>
+                  <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.caminoD.q1}</label>
                   <div className="grid grid-cols-1 gap-2">
                     {t.caminoD.q1Options.map((opt, idx) => {
                       const valueRef = dict.es.caminoD.q1Options[idx];
@@ -1001,8 +1001,8 @@ export function BriefForm() {
                           onClick={() => handleSelectMultiple("d1_automatizar", valueRef, 3)}
                           className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer flex justify-between items-center ${
                             isSelected
-                              ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
-                              : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
+                              ? "bg-[rgba(var(--spotlight-color),0.1)] border-[var(--color-accent)] text-white font-medium"
+                              : "bg-[var(--color-card)] border-[var(--color-border)] hover:border-[var(--color-muted)] text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                           }`}
                         >
                           <span>{opt}</span>
@@ -1015,7 +1015,7 @@ export function BriefForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-[#F0EFF8]">{t.caminoD.q2}</label>
+                  <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.caminoD.q2}</label>
                   <div className="grid grid-cols-1 gap-2">
                     {t.caminoD.q2Options.map((opt, idx) => {
                       const valueRef = dict.es.caminoD.q2Options[idx];
@@ -1026,8 +1026,8 @@ export function BriefForm() {
                           onClick={() => handleSelectSingle("d2_sistema_actual", valueRef)}
                           className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer ${
                             formData.d2_sistema_actual === valueRef
-                              ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
-                              : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
+                              ? "bg-[rgba(var(--spotlight-color),0.1)] border-[var(--color-accent)] text-white font-medium"
+                              : "bg-[var(--color-card)] border-[var(--color-border)] hover:border-[var(--color-muted)] text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                           }`}
                         >
                           {opt}
@@ -1039,7 +1039,7 @@ export function BriefForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-[#F0EFF8]">{t.caminoD.q3}</label>
+                  <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.caminoD.q3}</label>
                   <div className="grid grid-cols-1 gap-2">
                     {t.caminoD.q3Options.map((opt, idx) => {
                       const valueRef = dict.es.caminoD.q3Options[idx];
@@ -1050,8 +1050,8 @@ export function BriefForm() {
                           onClick={() => handleSelectSingle("d3_whatsapp_business", valueRef)}
                           className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer ${
                             formData.d3_whatsapp_business === valueRef
-                              ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
-                              : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
+                              ? "bg-[rgba(var(--spotlight-color),0.1)] border-[var(--color-accent)] text-white font-medium"
+                              : "bg-[var(--color-card)] border-[var(--color-border)] hover:border-[var(--color-muted)] text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                           }`}
                         >
                           {opt}
@@ -1068,7 +1068,7 @@ export function BriefForm() {
             {getPath === "E" && (
               <div className="space-y-6">
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-[#F0EFF8]">{t.caminoE.q1}</label>
+                  <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.caminoE.q1}</label>
                   <div className="grid grid-cols-1 gap-2">
                     {t.caminoE.q1Options.map((opt, idx) => {
                       const valueRef = dict.es.caminoE.q1Options[idx];
@@ -1079,8 +1079,8 @@ export function BriefForm() {
                           onClick={() => handleSelectSingle("e1_proposito", valueRef)}
                           className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer ${
                             formData.e1_proposito === valueRef
-                              ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
-                              : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
+                              ? "bg-[rgba(var(--spotlight-color),0.1)] border-[var(--color-accent)] text-white font-medium"
+                              : "bg-[var(--color-card)] border-[var(--color-border)] hover:border-[var(--color-muted)] text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                           }`}
                         >
                           {opt}
@@ -1092,7 +1092,7 @@ export function BriefForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-[#F0EFF8]">{t.caminoE.q2}</label>
+                  <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.caminoE.q2}</label>
                   <div className="grid grid-cols-1 gap-2">
                     {t.caminoE.q2Options.map((opt, idx) => {
                       const valueRef = dict.es.caminoE.q2Options[idx];
@@ -1103,8 +1103,8 @@ export function BriefForm() {
                           onClick={() => handleSelectSingle("e2_documentacion", valueRef)}
                           className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer ${
                             formData.e2_documentacion === valueRef
-                              ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
-                              : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
+                              ? "bg-[rgba(var(--spotlight-color),0.1)] border-[var(--color-accent)] text-white font-medium"
+                              : "bg-[var(--color-card)] border-[var(--color-border)] hover:border-[var(--color-muted)] text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                           }`}
                         >
                           {opt}
@@ -1116,14 +1116,14 @@ export function BriefForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-[#F0EFF8]">{t.caminoE.q3}</label>
+                  <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.caminoE.q3}</label>
                   <input
                     type="text"
                     name="e3_stack"
                     value={formData.e3_stack}
                     onChange={handleTextChange}
                     placeholder="e.g. React Native, Node, .NET"
-                    className="w-full p-3 bg-[#18181F]/80 border border-[#242428] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(123,97,255,0.15)] outline-none transition-colors text-sm text-[var(--color-fg)]"
+                    className="w-full p-3 bg-[var(--color-card)] border border-[var(--color-border)] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(var(--spotlight-color),0.15)] outline-none transition-colors text-sm text-[var(--color-fg)]"
                   />
                 </div>
               </div>
@@ -1133,7 +1133,7 @@ export function BriefForm() {
             {getPath === "F" && (
               <div className="space-y-6">
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-[#F0EFF8]">{t.caminoF.q1}</label>
+                  <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.caminoF.q1}</label>
                   <div className="grid grid-cols-1 gap-2">
                     {t.caminoF.q1Options.map((opt, idx) => {
                       const valueRef = dict.es.caminoF.q1Options[idx];
@@ -1144,8 +1144,8 @@ export function BriefForm() {
                           onClick={() => handleSelectSingle("f1_etapa", valueRef)}
                           className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer ${
                             formData.f1_etapa === valueRef
-                              ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
-                              : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
+                              ? "bg-[rgba(var(--spotlight-color),0.1)] border-[var(--color-accent)] text-white font-medium"
+                              : "bg-[var(--color-card)] border-[var(--color-border)] hover:border-[var(--color-muted)] text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                           }`}
                         >
                           {opt}
@@ -1157,14 +1157,14 @@ export function BriefForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-[#F0EFF8]">{t.caminoF.q2}</label>
+                  <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.caminoF.q2}</label>
                   <textarea
                     name="f2_problema"
                     value={formData.f2_problema}
                     onChange={handleTextChange}
                     placeholder="..."
                     maxLength={300}
-                    className="w-full p-3 bg-[#18181F]/80 border border-[#242428] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(123,97,255,0.15)] outline-none transition-colors h-24 resize-none text-sm text-[var(--color-fg)]"
+                    className="w-full p-3 bg-[var(--color-card)] border border-[var(--color-border)] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(var(--spotlight-color),0.15)] outline-none transition-colors h-24 resize-none text-sm text-[var(--color-fg)]"
                   />
                   <div className="flex justify-between items-center text-xs">
                     <span>{errors.f2_problema && <span className="text-red-400 font-medium">{errors.f2_problema}</span>}</span>
@@ -1173,7 +1173,7 @@ export function BriefForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-[#F0EFF8]">{t.caminoF.q3}</label>
+                  <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.caminoF.q3}</label>
                   <div className="grid grid-cols-1 gap-2">
                     {t.caminoF.q3Options.map((opt, idx) => {
                       const valueRef = dict.es.caminoF.q3Options[idx];
@@ -1184,8 +1184,8 @@ export function BriefForm() {
                           onClick={() => handleSelectSingle("f3_financiamiento", valueRef)}
                           className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer ${
                             formData.f3_financiamiento === valueRef
-                              ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
-                              : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
+                              ? "bg-[rgba(var(--spotlight-color),0.1)] border-[var(--color-accent)] text-white font-medium"
+                              : "bg-[var(--color-card)] border-[var(--color-border)] hover:border-[var(--color-muted)] text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                           }`}
                         >
                           {opt}
@@ -1202,14 +1202,14 @@ export function BriefForm() {
             {getPath === "G" && (
               <div className="space-y-6">
                 <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-[#F0EFF8]">{t.caminoG.q1}</label>
+                  <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.caminoG.q1}</label>
                   <textarea
                     name="g1_problema"
                     value={formData.g1_problema}
                     onChange={handleTextChange}
                     placeholder="..."
                     maxLength={500}
-                    className="w-full p-4 bg-[#18181F]/80 border border-[#242428] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(123,97,255,0.15)] outline-none transition-colors h-36 resize-none text-sm text-[var(--color-fg)]"
+                    className="w-full p-4 bg-[var(--color-card)] border border-[var(--color-border)] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(var(--spotlight-color),0.15)] outline-none transition-colors h-36 resize-none text-sm text-[var(--color-fg)]"
                   />
                   <div className="flex justify-between items-center text-xs">
                     <span>{errors.g1_problema && <span className="text-red-400 font-medium">{errors.g1_problema}</span>}</span>
@@ -1220,10 +1220,10 @@ export function BriefForm() {
             )}
 
             {/* Navigation */}
-            <div className="flex justify-between pt-6 border-t border-[#242428]">
+            <div className="flex justify-between pt-6 border-t border-[var(--color-border)]">
               <button
                 onClick={handleBack}
-                className="px-5 py-3 border border-[#242428] rounded hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-200 flex items-center gap-2 text-sm cursor-pointer text-[var(--color-muted)]"
+                className="px-5 py-3 border border-[var(--color-border)] rounded hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-200 flex items-center gap-2 text-sm cursor-pointer text-[var(--color-muted)]"
               >
                 <ArrowLeft className="w-4 h-4" />
                 {t.steps.atras}
@@ -1258,7 +1258,7 @@ export function BriefForm() {
             <div className="space-y-6">
               {/* Q3.1 */}
               <div className="space-y-2">
-                <label className="block text-sm font-semibold flex items-center gap-2 text-[#F0EFF8]">
+                <label className="block text-sm font-semibold flex items-center gap-2 text-[var(--color-fg)]">
                   <Calendar className="w-4 h-4 text-[var(--color-accent)]" />
                   {t.step4.qTime}
                 </label>
@@ -1272,8 +1272,8 @@ export function BriefForm() {
                         onClick={() => handleSelectSingle("tiempos_urgencia", valueRef)}
                         className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer ${
                           formData.tiempos_urgencia === valueRef
-                            ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
-                            : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
+                            ? "bg-[rgba(var(--spotlight-color),0.1)] border-[var(--color-accent)] text-white font-medium"
+                            : "bg-[var(--color-card)] border-[var(--color-border)] hover:border-[var(--color-muted)] text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                         }`}
                       >
                         {opt}
@@ -1286,7 +1286,7 @@ export function BriefForm() {
 
               {/* Q3.2 */}
               <div className="space-y-2">
-                <label className="block text-sm font-semibold flex items-center gap-2 text-[#F0EFF8]">
+                <label className="block text-sm font-semibold flex items-center gap-2 text-[var(--color-fg)]">
                   <DollarSign className="w-4 h-4 text-[var(--color-accent)]" />
                   {t.step4.qBudget}
                 </label>
@@ -1300,8 +1300,8 @@ export function BriefForm() {
                         onClick={() => handleSelectSingle("tiempos_presupuesto", valueRef)}
                         className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer flex flex-col items-start ${
                           formData.tiempos_presupuesto === valueRef
-                            ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
-                            : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
+                            ? "bg-[rgba(var(--spotlight-color),0.1)] border-[var(--color-accent)] text-white font-medium"
+                            : "bg-[var(--color-card)] border-[var(--color-border)] hover:border-[var(--color-muted)] text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                         }`}
                       >
                         <span>{opt}</span>
@@ -1330,7 +1330,7 @@ export function BriefForm() {
 
               {/* Q3.3 */}
               <div className="space-y-2">
-                <label className="block text-sm font-semibold text-[#F0EFF8]">{t.step4.qPublicidad}</label>
+                <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.step4.qPublicidad}</label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {t.step4.publicidadOptions.map((opt, idx) => {
                     const valueRef = dict.es.step4.publicidadOptions[idx];
@@ -1341,8 +1341,8 @@ export function BriefForm() {
                         onClick={() => handleSelectSingle("tiempos_publicidad", valueRef)}
                         className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer ${
                           formData.tiempos_publicidad === valueRef
-                            ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
-                            : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
+                            ? "bg-[rgba(var(--spotlight-color),0.1)] border-[var(--color-accent)] text-white font-medium"
+                            : "bg-[var(--color-card)] border-[var(--color-border)] hover:border-[var(--color-muted)] text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                         }`}
                       >
                         {opt}
@@ -1354,10 +1354,10 @@ export function BriefForm() {
             </div>
 
             {/* Navigation */}
-            <div className="flex justify-between pt-6 border-t border-[#242428]">
+            <div className="flex justify-between pt-6 border-t border-[var(--color-border)]">
               <button
                 onClick={handleBack}
-                className="px-5 py-3 border border-[#242428] rounded hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-200 flex items-center gap-2 text-sm cursor-pointer text-[var(--color-muted)]"
+                className="px-5 py-3 border border-[var(--color-border)] rounded hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-200 flex items-center gap-2 text-sm cursor-pointer text-[var(--color-muted)]"
               >
                 <ArrowLeft className="w-4 h-4" />
                 {t.steps.atras}
@@ -1403,46 +1403,46 @@ export function BriefForm() {
               </div>
 
               <div className="space-y-1">
-                <label className="block text-sm font-semibold text-[#F0EFF8]">{t.step5.name}</label>
+                <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.step5.name}</label>
                 <input
                   type="text"
                   name="contacto_nombre"
                   value={formData.contacto_nombre}
                   onChange={handleTextChange}
                   placeholder={t.step5.placeholderName}
-                  className="w-full p-3 bg-[#18181F]/80 border border-[#242428] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(123,97,255,0.15)] outline-none transition-all duration-200 text-sm text-[var(--color-fg)]"
+                  className="w-full p-3 bg-[var(--color-card)] border border-[var(--color-border)] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(var(--spotlight-color),0.15)] outline-none transition-all duration-200 text-sm text-[var(--color-fg)]"
                 />
                 {errors.contacto_nombre && <p className="text-xs text-red-400 font-medium">{errors.contacto_nombre}</p>}
               </div>
 
               <div className="space-y-1">
-                <label className="block text-sm font-semibold text-[#F0EFF8]">{t.step5.email}</label>
+                <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.step5.email}</label>
                 <input
                   type="email"
                   name="contacto_email"
                   value={formData.contacto_email}
                   onChange={handleTextChange}
                   placeholder={t.step5.placeholderEmail}
-                  className="w-full p-3 bg-[#18181F]/80 border border-[#242428] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(123,97,255,0.15)] outline-none transition-all duration-200 text-sm text-[var(--color-fg)]"
+                  className="w-full p-3 bg-[var(--color-card)] border border-[var(--color-border)] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(var(--spotlight-color),0.15)] outline-none transition-all duration-200 text-sm text-[var(--color-fg)]"
                 />
                 {errors.contacto_email && <p className="text-xs text-red-400 font-medium">{errors.contacto_email}</p>}
               </div>
 
               <div className="space-y-1">
-                <label className="block text-sm font-semibold text-[#F0EFF8]">{t.step5.whatsapp}</label>
+                <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.step5.whatsapp}</label>
                 <input
                   type="tel"
                   name="contacto_whatsapp"
                   value={formData.contacto_whatsapp}
                   onChange={handleTextChange}
                   placeholder={t.step5.placeholderWhatsapp}
-                  className="w-full p-3 bg-[#18181F]/80 border border-[#242428] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(123,97,255,0.15)] outline-none transition-all duration-200 text-sm text-[var(--color-fg)]"
+                  className="w-full p-3 bg-[var(--color-card)] border border-[var(--color-border)] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(var(--spotlight-color),0.15)] outline-none transition-all duration-200 text-sm text-[var(--color-fg)]"
                 />
                 {errors.contacto_whatsapp && <p className="text-xs text-red-400 font-medium">{errors.contacto_whatsapp}</p>}
               </div>
 
               <div className="space-y-2">
-                <label className="block text-sm font-semibold text-[#F0EFF8]">{t.step5.qOrigin}</label>
+                <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.step5.qOrigin}</label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {t.step5.originOptions.map((opt, idx) => {
                     const valueRef = dict.es.step5.originOptions[idx];
@@ -1453,8 +1453,8 @@ export function BriefForm() {
                         onClick={() => handleSelectSingle("contacto_origen", valueRef)}
                         className={`p-3 text-left rounded border text-sm transition-all duration-200 cursor-pointer ${
                           formData.contacto_origen === valueRef
-                            ? "bg-[rgba(123,97,255,0.1)] border-[var(--color-accent)] text-white font-medium"
-                            : "bg-[#18181F]/60 border-[#242428] hover:border-gray-700 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
+                            ? "bg-[rgba(var(--spotlight-color),0.1)] border-[var(--color-accent)] text-white font-medium"
+                            : "bg-[var(--color-card)] border-[var(--color-border)] hover:border-[var(--color-muted)] text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                         }`}
                       >
                         {opt}
@@ -1465,13 +1465,13 @@ export function BriefForm() {
               </div>
 
               <div className="space-y-1">
-                <label className="block text-sm font-semibold text-[#F0EFF8]">{t.step5.qNotes}</label>
+                <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.step5.qNotes}</label>
                 <textarea
                   name="contacto_notas"
                   value={formData.contacto_notas}
                   onChange={handleTextChange}
                   placeholder={t.step5.placeholderNotes}
-                  className="w-full p-3 bg-[#18181F]/80 border border-[#242428] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(123,97,255,0.15)] outline-none transition-all duration-200 h-24 resize-none text-sm text-[var(--color-fg)]"
+                  className="w-full p-3 bg-[var(--color-card)] border border-[var(--color-border)] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(var(--spotlight-color),0.15)] outline-none transition-all duration-200 h-24 resize-none text-sm text-[var(--color-fg)]"
                 />
               </div>
 
@@ -1481,11 +1481,11 @@ export function BriefForm() {
                 </div>
               )}
 
-              <div className="flex justify-between pt-6 border-t border-[#242428]">
+              <div className="flex justify-between pt-6 border-t border-[var(--color-border)]">
                 <button
                   type="button"
                   onClick={handleBack}
-                  className="px-5 py-3 border border-[#242428] rounded hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-200 flex items-center gap-2 text-sm cursor-pointer text-[var(--color-muted)]"
+                  className="px-5 py-3 border border-[var(--color-border)] rounded hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-200 flex items-center gap-2 text-sm cursor-pointer text-[var(--color-muted)]"
                   disabled={isSubmitting}
                 >
                   <ArrowLeft className="w-4 h-4" />
@@ -1517,13 +1517,13 @@ export function BriefForm() {
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ type: "spring", stiffness: 350, damping: 28 }}
-            className="text-center py-12 px-6 bg-[#18181F] border border-[#242428] rounded-lg space-y-6 shadow-2xl relative overflow-hidden"
+            className="text-center py-12 px-6 bg-[#18181F] border border-[var(--color-border)] rounded-lg space-y-6 shadow-2xl relative overflow-hidden"
           >
-            <div className="absolute inset-0 bg-radial-gradient(circle, rgba(16,185,129,0.06) 0%, transparent 70%) pointer-events-none" />
+            <div className="absolute inset-0 bg-radial-gradient(circle, rgba(228,228,231,0.06) 0%, transparent 70%) pointer-events-none" />
             
             <div className="flex justify-center">
-              <div className="p-3 bg-[rgba(16,185,129,0.1)] rounded-full border border-[rgba(16,185,129,0.2)]">
-                <CheckCircle className="w-12 h-12 text-[var(--color-emerald)]" />
+              <div className="p-3 bg-[rgba(228,228,231,0.1)] rounded-full border border-[rgba(228,228,231,0.2)]">
+                <CheckCircle className="w-12 h-12 text-[var(--color-lime)]" />
               </div>
             </div>
             
@@ -1535,7 +1535,7 @@ export function BriefForm() {
               </p>
             </div>
 
-            <div className="pt-8 border-t border-[#242428] space-y-4 max-w-sm mx-auto">
+            <div className="pt-8 border-t border-[var(--color-border)] space-y-4 max-w-sm mx-auto">
               <p className="text-xs text-[var(--color-muted)] font-semibold uppercase tracking-wider">{t.steps.successTalkBefore}</p>
               
               <div className="grid grid-cols-1 gap-2">
@@ -1543,14 +1543,14 @@ export function BriefForm() {
                   href="https://wa.me/543412282853"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 p-3.5 bg-[#10b981]/8 hover:bg-[#10b981]/12 border border-[#10b981]/25 hover:border-[#10b981]/40 rounded text-sm text-[var(--color-emerald)] transition-all duration-200 font-bold"
+                  className="flex items-center justify-center gap-2 p-3.5 bg-[#E4E4E7]/8 hover:bg-[#E4E4E7]/12 border border-[#E4E4E7]/25 hover:border-[#E4E4E7]/40 rounded text-sm text-[var(--color-lime)] transition-all duration-200 font-bold"
                 >
                   <MessageSquare className="w-4 h-4" />
                   {t.steps.whatsappText}
                 </a>
                 <a
                   href="mailto:contact@malcombuilder.com"
-                  className="flex items-center justify-center gap-2 p-3.5 bg-[#1f1f26] hover:bg-gray-800 border border-[#242428] rounded text-sm text-[var(--color-fg)] transition-all duration-200 font-semibold"
+                  className="flex items-center justify-center gap-2 p-3.5 bg-[#1f1f26] hover:bg-gray-800 border border-[var(--color-border)] rounded text-sm text-[var(--color-fg)] transition-all duration-200 font-semibold"
                 >
                   contact@malcombuilder.com
                 </a>
@@ -1562,3 +1562,4 @@ export function BriefForm() {
     </div>
   );
 }
+

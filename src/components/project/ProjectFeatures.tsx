@@ -60,7 +60,7 @@ const FeatureCard = memo(function FeatureCard({ feature, i }: { feature: Feature
         y: -3,
         borderColor: "var(--color-accent)",
         backgroundColor: "color-mix(in srgb, var(--color-accent) 2%, var(--color-card))",
-        boxShadow: "0 12px 30px rgba(123, 97, 255, 0.04)",
+        boxShadow: "0 12px 30px rgba(255,255,255, 0.04)",
         transition: { duration: 0.25, ease: [0.21, 0.47, 0.32, 0.98] },
       }}
     >
@@ -81,8 +81,8 @@ const FeatureCard = memo(function FeatureCard({ feature, i }: { feature: Feature
           minWidth: "1.5rem",
           height: "1.5rem",
           borderRadius: "50%",
-          background: "rgba(16, 185, 129, 0.1)",
-          color: "var(--color-emerald)",
+          background: "rgba(228,228,231, 0.1)",
+          color: "var(--color-lime)",
           marginTop: "2px",
           position: "relative",
           zIndex: 1,

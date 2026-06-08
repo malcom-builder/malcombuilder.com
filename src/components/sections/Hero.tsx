@@ -196,19 +196,19 @@ export function Hero() {
                   display: "inline-block",
                   transition: "color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease",
                   cursor: "default",
-                  textShadow: "0 0 40px rgba(158, 80, 247, 0.5), 0 0 80px rgba(158, 80, 247, 0.25)",
+                  textShadow: "0 0 40px rgba(var(--spotlight-color), 0.5), 0 0 80px rgba(var(--spotlight-color), 0.25)",
                 }}
                 onMouseEnter={(e) => {
                   handleSoloEnter(e);
                   (e.currentTarget as HTMLElement).style.color = "var(--color-accent-hover)";
                   (e.currentTarget as HTMLElement).style.transform = "scale(1.02) translateX(4px)";
-                  (e.currentTarget as HTMLElement).style.textShadow = "0 0 50px rgba(158, 80, 247, 0.7), 0 0 100px rgba(158, 80, 247, 0.4)";
+                  (e.currentTarget as HTMLElement).style.textShadow = "0 0 50px rgba(var(--spotlight-color), 0.7), 0 0 100px rgba(var(--spotlight-color), 0.4)";
                 }}
                 onMouseLeave={(e) => {
                   handleSoloLeave();
                   (e.currentTarget as HTMLElement).style.color = "var(--color-accent)";
                   (e.currentTarget as HTMLElement).style.transform = "scale(1) translateX(0)";
-                  (e.currentTarget as HTMLElement).style.textShadow = "0 0 40px rgba(158, 80, 247, 0.5), 0 0 80px rgba(158, 80, 247, 0.25)";
+                  (e.currentTarget as HTMLElement).style.textShadow = "0 0 40px rgba(var(--spotlight-color), 0.5), 0 0 80px rgba(var(--spotlight-color), 0.25)";
                 }}
               >
                 {t("headline_accent")}

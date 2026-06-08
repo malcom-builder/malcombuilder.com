@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { HtmlLang } from "@/components/ui/HtmlLang";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { ClientOnly } from "@/components/ui/ClientOnly";
+import { Starfield } from "@/components/ui/Starfield";
 // globals.css is imported in the root layout
 
 type Locale = "es" | "en";
@@ -80,6 +81,7 @@ export default async function LocaleLayout({
         <HtmlLang locale={locale} />
         <ClientOnly />
         <ScrollProgress />
+        <Starfield />
         {children}
       </NextIntlClientProvider>
     </ThemeProvider>

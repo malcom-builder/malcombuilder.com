@@ -1,7 +1,8 @@
 "use client";
 
 import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from "framer-motion";
-import { ReactNode, useRef, useCallback, CSSProperties, useState } from "react";
+import { ReactNode, useRef, useCallback, CSSProperties, useState, useEffect } from "react";
+import { useTheme } from "next-themes";
 import { Link } from "@/i18n/routing";
 
 const RGB_REGEX = /^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/;
@@ -17,14 +18,24 @@ interface Props {
 
 function parseRgb(color: string): [number, number, number] {
   const m = color.match(RGB_REGEX);
-  return m ? [parseInt(m[1]), parseInt(m[2]), parseInt(m[3])] : [16, 185, 129];
+  return m ? [parseInt(m[1]), parseInt(m[2]), parseInt(m[3])] : [255,255,255];
 }
 
-export function SpotlightButton({ href, children, className = "", style = {}, id, glowColor = "rgb(16,185,129)" }: Props) {
+export function SpotlightButton({ href, children, className = "", style = {}, id, glowColor = "rgb(255,255,255)" }: Props) {
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const activeGlowColor = mounted && resolvedTheme === "light" && glowColor === "rgb(255,255,255)"
+    ? "rgb(9,9,11)"
+    : glowColor;
+
   const shouldReduce = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
   const [hovered, setHovered] = useState(false);
-  const [r, g, b] = parseRgb(glowColor);
+  const [r, g, b] = parseRgb(activeGlowColor);
 
   const rawX = useMotionValue(50);
   const rawY = useMotionValue(50);

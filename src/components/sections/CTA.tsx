@@ -81,27 +81,27 @@ export function CTA() {
                   onMouseLeave={handleWordLeave}
                   style={{ position: "relative", display: "inline-block" }}
                 >
-                  {/* Base text — identical pattern to "Solo" but emerald */}
+                  {/* Base text — identical pattern to "Solo" but monochromatic accent */}
                   <motion.span
                     className="heading"
                     style={{
-                      color: "var(--color-emerald)",
+                      color: "var(--color-accent)",
                       display: "inline-block",
                       transition: "color 0.3s ease, text-shadow 0.3s ease",
                       cursor: "pointer",
-                      textShadow: "0 0 40px rgba(158,80,247,0.35), 0 0 80px rgba(158,80,247,0.15)",
+                      textShadow: "0 0 40px rgba(var(--spotlight-color),0.55), 0 0 80px rgba(var(--spotlight-color),0.35), 0 0 120px rgba(var(--spotlight-color),0.15)",
                     }}
                     onMouseEnter={(e) => {
                       handleWordEnter(e);
-                      (e.currentTarget as HTMLElement).style.color = "var(--color-emerald-hover)";
+                      (e.currentTarget as HTMLElement).style.color = "var(--color-accent-hover)";
                       (e.currentTarget as HTMLElement).style.textShadow =
-                        "0 0 40px rgba(158,80,247,0.35), 0 0 80px rgba(158,80,247,0.15)";
+                        "0 0 50px rgba(var(--spotlight-color),0.85), 0 0 100px rgba(var(--spotlight-color),0.55), 0 0 150px rgba(var(--spotlight-color),0.3)";
                     }}
                     onMouseLeave={(e) => {
                       handleWordLeave();
-                      (e.currentTarget as HTMLElement).style.color = "var(--color-emerald)";
+                      (e.currentTarget as HTMLElement).style.color = "var(--color-accent)";
                       (e.currentTarget as HTMLElement).style.textShadow =
-                        "0 0 40px rgba(158,80,247,0.35), 0 0 80px rgba(158,80,247,0.15)";
+                        "0 0 40px rgba(var(--spotlight-color),0.55), 0 0 80px rgba(var(--spotlight-color),0.35), 0 0 120px rgba(var(--spotlight-color),0.15)";
                     }}
                   >
                     {t("heading")}
@@ -123,7 +123,7 @@ export function CTA() {
                         WebkitBackgroundClip: "text",
                         backgroundImage: wordBg,
                         filter:
-                          "drop-shadow(0 0 8px rgba(255,255,255,0.25)) drop-shadow(0 0 20px rgba(255,255,255,0.1))",
+                          "drop-shadow(0 0 24px rgba(255,255,255,0.85)) drop-shadow(0 0 60px rgba(255,255,255,0.55)) drop-shadow(0 0 110px rgba(255,255,255,0.35))",
                         display: "inline-block",
                       }}
                     >

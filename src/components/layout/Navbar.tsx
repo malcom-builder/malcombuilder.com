@@ -2,8 +2,8 @@
 
 import { useTranslations, useLocale } from "next-intl";
 import { Link, usePathname } from "@/i18n/routing";
-import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { LangToggle } from "@/components/ui/LangToggle";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { useCallback, useMemo, useState, useEffect, useTransition } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -57,7 +57,7 @@ export function Navbar() {
 
   return (
     <>
-      <style>{`.navbar-link:hover{color:var(--color-fg)!important}.navbar-cta:hover{border-color:rgba(123,97,255,0.7)!important;background:rgba(123,97,255,0.08)!important;box-shadow:0 0 16px rgba(123,97,255,0.2),0 0 32px rgba(123,97,255,0.08),inset 0 0 12px rgba(123,97,255,0.06)!important;color:var(--color-fg)!important}`}</style>
+      <style>{`.navbar-link:hover{color:var(--color-fg)!important}.navbar-cta:hover{border-color:rgba(var(--spotlight-color),0.7)!important;background:rgba(var(--spotlight-color),0.08)!important;box-shadow:0 0 16px rgba(var(--spotlight-color),0.2),0 0 32px rgba(var(--spotlight-color),0.08),inset 0 0 12px rgba(var(--spotlight-color),0.06)!important;color:var(--color-fg)!important}`}</style>
       <header className={`navbar ${scrolled ? "scrolled" : ""}`}>
         <div className="container">
           <nav
@@ -73,16 +73,17 @@ export function Navbar() {
             <Link
               href="/"
               style={{
-                fontFamily: "monospace",
+                fontFamily: "var(--font-body), sans-serif",
                 fontWeight: 700,
                 fontSize: "1rem",
                 letterSpacing: "-0.02em",
-                color: "var(--color-fg)",
                 textDecoration: "none",
               }}
               aria-label="malcom.builder — home"
             >
-              malcom<span style={{ color: "var(--color-accent)" }}>.</span>builder
+              <span style={{ color: "var(--color-fg)" }}>malcom</span>
+              <span style={{ color: "var(--color-lime)", fontFamily: "var(--font-mono), monospace", fontWeight: 600 }}>.</span>
+              <span style={{ color: "var(--color-accent)" }}>builder</span>
             </Link>
 
             {/* Desktop links */}
@@ -157,17 +158,19 @@ export function Navbar() {
 
             {/* Controls */}
             <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-              <LangToggle />
               <ThemeToggle />
+              <LangToggle />
               <Link href="/brief" style={{ textDecoration: "none", marginLeft: "0.5rem" }}>
                 <span
                   className="navbar-cta"
                   style={{
                     display: "inline-flex",
                     alignItems: "center",
-                    padding: "0.45rem 1.1rem",
+                    justifyContent: "center",
+                    width: "6.5rem",
+                    padding: "0.45rem 0",
                     borderRadius: "9999px",
-                    border: "1px solid rgba(123,97,255,0.3)",
+                    border: "1px solid rgba(var(--spotlight-color),0.25)",
                     background: "transparent",
                     fontSize: "0.875rem",
                     fontWeight: 600,

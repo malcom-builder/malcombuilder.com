@@ -124,18 +124,18 @@ export function Method() {
   const marqueeItems = [...stackItems, ...stackItems];
 
   return (
-    <section id="method" className="section" style={{ borderBottom: "1px solid var(--color-border)", overflow: "hidden", position: "relative" }}>
+    <section id="method" className="section" style={{ borderBottom: "1px solid var(--color-border)", position: "relative" }}>
 
-      {/* ── Accent orb — top right behind title ── */}
+      {/* ── Accent orb — top left behind title ── */}
       <div aria-hidden="true" style={{
         position: "absolute",
-        top: "5%",
-        right: "15%",
+        top: "-260px",
+        left: "5%",
         width: "55vw",
         height: "55vw",
         maxWidth: "700px",
         maxHeight: "700px",
-        background: "radial-gradient(ellipse at 70% 30%, rgba(123,97,255,0.15) 0%, rgba(16,185,129,0.04) 45%, transparent 65%)",
+        background: "radial-gradient(ellipse at 30% 30%, rgba(var(--spotlight-color), 0.15) 0%, rgba(var(--spotlight-color), 0.04) 45%, transparent 65%)",
         filter: "blur(70px)",
         pointerEvents: "none",
         zIndex: 0,
@@ -143,8 +143,12 @@ export function Method() {
 
       <div className="container" style={{ position: "relative", zIndex: 1 }}>
         <FadeIn>
-          <span className="label" style={{ display: "inline-block", marginBottom: "1rem", color: "var(--color-emerald)" }}>{t("badge")}</span>
-          <SpotlightHeading as="h2" className="heading" style={{ color: "var(--color-fg)", marginBottom: "0.5rem", textTransform: "lowercase" }}>{t("title")}</SpotlightHeading>
+          <div style={{ marginBottom: "1rem" }}>
+            <span className="label" style={{ display: "inline-block", color: "var(--color-lime)" }}>{t("badge")}</span>
+          </div>
+          <div style={{ marginBottom: "0.5rem" }}>
+            <SpotlightHeading as="h2" className="heading" style={{ color: "var(--color-fg)", textTransform: "lowercase" }}>{t("title")}</SpotlightHeading>
+          </div>
           <p style={{
             fontSize: "0.9rem",
             color: "var(--color-muted)",
@@ -176,7 +180,7 @@ export function Method() {
                 y: -6,
                 scale: 1.06,
                 borderColor: "var(--color-accent)",
-                boxShadow: "0 8px 24px rgba(129, 140, 248, 0.2)",
+                boxShadow: "0 8px 24px rgba(var(--spotlight-color), 0.12)",
               }}
               transition={{ type: "spring", stiffness: 400, damping: 15 }}
               style={{
@@ -184,8 +188,8 @@ export function Method() {
                 alignItems: "center",
                 gap: "1rem",
                 padding: "1rem 2rem",
-                background: "rgba(255,255,255,0.03)",
-                border: "1px solid rgba(255,255,255,0.07)",
+                background: "var(--card-icon-bg)",
+                border: "1px solid var(--card-icon-border)",
                 borderRadius: "999px",
                 whiteSpace: "nowrap",
                 cursor: "default",

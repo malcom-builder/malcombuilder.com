@@ -131,10 +131,10 @@ const MetricCard = memo(function MetricCard({ card }: { card: MetricCard }) {
       }}
       whileHover={{
         y: -5,
-        borderColor: card.isPositive ? "var(--color-emerald)" : "var(--color-accent)",
+        borderColor: card.isPositive ? "var(--color-lime)" : "var(--color-accent)",
         boxShadow: card.isPositive
-          ? "0 16px 40px rgba(16, 185, 129, 0.04)"
-          : "0 16px 40px rgba(123, 97, 255, 0.04)",
+          ? "0 16px 40px rgba(228,228,231, 0.04)"
+          : "0 16px 40px rgba(255,255,255, 0.04)",
         transition: { duration: 0.3, ease: [0.21, 0.47, 0.32, 0.98] },
       }}
     >
@@ -151,7 +151,7 @@ const MetricCard = memo(function MetricCard({ card }: { card: MetricCard }) {
           left: 0,
           right: 0,
           height: "3px",
-          background: card.isPositive ? "var(--color-emerald)" : "var(--color-accent)",
+          background: card.isPositive ? "var(--color-lime)" : "var(--color-accent)",
           opacity: 0.8,
           zIndex: 1,
         }}
@@ -165,7 +165,7 @@ const MetricCard = memo(function MetricCard({ card }: { card: MetricCard }) {
           style={{
             fontSize: "clamp(2rem, 3.5vw, 2.75rem)",
             fontWeight: 800,
-            color: card.isPositive ? "var(--color-emerald)" : "var(--color-fg)",
+            color: card.isPositive ? "var(--color-lime)" : "var(--color-fg)",
             lineHeight: 1,
             marginBottom: "0.5rem",
           }}
@@ -317,7 +317,7 @@ export function ProjectMetrics({ slug, metrics }: Props) {
                   <span>{t.name}</span>
                   <div style={{ display: "flex", gap: "1.5rem" }}>
                     <span style={{ color: "var(--color-muted)" }}>{t.value}</span>
-                    <span style={{ color: "var(--color-emerald)" }}>{t.percent}</span>
+                    <span style={{ color: "var(--color-lime)" }}>{t.percent}</span>
                   </div>
                 </div>
                 {/* Custom animated bar */}
@@ -327,7 +327,7 @@ export function ProjectMetrics({ slug, metrics }: Props) {
                     whileInView={{ width: t.percent }}
                     viewport={{ once: true }}
                     transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-                    style={{ height: "100%", background: "var(--color-emerald)", borderRadius: "99px" }}
+                    style={{ height: "100%", background: "var(--color-lime)", borderRadius: "99px" }}
                   />
                 </div>
               </motion.div>

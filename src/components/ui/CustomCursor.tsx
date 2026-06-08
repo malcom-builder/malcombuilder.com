@@ -77,11 +77,11 @@ export function CustomCursor() {
           width: isHovered ? 64 : 40,
           height: isHovered ? 64 : 40,
           borderRadius: "50%",
-          backgroundColor: "rgba(158, 80, 247, 0.12)",
-          border: isHovered ? "1px solid rgba(158, 80, 247, 0.3)" : "1px solid rgba(158, 80, 247, 0.15)",
+          backgroundColor: "var(--cursor-aura-bg)",
+          border: isHovered ? "var(--cursor-aura-border-hover)" : "var(--cursor-aura-border)",
           boxShadow: isHovered 
-            ? "0 0 30px rgba(158, 80, 247, 0.4), inset 0 0 15px rgba(158, 80, 247, 0.2)"
-            : "0 0 20px rgba(158, 80, 247, 0.2)",
+            ? "var(--cursor-aura-shadow-hover)"
+            : "var(--cursor-aura-shadow)",
           x: auraX,
           y: auraY,
           translateX: "-50%",
@@ -105,8 +105,8 @@ export function CustomCursor() {
           width: isHovered ? 8 : 6,
           height: isHovered ? 8 : 6,
           borderRadius: "50%",
-          backgroundColor: isHovered ? "var(--color-fg)" : "var(--color-accent)",
-          boxShadow: "0 0 10px var(--color-accent)",
+          backgroundColor: isHovered ? "var(--color-fg)" : "var(--color-lime)",
+          boxShadow: "0 0 10px var(--color-lime)",
           x: cursorX,
           y: cursorY,
           translateX: "-50%",

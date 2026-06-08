@@ -118,7 +118,7 @@ export function ProjectMockup({ slug }: Props) {
               onMouseEnter={(e) => {
                 if (activeTab !== idx) {
                   e.currentTarget.style.color = "var(--color-fg)";
-                  e.currentTarget.style.borderColor = "rgba(123, 97, 255, 0.4)";
+                  e.currentTarget.style.borderColor = "rgba(255,255,255, 0.4)";
                 }
               }}
               onMouseLeave={(e) => {
@@ -146,7 +146,7 @@ export function ProjectMockup({ slug }: Props) {
               background: "rgba(10,10,14,0.8)",
               backdropFilter: "blur(20px)",
               overflow: "hidden",
-              boxShadow: "0 4px 30px rgba(0, 0, 0, 0.5), 0 0 80px rgba(123, 97, 255, 0.15)",
+              boxShadow: "0 4px 30px rgba(0, 0, 0, 0.5), 0 0 80px rgba(255,255,255, 0.15)",
               zIndex: 1,
               y: mainY,
             }}
@@ -207,7 +207,7 @@ export function ProjectMockup({ slug }: Props) {
                     alt={projectMockup.tabs[activeTab].label}
                     fill
                     sizes="100vw"
-                    style={{ objectFit: "cover" }}
+                    style={{ objectFit: "fill" }}
                     priority
                   />
                 </motion.div>
@@ -233,7 +233,7 @@ export function ProjectMockup({ slug }: Props) {
                 border: "4px solid #1a1a24",
                 background: "#08080c",
                 overflow: "hidden",
-                boxShadow: "-12px 16px 50px rgba(0, 0, 0, 0.65), 0 0 40px rgba(123, 97, 255, 0.1)",
+                boxShadow: "-12px 16px 50px rgba(0, 0, 0, 0.65), 0 0 40px rgba(255,255,255, 0.1)",
                 y: phoneY,
               }}
               className="hidden md:block"
@@ -303,7 +303,7 @@ function AuthMotionWidget() {
     <div style={{ width: "100%", height: "450px", display: "grid", gridTemplateColumns: "1fr", background: "#0b0c10", fontFamily: "monospace", fontSize: "0.8rem", padding: "1.5rem" }} className="md:grid-cols-3">
       {/* Columna 1: Consola */}
       <div className="md:col-span-2" style={{ display: "flex", flexDirection: "column", borderRight: "1px solid var(--color-border)", paddingRight: "1rem" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", color: "#10B981", marginBottom: "1rem", borderBottom: "1px solid rgba(255,255,255,0.05)", paddingBottom: "0.5rem" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", color: "#E4E4E7", marginBottom: "1rem", borderBottom: "1px solid rgba(255,255,255,0.05)", paddingBottom: "0.5rem" }}>
           <span>AuthMotion Core Monitor v1.1.0</span>
           <span>ONLINE</span>
         </div>
@@ -321,13 +321,13 @@ function AuthMotionWidget() {
         <div>
           <div style={{ color: "var(--color-muted)", fontSize: "0.75rem", textTransform: "uppercase" }}>JWT Sign Engine</div>
           <div style={{ fontSize: "1.25rem", color: "var(--color-fg)", fontWeight: 600, display: "flex", alignItems: "center", gap: "0.5rem", marginTop: "0.25rem" }}>
-            <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#10B981" }} /> RS256 Active
+            <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#E4E4E7" }} /> RS256 Active
           </div>
         </div>
         <div>
           <div style={{ color: "var(--color-muted)", fontSize: "0.75rem", textTransform: "uppercase" }}>Token Refresh</div>
           <div style={{ fontSize: "1.25rem", color: "var(--color-fg)", fontWeight: 600, display: "flex", alignItems: "center", gap: "0.5rem", marginTop: "0.25rem" }}>
-            <RefreshCw size={16} style={{ color: "var(--color-emerald)" }} /> Auto-Rotate
+            <RefreshCw size={16} style={{ color: "var(--color-lime)" }} /> Auto-Rotate
           </div>
         </div>
         <div>
@@ -338,7 +338,7 @@ function AuthMotionWidget() {
         </div>
         <div>
           <div style={{ color: "var(--color-muted)", fontSize: "0.75rem", textTransform: "uppercase" }}>Uptime</div>
-          <div style={{ fontSize: "1.25rem", color: "#10B981", fontWeight: 600, marginTop: "0.25rem" }}>
+          <div style={{ fontSize: "1.25rem", color: "#E4E4E7", fontWeight: 600, marginTop: "0.25rem" }}>
             100% Core API
           </div>
         </div>
@@ -425,7 +425,7 @@ function MalcomBuilderWidget() {
       <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(var(--color-border) 1px, transparent 1px)", backgroundSize: "24px 24px", opacity: 0.5 }} />
 
       {/* Glow */}
-      <div style={{ position: "absolute", width: "300px", height: "300px", background: "radial-gradient(circle, rgba(123,97,255,0.15) 0%, transparent 70%)", filter: "blur(40px)", zIndex: 0 }} />
+      <div style={{ position: "absolute", width: "300px", height: "300px", background: "radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%)", filter: "blur(40px)", zIndex: 0 }} />
 
       <div style={{ position: "relative", zIndex: 1, textAlign: "center", maxWidth: "450px", paddingInline: "2rem" }}>
         <Layers size={40} style={{ color: "var(--color-accent)", marginBottom: "1.5rem" }} />
@@ -466,7 +466,7 @@ function PulseWidget() {
     <div style={{ width: "100%", height: "450px", background: "#0b0c10", padding: "2rem", display: "flex", flexDirection: "column", justifyContent: "space-between", fontFamily: "monospace" }}>
       <div style={{ display: "flex", justifyContent: "space-between", borderBottom: "1px solid var(--color-border)", paddingBottom: "0.75rem" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-          <span style={{ width: "10px", height: "10px", borderRadius: "50%", background: "#10B981", boxShadow: "0 0 10px #10b981" }} />
+          <span style={{ width: "10px", height: "10px", borderRadius: "50%", background: "#E4E4E7", boxShadow: "0 0 10px #E4E4E7" }} />
           <span style={{ color: "var(--color-fg)", fontWeight: 700, fontSize: "0.85rem" }}>Pulse SiteMonitor Service</span>
         </div>
         <span style={{ color: "var(--color-muted)", fontSize: "0.85rem" }}>PING RATE: 5m</span>
@@ -480,8 +480,8 @@ function PulseWidget() {
               <span style={{ color: "var(--color-muted)", fontSize: "0.7rem", marginTop: "0.125rem" }}>{srv.url}</span>
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: "1.5rem" }}>
-              <span style={{ color: "#10B981", fontSize: "0.8rem", fontWeight: 700 }}>{srv.ping}</span>
-              <span style={{ fontSize: "0.75rem", padding: "0.2rem 0.5rem", borderRadius: "4px", background: "rgba(16,185,129,0.1)", color: "#10B981", fontWeight: 700 }}>ONLINE</span>
+              <span style={{ color: "#E4E4E7", fontSize: "0.8rem", fontWeight: 700 }}>{srv.ping}</span>
+              <span style={{ fontSize: "0.75rem", padding: "0.2rem 0.5rem", borderRadius: "4px", background: "rgba(228,228,231,0.1)", color: "#E4E4E7", fontWeight: 700 }}>ONLINE</span>
             </div>
           </div>
         ))}

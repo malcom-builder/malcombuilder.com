@@ -40,29 +40,17 @@ quién soy, qué construyo, por qué contratarme a mí y no a una agencia.
 
 ```css
 @theme {
-  --color-bg: #0e0e14; /* Void */
-  --color-surface: #18181f; /* Surface */
-  --color-fg: #f0eff8; /* Chalk */
-  --color-muted: #888896; /* Mist */
-  --color-accent: #7b61ff; /* Indigo — token global de marca */
-  --color-accent-hover: #6246ff;
-  --color-emerald: #10b981; /* Emerald — detalles tech/AI */
-  --color-emerald-hover: #0d9668;
-  --color-border: #242428;
-}
-
-.light {
-  --color-bg:           #e8e7f2; /* Chalk oscurecido */
-  --color-surface:      #f0eff8; /* Chalk original como surface */
-  --color-fg:           #0e0e14; /* Void como texto */
-  --color-accent:       #7b61ff; /* Indigo — mismo token */
-  --color-accent-hover: #6246ff;
-  --color-muted:        #6b6a7a; /* Mist más oscuro para contraste */
-  --color-border:       #cccbd8;
-  --color-card:         #f0eff8;
-  --color-glass-bg:     rgba(232, 231, 242, 0.6);
-  --color-emerald:      #0d9668;
-  --color-emerald-hover: #10b981;
+  --color-bg:           #09090B; /* Deep Zinc */
+  --color-surface:      #18181B; /* Surface */
+  --color-fg:           #FAFAFA; /* Pure White */
+  --color-accent:       #4801FF; /* Electric Indigo */
+  --color-accent-hover: #3b00e0;
+  --color-muted:        #A1A1AA; /* Muted Zinc */
+  --color-border:       #27272A; /* Zinc 800 */
+  --color-card:         #18181B; /* Same as surface */
+  --color-glass-bg:     rgba(9, 9, 11, 0.4);
+  --color-lime:         #CCFF00; /* Cyber Lime */
+  --color-lime-hover:   #b8e600;
 }
 ```
 
@@ -114,11 +102,10 @@ messages/
 
 - 100% opaco — `background: var(--color-bg)` (sin blur, decisión de desarrollo)
 - `box-shadow` + `border-bottom` al scrollear para separarse del fondo
-- Logo: `malcom.builder` en monospace a la izquierda
+- Logo: `malcom.builder` estructurado según la marca (malcom en White, "." en Cyber Lime, "builder" en Electric Indigo)
 - Links: Services / Projects / Method / About (siempre en inglés)
-- Derecha: LangToggle (ES/EN) + ThemeToggle
-- CTA: `Construyamos` — ancho fijo `width: 130px` para evitar saltos de layout ES/EN
-- Botones de ícono con `transform: scale(0.9)` en `:active`
+- Derecha: LangToggle (ES/EN) únicamente (ThemeToggle removido tras descarte de Light Mode)
+- CTA: `Construyamos` — outline ghost con transiciones de color Electric Indigo
 
 ### Hero
 
@@ -166,7 +153,7 @@ Dos columnas: foto (4:5, glow índigo) + filas de datos (QUIEN / QUÉ HACE / CÓ
 ### CTA final
 
 - Marquee: `LET'S TALK — LET'S COLLABORATE — SAY HELLO — WANNA BE STARTING SOMETHING?`
-- Hover del marquee: color emerald `#10B981`
+- Hover del marquee: color lime `#CCFF00`
 - Botón ES: `Hablemos` / EN: `Let's Build`
 - Email: contact@malcombuilder.com
 
@@ -265,26 +252,32 @@ title: 'malcom.builder — AI-native system builder'
 
 ### Decisiones UI/UX tomadas durante desarrollo
 
+- **Nueva Identidad Visual Refinada:** Transición a un esquema **Minimalist Monochrome & Deep Obsidian** (Fondo `#000000` negro puro, acento primario `#FFFFFF` blanco puro) enriquecido con un único color de acento "hotspot" intencional para microdetalles (por defecto **Technical Mint `#00F5A0`**, con alternativas comentadas para **Classic Bronze Gold `#E5A93B`**, **Azul Hielo `#00F0FF`** y **Violeta `#8B5CF6`**).
+- **Descarte de Light Mode:** Soporte para Light Mode removido por completo (sin `.light` en CSS y sin control `ThemeToggle` en la interfaz). El sitio ahora es 100% Dark Mode.
+- **Wordmark de Marca:** Ajustado el logo en Navbar y Footer para mostrar `malcom` en White, `.` en Silver y `builder` en White/Silver con transiciones lentas y minimalistas.
+- **Radios de Borde:** Actualizado el radio de borde de las tarjetas, bento cards y tarjetas de contacto a `12px` (anteriormente `2px`) y botones a `8px`.
 - **Navbar blur:** Abandonado — problemas de renderizado. Navbar 100% opaco con `box-shadow` + `border-bottom` al scroll.
 - **Microinteracciones:** ThemeToggle y LangToggle ahora son ghost buttons (sin fondo, sin borde) — solo el ícono visible. Color muted en reposo → fg al hover.
 - **Hero layout:** `marginTop: "-10vh"` para que el CTA quede above the fold sin scroll.
 - **Copywriting ES:** Traducciones naturales, no literales. "Solo" se mantiene igual en ambos idiomas — es firma de marca.
-- **Color accent:** `#7B61FF` (Indigo) + hover `#6246FF` — alineado con token global de marca.
-- **Emerald:** Token `--color-emerald: #10B981` para detalles puntuales (números en project cards, hover del marquee CTA, section badges, spotlight en headings).
-- **Navbar CTA:** Pill outline ghost — fondo transparent en reposo, borde indigo 0.3 opacity. Al hover: borde intenso + background sutil + box-shadow triple (exterior + difuso + inner glow) + texto a fg. Sin motion values — CSS transitions puras.
+- **Color accent:** Refinado a Blanco Puro (`#FFFFFF`, `rgba(255, 255, 255)`) — alineado con el minimalismo clásico.
+- **Secondary Accent:** Technical Mint (`#00F5A0`, `rgba(0, 245, 160)`) para métricas, badges y validaciones secundarias.
+- **Navbar CTA:** Pill outline ghost — fondo transparent en reposo, borde blanco 0.25 opacity. Al hover: borde intenso + background sutil + box-shadow triple (exterior + difuso + inner glow) + texto a fg. Sin motion values — CSS transitions puras.
 - **Tipografía:** Body font DM Sans → Sora (más distintivo). Clase `.heading` + text-shadow en títulos de sección. Espaciado entre secciones: `10rem` mobile / `16rem` desktop.
 - **Rediseño Premium /brief:** Formulario de prospección con animaciones de deslizamiento direccionales (de izquierda a derecha o viceversa según el paso) mediante Framer Motion.
 - **SpotlightButton text-only:** CTAs convertidos de pills a texto plano con inner wrapper pattern. Overlay usa `background-clip: text` para iluminar solo texto.
-- **CTA final como heading:** Heading "listo?" (ES) / "ready?" (EN) es el CTA link a /brief. textShadow igual al de `.heading` — `rgba(158,80,247,0.35)` a 40px y 80px.
+- **CTA final como heading:** Heading "listo?" (ES) / "ready?" (EN) es el CTA link a /brief. textShadow igual al de `.heading` — `rgba(255, 255, 255, 0.15)` a 40px y 80px.
 - **Spotlight gradient preciso:** Falloff `transparent 50%`. Spotlight ilumina con cursor-tracking.
-- **SpotlightHeading default glow:** Índigo `rgb(123,97,255)` para alinear con `--color-accent`.
+- **SpotlightHeading default glow:** Blanco `rgb(255, 255, 255)` para alinear con `--color-accent`.
 - **Copy CTAs:** Navbar "Construir" / "Build". CTA final heading "listo?" (ES) / "ready?" (EN).
 - **Spotlight Snapping con `.jump()`:** Implementado cursor-snapping instantáneo en `onMouseEnter` para cards (proyectos y servicios), títulos y textos destacados del Hero ("Solo") y CTA final ("Listo?") para evitar el deslizamiento indeseado desde la posición inicial por defecto `(50, 0)` / `(50, 50)`.
 - **Salida limpia de Spotlight:** Removido el reinicio de coordenadas en `onMouseLeave` para evitar que el destello viaje bruscamente al centro o arriba al salir del elemento; ahora simplemente se desvanece de forma estática en su última posición.
 - **Suavizado de transición en títulos:** Se aumentó la duración del fade de `0.3s` a `0.6s` en los títulos para que el spotlight aparezca de manera más gradual y orgánica.
 - **SpotlightHeading container display:** Cambiado de `block` a `table` para que el contenedor del título se ajuste exactamente al ancho del texto. Esto soluciona la asimetría de hover al aproximarse al título por la derecha, logrando consistencia en ambos lados.
-- **Footer wordmark color hover:** Reemplazado el efecto de cursor-tracking spotlight del footer wordmark por una transición de color lenta (`0.6s ease`) al hacer hover por palabra (`malcom` a índigo, `.builder` a emerald).
+- **Footer wordmark color hover:** Reemplazado el efecto de cursor-tracking spotlight del footer wordmark por una transición de color lenta (`0.6s ease`) al hacer hover por palabra (`malcom` a Zinc, `.builder` a Blanco).
 - **División del título en la sección About:** Dado que el título "Un builder. Un stack. Un resultado. Precisión." es largo y genera un salto de línea (wrapping), el contenedor `display: "table"` se ensanchaba al 100% de la caja de contenido del parent. Se solucionó dividiendo el titular en dos líneas independientes (`headline_part1` y `headline_part2`) representadas por dos `SpotlightHeading`s distintos. Esto asegura que cada línea se encoja exactamente a la longitud de sus caracteres y que la activación de la luz sea simétrica al aproximarse por la derecha en ambas líneas.
+- **Ajustes de CTA y Localización:** Se actualizó el título del CTA final en español a `"construyamos!"` (removiendo el signo de exclamación inicial) y se incrementó significativamente la intensidad y capas del resplandor de fondo (`text-shadow` y `drop-shadow` de hasta `120px` y opacidades más altas) tanto en reposo como en hover para una visualización premium e impactante.
+- **Restauración de Física de Spotlight:** Se restauró y estabilizó la física del cursor tracking y el restablecimiento suave de coordenadas en los spotlights del sitio, adaptándolos para trabajar con el esquema monocromático puro (blanco sobre negro puro) sin duplicados de texto ni artefactos visuales.
 
 ### Componentes creados
 
@@ -304,7 +297,7 @@ title: 'malcom.builder — AI-native system builder'
 - **Noise texture:** `body::after` con SVG `data:image/svg+xml` base64 como `background-image` para textura grano sutil en todo el sitio.
 - **Ambient orb:** `AmbientOrb.tsx` renderizado en `app/[locale]/layout.tsx` como fondo decorativo (solo desktop).
 - **Section transitions:** Secciones pares tienen un gradiente glow en `::before` en el borde superior para separación visual.
-- **Footer wordmark transition:** Cada palabra resplandece en su color de hover (`malcom` → índigo, `.builder` → emerald) con una transición lenta y suave de `0.6s`.
+- **Footer wordmark transition:** Cada palabra resplandece en su color de hover (`malcom` → Electric Indigo, `.builder` → Cyber Lime) con una transición lenta y suave de `0.6s`.
 
 ### Problemas resueltos
 
@@ -317,11 +310,12 @@ title: 'malcom.builder — AI-native system builder'
 - **Deslizamiento de spotlight corregido:** Solucionado el molesto movimiento del spotlight desde su coordenada por defecto en todos los elementos interactivos del sitio (Proyectos, Servicios, Títulos, Hero "Solo", CTA final "Listo?").
 - **Mockups de NurEstética e imágenes optimizadas:** Reemplazados los nombres antiguos de imágenes del proyecto NurEstética por sus nombres descriptivos finales y se actualizó la card spotlight para usar `nur-card-spotlight.jpg`. Se optimizó la card de Zolfo con la imagen `zolfo-card-spotlight.webp` de menor peso (reducción de 62%).
 - **Asimetría de hover en títulos resuelta:** Se corrigió el problema por el cual el hover del spotlight del título se activaba antes al acercarse desde la derecha que por la izquierda cambiando el contenedor a `display: "table"`.
+- **Corrección de rendering y parpadeo en SpotlightHeading:** Removidos los duplicados de texto absolutos que generaban inconsistencias de renderizado de subpíxeles en Chrome y se estabilizó el spotlight monocromático.
 
 ### Pendientes próxima sesión
 
-- **Auditoría final:** Testing manual, validación Lighthouse y testeo de responsive en 375px/768px/1280px.
-- **CI/CD:** Configurar deploy automático a Vercel desde main.
+- Ninguno. El sitio está listo para producción y deployado en `main`.
+
 
 ---
 

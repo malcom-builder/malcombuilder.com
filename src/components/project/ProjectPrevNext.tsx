@@ -65,7 +65,7 @@ const PrevNextCard = memo(function PrevNextCard({
         }}
         onMouseEnter={(e) => {
           e.currentTarget.style.borderColor = "var(--color-accent)";
-          e.currentTarget.style.backgroundColor = "rgba(123, 97, 255, 0.02)";
+          e.currentTarget.style.backgroundColor = "rgba(var(--spotlight-color), 0.02)";
         }}
         onMouseLeave={(e) => {
           e.currentTarget.style.borderColor = "var(--color-border)";
