@@ -104,16 +104,29 @@ const BentoCard = memo(function BentoCard({ svc, index, t }: { svc: { id: string
 
       <div style={{ position: "relative", zIndex: 1 }}>
         <motion.span
-          variants={{ idle: { scale: 1 }, hovered: { scale: 1.05 } }}
+          variants={{
+            idle: {
+              scale: 1,
+              boxShadow: "0 0 0px rgba(255, 255, 255, 0)",
+              borderColor: "var(--card-icon-border)",
+              backgroundColor: "var(--card-icon-bg)",
+            },
+            hovered: {
+              scale: 1.08,
+              boxShadow: "0 0 25px rgba(255, 255, 255, 0.2), 0 0 50px rgba(255, 255, 255, 0.08)",
+              borderColor: "rgba(255, 255, 255, 0.35)",
+              backgroundColor: "rgba(255, 255, 255, 0.05)",
+            }
+          }}
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
           style={{
             color: "var(--color-accent)",
             display: "inline-block",
             marginBottom: "2rem",
             padding: "1rem",
-            background: "var(--card-icon-bg)",
             borderRadius: "12px",
-            border: "1px solid var(--card-icon-border)",
+            borderWidth: "1px",
+            borderStyle: "solid",
           }}
         >
           {icons[svc.icon as keyof typeof icons]}

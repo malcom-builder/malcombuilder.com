@@ -155,7 +155,7 @@ export function Method() {
                 color: "#000000",
                 y: -6,
                 scale: 1.06,
-                boxShadow: "0 10px 30px rgba(255, 255, 255, 0.15)",
+                boxShadow: "0 0 25px rgba(255, 255, 255, 0.35), 0 10px 50px rgba(255, 255, 255, 0.2), inset 0 0 8px rgba(255, 255, 255, 0.45)",
               }
             };
 
