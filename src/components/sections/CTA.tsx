@@ -54,7 +54,7 @@ export function CTA() {
   }, []);
 
   return (
-    <section id="cta" style={{ overflow: "hidden", position: "relative" }}>
+    <section id="cta" style={{ position: "relative" }}>
       {/* Marquee */}
       <div
         className="py-6 md:py-10 border-y border-[var(--color-border)] bg-[var(--color-bg)] overflow-hidden"

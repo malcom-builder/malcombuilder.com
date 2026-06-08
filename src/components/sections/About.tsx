@@ -9,7 +9,7 @@ export function About() {
   const t = useTranslations("about");
 
   return (
-    <section id="about" className="section" style={{ borderBottom: "1px solid var(--color-border)", position: "relative", overflow: "hidden" }}>
+    <section id="about" className="section" style={{ borderBottom: "1px solid var(--color-border)", position: "relative" }}>
       <div className="container" style={{ position: "relative", zIndex: 1 }}>
 
         {/* TOP: Title — uses .heading class for the same text-shadow glow as other sections */}

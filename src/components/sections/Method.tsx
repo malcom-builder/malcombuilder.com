@@ -93,7 +93,7 @@ export function Method() {
   const marqueeItems = [...stackItems, ...stackItems];
 
   return (
-    <section id="method" className="section" style={{ borderBottom: "1px solid var(--color-border)", position: "relative", overflow: "hidden" }}>
+    <section id="method" className="section" style={{ borderBottom: "1px solid var(--color-border)", position: "relative" }}>
 
       {/* ── Accent orb — top left behind title ── */}
       <div aria-hidden="true" style={{
