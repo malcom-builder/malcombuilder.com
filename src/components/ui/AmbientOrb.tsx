@@ -10,6 +10,7 @@ export function AmbientOrb() {
   return (
     <motion.div
       aria-hidden="true"
+      className="hidden md:block"
       style={{
         position: "fixed",
         top: "20%",

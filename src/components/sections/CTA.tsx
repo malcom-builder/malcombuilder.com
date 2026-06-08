@@ -57,14 +57,9 @@ export function CTA() {
     <section id="cta" style={{ overflow: "hidden", position: "relative" }}>
       {/* Marquee */}
       <div
-        style={{
-          paddingBlock: "5rem",
-          borderBottom: "1px solid var(--color-border)",
-          borderTop: "1px solid var(--color-border)",
-          backgroundColor: "var(--color-bg)",
-        }}
+        className="py-6 md:py-10 border-y border-[var(--color-border)] bg-[var(--color-bg)] overflow-hidden"
       >
-        <Marquee text={t("marquee")} />
+        <Marquee text={t("marquee")} repeat={3} />
       </div>
 
       {/* Content */}

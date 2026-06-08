@@ -434,7 +434,7 @@ export function Projects() {
   const t = useTranslations("projects");
 
   return (
-    <section id="projects" className="section" style={{ borderBottom: "1px solid var(--color-border)", position: "relative" }}>
+    <section id="projects" className="section" style={{ borderBottom: "1px solid var(--color-border)", position: "relative", overflow: "hidden" }}>
       {/* ── Accent orb replicated between Services and Projects ── */}
       <div aria-hidden="true" style={{
         position: "absolute",

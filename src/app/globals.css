@@ -429,6 +429,8 @@ body {
 .marquee-wrapper {
   overflow: hidden;
   white-space: nowrap;
+  width: 100%;
+  max-width: 100%;
 }
 .marquee-track {
   display: inline-flex;

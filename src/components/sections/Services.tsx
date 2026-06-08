@@ -164,7 +164,7 @@ export function Services() {
   ] as const;
 
   return (
-    <section id="services" className="section" style={{ borderBottom: "1px solid var(--color-border)" }}>
+    <section id="services" className="section" style={{ borderBottom: "1px solid var(--color-border)", overflow: "hidden" }}>
       <div className="container">
         <FadeIn>
           <div style={{ marginBottom: "1rem" }}>
