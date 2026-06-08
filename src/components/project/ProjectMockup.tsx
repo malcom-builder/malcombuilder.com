@@ -173,6 +173,7 @@ export function ProjectMockup({ slug }: Props) {
 
               {/* Address bar */}
               <div
+                className="hidden sm:block"
                 style={{
                   position: "absolute",
                   left: "50%",
@@ -300,9 +301,23 @@ function AuthMotionWidget() {
   }, []);
 
   return (
-    <div style={{ width: "100%", height: "450px", display: "grid", gridTemplateColumns: "1fr", background: "#0b0c10", fontFamily: "monospace", fontSize: "0.8rem", padding: "1.5rem" }} className="md:grid-cols-3">
+    <div 
+      style={{ 
+        width: "100%", 
+        height: "450px", 
+        display: "grid", 
+        background: "#0b0c10", 
+        fontFamily: "monospace", 
+        fontSize: "0.8rem", 
+        padding: "1.5rem" 
+      }} 
+      className="grid-cols-1 md:grid-cols-3"
+    >
       {/* Columna 1: Consola */}
-      <div className="md:col-span-2" style={{ display: "flex", flexDirection: "column", borderRight: "1px solid var(--color-border)", paddingRight: "1rem" }}>
+      <div 
+        className="col-span-1 md:col-span-2 md:border-r border-[var(--color-border)] md:pr-4" 
+        style={{ display: "flex", flexDirection: "column" }}
+      >
         <div style={{ display: "flex", justifyContent: "space-between", color: "#E4E4E7", marginBottom: "1rem", borderBottom: "1px solid rgba(255,255,255,0.05)", paddingBottom: "0.5rem" }}>
           <span>AuthMotion Core Monitor v1.1.0</span>
           <span>ONLINE</span>
@@ -370,9 +385,21 @@ function SmartWalletWidget() {
   }, []);
 
   return (
-    <div style={{ width: "100%", height: "450px", display: "grid", gridTemplateColumns: "1fr", background: "#0b0e14", fontFamily: "monospace", padding: "1.5rem" }} className="md:grid-cols-2">
+    <div 
+      style={{ 
+        width: "100%", 
+        height: "450px", 
+        display: "grid", 
+        background: "#0b0e14", 
+        fontFamily: "monospace", 
+        padding: "1.5rem" 
+      }} 
+      className="grid-cols-1 md:grid-cols-2"
+    >
       {/* Columna 1: Libro Diario */}
-      <div style={{ borderRight: "1px solid var(--color-border)", paddingRight: "1.5rem", display: "flex", flexDirection: "column" }}>
+      <div 
+        className="col-span-1 md:border-r border-[var(--color-border)] md:pr-6 flex flex-col"
+      >
         <div style={{ display: "flex", justifyContent: "space-between", color: "var(--color-accent)", fontSize: "0.85rem", fontWeight: 700, borderBottom: "1px solid var(--color-border)", paddingBottom: "0.5rem", marginBottom: "1rem" }}>
           <span>Double-Entry Bookkeeping Ledger</span>
           <span>LIVE RECORD</span>

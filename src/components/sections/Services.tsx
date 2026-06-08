@@ -65,7 +65,6 @@ const BentoCard = memo(function BentoCard({ svc, index, t }: { svc: { id: string
         background: "var(--color-card)",
         border: "1px solid var(--color-border)",
         overflow: "hidden",
-        padding: "2.5rem",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
@@ -73,7 +72,7 @@ const BentoCard = memo(function BentoCard({ svc, index, t }: { svc: { id: string
         gridRow: isLarge ? "span 2" : "span 1",
         cursor: "default",
       }}
-      className={isLarge ? "md:col-span-2" : "md:col-span-1"}
+      className={`p-6 md:p-10 ${isLarge ? "md:col-span-2" : "md:col-span-1"}`}
     >
       {/* Cursor-tracking glow — updates every frame via useTransform */}
       <motion.div
@@ -135,7 +134,7 @@ const BentoCard = memo(function BentoCard({ svc, index, t }: { svc: { id: string
         <h3
           style={{
             fontFamily: "var(--font-display)",
-            fontSize: isLarge ? "1.75rem" : "1.25rem",
+            fontSize: isLarge ? "clamp(1.4rem, 4vw, 1.75rem)" : "clamp(1.15rem, 3vw, 1.25rem)",
             fontWeight: 600,
             letterSpacing: "-0.02em",
             color: "var(--color-fg)",

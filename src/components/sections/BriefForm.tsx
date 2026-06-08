@@ -462,7 +462,7 @@ export function BriefForm() {
             className="text-center space-y-8 flex flex-col justify-center min-h-[75vh]"
           >
             <div className="space-y-4 relative">
-              <div className="absolute inset-0 bg-radial-gradient(circle, rgba(var(--spotlight-color),0.12) 0%, transparent 60%) pointer-events-none -top-12" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(var(--spotlight-color),0.12)_0%,transparent_60%)] pointer-events-none -top-12" />
               <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-mono text-[var(--color-lime)] border border-[rgba(228,228,231,0.25)] rounded-full bg-[rgba(228,228,231,0.04)]">
                 <Sparkle className="w-3.5 h-3.5 animate-pulse" />
                 {t.steps.time}
@@ -522,7 +522,7 @@ export function BriefForm() {
                   onChange={handleTextChange}
                   placeholder={t.step1.placeholderActivity}
                   maxLength={200}
-                  className="w-full p-4 bg-[var(--color-card)] border border-[var(--color-border)] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(var(--spotlight-color),0.15)] outline-none transition-all duration-200 h-24 resize-none text-sm text-[var(--color-fg)]"
+                  className="w-full p-4 bg-[var(--color-card)] border border-[var(--color-border)] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(var(--spotlight-color),0.15)] outline-none transition-all duration-200 h-28 resize-none text-base text-[var(--color-fg)]"
                 />
                 <div className="flex justify-between items-center text-xs">
                   <span>
@@ -1123,7 +1123,7 @@ export function BriefForm() {
                     value={formData.e3_stack}
                     onChange={handleTextChange}
                     placeholder="e.g. React Native, Node, .NET"
-                    className="w-full p-3 bg-[var(--color-card)] border border-[var(--color-border)] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(var(--spotlight-color),0.15)] outline-none transition-colors text-sm text-[var(--color-fg)]"
+                    className="w-full p-3 bg-[var(--color-card)] border border-[var(--color-border)] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(var(--spotlight-color),0.15)] outline-none transition-colors text-base text-[var(--color-fg)]"
                   />
                 </div>
               </div>
@@ -1164,7 +1164,7 @@ export function BriefForm() {
                     onChange={handleTextChange}
                     placeholder="..."
                     maxLength={300}
-                    className="w-full p-3 bg-[var(--color-card)] border border-[var(--color-border)] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(var(--spotlight-color),0.15)] outline-none transition-colors h-24 resize-none text-sm text-[var(--color-fg)]"
+                    className="w-full p-3 bg-[var(--color-card)] border border-[var(--color-border)] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(var(--spotlight-color),0.15)] outline-none transition-colors h-28 resize-none text-base text-[var(--color-fg)]"
                   />
                   <div className="flex justify-between items-center text-xs">
                     <span>{errors.f2_problema && <span className="text-red-400 font-medium">{errors.f2_problema}</span>}</span>
@@ -1209,7 +1209,7 @@ export function BriefForm() {
                     onChange={handleTextChange}
                     placeholder="..."
                     maxLength={500}
-                    className="w-full p-4 bg-[var(--color-card)] border border-[var(--color-border)] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(var(--spotlight-color),0.15)] outline-none transition-colors h-36 resize-none text-sm text-[var(--color-fg)]"
+                    className="w-full p-4 bg-[var(--color-card)] border border-[var(--color-border)] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(var(--spotlight-color),0.15)] outline-none transition-colors h-36 resize-none text-base text-[var(--color-fg)]"
                   />
                   <div className="flex justify-between items-center text-xs">
                     <span>{errors.g1_problema && <span className="text-red-400 font-medium">{errors.g1_problema}</span>}</span>
@@ -1410,7 +1410,7 @@ export function BriefForm() {
                   value={formData.contacto_nombre}
                   onChange={handleTextChange}
                   placeholder={t.step5.placeholderName}
-                  className="w-full p-3 bg-[var(--color-card)] border border-[var(--color-border)] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(var(--spotlight-color),0.15)] outline-none transition-all duration-200 text-sm text-[var(--color-fg)]"
+                  className="w-full p-3 bg-[var(--color-card)] border border-[var(--color-border)] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(var(--spotlight-color),0.15)] outline-none transition-all duration-200 text-base text-[var(--color-fg)]"
                 />
                 {errors.contacto_nombre && <p className="text-xs text-red-400 font-medium">{errors.contacto_nombre}</p>}
               </div>
@@ -1423,7 +1423,7 @@ export function BriefForm() {
                   value={formData.contacto_email}
                   onChange={handleTextChange}
                   placeholder={t.step5.placeholderEmail}
-                  className="w-full p-3 bg-[var(--color-card)] border border-[var(--color-border)] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(var(--spotlight-color),0.15)] outline-none transition-all duration-200 text-sm text-[var(--color-fg)]"
+                  className="w-full p-3 bg-[var(--color-card)] border border-[var(--color-border)] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(var(--spotlight-color),0.15)] outline-none transition-all duration-200 text-base text-[var(--color-fg)]"
                 />
                 {errors.contacto_email && <p className="text-xs text-red-400 font-medium">{errors.contacto_email}</p>}
               </div>
@@ -1436,7 +1436,7 @@ export function BriefForm() {
                   value={formData.contacto_whatsapp}
                   onChange={handleTextChange}
                   placeholder={t.step5.placeholderWhatsapp}
-                  className="w-full p-3 bg-[var(--color-card)] border border-[var(--color-border)] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(var(--spotlight-color),0.15)] outline-none transition-all duration-200 text-sm text-[var(--color-fg)]"
+                  className="w-full p-3 bg-[var(--color-card)] border border-[var(--color-border)] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(var(--spotlight-color),0.15)] outline-none transition-all duration-200 text-base text-[var(--color-fg)]"
                 />
                 {errors.contacto_whatsapp && <p className="text-xs text-red-400 font-medium">{errors.contacto_whatsapp}</p>}
               </div>
@@ -1471,7 +1471,7 @@ export function BriefForm() {
                   value={formData.contacto_notas}
                   onChange={handleTextChange}
                   placeholder={t.step5.placeholderNotes}
-                  className="w-full p-3 bg-[var(--color-card)] border border-[var(--color-border)] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(var(--spotlight-color),0.15)] outline-none transition-all duration-200 h-24 resize-none text-sm text-[var(--color-fg)]"
+                  className="w-full p-3 bg-[var(--color-card)] border border-[var(--color-border)] rounded-md focus:border-[var(--color-accent)] focus:shadow-[0_0_15px_rgba(var(--spotlight-color),0.15)] outline-none transition-all duration-200 h-28 resize-none text-base text-[var(--color-fg)]"
                 />
               </div>
 
@@ -1519,7 +1519,7 @@ export function BriefForm() {
             transition={{ type: "spring", stiffness: 350, damping: 28 }}
             className="text-center py-12 px-6 bg-[#18181F] border border-[var(--color-border)] rounded-lg space-y-6 shadow-2xl relative overflow-hidden"
           >
-            <div className="absolute inset-0 bg-radial-gradient(circle, rgba(228,228,231,0.06) 0%, transparent 70%) pointer-events-none" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(228,228,231,0.06)_0%,transparent_70%)] pointer-events-none" />
             
             <div className="flex justify-center">
               <div className="p-3 bg-[rgba(228,228,231,0.1)] rounded-full border border-[rgba(228,228,231,0.2)]">
