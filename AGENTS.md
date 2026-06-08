@@ -314,6 +314,7 @@ title: 'malcom.builder — AI-native system builder'
 - **Mockups de NurEstética e imágenes optimizadas:** Reemplazados los nombres antiguos de imágenes del proyecto NurEstética por sus nombres descriptivos finales y se actualizó la card spotlight para usar `nur-card-spotlight.jpg`. Se optimizó la card de Zolfo con la imagen `zolfo-card-spotlight.webp` de menor peso (reducción de 62%).
 - **Asimetría de hover en títulos resuelta:** Se corrigió el problema por el cual el hover del spotlight del título se activaba antes al acercarse desde la derecha que por la izquierda cambiando el contenedor a `display: "table"`.
 - **Corrección de rendering y parpadeo en SpotlightHeading:** Removidos los duplicados de texto absolutos que generaban inconsistencias de renderizado de subpíxeles en Chrome y se estabilizó el spotlight monocromático.
+- **Restauración de resplandores/glows entre secciones:** Se eliminó `overflow: "hidden"` de todas las secciones (`#about` y `#cta` incluidos) para permitir que los orbes de fondo fluyan y se fusionen verticalmente sin cortes bruscos. El scroll horizontal en dispositivos móviles se contuvo de forma global mediante `overflow-x: clip` en los selectores `body` y `main` en `globals.css`, lo que evita la barra lateral sin interferir con el desbordamiento vertical de los efectos de iluminación.
 
 ### Pendientes próxima sesión
 
