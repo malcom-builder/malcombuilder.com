@@ -110,6 +110,21 @@ export function Method() {
         zIndex: 0,
       }} />
 
+      {/* ── Accent orb — bottom right ── */}
+      <div aria-hidden="true" style={{
+        position: "absolute",
+        bottom: "-300px",
+        right: "5%",
+        width: "55vw",
+        height: "55vw",
+        maxWidth: "700px",
+        maxHeight: "700px",
+        background: "radial-gradient(ellipse at 70% 70%, rgba(var(--spotlight-color), 0.12) 0%, rgba(var(--spotlight-color), 0.03) 45%, transparent 65%)",
+        filter: "blur(80px)",
+        pointerEvents: "none",
+        zIndex: 0,
+      }} />
+
       <div className="container" style={{ position: "relative", zIndex: 1 }}>
         <FadeIn>
           <div style={{ marginBottom: "1rem" }}>
