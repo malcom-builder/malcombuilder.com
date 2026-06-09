@@ -82,21 +82,21 @@ export function CTA() {
                     style={{
                       color: "var(--color-accent)",
                       display: "inline-block",
-                      transition: "color 0.3s ease, text-shadow 0.3s ease",
+                      transition: "color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease",
                       cursor: "pointer",
-                      textShadow: "0 0 40px rgba(var(--spotlight-color),0.55), 0 0 80px rgba(var(--spotlight-color),0.35), 0 0 120px rgba(var(--spotlight-color),0.15)",
+                      textShadow: "0 0 40px rgba(var(--spotlight-color), 0.5), 0 0 80px rgba(var(--spotlight-color), 0.25)",
                     }}
                     onMouseEnter={(e) => {
                       handleWordEnter(e);
                       (e.currentTarget as HTMLElement).style.color = "var(--color-accent-hover)";
-                      (e.currentTarget as HTMLElement).style.textShadow =
-                        "0 0 50px rgba(var(--spotlight-color),0.85), 0 0 100px rgba(var(--spotlight-color),0.55), 0 0 150px rgba(var(--spotlight-color),0.3)";
+                      (e.currentTarget as HTMLElement).style.transform = "scale(1.02) translateX(4px)";
+                      (e.currentTarget as HTMLElement).style.textShadow = "0 0 50px rgba(var(--spotlight-color), 0.7), 0 0 100px rgba(var(--spotlight-color), 0.4)";
                     }}
                     onMouseLeave={(e) => {
                       handleWordLeave();
                       (e.currentTarget as HTMLElement).style.color = "var(--color-accent)";
-                      (e.currentTarget as HTMLElement).style.textShadow =
-                        "0 0 40px rgba(var(--spotlight-color),0.55), 0 0 80px rgba(var(--spotlight-color),0.35), 0 0 120px rgba(var(--spotlight-color),0.15)";
+                      (e.currentTarget as HTMLElement).style.transform = "scale(1) translateX(0)";
+                      (e.currentTarget as HTMLElement).style.textShadow = "0 0 40px rgba(var(--spotlight-color), 0.5), 0 0 80px rgba(var(--spotlight-color), 0.25)";
                     }}
                   >
                     {t("heading")}
@@ -107,22 +107,18 @@ export function CTA() {
                     <motion.span
                       aria-hidden
                       animate={{ opacity: wordHovered ? 1 : 0 }}
-                      transition={{ duration: 0.3, ease: "easeOut" }}
+                      transition={{ duration: 0.6, ease: "easeOut" }}
                       className="heading"
                       style={{
                         position: "absolute",
-                        left: 0,
-                        top: 0,
-                        width: "100%",
-                        height: "100%",
+                        inset: 0,
                         pointerEvents: "none",
                         color: "transparent",
                         textShadow: "none",
                         backgroundClip: "text",
                         WebkitBackgroundClip: "text",
                         backgroundImage: wordBg,
-                        filter:
-                          "drop-shadow(0 0 24px rgba(255,255,255,0.85)) drop-shadow(0 0 60px rgba(255,255,255,0.55)) drop-shadow(0 0 110px rgba(255,255,255,0.35))",
+                        filter: "drop-shadow(0 0 12px rgba(255,255,255,0.5)) drop-shadow(0 0 30px rgba(255,255,255,0.25))",
                       }}
                     >
                       {t("heading")}
