@@ -4,6 +4,8 @@ import { memo, useState, useEffect, useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform, useInView, useReducedMotion } from "framer-motion";
 import { Users, Eye } from "lucide-react";
 import { useSpotlight, SpotlightGlow } from "./SpotlightGlow";
+import { SpotlightHeading } from "@/components/ui/SpotlightHeading";
+import { useParams } from "next/navigation";
 
 interface MetricCard {
   label: string;
@@ -181,6 +183,8 @@ const MetricCard = memo(function MetricCard({ card }: { card: MetricCard }) {
 });
 
 export function ProjectMetrics({ slug, metrics }: Props) {
+  const params = useParams();
+  const locale = params?.locale as string;
   const [metricTab, setMetricTab] = useState<"overview" | "channels" | "treatments">("overview");
 
   if (!metrics) return null;
@@ -188,9 +192,24 @@ export function ProjectMetrics({ slug, metrics }: Props) {
   return (
     <section data-section="metrics" className="section" style={{ borderBottom: "1px solid var(--color-border)", overflow: "hidden", backgroundColor: "var(--color-bg)" }}>
       <div className="container">
-        <span className="label" style={{ display: "inline-block", marginBottom: "2rem" }}>
-          {metrics.title}
-        </span>
+        {/* Section Heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+          transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
+        >
+          <div style={{ marginBottom: "1rem" }}>
+            <span className="label" style={{ display: "inline-block", color: "var(--color-lime)" }}>
+              {locale === "en" ? "outcomes" : "resultados"}
+            </span>
+          </div>
+          <div style={{ marginBottom: "4rem" }}>
+            <SpotlightHeading as="h2" className="heading" style={{ color: "var(--color-fg)", textTransform: "lowercase" }}>
+              {metrics.title}
+            </SpotlightHeading>
+          </div>
+        </motion.div>
 
         {/* Tab Selection for Zolfo with Full GA Data */}
         {slug === "zolfo-medicina-estetica" && metrics.channels && metrics.treatments && (

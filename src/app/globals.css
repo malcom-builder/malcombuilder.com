@@ -710,10 +710,12 @@ body::after {
 }
 
 /* ─── Even-section top glow divider ──────────────────────────────────────── */
-main > section:nth-child(even) {
+main > section:nth-child(even),
+article > section:nth-child(even) {
   position: relative;
 }
-main > section:nth-child(even)::before {
+main > section:nth-child(even)::before,
+article > section:nth-child(even)::before {
   content: "";
   position: absolute;
   top: 0;

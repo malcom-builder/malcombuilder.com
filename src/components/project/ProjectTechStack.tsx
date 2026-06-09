@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { SpotlightHeading } from "@/components/ui/SpotlightHeading";
+import { useParams } from "next/navigation";
 
 interface Props {
   techStack: string[];
@@ -49,10 +51,30 @@ const techColors: Record<string, string> = {
 };
 
 export function ProjectTechStack({ techStack }: Props) {
+  const params = useParams();
+  const locale = params?.locale as string;
+
   return (
     <section data-section="stack" className="section" style={{ borderBottom: "1px solid var(--color-border)", backgroundColor: "var(--color-bg)" }}>
       <div className="container">
-        <span className="label" style={{ display: "inline-block", marginBottom: "2rem" }}>Stack</span>
+        {/* Section Heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+          transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
+        >
+          <div style={{ marginBottom: "1rem" }}>
+            <span className="label" style={{ display: "inline-block", color: "var(--color-lime)" }}>
+              {locale === "en" ? "technologies" : "tecnologías"}
+            </span>
+          </div>
+          <div style={{ marginBottom: "4rem" }}>
+            <SpotlightHeading as="h2" className="heading" style={{ color: "var(--color-fg)", textTransform: "lowercase" }}>
+              {locale === "en" ? "tech stack" : "stack de tecnologías"}
+            </SpotlightHeading>
+          </div>
+        </motion.div>
         <motion.div
           variants={listContainer}
           initial="hidden"

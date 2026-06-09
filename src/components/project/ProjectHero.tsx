@@ -5,6 +5,7 @@ import { Link } from "@/i18n/routing";
 import { useParams } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { useRef, useCallback } from "react";
+import { SpotlightHeading } from "@/components/ui/SpotlightHeading";
 
 const container = {
   hidden: {},
@@ -195,18 +196,20 @@ export function ProjectHero({ title, category, tagline }: Props) {
           </motion.div>
 
           {/* Title */}
-          <motion.h1
-            variants={item}
-            className="display"
-            style={{
-              color: "var(--color-fg)",
-              marginBottom: "1.75rem",
-              lineHeight: 1.05,
-              letterSpacing: "-0.03em",
-            }}
-          >
-            {title}
-          </motion.h1>
+          <motion.div variants={item}>
+            <SpotlightHeading
+              as="h1"
+              className="display"
+              style={{
+                color: "var(--color-fg)",
+                marginBottom: "1.75rem",
+                lineHeight: 1.05,
+                letterSpacing: "-0.03em",
+              }}
+            >
+              {title}
+            </SpotlightHeading>
+          </motion.div>
 
           {/* Tagline */}
           <motion.p
