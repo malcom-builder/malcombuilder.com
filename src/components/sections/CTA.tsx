@@ -89,13 +89,13 @@ export function CTA() {
                     onMouseEnter={(e) => {
                       handleWordEnter(e);
                       (e.currentTarget as HTMLElement).style.color = "var(--color-accent-hover)";
-                      (e.currentTarget as HTMLElement).style.transform = "scale(1.02) translateX(4px)";
+                      (e.currentTarget as HTMLElement).style.transform = "translateX(4px)";
                       (e.currentTarget as HTMLElement).style.textShadow = "0 0 50px rgba(var(--spotlight-color), 0.7), 0 0 100px rgba(var(--spotlight-color), 0.4)";
                     }}
                     onMouseLeave={(e) => {
                       handleWordLeave();
                       (e.currentTarget as HTMLElement).style.color = "var(--color-accent)";
-                      (e.currentTarget as HTMLElement).style.transform = "scale(1) translateX(0)";
+                      (e.currentTarget as HTMLElement).style.transform = "translateX(0)";
                       (e.currentTarget as HTMLElement).style.textShadow = "0 0 40px rgba(var(--spotlight-color), 0.5), 0 0 80px rgba(var(--spotlight-color), 0.25)";
                     }}
                   >
