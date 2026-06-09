@@ -48,7 +48,7 @@
 .hero-orb {
   position: absolute;
   top: 15%;
-  right: -80px;
+  right: 5%;
   width: 380px;
   height: 380px;
   background: radial-gradient(circle, var(--color-accent) 0%, transparent 60%);
@@ -61,7 +61,7 @@
 @media (min-width: 768px) {
   .hero-orb {
     top: 15%;
-    right: -100px;
+    right: 5%;
     width: 600px;
     height: 600px;
     filter: blur(80px);
