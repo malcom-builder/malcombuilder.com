@@ -746,3 +746,5 @@ article > section:nth-child(even)::before {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-muted);
 }
+
+

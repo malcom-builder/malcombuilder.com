@@ -64,7 +64,7 @@ export default async function BriefPage({ params }: Props) {
   setRequestLocale(locale);
 
   return (
-    <div className="min-h-screen flex flex-col justify-between bg-[#0E0E14]">
+    <div className="min-h-screen flex flex-col justify-between bg-black">
       <Navbar />
       <main className="flex-1 flex flex-col justify-center pt-12 pb-16">
         <BriefForm />

@@ -62,7 +62,7 @@ export function CustomCursor() {
     <>
       <style jsx global>{`
         @media (pointer: fine) {
-          body, a, button, [role="button"], select, input, textarea {
+          * {
             cursor: none !important;
           }
         }

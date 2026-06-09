@@ -87,6 +87,9 @@ const dict = {
         }
       ]
     },
+    step3: {
+      title: "Detalles del proyecto"
+    },
     caminoA: {
       q1: "¿Cuál es tu situación digital actual? *",
       q1Options: [
@@ -239,6 +242,7 @@ const dict = {
       q1: "Contame en tus palabras qué problema querés resolver con tecnología: *"
     },
     step4: {
+      title: "Tiempos y presupuesto",
       qTime: "¿Cuándo necesitás tenerlo listo? *",
       timeOptions: [
         "Urgente — antes de 2 semanas",
@@ -367,6 +371,9 @@ const dict = {
           desc: "Tell us your general problem and we'll help you design the ideal architecture."
         }
       ]
+    },
+    step3: {
+      title: "Project details"
     },
     caminoA: {
       q1: "What is your current digital situation? *",
@@ -520,6 +527,7 @@ const dict = {
       q1: "Tell us in your own words what problem you want to solve with technology: *"
     },
     step4: {
+      title: "Timeline and budget",
       qTime: "When do you need it ready? *",
       timeOptions: [
         "Urgent — before 2 weeks",
