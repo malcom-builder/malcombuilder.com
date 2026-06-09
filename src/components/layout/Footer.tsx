@@ -1,46 +1,14 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { memo, useState } from "react";
+import { useState } from "react";
 import { socialLinks } from "@/lib/constants";
-
-// ── Simple word with slow color transition on hover ───────────────────────────
-const WordmarkWord = memo(function WordmarkWord({
-  children,
-  hoverColor,
-  defaultColor = "var(--color-fg)",
-}: {
-  children: string;
-  hoverColor: string;
-  defaultColor?: string;
-}) {
-  const [hovered, setHovered] = useState(false);
-
-  return (
-    <span
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      style={{
-        fontFamily: "var(--font-display)",
-        fontSize: "clamp(1.75rem, 4vw, 2.5rem)",
-        fontWeight: 700,
-        letterSpacing: "-0.03em",
-        lineHeight: 1.2,
-        whiteSpace: "nowrap",
-        display: "inline-block",
-        color: hovered ? hoverColor : defaultColor,
-        transition: "color 0.6s ease",
-        cursor: "default",
-      }}
-    >
-      {children}
-    </span>
-  );
-});
+import { Link } from "@/i18n/routing";
 
 // ── Footer ────────────────────────────────────────────────────────────────────
 export function Footer() {
   const t = useTranslations("footer");
+  const [logoHovered, setLogoHovered] = useState(false);
   const socials = [
     { href: socialLinks.instagram, label: "Instagram" },
     { href: socialLinks.linkedin, label: "LinkedIn" },
@@ -61,16 +29,32 @@ export function Footer() {
       <div className="container" style={{ textAlign: "center" }}>
 
         {/* Wordmark */}
-        <a
+        <Link
           href="/"
+          onMouseEnter={() => setLogoHovered(true)}
+          onMouseLeave={() => setLogoHovered(false)}
           style={{
             textDecoration: "none",
             display: "inline-block",
             lineHeight: 1.2,
-            transform: "none",
           }}
         >
-          <WordmarkWord hoverColor="var(--color-muted)">malcom</WordmarkWord>
+          <span
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "clamp(1.75rem, 4vw, 2.5rem)",
+              fontWeight: 700,
+              letterSpacing: "-0.03em",
+              lineHeight: 1.2,
+              whiteSpace: "nowrap",
+              display: "inline-block",
+              color: logoHovered ? "var(--color-muted)" : "var(--color-fg)",
+              transition: "color 0.6s ease",
+              cursor: "pointer",
+            }}
+          >
+            malcom
+          </span>
           <span
             style={{
               fontFamily: "var(--font-mono), monospace",
@@ -78,14 +62,31 @@ export function Footer() {
               fontWeight: 600,
               letterSpacing: "-0.03em",
               lineHeight: 1.2,
-              color: "var(--color-muted)",
+              color: logoHovered ? "var(--color-fg)" : "var(--color-muted)",
               display: "inline-block",
+              transition: "color 0.6s ease",
+              cursor: "pointer",
             }}
           >
             .
           </span>
-          <WordmarkWord defaultColor="var(--color-muted)" hoverColor="var(--color-fg)">builder</WordmarkWord>
-        </a>
+          <span
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "clamp(1.75rem, 4vw, 2.5rem)",
+              fontWeight: 700,
+              letterSpacing: "-0.03em",
+              lineHeight: 1.2,
+              whiteSpace: "nowrap",
+              display: "inline-block",
+              color: logoHovered ? "var(--color-fg)" : "var(--color-muted)",
+              transition: "color 0.6s ease",
+              cursor: "pointer",
+            }}
+          >
+            builder
+          </span>
+        </Link>
 
         <p
           style={{
