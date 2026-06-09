@@ -107,19 +107,22 @@ export function CTA() {
                     <motion.span
                       aria-hidden
                       animate={{ opacity: wordHovered ? 1 : 0 }}
-                      transition={{ duration: 0.6, ease: "easeOut" }}
+                      transition={{ duration: 0.3, ease: "easeOut" }}
                       className="heading"
                       style={{
                         position: "absolute",
-                        inset: 0,
+                        left: 0,
+                        top: 0,
+                        width: "100%",
+                        height: "100%",
                         pointerEvents: "none",
                         color: "transparent",
+                        textShadow: "none",
                         backgroundClip: "text",
                         WebkitBackgroundClip: "text",
                         backgroundImage: wordBg,
                         filter:
                           "drop-shadow(0 0 24px rgba(255,255,255,0.85)) drop-shadow(0 0 60px rgba(255,255,255,0.55)) drop-shadow(0 0 110px rgba(255,255,255,0.35))",
-                        display: "inline-block",
                       }}
                     >
                       {t("heading")}
