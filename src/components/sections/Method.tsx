@@ -131,7 +131,7 @@ export function Method() {
         </FadeIn>
       </div>
 
-      <div style={{ position: "relative", width: "100%", paddingBlock: "1rem", overflow: "hidden" }}>
+      <div style={{ position: "relative", width: "100%", paddingBlock: "4.5rem", marginBlock: "-3.5rem", overflow: "hidden" }}>
         {/* Edge fades */}
         <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: "15%", background: "linear-gradient(to right, var(--color-bg), transparent)", zIndex: 10, pointerEvents: "none" }} />
         <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: "15%", background: "linear-gradient(to left, var(--color-bg), transparent)", zIndex: 10, pointerEvents: "none" }} />
