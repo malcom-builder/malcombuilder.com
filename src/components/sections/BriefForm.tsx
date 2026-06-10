@@ -441,7 +441,7 @@ export function BriefForm() {
     <div ref={topRef} className="w-full max-w-2xl mx-auto px-4 py-6 text-[var(--color-fg)]">
       {/* Progress Bar */}
       {step > 0 && step < 6 && (
-        <div className="mb-10 space-y-4">
+        <div className="mb-6 sm:mb-10 space-y-3 sm:space-y-4">
           <div className="flex justify-between items-center text-xs font-mono text-[var(--color-muted)]">
             <span className="text-[var(--color-accent)] font-semibold">{t.steps.step} {step} {t.steps.de} {TOTAL_STEPS}</span>
             <span>{getProgressPercent()}% {t.steps.completado}</span>
@@ -475,11 +475,11 @@ export function BriefForm() {
                 {t.steps.time}
               </div>
               <div className="flex justify-center">
-                <h1 className="heading text-4xl md:text-5xl font-black tracking-tight leading-tight text-center" style={{ textShadow: "none" }}>
+                <h1 className="heading text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight text-center" style={{ textShadow: "none" }}>
                   {locale === "en" ? "Tell me about your project" : "Contame sobre tu proyecto"}
                 </h1>
               </div>
-              <p className="text-base md:text-lg text-[var(--color-muted)] max-w-lg mx-auto leading-relaxed">
+              <p className="text-sm sm:text-base md:text-lg text-[var(--color-muted)] max-w-lg mx-auto leading-relaxed">
                 {locale === "en" 
                   ? "Complete this form and I'll get back to you with a proposal in less than 24 hours. No commitments."
                   : "Completá este formulario y te respondo con una propuesta en menos de 24 horas. Sin compromisos."}
@@ -497,7 +497,7 @@ export function BriefForm() {
               >
                 <SpotlightHeading
                   as="span"
-                  className="heading text-4xl md:text-5xl font-extrabold tracking-tight leading-tight text-center"
+                  className="heading text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight text-center"
                   style={{ cursor: "pointer", margin: "0 auto" }}
                 >
                   {t.steps.comenzar}
@@ -524,7 +524,7 @@ export function BriefForm() {
           >
             <div className="space-y-2">
               <span className="text-xs font-mono text-[var(--color-muted)] uppercase tracking-wider">{t.steps.step} 1 / 5</span>
-              <SpotlightHeading as="h2" className="text-2xl md:text-3xl font-bold font-display text-[var(--color-fg)] tracking-tight">
+              <SpotlightHeading as="h2" className="text-xl sm:text-2xl md:text-3xl font-bold font-display text-[var(--color-fg)] tracking-tight">
                 {t.step1.title}
               </SpotlightHeading>
             </div>
@@ -629,7 +629,7 @@ export function BriefForm() {
           >
             <div className="space-y-2">
               <span className="text-xs font-mono text-[var(--color-muted)] uppercase tracking-wider">{t.steps.step} 2 / 5</span>
-              <SpotlightHeading as="h2" className="text-2xl md:text-3xl font-bold font-display text-[var(--color-fg)] tracking-tight">
+              <SpotlightHeading as="h2" className="text-xl sm:text-2xl md:text-3xl font-bold font-display text-[var(--color-fg)] tracking-tight">
                 {t.step2.title}
               </SpotlightHeading>
             </div>
@@ -648,7 +648,7 @@ export function BriefForm() {
                         key={opt.label}
                         type="button"
                         onClick={() => handleSelectSingle("proyecto_tipo", valueRef)}
-                        className={`p-5 text-left rounded-xl border transition-all duration-300 active:scale-[0.98] flex items-start gap-4 cursor-pointer relative overflow-hidden group ${
+                        className={`p-4 sm:p-5 text-left rounded-xl border transition-all duration-300 active:scale-[0.98] flex items-start gap-3 sm:gap-4 cursor-pointer relative overflow-hidden group ${
                           idx === 6 ? "md:col-span-2" : ""
                         } ${
                           isSelected
@@ -657,7 +657,7 @@ export function BriefForm() {
                         }`}
                       >
                         <div
-                          className={`p-2.5 rounded-lg shrink-0 transition-colors ${
+                          className={`p-2 sm:p-2.5 rounded-lg shrink-0 transition-colors ${
                             isSelected
                               ? "bg-[var(--color-accent)] text-[var(--color-bg)]"
                               : "bg-[var(--color-fg)]/[0.04] border border-[var(--color-border)] text-[var(--color-muted)] group-hover:text-[var(--color-fg)] group-hover:border-[var(--color-fg)]/20"
@@ -712,7 +712,7 @@ export function BriefForm() {
           >
             <div className="space-y-2">
               <span className="text-xs font-mono text-[var(--color-muted)] uppercase tracking-wider">{t.steps.step} 3 / 5</span>
-              <SpotlightHeading as="h2" className="text-2xl md:text-3xl font-bold font-display text-[var(--color-fg)] tracking-tight">
+              <SpotlightHeading as="h2" className="text-xl sm:text-2xl md:text-3xl font-bold font-display text-[var(--color-fg)] tracking-tight">
                 {t.step3.title}
               </SpotlightHeading>
             </div>
@@ -1197,7 +1197,7 @@ export function BriefForm() {
           >
             <div className="space-y-2">
               <span className="text-xs font-mono text-[var(--color-muted)] uppercase tracking-wider">{t.steps.step} 4 / 5</span>
-              <SpotlightHeading as="h2" className="text-2xl md:text-3xl font-bold font-display text-[var(--color-fg)] tracking-tight">
+              <SpotlightHeading as="h2" className="text-xl sm:text-2xl md:text-3xl font-bold font-display text-[var(--color-fg)] tracking-tight">
                 {t.step4.title}
               </SpotlightHeading>
             </div>
@@ -1321,7 +1321,7 @@ export function BriefForm() {
           >
             <div className="space-y-2">
               <span className="text-xs font-mono text-[var(--color-muted)] uppercase tracking-wider">{t.steps.step} 5 / 5</span>
-              <SpotlightHeading as="h2" className="text-2xl md:text-3xl font-bold font-display text-[var(--color-fg)] tracking-tight">
+              <SpotlightHeading as="h2" className="text-xl sm:text-2xl md:text-3xl font-bold font-display text-[var(--color-fg)] tracking-tight">
                 {t.step5.title}
               </SpotlightHeading>
             </div>
@@ -1460,7 +1460,7 @@ export function BriefForm() {
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ type: "spring", stiffness: 350, damping: 28 }}
-            className="text-center py-16 px-8 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl space-y-6 shadow-2xl relative overflow-hidden backdrop-blur-xl"
+            className="text-center py-10 px-4 sm:py-16 sm:px-8 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl space-y-6 shadow-2xl relative overflow-hidden backdrop-blur-xl"
           >
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(var(--spotlight-color),0.06)_0%,transparent_70%)] pointer-events-none" />
             
