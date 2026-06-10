@@ -487,7 +487,7 @@ export function BriefForm() {
             </div>
 
             <div className="pt-10 flex justify-center relative">
-              <div className="absolute w-72 h-72 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.14)_0%,transparent_70%)] pointer-events-none -top-20 z-0" />
+              <div className="absolute w-full max-w-lg h-48 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.1)_0%,transparent_70%)] pointer-events-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0" />
               <button
                 onClick={() => {
                   setDirection(1);

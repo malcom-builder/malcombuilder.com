@@ -4,7 +4,7 @@ const dict = {
     steps: {
       time: "⏱ 3 minutos de duración",
       confidential: "Tu información es confidencial y no se comparte con terceros.",
-      comenzar: "Empezar",
+      comenzar: "Iniciar",
       siguiente: "Siguiente",
       atras: "Atrás",
       enviar: "Enviar brief",
