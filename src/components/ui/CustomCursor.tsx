@@ -2,10 +2,17 @@
 
 import { useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
+import { useTheme } from "next-themes";
 
 export function CustomCursor() {
   const [visible, setVisible] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Position values for the cursor dot and ring
   const cursorX = useMotionValue(-100);
@@ -106,7 +113,7 @@ export function CustomCursor() {
           height: isHovered ? 8 : 6,
           borderRadius: "50%",
           backgroundColor: isHovered ? "var(--color-fg)" : "var(--color-lime)",
-          boxShadow: "0 0 10px var(--color-lime)",
+          boxShadow: mounted && resolvedTheme === "light" ? "none" : "0 0 10px var(--color-lime)",
           x: cursorX,
           y: cursorY,
           translateX: "-50%",

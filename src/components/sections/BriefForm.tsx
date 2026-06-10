@@ -24,11 +24,11 @@ import {
 import dict from "@/lib/brief-form-strings";
 import { SpotlightHeading } from "@/components/ui/SpotlightHeading";
 
-const btnBackClass = "px-6 py-3 bg-transparent border border-white/10 hover:border-white/30 rounded-lg hover:text-white transition-all duration-200 flex items-center gap-2 text-sm font-semibold cursor-pointer text-[var(--color-muted)] font-body";
-const btnNextClass = "px-8 py-3 bg-white hover:bg-zinc-200 text-black font-bold rounded-lg transition-all duration-200 flex items-center gap-2 text-sm cursor-pointer shadow-lg shadow-white/5 disabled:opacity-40 disabled:cursor-not-allowed font-body";
-const optSelectedClass = "p-4 text-left rounded-xl border text-sm transition-all duration-200 cursor-pointer bg-white/10 border-white text-white font-medium shadow-[0_0_15px_rgba(255,255,255,0.08)] font-body";
-const optUnselectedClass = "p-4 text-left rounded-xl border text-sm transition-all duration-200 cursor-pointer bg-[var(--color-surface)] border-[var(--color-border)] hover:border-white/30 text-[var(--color-muted)] hover:text-white font-body";
-const inputClass = "w-full p-4 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl focus:border-white focus:shadow-[0_0_15px_rgba(255,255,255,0.08)] outline-none transition-all duration-200 text-base text-white placeholder-white/35 font-body";
+const btnBackClass = "px-6 py-3 bg-transparent border border-[var(--color-border)] hover:border-[var(--color-fg)]/30 rounded-lg hover:text-[var(--color-fg)] transition-all duration-200 flex items-center gap-2 text-sm font-semibold cursor-pointer text-[var(--color-muted)] font-body";
+const btnNextClass = "px-8 py-3 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-[var(--color-bg)] font-bold rounded-lg transition-all duration-200 flex items-center gap-2 text-sm cursor-pointer shadow-lg shadow-[var(--btn-shadow)] disabled:opacity-40 disabled:cursor-not-allowed font-body";
+const optSelectedClass = "p-4 text-left rounded-xl border text-sm transition-all duration-200 active:scale-[0.98] cursor-pointer bg-[var(--color-accent)]/10 border-[var(--color-accent)] text-[var(--color-fg)] font-medium shadow-[0_0_15px_rgba(var(--spotlight-color),0.08)] font-body";
+const optUnselectedClass = "p-4 text-left rounded-xl border text-sm transition-all duration-200 active:scale-[0.98] cursor-pointer bg-[var(--color-surface)] border-[var(--color-border)] hover:border-[var(--color-fg)]/30 text-[var(--color-muted)] hover:text-[var(--color-fg)] font-body";
+const inputClass = "w-full p-4 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl focus:border-[var(--color-fg)] focus:shadow-[0_0_15px_rgba(var(--spotlight-color),0.08)] outline-none transition-all duration-200 text-base text-[var(--color-fg)] placeholder-[var(--color-fg)]/35 font-body";
 
 
 // Project type paths
@@ -470,8 +470,8 @@ export function BriefForm() {
             className="text-center space-y-8 flex flex-col justify-center min-h-[75vh]"
           >
             <div className="space-y-4 relative">
-              <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-mono text-white/80 border border-white/10 rounded-full bg-white/[0.02] mx-auto">
-                <Sparkle className="w-3.5 h-3.5 animate-pulse text-white" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-mono text-[var(--color-fg)]/80 border border-[var(--color-border)] rounded-full bg-[var(--color-surface)] mx-auto">
+                <Sparkle className="w-3.5 h-3.5 animate-pulse text-[var(--color-accent)]" />
                 {t.steps.time}
               </div>
               <div className="flex justify-center">
@@ -487,7 +487,7 @@ export function BriefForm() {
             </div>
 
             <div className="pt-10 flex justify-center relative">
-              <div className="absolute w-full max-w-lg h-48 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.1)_0%,transparent_70%)] pointer-events-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0" />
+              <div className="absolute w-full max-w-lg h-48 bg-[radial-gradient(ellipse_at_center,rgba(var(--spotlight-color),0.1)_0%,transparent_70%)] pointer-events-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0" />
               <button
                 onClick={() => {
                   setDirection(1);
@@ -524,7 +524,7 @@ export function BriefForm() {
           >
             <div className="space-y-2">
               <span className="text-xs font-mono text-[var(--color-muted)] uppercase tracking-wider">{t.steps.step} 1 / 5</span>
-              <SpotlightHeading as="h2" className="text-2xl md:text-3xl font-bold font-display text-white tracking-tight">
+              <SpotlightHeading as="h2" className="text-2xl md:text-3xl font-bold font-display text-[var(--color-fg)] tracking-tight">
                 {t.step1.title}
               </SpotlightHeading>
             </div>
@@ -585,7 +585,7 @@ export function BriefForm() {
                         key={loc}
                         type="button"
                         onClick={() => handleSelectSingle("negocio_ubicacion", valueRef)}
-                        className={formData.negocio_ubicacion === valueRef ? optSelectedClass : optUnselectedClass}
+                        className={`${formData.negocio_ubicacion === valueRef ? optSelectedClass : optUnselectedClass} ${idx === 4 ? "sm:col-span-2" : ""}`}
                       >
                         {loc}
                       </button>
@@ -629,7 +629,7 @@ export function BriefForm() {
           >
             <div className="space-y-2">
               <span className="text-xs font-mono text-[var(--color-muted)] uppercase tracking-wider">{t.steps.step} 2 / 5</span>
-              <SpotlightHeading as="h2" className="text-2xl md:text-3xl font-bold font-display text-white tracking-tight">
+              <SpotlightHeading as="h2" className="text-2xl md:text-3xl font-bold font-display text-[var(--color-fg)] tracking-tight">
                 {t.step2.title}
               </SpotlightHeading>
             </div>
@@ -638,7 +638,7 @@ export function BriefForm() {
               <div className="space-y-3">
                 <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.step2.qBuild}</label>
                 <p className="text-xs text-[var(--color-muted)]">{t.step2.descBuild}</p>
-                <div className="grid grid-cols-1 gap-3">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {t.step2.options.map((opt, idx) => {
                     const IconComponent = buildOptionIcons[idx] || HelpCircle;
                     const valueRef = dict.es.step2.options[idx].label;
@@ -648,23 +648,25 @@ export function BriefForm() {
                         key={opt.label}
                         type="button"
                         onClick={() => handleSelectSingle("proyecto_tipo", valueRef)}
-                        className={`p-5 text-left rounded-xl border transition-all duration-300 flex items-start gap-4 cursor-pointer relative overflow-hidden group ${
+                        className={`p-5 text-left rounded-xl border transition-all duration-300 active:scale-[0.98] flex items-start gap-4 cursor-pointer relative overflow-hidden group ${
+                          idx === 6 ? "md:col-span-2" : ""
+                        } ${
                           isSelected
-                            ? "bg-white/10 border-white text-white shadow-[0_0_20px_rgba(255,255,255,0.08)]"
-                            : "bg-[var(--color-surface)] border-[var(--color-border)] hover:border-white/30 text-[var(--color-muted)] hover:text-white"
+                            ? "bg-[var(--color-accent)]/10 border-[var(--color-accent)] text-[var(--color-fg)] shadow-[0_0_20px_rgba(var(--spotlight-color),0.08)]"
+                            : "bg-[var(--color-surface)] border-[var(--color-border)] hover:border-[var(--color-fg)]/30 text-[var(--color-muted)] hover:text-[var(--color-fg)]"
                         }`}
                       >
                         <div
                           className={`p-2.5 rounded-lg shrink-0 transition-colors ${
                             isSelected
-                              ? "bg-white text-black"
-                              : "bg-white/[0.04] border border-white/[0.08] text-[var(--color-muted)] group-hover:text-white group-hover:border-white/20"
+                              ? "bg-[var(--color-accent)] text-[var(--color-bg)]"
+                              : "bg-[var(--color-fg)]/[0.04] border border-[var(--color-border)] text-[var(--color-muted)] group-hover:text-[var(--color-fg)] group-hover:border-[var(--color-fg)]/20"
                           }`}
                         >
                           <IconComponent className="w-5 h-5" />
                         </div>
                         <div className="space-y-1">
-                          <h3 className={`text-sm font-bold transition-colors ${isSelected ? "text-white" : "text-[var(--color-fg)]"}`}>
+                          <h3 className="text-sm font-bold transition-colors text-[var(--color-fg)]">
                             {opt.label}
                           </h3>
                           <p className="text-xs text-[var(--color-muted)] leading-relaxed">{opt.desc}</p>
@@ -710,7 +712,7 @@ export function BriefForm() {
           >
             <div className="space-y-2">
               <span className="text-xs font-mono text-[var(--color-muted)] uppercase tracking-wider">{t.steps.step} 3 / 5</span>
-              <SpotlightHeading as="h2" className="text-2xl md:text-3xl font-bold font-display text-white tracking-tight">
+              <SpotlightHeading as="h2" className="text-2xl md:text-3xl font-bold font-display text-[var(--color-fg)] tracking-tight">
                 {t.step3.title}
               </SpotlightHeading>
             </div>
@@ -720,7 +722,7 @@ export function BriefForm() {
               <div className="space-y-6">
                 <div className="space-y-2">
                   <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.caminoA.q1}</label>
-                  <div className="grid grid-cols-1 gap-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {t.caminoA.q1Options.map((opt, idx) => {
                       const valueRef = dict.es.caminoA.q1Options[idx];
                       return (
@@ -728,7 +730,7 @@ export function BriefForm() {
                           key={opt}
                           type="button"
                           onClick={() => handleSelectSingle("a1_situacion", valueRef)}
-                          className={formData.a1_situacion === valueRef ? optSelectedClass : optUnselectedClass}
+                          className={`${formData.a1_situacion === valueRef ? optSelectedClass : optUnselectedClass} ${idx === 4 ? "sm:col-span-2" : ""}`}
                         >
                           {opt}
                         </button>
@@ -752,7 +754,7 @@ export function BriefForm() {
                           className={isSelected ? optSelectedClass : optUnselectedClass}
                         >
                           <span>{opt}</span>
-                          {isSelected && <span className="text-white font-bold text-xs">✓</span>}
+                          {isSelected && <span className="text-current font-bold text-xs">✓</span>}
                         </button>
                       );
                     })}
@@ -762,7 +764,7 @@ export function BriefForm() {
 
                 <div className="space-y-2">
                   <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.caminoA.q3}</label>
-                  <div className="grid grid-cols-1 gap-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                     {t.caminoA.q3Options.map((opt, idx) => {
                       const valueRef = dict.es.caminoA.q3Options[idx];
                       return (
@@ -782,7 +784,7 @@ export function BriefForm() {
 
                 <div className="space-y-2">
                   <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.caminoA.q4}</label>
-                  <div className="grid grid-cols-1 gap-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                     {t.caminoA.q4Options.map((opt, idx) => {
                       const valueRef = dict.es.caminoA.q4Options[idx];
                       return (
@@ -807,7 +809,7 @@ export function BriefForm() {
               <div className="space-y-6">
                 <div className="space-y-2">
                   <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.caminoB.q1}</label>
-                  <div className="grid grid-cols-1 gap-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {t.caminoB.q1Options.map((opt, idx) => {
                       const valueRef = dict.es.caminoB.q1Options[idx];
                       return (
@@ -827,7 +829,7 @@ export function BriefForm() {
 
                 <div className="space-y-2">
                   <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.caminoB.q2}</label>
-                  <div className="grid grid-cols-1 gap-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {t.caminoB.q2Options.map((opt, idx) => {
                       const valueRef = dict.es.caminoB.q2Options[idx];
                       return (
@@ -847,7 +849,7 @@ export function BriefForm() {
 
                 <div className="space-y-2">
                   <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.caminoB.q3}</label>
-                  <div className="grid grid-cols-1 gap-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                     {t.caminoB.q3Options.map((opt, idx) => {
                       const valueRef = dict.es.caminoB.q3Options[idx];
                       return (
@@ -867,7 +869,7 @@ export function BriefForm() {
 
                 <div className="space-y-2">
                   <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.caminoB.q4}</label>
-                  <div className="grid grid-cols-1 gap-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {t.caminoB.q4Options.map((opt, idx) => {
                       const valueRef = dict.es.caminoB.q4Options[idx];
                       const isSelected = formData.b4_pagos.includes(valueRef);
@@ -876,10 +878,10 @@ export function BriefForm() {
                           key={opt}
                           type="button"
                           onClick={() => handleSelectMultiple("b4_pagos", valueRef)}
-                          className={isSelected ? optSelectedClass : optUnselectedClass}
+                          className={`${isSelected ? optSelectedClass : optUnselectedClass} ${idx === 4 ? "sm:col-span-2" : ""}`}
                         >
                           <span>{opt}</span>
-                          {isSelected && <span className="text-white font-bold text-xs">✓</span>}
+                          {isSelected && <span className="text-current font-bold text-xs">✓</span>}
                         </button>
                       );
                     })}
@@ -903,10 +905,10 @@ export function BriefForm() {
                           key={opt}
                           type="button"
                           onClick={() => handleSelectMultiple("c1_gestionar", valueRef, 3)}
-                          className={isSelected ? optSelectedClass : optUnselectedClass}
+                          className={`${isSelected ? optSelectedClass : optUnselectedClass} ${idx === 8 ? "sm:col-span-2" : ""}`}
                         >
                           <span>{opt}</span>
-                          {isSelected && <span className="text-white font-bold text-xs">✓</span>}
+                          {isSelected && <span className="text-current font-bold text-xs">✓</span>}
                         </button>
                       );
                     })}
@@ -916,7 +918,7 @@ export function BriefForm() {
 
                 <div className="space-y-2">
                   <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.caminoC.q2}</label>
-                  <div className="grid grid-cols-1 gap-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                     {t.caminoC.q2Options.map((opt, idx) => {
                       const valueRef = dict.es.caminoC.q2Options[idx];
                       return (
@@ -936,7 +938,7 @@ export function BriefForm() {
 
                 <div className="space-y-2">
                   <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.caminoC.q3}</label>
-                  <div className="grid grid-cols-1 gap-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                     {t.caminoC.q3Options.map((opt, idx) => {
                       const valueRef = dict.es.caminoC.q3Options[idx];
                       return (
@@ -983,7 +985,7 @@ export function BriefForm() {
 
                 <div className="space-y-2">
                   <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.caminoD.q2}</label>
-                  <div className="grid grid-cols-1 gap-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                     {t.caminoD.q2Options.map((opt, idx) => {
                       const valueRef = dict.es.caminoD.q2Options[idx];
                       return (
@@ -1003,7 +1005,7 @@ export function BriefForm() {
 
                 <div className="space-y-2">
                   <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.caminoD.q3}</label>
-                  <div className="grid grid-cols-1 gap-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                     {t.caminoD.q3Options.map((opt, idx) => {
                       const valueRef = dict.es.caminoD.q3Options[idx];
                       return (
@@ -1048,7 +1050,7 @@ export function BriefForm() {
 
                 <div className="space-y-2">
                   <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.caminoE.q2}</label>
-                  <div className="grid grid-cols-1 gap-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                     {t.caminoE.q2Options.map((opt, idx) => {
                       const valueRef = dict.es.caminoE.q2Options[idx];
                       return (
@@ -1121,7 +1123,7 @@ export function BriefForm() {
 
                 <div className="space-y-2">
                   <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.caminoF.q3}</label>
-                  <div className="grid grid-cols-1 gap-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {t.caminoF.q3Options.map((opt, idx) => {
                       const valueRef = dict.es.caminoF.q3Options[idx];
                       return (
@@ -1195,7 +1197,7 @@ export function BriefForm() {
           >
             <div className="space-y-2">
               <span className="text-xs font-mono text-[var(--color-muted)] uppercase tracking-wider">{t.steps.step} 4 / 5</span>
-              <SpotlightHeading as="h2" className="text-2xl md:text-3xl font-bold font-display text-white tracking-tight">
+              <SpotlightHeading as="h2" className="text-2xl md:text-3xl font-bold font-display text-[var(--color-fg)] tracking-tight">
                 {t.step4.title}
               </SpotlightHeading>
             </div>
@@ -1204,7 +1206,7 @@ export function BriefForm() {
               {/* Q3.1 */}
               <div className="space-y-2">
                 <label className="block text-sm font-semibold flex items-center gap-2 text-[var(--color-fg)]">
-                  <Calendar className="w-4 h-4 text-white" />
+                  <Calendar className="w-4 h-4 text-[var(--color-fg)]" />
                   {t.step4.qTime}
                 </label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -1215,7 +1217,7 @@ export function BriefForm() {
                         key={opt}
                         type="button"
                         onClick={() => handleSelectSingle("tiempos_urgencia", valueRef)}
-                        className={formData.tiempos_urgencia === valueRef ? optSelectedClass : optUnselectedClass}
+                        className={`${formData.tiempos_urgencia === valueRef ? optSelectedClass : optUnselectedClass} ${idx === 4 ? "sm:col-span-2" : ""}`}
                       >
                         {opt}
                       </button>
@@ -1228,10 +1230,10 @@ export function BriefForm() {
               {/* Q3.2 */}
               <div className="space-y-2">
                 <label className="block text-sm font-semibold flex items-center gap-2 text-[var(--color-fg)]">
-                  <DollarSign className="w-4 h-4 text-white" />
+                  <DollarSign className="w-4 h-4 text-[var(--color-fg)]" />
                   {t.step4.qBudget}
                 </label>
-                <div className="grid grid-cols-1 gap-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {t.step4.budgetOptions.map((opt, idx) => {
                     const valueRef = dict.es.step4.budgetOptions[idx];
                     return (
@@ -1276,7 +1278,7 @@ export function BriefForm() {
                         key={opt}
                         type="button"
                         onClick={() => handleSelectSingle("tiempos_publicidad", valueRef)}
-                        className={formData.tiempos_publicidad === valueRef ? optSelectedClass : optUnselectedClass}
+                        className={`${formData.tiempos_publicidad === valueRef ? optSelectedClass : optUnselectedClass} ${idx === 4 ? "sm:col-span-2" : ""}`}
                       >
                         {opt}
                       </button>
@@ -1319,12 +1321,12 @@ export function BriefForm() {
           >
             <div className="space-y-2">
               <span className="text-xs font-mono text-[var(--color-muted)] uppercase tracking-wider">{t.steps.step} 5 / 5</span>
-              <SpotlightHeading as="h2" className="text-2xl md:text-3xl font-bold font-display text-white tracking-tight">
+              <SpotlightHeading as="h2" className="text-2xl md:text-3xl font-bold font-display text-[var(--color-fg)] tracking-tight">
                 {t.step5.title}
               </SpotlightHeading>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="absolute opacity-0 -z-50 pointer-events-none w-0 h-0 overflow-hidden">
                 <input
                   type="text"
@@ -1337,46 +1339,54 @@ export function BriefForm() {
                 />
               </div>
 
-              <div className="space-y-1">
-                <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.step5.name}</label>
-                <input
-                  type="text"
-                  name="contacto_nombre"
-                  value={formData.contacto_nombre}
-                  onChange={handleTextChange}
-                  placeholder={t.step5.placeholderName}
-                  className={inputClass}
-                />
-                {errors.contacto_nombre && <p className="text-xs text-red-400 font-medium">{errors.contacto_nombre}</p>}
+              {/* Grouped Contact Info Card */}
+              <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-6 space-y-5 shadow-inner">
+                {/* Row 1: Name and Email */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-1.5">
+                    <label className="block text-xs font-mono uppercase tracking-wider text-[var(--color-muted)]">{t.step5.name}</label>
+                    <input
+                      type="text"
+                      name="contacto_nombre"
+                      value={formData.contacto_nombre}
+                      onChange={handleTextChange}
+                      placeholder={t.step5.placeholderName}
+                      className={inputClass}
+                    />
+                    {errors.contacto_nombre && <p className="text-xs text-red-400 font-medium">{errors.contacto_nombre}</p>}
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <label className="block text-xs font-mono uppercase tracking-wider text-[var(--color-muted)]">{t.step5.email}</label>
+                    <input
+                      type="email"
+                      name="contacto_email"
+                      value={formData.contacto_email}
+                      onChange={handleTextChange}
+                      placeholder={t.step5.placeholderEmail}
+                      className={inputClass}
+                    />
+                    {errors.contacto_email && <p className="text-xs text-red-400 font-medium">{errors.contacto_email}</p>}
+                  </div>
+                </div>
+
+                {/* Row 2: WhatsApp */}
+                <div className="space-y-1.5">
+                  <label className="block text-xs font-mono uppercase tracking-wider text-[var(--color-muted)]">{t.step5.whatsapp}</label>
+                  <input
+                    type="tel"
+                    name="contacto_whatsapp"
+                    value={formData.contacto_whatsapp}
+                    onChange={handleTextChange}
+                    placeholder={t.step5.placeholderWhatsapp}
+                    className={inputClass}
+                  />
+                  {errors.contacto_whatsapp && <p className="text-xs text-red-400 font-medium">{errors.contacto_whatsapp}</p>}
+                </div>
               </div>
 
-              <div className="space-y-1">
-                <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.step5.email}</label>
-                <input
-                  type="email"
-                  name="contacto_email"
-                  value={formData.contacto_email}
-                  onChange={handleTextChange}
-                  placeholder={t.step5.placeholderEmail}
-                  className={inputClass}
-                />
-                {errors.contacto_email && <p className="text-xs text-red-400 font-medium">{errors.contacto_email}</p>}
-              </div>
-
-              <div className="space-y-1">
-                <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.step5.whatsapp}</label>
-                <input
-                  type="tel"
-                  name="contacto_whatsapp"
-                  value={formData.contacto_whatsapp}
-                  onChange={handleTextChange}
-                  placeholder={t.step5.placeholderWhatsapp}
-                  className={inputClass}
-                />
-                {errors.contacto_whatsapp && <p className="text-xs text-red-400 font-medium">{errors.contacto_whatsapp}</p>}
-              </div>
-
-              <div className="space-y-2">
+              {/* Referral Origin (Grid of cards) */}
+              <div className="space-y-3">
                 <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.step5.qOrigin}</label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {t.step5.originOptions.map((opt, idx) => {
@@ -1386,7 +1396,7 @@ export function BriefForm() {
                         key={opt}
                         type="button"
                         onClick={() => handleSelectSingle("contacto_origen", valueRef)}
-                        className={formData.contacto_origen === valueRef ? optSelectedClass : optUnselectedClass}
+                        className={`${formData.contacto_origen === valueRef ? optSelectedClass : optUnselectedClass} ${idx === 4 ? "sm:col-span-2" : ""}`}
                       >
                         {opt}
                       </button>
@@ -1395,7 +1405,8 @@ export function BriefForm() {
                 </div>
               </div>
 
-              <div className="space-y-1">
+              {/* Notes */}
+              <div className="space-y-1.5">
                 <label className="block text-sm font-semibold text-[var(--color-fg)]">{t.step5.qNotes}</label>
                 <textarea
                   name="contacto_notas"
@@ -1403,6 +1414,7 @@ export function BriefForm() {
                   onChange={handleTextChange}
                   placeholder={t.step5.placeholderNotes}
                   className={inputClass}
+                  rows={4}
                 />
               </div>
 
@@ -1450,19 +1462,19 @@ export function BriefForm() {
             transition={{ type: "spring", stiffness: 350, damping: 28 }}
             className="text-center py-16 px-8 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl space-y-6 shadow-2xl relative overflow-hidden backdrop-blur-xl"
           >
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.06)_0%,transparent_70%)] pointer-events-none" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(var(--spotlight-color),0.06)_0%,transparent_70%)] pointer-events-none" />
             
             <div className="flex justify-center">
-              <div className="p-3 bg-white/[0.04] rounded-full border border-white/[0.08]">
+              <div className="p-3 bg-[var(--color-fg)]/[0.04] rounded-full border border-[var(--color-border)]">
                 <CheckCircle className="w-12 h-12 text-[#00F5A0]" />
               </div>
             </div>
             
             <div className="space-y-3">
-              <h2 className="text-2xl md:text-3xl font-bold font-display text-white tracking-tight">{t.steps.successTitle}</h2>
+              <h2 className="text-2xl md:text-3xl font-bold font-display text-[var(--color-fg)] tracking-tight">{t.steps.successTitle}</h2>
               <p className="text-[var(--color-fg)] text-sm md:text-base max-w-md mx-auto leading-relaxed font-body">
                 {t.steps.successDesc}
-                <span className="font-bold text-white">{formData.negocio_actividad}</span>.
+                <span className="font-bold text-[var(--color-fg)]">{formData.negocio_actividad}</span>.
               </p>
             </div>
 
@@ -1474,14 +1486,14 @@ export function BriefForm() {
                   href="https://wa.me/543412282853"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 p-4 bg-white hover:bg-zinc-200 text-black rounded-xl text-sm transition-all duration-200 font-bold font-body"
+                  className="flex items-center justify-center gap-2 p-4 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-[var(--color-bg)] rounded-xl text-sm transition-all duration-200 font-bold font-body"
                 >
-                  <MessageSquare className="w-4 h-4 text-black" />
+                  <MessageSquare className="w-4 h-4 text-[var(--color-bg)]" />
                   {t.steps.whatsappText}
                 </a>
                 <a
                   href="mailto:contact@malcombuilder.com"
-                  className="flex items-center justify-center gap-2 p-4 bg-transparent hover:bg-white/5 border border-white/10 hover:border-white/30 rounded-xl text-sm text-white transition-all duration-200 font-semibold font-body"
+                  className="flex items-center justify-center gap-2 p-4 bg-transparent hover:bg-[var(--color-fg)]/5 border border-[var(--color-border)] hover:border-[var(--color-fg)]/30 rounded-xl text-sm text-[var(--color-fg)] transition-all duration-200 font-semibold font-body"
                 >
                   contact@malcombuilder.com
                 </a>
