@@ -11,28 +11,29 @@
     "tagline": "Digital Product Studio",
     "headline": "Construyo productos digitales.",
     "headline_accent": "Solo.",
-    "subheadline": "Webs y plataformas que convierten. Precio fijo. Entrega en semanas.",
-    "cta_primary": "Ver proyectos"
+    "subheadline": "Agencias lentas y presupuestos sorpresa son el pasado. Arquitectura de software premium, precio fijo y entregas en semanas.",
+    "cta_primary": "¿Construimos? →",
+    "cta_secondary": "Ver proyectos",
+    "trust_badge": "Stack que escala · Scope cerrado · Sin costos ocultos"
   },
   "services": {
     "badge": "Servicios",
     "title": "Así construyo",
     "items": [
       {
-        "title": "Estrategia",
-        "desc": "Antes de construir cualquier cosa, definimos para quién es, qué problema resuelve y cómo se paga. Sin esto, el mejor código del mundo no convierte."
+        "title": "Operaciones",
+        "pain": "Agencias lentas. Presupuestos sorpresa. El cliente haciendo de project manager.",
+        "solution": "Precio fijo, scope cerrado. Entregas iterativas en semanas. Sin fricción."
       },
       {
-        "title": "Arquitectura",
-        "desc": "Tu marca es el primer filtro. Un diseño que no transmite confianza pierde clientes antes de que lean una sola línea."
+        "title": "Tecnología",
+        "pain": "Sitios que tardan en cargar. WordPress roto. Código frágil que se cae con tráfico.",
+        "solution": "Arquitectura sólida. Stack que escala. Performance 100/100 auditada."
       },
       {
-        "title": "Producto",
-        "desc": "El sitio que tus clientes visitan antes de llamarte. La plataforma que procesa tus ventas. Lo que hace que el negocio funcione digitalmente."
-      },
-      {
-        "title": "Crecimiento",
-        "desc": "Un producto lanzado no es un producto que vende. El crecimiento es la diferencia entre tener presencia y generar demanda."
+        "title": "Posicionamiento",
+        "pain": "Diseño de plantilla. Sitios que no transmiten autoridad y pierden clientes.",
+        "solution": "Interfaces premium. Psicología de conversión B2B. Tu web como tu mejor vendedor."
       }
     ]
   },
@@ -447,10 +448,10 @@
     }
   },
   "cta": {
-    "marquee": "HABLEMOS — TENÉS UN PROYECTO — ESCALEMOS — ESCRIBIME — EMPECEMOS — TRANSFORMEMOS — ",
-    "heading": "construyamos!",
-    "action": "empezamos",
-    "sub": "sin compromiso · respuesta en 24h"
+    "pre_title": "La arquitectura ya está resuelta.",
+    "heading": "¿Listos para ejecutar tu sistema?",
+    "button_text": "Llenar Brief de Proyecto →",
+    "sub": "Evaluación sin costo. Presupuesto fijo en 24hs."
   },
   "footer": {
     "tagline": "Digital Product Studio",

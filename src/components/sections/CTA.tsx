@@ -1,148 +1,60 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion, useReducedMotion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { useCallback, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import { FadeIn } from "@/components/ui/FadeIn";
-import { Marquee } from "@/components/ui/Marquee";
 import { Link } from "@/i18n/routing";
+import { SpotlightHeading } from "@/components/ui/SpotlightHeading";
 
 export function CTA() {
   const t = useTranslations("cta");
-  const shouldReduceMotion = useReducedMotion();
-
-  // ── Exact mirror of "Solo" spotlight in Hero ──
-  const wordRef = useRef<HTMLDivElement>(null);
-  const [wordHovered, setWordHovered] = useState(false);
-  const wordRawX = useMotionValue(50);
-  const wordRawY = useMotionValue(50);
-  const wordGlowX = useSpring(wordRawX, { stiffness: 120, damping: 20 });
-  const wordGlowY = useSpring(wordRawY, { stiffness: 120, damping: 20 });
-  const wordBg = useTransform(
-    [wordGlowX, wordGlowY],
-    ([x, y]: number[]) =>
-      `radial-gradient(circle at ${x}% ${y}%, rgb(255,255,255) 0%, rgb(255,255,255) 10%, transparent 50%)`
-  );
-
-  const handleWordEnter = useCallback(
-    (e: React.MouseEvent) => {
-      setWordHovered(true);
-      if (shouldReduceMotion) return;
-      const rect = wordRef.current?.getBoundingClientRect();
-      if (!rect) return;
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      const y = ((e.clientY - rect.top) / rect.height) * 100;
-      wordRawX.set(x);
-      wordRawY.set(y);
-      wordGlowX.jump(x);
-      wordGlowY.jump(y);
-    },
-    [shouldReduceMotion, wordRawX, wordRawY, wordGlowX, wordGlowY]
-  );
-  const handleWordMove = useCallback(
-    (e: React.MouseEvent) => {
-      if (shouldReduceMotion) return;
-      const rect = wordRef.current?.getBoundingClientRect();
-      if (!rect) return;
-      wordRawX.set(((e.clientX - rect.left) / rect.width) * 100);
-      wordRawY.set(((e.clientY - rect.top) / rect.height) * 100);
-    },
-    [shouldReduceMotion, wordRawX, wordRawY]
-  );
-  const handleWordLeave = useCallback(() => {
-    setWordHovered(false);
-  }, []);
 
   return (
-    <section id="cta" style={{ position: "relative" }}>
-      {/* Marquee */}
-      <div
-        className="py-6 md:py-10 border-y border-[var(--color-border)] bg-[var(--color-bg)] overflow-hidden"
-      >
-        <Marquee text={t("marquee")} repeat={3} />
-      </div>
+    <section 
+      id="cta" 
+      className="py-36 md:py-56 flex flex-col items-center justify-center text-center"
+    >
+      <div className="container">
+        <FadeIn>
+          <div className="flex flex-col items-center gap-8 max-w-4xl mx-auto">
+            {/* Pre-título */}
+            <span 
+              className="text-xs sm:text-sm tracking-widest text-zinc-500 uppercase font-mono font-medium"
+              style={{ fontFamily: "var(--font-mono)" }}
+            >
+              {t("pre_title")}
+            </span>
 
-      {/* Content */}
-      <div className="section" style={{ paddingTop: "16rem", paddingBottom: "12rem", textAlign: "center" }}>
-        <div className="container" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-          <FadeIn>
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-
-              <Link href="/brief" style={{ textDecoration: "none", color: "inherit" }}>
-                <div
-                  ref={wordRef}
-                  onMouseEnter={handleWordEnter}
-                  onMouseMove={handleWordMove}
-                  onMouseLeave={handleWordLeave}
-                  style={{ position: "relative", display: "inline-block" }}
+            {/* H2 / Gancho Principal */}
+            <SpotlightHeading 
+              as="h2" 
+              className="heading"
+              style={{ color: "var(--color-fg)" }}
+            >
+              {t("heading")}
+            </SpotlightHeading>
+            {/* El Botón Masivo */}
+            <div className="mt-4">
+              <Link href="/brief" style={{ textDecoration: "none" }}>
+                <motion.span
+                  whileHover={{ scale: 0.95 }}
+                  whileTap={{ scale: 0.93 }}
+                  transition={{ type: "spring", stiffness: 450, damping: 22 }}
+                  className="inline-flex items-center justify-center px-10 py-5 bg-white text-black font-bold text-lg sm:text-xl rounded-full cursor-pointer hover:shadow-[0_0_50px_rgba(255,255,255,0.25)] select-none transition-shadow duration-300"
                 >
-                  {/* Base text — identical pattern to "Solo" but monochromatic accent */}
-                  <motion.span
-                    className="heading"
-                    style={{
-                      color: "var(--color-accent)",
-                      display: "inline-block",
-                      transition: "color 0.3s ease, text-shadow 0.3s ease",
-                      cursor: "pointer",
-                      textShadow: "0 0 40px rgba(var(--spotlight-color), 0.5), 0 0 80px rgba(var(--spotlight-color), 0.25)",
-                    }}
-                    onMouseEnter={(e) => {
-                      handleWordEnter(e);
-                      (e.currentTarget as HTMLElement).style.color = "var(--color-accent-hover)";
-                      (e.currentTarget as HTMLElement).style.textShadow = "0 0 50px rgba(var(--spotlight-color), 0.7), 0 0 100px rgba(var(--spotlight-color), 0.4)";
-                    }}
-                    onMouseLeave={(e) => {
-                      handleWordLeave();
-                      (e.currentTarget as HTMLElement).style.color = "var(--color-accent)";
-                      (e.currentTarget as HTMLElement).style.textShadow = "0 0 40px rgba(var(--spotlight-color), 0.5), 0 0 80px rgba(var(--spotlight-color), 0.25)";
-                    }}
-                  >
-                    {t("heading")}
-                  </motion.span>
-
-                  {/* White spotlight overlay — identical to "Solo" */}
-                  {!shouldReduceMotion && (
-                    <motion.span
-                      aria-hidden
-                      animate={{ opacity: wordHovered ? 1 : 0 }}
-                      transition={{ duration: 0.6, ease: "easeOut" }}
-                      className="heading"
-                      style={{
-                        position: "absolute",
-                        inset: 0,
-                        pointerEvents: "none",
-                        color: "transparent",
-                        textShadow: "none",
-                        backgroundClip: "text",
-                        WebkitBackgroundClip: "text",
-                        backgroundImage: wordBg,
-                        filter: "drop-shadow(0 0 12px rgba(255,255,255,0.5)) drop-shadow(0 0 30px rgba(255,255,255,0.25))",
-                      }}
-                    >
-                      {t("heading")}
-                    </motion.span>
-                  )}
-                </div>
+                  {t("button_text")}
+                </motion.span>
               </Link>
-
-              <p
-                style={{
-                  fontSize: "0.8rem",
-                  color: "var(--color-muted)",
-                  opacity: 0.6,
-                  margin: 0,
-                  letterSpacing: "0.02em",
-                  position: "relative",
-                  zIndex: 1,
-                  marginTop: "1.5rem",
-                }}
-              >
-                {t("sub")}
-              </p>
             </div>
-          </FadeIn>
-        </div>
+
+            {/* Subtexto de fricción baja */}
+            <p className="text-sm sm:text-base text-zinc-500 font-medium tracking-wide">
+              {t("sub")}
+            </p>
+          </div>
+        </FadeIn>
       </div>
     </section>
   );
 }
+

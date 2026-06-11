@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/routing";
 import { motion, useReducedMotion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { TextReveal } from "@/components/ui/TextReveal";
@@ -84,8 +85,8 @@ export function Hero() {
         minHeight: "100svh",
         display: "flex",
         alignItems: "center",
-        paddingTop: "6rem",
-        paddingBottom: "4rem",
+        paddingTop: "4.5rem",
+        paddingBottom: "3rem",
         borderBottom: "1px solid var(--color-border)",
         position: "relative",
       }}
@@ -136,7 +137,7 @@ export function Hero() {
         />
       </div>
 
-      <div className="container" style={{ position: "relative", zIndex: 1, marginTop: "-14vh" }}>
+      <div className="container" style={{ position: "relative", zIndex: 1, marginTop: "-16vh" }}>
         <motion.div
           variants={container}
           initial="hidden"
@@ -150,12 +151,12 @@ export function Hero() {
               display: "inline-flex",
               alignItems: "center",
               gap: "0.5rem",
-              padding: "0.375rem 0.75rem",
+              padding: "0.3rem 0.65rem",
               border: "1px solid var(--color-border)",
               borderRadius: "9999px",
-              marginBottom: "1.25rem",
+              marginBottom: "1rem",
               fontFamily: "var(--font-mono)",
-              fontSize: "0.75rem",
+              fontSize: "0.7rem",
               fontWeight: 600,
               color: "var(--color-fg)",
               background: "var(--color-card)",
@@ -163,14 +164,15 @@ export function Hero() {
               letterSpacing: "0.05em",
             }}
           >
-            <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#10B981", boxShadow: "0 0 12px rgba(16, 185, 129, 0.6)" }} />
+            <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "var(--color-accent)", boxShadow: "0 0 12px rgba(255, 255, 255, 0.4)" }} />
             {t("tagline")}
           </motion.div>
 
           {/* Headline */}
-          <h1 className="display" style={{ color: "var(--color-fg)", marginBottom: "1rem", whiteSpace: "pre-line" }}>
-            <TextReveal text={t("headline")} delay={0.2} />
-            <br />
+          <h1 className="display" style={{ color: "var(--color-fg)", marginBottom: "0.75rem", fontSize: "clamp(2rem, 5.2vw, 3.8rem)", lineHeight: 1.1 }}>
+            <span style={{ display: "inline-block", marginRight: "0.35em" }}>
+              <TextReveal text={t("headline")} delay={0.2} />
+            </span>
             <div
               ref={soloRef}
               onMouseEnter={handleSoloEnter}
@@ -227,12 +229,11 @@ export function Hero() {
           {/* Subheadline */}
           <motion.p
             variants={item}
+            className="text-zinc-400 max-w-2xl"
             style={{
-              fontSize: "clamp(1rem, 1.5vw, 1.15rem)",
-              color: "var(--color-muted)",
-              maxWidth: "40rem",
-              marginBottom: "2.5rem",
-              lineHeight: 1.6,
+              fontSize: "clamp(0.95rem, 1.35vw, 1.05rem)",
+              marginBottom: "1.75rem",
+              lineHeight: 1.5,
               fontWeight: 400,
             }}
           >
@@ -240,25 +241,29 @@ export function Hero() {
           </motion.p>
 
           {/* CTAs */}
-          <motion.div variants={item} style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-              <MagneticButton>
-                <SpotlightButton
-                  href="#projects"
-                  id="hero-cta-primary"
-                  glowColor="rgb(255,255,255)"
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "0.75rem",
-                    color: "var(--color-emerald)",
-                    fontSize: "1rem",
-                    fontWeight: 700,
-                    textDecoration: "none",
-                  }}
-                >
-                  {t("cta_primary")} <ArrowRight size={18} />
-                </SpotlightButton>
-              </MagneticButton>
+          <motion.div variants={item} className="flex flex-col gap-4 items-start">
+            <div className="flex gap-4 items-center flex-wrap">
+              <Link
+                href="/brief"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/10 rounded-lg text-white font-semibold transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.15)] select-none text-base"
+              >
+                {t("cta_primary")}
+              </Link>
+              <a
+                href="#projects"
+                className="inline-flex items-center justify-center px-4 py-3 text-zinc-400 font-medium hover:text-white hover:underline transition-all duration-300 text-base"
+              >
+                {t("cta_secondary")}
+              </a>
+            </div>
+            <div className="w-full text-zinc-600 font-mono tracking-widest uppercase mt-2 text-[10px] sm:text-xs flex flex-wrap gap-x-4 gap-y-2 justify-center md:justify-start">
+              {t("trust_badge").split("·").map((phrase, i, arr) => (
+                <span key={i} className="flex items-center gap-4">
+                  <span>{phrase.trim()}</span>
+                  {i < arr.length - 1 && <span className="text-zinc-800 font-bold">·</span>}
+                </span>
+              ))}
+            </div>
           </motion.div>
         </motion.div>
       </div>

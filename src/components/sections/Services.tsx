@@ -3,164 +3,72 @@
 import { useTranslations } from "next-intl";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SpotlightHeading } from "@/components/ui/SpotlightHeading";
-import { Building2, Cpu, Layers, Zap } from "lucide-react";
-import { memo, useCallback, useRef } from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { memo, useState } from "react";
 
-const icons = {
-  Building2: <Building2 size={28} />,
-  Cpu: <Cpu size={28} />,
-  Layers: <Layers size={28} />,
-  Zap: <Zap size={28} />,
-};
-
-const BentoCard = memo(function BentoCard({ svc, index, t }: { svc: { id: string; icon: string }; index: number; t: any }) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const isLarge = index === 0 || index === 3;
-
-  // Raw mouse position (0–100%)
-  const rawX = useMotionValue(50);
-  const rawY = useMotionValue(0);
-
-  // Spring-smoothed values
-  const glowX = useSpring(rawX, { stiffness: 150, damping: 20 });
-  const glowY = useSpring(rawY, { stiffness: 150, damping: 20 });
-
-  // Build the gradient string reactively via useTransform
-  const background = useTransform(
-    [glowX, glowY],
-    ([x, y]: number[]) =>
-      `radial-gradient(circle at ${x}% ${y}%, rgba(var(--spotlight-color), 0.14), transparent 65%)`
-  );
-
-  const handleMouseEnter = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = cardRef.current?.getBoundingClientRect();
-    if (!rect) return;
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    rawX.set(x);
-    rawY.set(y);
-    glowX.jump(x);
-    glowY.jump(y);
-  }, [rawX, rawY, glowX, glowY]);
-
-  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = cardRef.current?.getBoundingClientRect();
-    if (!rect) return;
-    rawX.set(((e.clientX - rect.left) / rect.width) * 100);
-    rawY.set(((e.clientY - rect.top) / rect.height) * 100);
-  }, [rawX, rawY]);
+const SolutionBlock = memo(function SolutionBlock({ solution, label }: { solution: string; label: string }) {
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <motion.div
-      ref={cardRef}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={handleMouseEnter}
-      initial="idle"
-      whileHover="hovered"
-      animate="idle"
-      style={{
-        position: "relative",
-        borderRadius: "1rem",
-        background: "var(--color-card)",
-        border: "1px solid var(--color-border)",
-        overflow: "hidden",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        gridColumn: isLarge ? "span 2" : "span 1",
-        gridRow: isLarge ? "span 2" : "span 1",
-        cursor: "default",
-      }}
-      className={`p-6 md:p-10 ${isLarge ? "md:col-span-2" : "md:col-span-1"}`}
+    <div
+      className="cursor-default"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Cursor-tracking glow — updates every frame via useTransform */}
-      <motion.div
+      <span className="block font-mono text-[10px] tracking-wider text-[var(--color-muted)] uppercase mb-2">
+        {label}
+      </span>
+      <p
+        className="text-[var(--color-fg)] font-medium text-xl md:text-2xl lg:text-3xl leading-relaxed transition-all duration-500"
         style={{
-          position: "absolute",
-          inset: 0,
-          pointerEvents: "none",
-          background,
-          zIndex: 0,
+          textShadow: isHovered
+            ? "0 0 20px rgba(255, 255, 255, 0.7), 0 0 40px rgba(255, 255, 255, 0.3)"
+            : "none"
         }}
-        variants={{ idle: { opacity: 0 }, hovered: { opacity: 1 } }}
-        transition={{ duration: 0.3 }}
-      />
+      >
+        {solution}
+      </p>
+    </div>
+  );
+});
 
-      {/* Border accent on hover */}
-      <motion.div
-        variants={{ idle: { opacity: 0 }, hovered: { opacity: 1 } }}
-        transition={{ duration: 0.25 }}
-        style={{
-          position: "absolute",
-          inset: 0,
-          borderRadius: "1rem",
-          border: "1px solid var(--card-glow-border)",
-          pointerEvents: "none",
-          zIndex: 0,
-        }}
-      />
+const ServiceRow = memo(function ServiceRow({ index, t }: { index: number; t: any }) {
+  const numberStr = `0${index + 1}`;
+  const title = t(`items.${index}.title`);
+  const pain = t(`items.${index}.pain`);
+  const solution = t(`items.${index}.solution`);
 
-      <div style={{ position: "relative", zIndex: 1 }}>
-        <motion.span
-          variants={{
-            idle: {
-              scale: 1,
-              boxShadow: "0 0 0px rgba(255, 255, 255, 0)",
-              borderColor: "var(--card-icon-border)",
-              backgroundColor: "var(--card-icon-bg)",
-            },
-            hovered: {
-              scale: 1.08,
-              boxShadow: "0 0 25px rgba(255, 255, 255, 0.2), 0 0 50px rgba(255, 255, 255, 0.08)",
-              borderColor: "rgba(255, 255, 255, 0.35)",
-              backgroundColor: "rgba(255, 255, 255, 0.05)",
-            }
-          }}
-          transition={{ type: "spring", stiffness: 300, damping: 20 }}
-          style={{
-            color: "var(--color-accent)",
-            display: "inline-block",
-            marginBottom: "2rem",
-            padding: "1rem",
-            borderRadius: "12px",
-            borderWidth: "1px",
-            borderStyle: "solid",
-          }}
-        >
-          {icons[svc.icon as keyof typeof icons]}
-        </motion.span>
-
-        <h3
-          style={{
-            fontFamily: "var(--font-display)",
-            fontSize: isLarge ? "clamp(1.4rem, 4vw, 1.75rem)" : "clamp(1.15rem, 3vw, 1.25rem)",
-            fontWeight: 600,
-            letterSpacing: "-0.02em",
-            color: "var(--color-fg)",
-            marginBottom: "1rem",
-            textTransform: "lowercase",
-          }}
-        >
-          {t(`items.${index}.title` as any)}
+  return (
+    <div className="py-12 md:py-20 border-b border-[var(--color-border)] last:border-b-0 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-start">
+      {/* Lado izquierdo: Número + Título del Eje */}
+      <div className="md:col-span-4 flex flex-col gap-2">
+        <span className="font-mono text-sm tracking-widest text-[var(--color-muted)] font-bold">{numberStr}</span>
+        <h3 className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-[var(--color-fg)] lowercase leading-none">
+          {title}
         </h3>
-        <p style={{ color: "var(--color-muted)", fontSize: "1rem", lineHeight: 1.6, maxWidth: isLarge ? "80%" : "100%" }}>
-          {t(`items.${index}.desc` as any)}
-        </p>
       </div>
-    </motion.div>
+
+      {/* Lado derecho: Dolor vs Solución */}
+      <div className="md:col-span-8 flex flex-col gap-8">
+        {/* Dolor (Obsoleto) */}
+        <div>
+          <span className="block font-mono text-[10px] tracking-wider text-[var(--color-muted)] uppercase mb-2">
+            [obsoleto]
+          </span>
+          <p className="text-zinc-500 line-through opacity-70 text-lg md:text-xl lg:text-2xl leading-relaxed font-light">
+            {pain}
+          </p>
+        </div>
+
+        {/* Solución (Premium) */}
+        <SolutionBlock solution={solution} label="[premium]" />
+      </div>
+    </div>
   );
 });
 
 export function Services() {
   const t = useTranslations("services");
-
-  const items = [
-    { id: "company-building", icon: "Building2" },
-    { id: "ai-integration",   icon: "Cpu"       },
-    { id: "tech-strategy",    icon: "Layers"    },
-    { id: "mvp-dev",          icon: "Zap"       },
-  ] as const;
+  const indices = [0, 1, 2];
 
   return (
     <section id="services" className="section" style={{ borderBottom: "1px solid var(--color-border)" }}>
@@ -178,10 +86,10 @@ export function Services() {
           </div>
         </FadeIn>
 
-        <div style={{ display: "grid", gap: "1rem" }} className="grid-cols-1 md:grid-cols-3">
-          {items.map((svc, i) => (
-            <FadeIn key={svc.id} delay={i * 0.1} rotate={i % 2 === 0 ? 1.5 : -1.5} className={i === 0 || i === 3 ? "md:col-span-2" : "md:col-span-1"}>
-              <BentoCard svc={svc} index={i} t={t} />
+        <div className="flex flex-col">
+          {indices.map((idx) => (
+            <FadeIn key={idx} delay={idx * 0.1}>
+              <ServiceRow index={idx} t={t} />
             </FadeIn>
           ))}
         </div>
@@ -189,3 +97,4 @@ export function Services() {
     </section>
   );
 }
+
