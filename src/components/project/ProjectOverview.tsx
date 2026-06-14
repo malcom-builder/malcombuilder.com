@@ -33,7 +33,7 @@ function AnimatedParagraph({ children, delay }: { children: React.ReactNode; del
           left: 0,
           top: 0,
           width: "2px",
-          background: "var(--color-accent)",
+          background: "var(--color-cyber-blue)",
           opacity: 0.35,
           borderRadius: "1px",
         }}
@@ -59,7 +59,7 @@ export function ProjectOverview({ description }: Props) {
           transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
         >
           <div style={{ marginBottom: "1rem" }}>
-            <span className="label" style={{ display: "inline-block", color: "var(--color-lime)" }}>
+            <span className="label" style={{ display: "inline-block", color: "var(--color-cyber-blue)", fontFamily: "var(--font-mono, monospace)" }}>
               {locale === "en" ? "Overview" : "Resumen"}
             </span>
           </div>
@@ -88,7 +88,7 @@ export function ProjectOverview({ description }: Props) {
                       fontSize: "0.875rem",
                       fontWeight: 600,
                       letterSpacing: "0.12em",
-                      color: "var(--color-accent)",
+                      color: "var(--color-cyber-blue)",
                       marginTop: "1.75rem",
                       marginBottom: "-0.5rem",
                       textTransform: "uppercase",

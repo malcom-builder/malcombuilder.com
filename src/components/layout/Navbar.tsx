@@ -57,7 +57,7 @@ export function Navbar() {
 
   return (
     <>
-      <style>{`.navbar-link:hover{color:var(--color-fg)!important}.navbar-cta:hover{border-color:rgba(var(--spotlight-color),0.7)!important;background:rgba(var(--spotlight-color),0.08)!important;box-shadow:0 0 16px rgba(var(--spotlight-color),0.2),0 0 32px rgba(var(--spotlight-color),0.08),inset 0 0 12px rgba(var(--spotlight-color),0.06)!important;color:var(--color-fg)!important}`}</style>
+      <style>{`.navbar-link:hover{color:var(--color-fg)!important}.navbar-cta{position:relative;z-index:1}.navbar-cta::before{content:"";position:absolute;inset:-2px;background:rgba(170,220,236,0.35);filter:blur(16px);border-radius:8px;opacity:0;transition:opacity 0.3s ease;z-index:-1;pointer-events:none}.navbar-cta:hover::before{opacity:1!important}.navbar-cta:hover{border-color:rgba(170,220,236,0.6)!important;background:rgba(170,220,236,0.08)!important;box-shadow:0 0 16px rgba(170,220,236,0.25),0 0 32px rgba(170,220,236,0.08),inset 0 0 12px rgba(170,220,236,0.06)!important;color:var(--color-cyber-blue)!important;transform:scale(1.02)!important}.navbar-cta:active{transform:scale(0.98)!important;box-shadow:inset 0 2px 8px rgba(127,0,224,0.25)!important}`}</style>
       <header className={`navbar ${scrolled ? "scrolled" : ""}`}>
         <div className="container">
           <nav
@@ -169,7 +169,7 @@ export function Navbar() {
                     justifyContent: "center",
                     width: "6.5rem",
                     padding: "0.45rem 0",
-                    borderRadius: "9999px",
+                    borderRadius: "8px",
                     border: "1px solid rgba(var(--spotlight-color),0.25)",
                     background: "transparent",
                     fontSize: "0.875rem",
@@ -177,7 +177,7 @@ export function Navbar() {
                     color: "var(--color-accent)",
                     letterSpacing: "0.01em",
                     transition:
-                      "border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease, color 0.25s ease",
+                      "border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease, color 0.25s ease, transform 0.15s ease",
                     cursor: "pointer",
                     whiteSpace: "nowrap",
                   }}

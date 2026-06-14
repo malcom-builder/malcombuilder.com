@@ -183,23 +183,23 @@ export function Hero() {
               <motion.span
                 variants={item}
                 style={{
-                  color: "var(--color-accent)",
+                  color: "var(--color-cyber-blue)",
                   display: "inline-block",
                   transition: "color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease",
                   cursor: "default",
-                  textShadow: "0 0 40px rgba(var(--spotlight-color), 0.5), 0 0 80px rgba(var(--spotlight-color), 0.25)",
+                  textShadow: "0 0 40px rgba(170, 220, 236, 0.4), 0 0 80px rgba(170, 220, 236, 0.15)",
                 }}
                 onMouseEnter={(e) => {
                   handleSoloEnter(e);
-                  (e.currentTarget as HTMLElement).style.color = "var(--color-accent-hover)";
+                  (e.currentTarget as HTMLElement).style.color = "var(--color-cyber-blue)";
                   (e.currentTarget as HTMLElement).style.transform = "scale(1.02) translateX(4px)";
-                  (e.currentTarget as HTMLElement).style.textShadow = "0 0 50px rgba(var(--spotlight-color), 0.7), 0 0 100px rgba(var(--spotlight-color), 0.4)";
+                  (e.currentTarget as HTMLElement).style.textShadow = "0 0 50px rgba(170, 220, 236, 0.7), 0 0 100px rgba(170, 220, 236, 0.35)";
                 }}
                 onMouseLeave={(e) => {
                   handleSoloLeave();
-                  (e.currentTarget as HTMLElement).style.color = "var(--color-accent)";
+                  (e.currentTarget as HTMLElement).style.color = "var(--color-cyber-blue)";
                   (e.currentTarget as HTMLElement).style.transform = "scale(1) translateX(0)";
-                  (e.currentTarget as HTMLElement).style.textShadow = "0 0 40px rgba(var(--spotlight-color), 0.5), 0 0 80px rgba(var(--spotlight-color), 0.25)";
+                  (e.currentTarget as HTMLElement).style.textShadow = "0 0 40px rgba(170, 220, 236, 0.4), 0 0 80px rgba(170, 220, 236, 0.15)";
                 }}
               >
                 {t("headline_accent")}
@@ -243,15 +243,19 @@ export function Hero() {
           {/* CTAs */}
           <motion.div variants={item} className="flex flex-col gap-4 items-start">
             <div className="flex gap-4 items-center flex-wrap">
-              <Link
-                href="/brief"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/10 rounded-lg text-white font-semibold transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.15)] select-none text-base"
-              >
-                {t("cta_primary")}
+              <Link href="/brief" style={{ textDecoration: "none" }}>
+                <motion.span
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ type: "spring", stiffness: 450, damping: 22 }}
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-bold rounded-lg cursor-pointer hover:shadow-[0_0_30px_rgba(170,220,236,0.25)] active:shadow-[inset_0_2px_8px_rgba(127,0,224,0.25)] select-none transition-shadow duration-300 text-base btn-glow-trigger"
+                >
+                  {t("cta_primary")}
+                </motion.span>
               </Link>
               <a
                 href="#projects"
-                className="inline-flex items-center justify-center px-4 py-3 text-zinc-400 font-medium hover:text-white hover:underline transition-all duration-300 text-base"
+                className="inline-flex items-center justify-center px-4 py-3 text-zinc-400 font-medium hover:text-white hover:underline active:scale-[0.98] transition-all duration-300 text-base"
               >
                 {t("cta_secondary")}
               </a>

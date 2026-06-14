@@ -14,7 +14,7 @@ export function About() {
 
         {/* TOP: Title — uses .heading class for the same text-shadow glow as other sections */}
         <FadeIn delay={0.1} direction="up" className="mb-16 md:mb-28">
-          <span className="about-section-label">{t("label")}</span>
+          <span className="about-section-label font-mono" style={{ color: "var(--color-cyber-blue)" }}>{t("label")}</span>
           <div style={{ display: "flex", flexDirection: "column", gap: "0.25rem", alignItems: "flex-start" }}>
             <SpotlightHeading as="h2" className="heading" style={{ marginBottom: 0, textTransform: "lowercase" }}>
               {t("headline_part1")}
@@ -39,7 +39,7 @@ export function About() {
                 fontSize: "clamp(3rem, 8vw, 5rem)",
                 fontWeight: 800,
                 lineHeight: 1,
-                color: "var(--color-lime)",
+                color: "var(--color-cyber-blue)",
                 opacity: 0.3,
                 pointerEvents: "none",
                 userSelect: "none",
@@ -156,9 +156,9 @@ export function About() {
 
             {/* Row 1: WHO */}
             <FadeIn delay={0.3} direction="up" className="about-row !pt-0">
-              <div className="about-row-label">
+              <div className="about-row-label" style={{ color: "var(--color-cyber-blue)" }}>
                 <span style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem" }}>
-                  <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: "var(--color-fg)", boxShadow: "0 0 8px rgba(var(--spotlight-color),0.5)", display: "inline-block" }} />
+                  <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: "var(--color-cyber-blue)", boxShadow: "0 0 8px rgba(170, 220, 236, 0.5)", display: "inline-block" }} />
                   {t("who.label")}
                 </span>
               </div>
@@ -170,9 +170,9 @@ export function About() {
 
             {/* Row 2: WHAT HE DOES */}
             <FadeIn delay={0.4} direction="up" className="about-row">
-              <div className="about-row-label">
+              <div className="about-row-label" style={{ color: "var(--color-cyber-blue)" }}>
                 <span style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem" }}>
-                  <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: "var(--color-fg)", boxShadow: "0 0 8px rgba(var(--spotlight-color),0.5)", display: "inline-block" }} />
+                  <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: "var(--color-cyber-blue)", boxShadow: "0 0 8px rgba(170, 220, 236, 0.5)", display: "inline-block" }} />
                   {t("does.label")}
                 </span>
               </div>
@@ -184,9 +184,9 @@ export function About() {
 
             {/* Row 3: HOW */}
             <FadeIn delay={0.5} direction="up" className="about-row !pb-0 !border-b-0">
-              <div className="about-row-label">
+              <div className="about-row-label" style={{ color: "var(--color-cyber-blue)" }}>
                 <span style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem" }}>
-                  <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: "var(--color-fg)", boxShadow: "0 0 8px rgba(var(--spotlight-color),0.5)", display: "inline-block" }} />
+                  <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: "var(--color-cyber-blue)", boxShadow: "0 0 8px rgba(170, 220, 236, 0.5)", display: "inline-block" }} />
                   {t("how.label")}
                 </span>
               </div>

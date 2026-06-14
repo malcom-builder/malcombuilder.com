@@ -41,7 +41,7 @@ const ServiceRow = memo(function ServiceRow({ index, t }: { index: number; t: an
     <div className="py-12 md:py-20 border-b border-[var(--color-border)] last:border-b-0 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-start">
       {/* Lado izquierdo: Número + Título del Eje */}
       <div className="md:col-span-4 flex flex-col gap-2">
-        <span className="font-mono text-sm tracking-widest text-[var(--color-muted)] font-bold">{numberStr}</span>
+        <span className="font-mono text-sm tracking-widest text-[var(--color-cyber-blue)] font-bold">{numberStr}</span>
         <h3 className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-[var(--color-fg)] lowercase leading-none">
           {title}
         </h3>
@@ -75,7 +75,7 @@ export function Services() {
       <div className="container">
         <FadeIn>
           <div style={{ marginBottom: "1rem" }}>
-            <span className="label" style={{ display: "inline-block", color: "var(--color-lime)" }}>
+            <span className="label font-mono" style={{ display: "inline-block", color: "var(--color-cyber-blue)" }}>
               {t("badge")}
             </span>
           </div>

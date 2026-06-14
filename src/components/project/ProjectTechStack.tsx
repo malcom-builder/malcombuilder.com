@@ -65,7 +65,7 @@ export function ProjectTechStack({ techStack }: Props) {
           transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
         >
           <div style={{ marginBottom: "1rem" }}>
-            <span className="label" style={{ display: "inline-block", color: "var(--color-lime)" }}>
+            <span className="label" style={{ display: "inline-block", color: "var(--color-cyber-blue)", fontFamily: "var(--font-mono, monospace)" }}>
               {locale === "en" ? "technologies" : "tecnologías"}
             </span>
           </div>

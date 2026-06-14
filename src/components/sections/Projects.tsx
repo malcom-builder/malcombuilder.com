@@ -192,15 +192,46 @@ const ProjectCard = memo(function ProjectCard({ proj }: { proj: typeof projects[
         minHeight: "240px",
         textDecoration: "none",
         position: "relative",
-        overflow: "hidden",
       }}
       whileHover={{
         y: -6,
-        borderColor: "var(--color-accent)",
-        boxShadow: "0 20px 60px rgba(var(--spotlight-color), 0.08)",
         transition: { duration: 0.3, ease: [0.21, 0.47, 0.32, 0.98] },
       }}
     >
+      {/* 1. Glow externo hiper-difuso en deep-purple/10 */}
+      {!shouldReduce && (
+        <motion.div
+          style={{
+            position: "absolute",
+            inset: "-20px",
+            background: "radial-gradient(circle, var(--color-deep-purple) 0%, transparent 70%)",
+            filter: "blur(32px)",
+            pointerEvents: "none",
+            zIndex: -1,
+          }}
+          animate={{ opacity: isHovered ? 0.1 : 0 }}
+          transition={{ duration: 0.3 }}
+        />
+      )}
+
+      {/* 2. Top-border highlight sutil hacia cyber-blue/30 */}
+      {!shouldReduce && (
+        <motion.div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: "12px",
+            right: "12px",
+            height: "1px",
+            background: "linear-gradient(90deg, transparent, var(--color-cyber-blue) 50%, transparent)",
+            pointerEvents: "none",
+            zIndex: 2,
+          }}
+          animate={{ opacity: isHovered ? 0.3 : 0 }}
+          transition={{ duration: 0.25 }}
+        />
+      )}
+
       {/* Spotlight image (reveals image on hover only where cursor is) */}
       {proj.spotlightImage && !shouldReduce && (
         <motion.div
@@ -237,6 +268,8 @@ const ProjectCard = memo(function ProjectCard({ proj }: { proj: typeof projects[
             pointerEvents: "none",
             zIndex: 0,
             background: spotlightBg,
+            borderRadius: "12px",
+            overflow: "hidden",
           }}
           animate={{ opacity: isHovered ? 1 : 0 }}
           transition={{ duration: 0.3 }}
@@ -291,9 +324,9 @@ const ProjectCard = memo(function ProjectCard({ proj }: { proj: typeof projects[
           <span
             style={{
               fontSize: "0.875rem",
-              fontFamily: "monospace",
+              fontFamily: "var(--font-mono), monospace",
               fontWeight: 700,
-              color: "var(--color-muted)",
+              color: "var(--color-cyber-blue)",
             }}
           >
             {proj.id}
@@ -382,14 +415,15 @@ const ProjectCard = memo(function ProjectCard({ proj }: { proj: typeof projects[
           <Link
             href={`/projects/${proj.slug}`}
             style={{
-              fontSize: "0.85rem",
-              color: "var(--color-muted)",
-              fontWeight: 500,
+              fontSize: "0.8rem",
+              fontFamily: "var(--font-mono), monospace",
+              color: "var(--color-cyber-blue)",
+              fontWeight: 600,
               textDecoration: "none",
-              transition: "color 0.2s",
+              transition: "opacity 0.2s",
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-accent)")}
-            onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-muted)")}
+            onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.8")}
+            onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
           >
             {proj.metric}
           </Link>
@@ -464,8 +498,8 @@ export function Projects() {
                 transition: { duration: 0.5, ease: [0.21, 0.47, 0.32, 0.98] },
               },
             }}
-            className="label"
-            style={{ display: "inline-block", marginBottom: "1rem", color: "var(--color-lime)" }}
+            className="label font-mono"
+            style={{ display: "inline-block", marginBottom: "1rem", color: "var(--color-cyber-blue)" }}
           >
             {t("badge")}
           </motion.span>
@@ -476,22 +510,38 @@ export function Projects() {
           </motion.div>
         </motion.div>
 
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "0px 0px -5% 0px" }}
-          style={{
-            display: "grid",
-            gap: "1.5rem",
-            marginTop: "2rem",
-          }}
-          className="grid-cols-1 md:grid-cols-2"
-        >
-          {projects.slice(0, 4).map((proj, i) => (
-            <ProjectCard key={proj.id} proj={proj} index={i} />
-          ))}
-        </motion.div>
+        <div style={{ position: "relative" }}>
+          {/* Deep Purple Ambient Depth Glow behind bento grid */}
+          <div
+            style={{
+              position: "absolute",
+              inset: "-10%",
+              background: "radial-gradient(circle at 50% 50%, var(--color-deep-purple) 0%, transparent 65%)",
+              filter: "blur(100px)",
+              opacity: 0.15,
+              pointerEvents: "none",
+              zIndex: 0,
+            }}
+          />
+          <motion.div
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "0px 0px -5% 0px" }}
+            style={{
+              display: "grid",
+              gap: "1.5rem",
+              marginTop: "2rem",
+              position: "relative",
+              zIndex: 1,
+            }}
+            className="grid-cols-1 md:grid-cols-2"
+          >
+            {projects.slice(0, 4).map((proj, i) => (
+              <ProjectCard key={proj.id} proj={proj} index={i} />
+            ))}
+          </motion.div>
+        </div>
 
         <div style={{ display: "flex", justifyContent: "center", marginTop: "3.5rem" }}>
           <SpotlightButton

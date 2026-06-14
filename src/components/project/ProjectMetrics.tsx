@@ -128,35 +128,79 @@ const MetricCard = memo(function MetricCard({ card }: { card: MetricCard }) {
         borderRadius: "12px",
         background: "var(--color-card)",
         position: "relative",
-        overflow: "hidden",
         cursor: "default",
       }}
       whileHover={{
         y: -5,
-        borderColor: card.isPositive ? "var(--color-lime)" : "var(--color-accent)",
-        boxShadow: card.isPositive
-          ? "0 16px 40px rgba(228,228,231, 0.04)"
-          : "0 16px 40px rgba(255,255,255, 0.04)",
         transition: { duration: 0.3, ease: [0.21, 0.47, 0.32, 0.98] },
       }}
     >
+      {/* 1. Glow externo hiper-difuso en deep-purple/12 */}
+      <motion.div
+        style={{
+          position: "absolute",
+          inset: "-20px",
+          background: "radial-gradient(circle, var(--color-deep-purple) 0%, transparent 70%)",
+          filter: "blur(32px)",
+          pointerEvents: "none",
+          zIndex: -1,
+        }}
+        animate={{ opacity: spotlight.isHovered ? 0.12 : 0 }}
+        transition={{ duration: 0.3 }}
+      />
+
+      {/* 2. Top-border highlight sutil hacia cyber-blue/30 */}
+      <motion.div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: "12px",
+          right: "12px",
+          height: "1px",
+          background: "linear-gradient(90deg, transparent, var(--color-cyber-blue) 50%, transparent)",
+          pointerEvents: "none",
+          zIndex: 2,
+        }}
+        animate={{ opacity: spotlight.isHovered ? 0.3 : 0 }}
+        transition={{ duration: 0.25 }}
+      />
+
+      {/* 3. Border accent on hover */}
+      <motion.div
+        style={{
+          position: "absolute",
+          inset: 0,
+          borderRadius: "12px",
+          border: "1px solid var(--card-glow-border)",
+          pointerEvents: "none",
+          zIndex: 2,
+        }}
+        animate={{ opacity: spotlight.isHovered ? 1 : 0 }}
+        transition={{ duration: 0.25 }}
+      />
+
       <SpotlightGlow
         spotlightBg={spotlight.spotlightBg}
         isHovered={spotlight.isHovered}
         borderRadius="12px"
       />
       {/* Accent glow line on top */}
-      <div
+      <motion.div
         style={{
           position: "absolute",
           top: 0,
           left: 0,
           right: 0,
           height: "3px",
-          background: card.isPositive ? "var(--color-lime)" : "var(--color-accent)",
-          opacity: 0.8,
           zIndex: 1,
         }}
+        animate={{
+          opacity: spotlight.isHovered ? 1 : 0.6,
+          background: spotlight.isHovered
+            ? "var(--color-cyber-blue)"
+            : (card.isPositive ? "var(--color-cyber-blue)" : "var(--color-accent)"),
+        }}
+        transition={{ duration: 0.25 }}
       />
       <div style={{ position: "relative", zIndex: 1 }}>
         <div style={{ color: "var(--color-muted)", fontSize: "0.8rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "0.5rem" }}>
@@ -167,7 +211,8 @@ const MetricCard = memo(function MetricCard({ card }: { card: MetricCard }) {
           style={{
             fontSize: "clamp(2rem, 3.5vw, 2.75rem)",
             fontWeight: 800,
-            color: card.isPositive ? "var(--color-lime)" : "var(--color-fg)",
+            color: card.isPositive ? "var(--color-cyber-blue)" : "var(--color-fg)",
+            fontFamily: "var(--font-mono, monospace)",
             lineHeight: 1,
             marginBottom: "0.5rem",
           }}
@@ -200,7 +245,7 @@ export function ProjectMetrics({ slug, metrics }: Props) {
           transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
         >
           <div style={{ marginBottom: "1rem" }}>
-            <span className="label" style={{ display: "inline-block", color: "var(--color-lime)" }}>
+            <span className="label" style={{ display: "inline-block", color: "var(--color-cyber-blue)", fontFamily: "var(--font-mono, monospace)" }}>
               {locale === "en" ? "outcomes" : "resultados"}
             </span>
           </div>
@@ -236,7 +281,7 @@ export function ProjectMetrics({ slug, metrics }: Props) {
                   style={{
                     background: "transparent",
                     border: "none",
-                    color: isActive ? "var(--color-accent)" : "var(--color-muted)",
+                    color: isActive ? "var(--color-cyber-blue)" : "var(--color-muted)",
                     fontSize: "0.9rem",
                     fontWeight: 600,
                     cursor: "pointer",
@@ -255,7 +300,7 @@ export function ProjectMetrics({ slug, metrics }: Props) {
                         left: 0,
                         right: 0,
                         height: "2px",
-                        background: "var(--color-accent)",
+                        background: "var(--color-cyber-blue)",
                         zIndex: 1,
                       }}
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
@@ -267,92 +312,109 @@ export function ProjectMetrics({ slug, metrics }: Props) {
           </div>
         )}
 
-        {/* ─── TAB 1: OVERVIEW CARD GRID ─── */}
-        {metricTab === "overview" && (
-          <motion.div
-            variants={listContainer}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "0px 0px -10% 0px" }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-          >
-            {metrics.cards.map((card, i) => (
-              <MetricCard key={i} card={card} />
-            ))}
-          </motion.div>
-        )}
+        <div style={{ position: "relative", marginTop: "2rem" }}>
+          {/* Deep Purple Ambient Depth Glow behind cards/stats */}
+          <div
+            style={{
+              position: "absolute",
+              inset: "-10%",
+              background: "radial-gradient(circle at 50% 50%, var(--color-deep-purple) 0%, transparent 65%)",
+              filter: "blur(100px)",
+              opacity: 0.12,
+              pointerEvents: "none",
+              zIndex: 0,
+            }}
+          />
 
-        {/* ─── TAB 2: CHANNELS VISUALIZER (Zolfo Only) ─── */}
-        {metricTab === "channels" && metrics.channels && (
-          <motion.div 
-            variants={listContainer}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            style={{ maxWidth: "700px", display: "flex", flexDirection: "column", gap: "1.5rem" }}
-          >
-            <div style={{ color: "var(--color-muted)", fontSize: "0.85rem", marginBottom: "0.5rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
-              <Users size={16} /> {metrics.channels_desc}
-            </div>
-            {metrics.channels.map((chan, i) => (
-              <motion.div key={chan.name} variants={cardItem} style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.9rem", color: "var(--color-fg)", fontWeight: 600 }}>
-                  <span>{chan.name}</span>
-                  <div style={{ display: "flex", gap: "1.5rem" }}>
-                    <span style={{ color: "var(--color-muted)" }}>{chan.value}</span>
-                    <span style={{ color: "var(--color-accent)" }}>{chan.percent}</span>
-                  </div>
-                </div>
-                {/* Custom animated bar */}
-                <div style={{ width: "100%", height: "8px", background: "rgba(255,255,255,0.03)", borderRadius: "99px", overflow: "hidden", border: "1px solid var(--color-border)" }}>
-                  <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: chan.percent }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-                    style={{ height: "100%", background: "var(--color-accent)", borderRadius: "99px" }}
-                  />
-                </div>
+          <div style={{ position: "relative", zIndex: 1 }}>
+            {/* ─── TAB 1: OVERVIEW CARD GRID ─── */}
+            {metricTab === "overview" && (
+              <motion.div
+                variants={listContainer}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+              >
+                {metrics.cards.map((card, i) => (
+                  <MetricCard key={i} card={card} />
+                ))}
               </motion.div>
-            ))}
-          </motion.div>
-        )}
+            )}
 
-        {/* ─── TAB 3: POPULAR TREATMENTS (Zolfo Only) ─── */}
-        {metricTab === "treatments" && metrics.treatments && (
-          <motion.div 
-            variants={listContainer}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            style={{ maxWidth: "700px", display: "flex", flexDirection: "column", gap: "1.5rem" }}
-          >
-            <div style={{ color: "var(--color-muted)", fontSize: "0.85rem", marginBottom: "0.5rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
-              <Eye size={16} /> {metrics.treatments_desc}
-            </div>
-            {metrics.treatments.map((t, i) => (
-              <motion.div key={t.name} variants={cardItem} style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.9rem", color: "var(--color-fg)", fontWeight: 600 }}>
-                  <span>{t.name}</span>
-                  <div style={{ display: "flex", gap: "1.5rem" }}>
-                    <span style={{ color: "var(--color-muted)" }}>{t.value}</span>
-                    <span style={{ color: "var(--color-lime)" }}>{t.percent}</span>
-                  </div>
+            {/* ─── TAB 2: CHANNELS VISUALIZER (Zolfo Only) ─── */}
+            {metricTab === "channels" && metrics.channels && (
+              <motion.div 
+                variants={listContainer}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                style={{ maxWidth: "700px", display: "flex", flexDirection: "column", gap: "1.5rem" }}
+              >
+                <div style={{ color: "var(--color-muted)", fontSize: "0.85rem", marginBottom: "0.5rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                  <Users size={16} /> {metrics.channels_desc}
                 </div>
-                {/* Custom animated bar */}
-                <div style={{ width: "100%", height: "8px", background: "rgba(255,255,255,0.03)", borderRadius: "99px", overflow: "hidden", border: "1px solid var(--color-border)" }}>
-                  <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: t.percent }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-                    style={{ height: "100%", background: "var(--color-lime)", borderRadius: "99px" }}
-                  />
-                </div>
+                {metrics.channels.map((chan, i) => (
+                  <motion.div key={chan.name} variants={cardItem} style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.9rem", color: "var(--color-fg)", fontWeight: 600 }}>
+                      <span>{chan.name}</span>
+                      <div style={{ display: "flex", gap: "1.5rem" }} className="font-mono text-sm">
+                        <span style={{ color: "var(--color-muted)" }}>{chan.value}</span>
+                        <span style={{ color: "var(--color-cyber-blue)" }}>{chan.percent}</span>
+                      </div>
+                    </div>
+                    {/* Custom animated bar */}
+                    <div style={{ width: "100%", height: "8px", background: "rgba(255,255,255,0.03)", borderRadius: "99px", overflow: "hidden", border: "1px solid var(--color-border)" }}>
+                      <motion.div
+                        initial={{ width: 0 }}
+                        whileInView={{ width: chan.percent }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+                        style={{ height: "100%", background: "var(--color-cyber-blue)", borderRadius: "99px" }}
+                      />
+                    </div>
+                  </motion.div>
+                ))}
               </motion.div>
-            ))}
-          </motion.div>
-        )}
+            )}
+
+            {/* ─── TAB 3: POPULAR TREATMENTS (Zolfo Only) ─── */}
+            {metricTab === "treatments" && metrics.treatments && (
+              <motion.div 
+                variants={listContainer}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                style={{ maxWidth: "700px", display: "flex", flexDirection: "column", gap: "1.5rem" }}
+              >
+                <div style={{ color: "var(--color-muted)", fontSize: "0.85rem", marginBottom: "0.5rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                  <Eye size={16} /> {metrics.treatments_desc}
+                </div>
+                {metrics.treatments.map((t, i) => (
+                  <motion.div key={t.name} variants={cardItem} style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.9rem", color: "var(--color-fg)", fontWeight: 600 }}>
+                      <span>{t.name}</span>
+                      <div style={{ display: "flex", gap: "1.5rem" }} className="font-mono text-sm">
+                        <span style={{ color: "var(--color-muted)" }}>{t.value}</span>
+                        <span style={{ color: "var(--color-cyber-blue)" }}>{t.percent}</span>
+                      </div>
+                    </div>
+                    {/* Custom animated bar */}
+                    <div style={{ width: "100%", height: "8px", background: "rgba(255,255,255,0.03)", borderRadius: "99px", overflow: "hidden", border: "1px solid var(--color-border)" }}>
+                      <motion.div
+                        initial={{ width: 0 }}
+                        whileInView={{ width: t.percent }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+                        style={{ height: "100%", background: "var(--color-cyber-blue)", borderRadius: "99px" }}
+                      />
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            )}
+          </div>
+        </div>
       </div>
     </section>
   );

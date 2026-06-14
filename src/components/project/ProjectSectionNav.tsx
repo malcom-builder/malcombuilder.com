@@ -80,11 +80,11 @@ export function ProjectSectionNav() {
             height: i === active ? "10px" : "6px",
             borderRadius: "50%",
             border: "none",
-            background: i === active ? "var(--color-accent)" : "var(--color-border)",
+            background: i === active ? "var(--color-cyber-blue)" : "var(--color-border)",
             cursor: "pointer",
             padding: 0,
             transition: "all 0.3s cubic-bezier(0.21, 0.47, 0.32, 0.98)",
-            boxShadow: i === active ? "0 0 12px rgba(var(--spotlight-color), 0.4)" : "none",
+            boxShadow: i === active ? "0 0 12px rgba(170, 220, 236, 0.5)" : "none",
           }}
         />
       ))}

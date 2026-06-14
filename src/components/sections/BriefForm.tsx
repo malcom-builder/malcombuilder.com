@@ -24,10 +24,10 @@ import {
 import dict from "@/lib/brief-form-strings";
 import { SpotlightHeading } from "@/components/ui/SpotlightHeading";
 
-const btnBackClass = "px-6 py-3 bg-transparent border border-[var(--color-border)] hover:border-[var(--color-fg)]/30 rounded-lg hover:text-[var(--color-fg)] transition-all duration-200 flex items-center gap-2 text-sm font-semibold cursor-pointer text-[var(--color-muted)] font-body";
-const btnNextClass = "px-8 py-3 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-[var(--color-bg)] font-bold rounded-lg transition-all duration-200 flex items-center gap-2 text-sm cursor-pointer shadow-lg shadow-[var(--btn-shadow)] disabled:opacity-40 disabled:cursor-not-allowed font-body";
-const optSelectedClass = "p-4 text-left rounded-xl border text-sm transition-all duration-200 active:scale-[0.98] cursor-pointer bg-[var(--color-accent)]/10 border-[var(--color-accent)] text-[var(--color-fg)] font-medium shadow-[0_0_15px_rgba(var(--spotlight-color),0.08)] font-body";
-const optUnselectedClass = "p-4 text-left rounded-xl border text-sm transition-all duration-200 active:scale-[0.98] cursor-pointer bg-[var(--color-surface)] border-[var(--color-border)] hover:border-[var(--color-fg)]/30 text-[var(--color-muted)] hover:text-[var(--color-fg)] font-body";
+const btnBackClass = "px-6 py-3 bg-transparent border border-[var(--color-border)] hover:border-[var(--color-cyber-blue)]/60 hover:text-[var(--color-cyber-blue)] rounded-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(170,220,236,0.15)] active:scale-[0.98] active:shadow-[inset_0_2px_8px_rgba(127,0,224,0.25)] flex items-center gap-2 text-sm font-semibold cursor-pointer text-[var(--color-muted)] font-body btn-glow-trigger";
+const btnNextClass = "px-8 py-3 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-[var(--color-bg)] font-bold rounded-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(170,220,236,0.25)] active:scale-[0.98] active:shadow-[inset_0_2px_8px_rgba(127,0,224,0.25)] flex items-center gap-2 text-sm cursor-pointer shadow-[var(--btn-shadow)] disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none font-body btn-glow-trigger";
+const optSelectedClass = "p-4 text-left rounded-xl border text-sm transition-all duration-200 active:scale-[0.98] active:shadow-[inset_0_2px_8px_rgba(127,0,224,0.25)] cursor-pointer bg-[var(--color-accent)]/10 border-[var(--color-accent)] text-[var(--color-fg)] font-medium shadow-[0_0_15px_rgba(var(--spotlight-color),0.08)] font-body";
+const optUnselectedClass = "p-4 text-left rounded-xl border text-sm transition-all duration-200 active:scale-[0.98] active:shadow-[inset_0_2px_8px_rgba(127,0,224,0.25)] cursor-pointer bg-[var(--color-surface)] border-[var(--color-border)] hover:border-[var(--color-fg)]/30 text-[var(--color-muted)] hover:text-[var(--color-fg)] font-body";
 const inputClass = "w-full p-4 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl focus:border-[var(--color-fg)] focus:shadow-[0_0_15px_rgba(var(--spotlight-color),0.08)] outline-none transition-all duration-200 text-base text-[var(--color-fg)] placeholder-[var(--color-fg)]/35 font-body";
 
 
@@ -443,12 +443,12 @@ export function BriefForm() {
       {step > 0 && step < 6 && (
         <div className="mb-6 sm:mb-10 space-y-3 sm:space-y-4">
           <div className="flex justify-between items-center text-xs font-mono text-[var(--color-muted)]">
-            <span className="text-[var(--color-accent)] font-semibold">{t.steps.step} {step} {t.steps.de} {TOTAL_STEPS}</span>
-            <span>{getProgressPercent()}% {t.steps.completado}</span>
+            <span className="text-[var(--color-cyber-blue)] font-semibold">{t.steps.step} {step} {t.steps.de} {TOTAL_STEPS}</span>
+            <span className="text-[var(--color-cyber-blue)]">{getProgressPercent()}% {t.steps.completado}</span>
           </div>
           <div className="w-full h-1.5 bg-[var(--color-border)] rounded-full overflow-hidden relative">
             <motion.div
-              className="h-full bg-[var(--color-accent)] shadow-[0_0_12px_rgba(var(--spotlight-color),0.6)]"
+              className="h-full bg-[var(--color-cyber-blue)] shadow-[0_0_12px_rgba(170,220,236,0.6)]"
               initial={{ width: 0 }}
               animate={{ width: `${getProgressPercent()}%` }}
               transition={{ duration: 0.4, ease: "easeOut" }}
@@ -470,8 +470,8 @@ export function BriefForm() {
             className="text-center space-y-8 flex flex-col justify-center min-h-[75vh]"
           >
             <div className="space-y-4 relative">
-              <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-mono text-[var(--color-fg)]/80 border border-[var(--color-border)] rounded-full bg-[var(--color-surface)] mx-auto">
-                <Sparkle className="w-3.5 h-3.5 animate-pulse text-[var(--color-accent)]" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-mono text-[var(--color-cyber-blue)] border border-[var(--color-border)] rounded-full bg-[var(--color-surface)] mx-auto">
+                <Sparkle className="w-3.5 h-3.5 animate-pulse text-[var(--color-cyber-blue)]" />
                 {t.steps.time}
               </div>
               <div className="flex justify-center">
@@ -487,21 +487,22 @@ export function BriefForm() {
             </div>
 
             <div className="pt-10 flex justify-center relative">
-              <div className="absolute w-full max-w-lg h-48 bg-[radial-gradient(ellipse_at_center,rgba(var(--spotlight-color),0.1)_0%,transparent_70%)] pointer-events-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0" />
               <button
                 onClick={() => {
                   setDirection(1);
                   setStep(1);
                 }}
-                className="bg-transparent border-none cursor-pointer p-0 outline-none select-none flex justify-center relative z-10"
+                style={{ background: "transparent", border: "none", outline: "none", cursor: "pointer" }}
+                className="select-none flex justify-center z-10"
               >
-                <SpotlightHeading
-                  as="span"
-                  className="heading text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight text-center"
-                  style={{ cursor: "pointer", margin: "0 auto" }}
+                <motion.span
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ type: "spring", stiffness: 450, damping: 22 }}
+                  className="inline-flex items-center justify-center px-10 py-5 bg-white text-black font-bold text-lg sm:text-xl rounded-lg cursor-pointer hover:shadow-[0_0_30px_rgba(170,220,236,0.25)] active:shadow-[inset_0_2px_8px_rgba(127,0,224,0.25)] select-none transition-shadow duration-300 btn-glow-trigger"
                 >
                   {t.steps.comenzar}
-                </SpotlightHeading>
+                </motion.span>
               </button>
             </div>
 

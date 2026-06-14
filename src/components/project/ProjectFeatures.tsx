@@ -55,17 +55,57 @@ const FeatureCard = memo(function FeatureCard({ feature, i }: { feature: Feature
         borderRadius: "10px",
         background: "var(--color-card)",
         position: "relative",
-        overflow: "hidden",
         cursor: "default",
       }}
       whileHover={{
         y: -3,
-        borderColor: "var(--color-accent)",
-        backgroundColor: "color-mix(in srgb, var(--color-accent) 2%, var(--color-card))",
-        boxShadow: "0 12px 30px rgba(255,255,255, 0.04)",
         transition: { duration: 0.25, ease: [0.21, 0.47, 0.32, 0.98] },
       }}
     >
+      {/* 1. Glow externo hiper-difuso en deep-purple/10 */}
+      <motion.div
+        style={{
+          position: "absolute",
+          inset: "-20px",
+          background: "radial-gradient(circle, var(--color-deep-purple) 0%, transparent 70%)",
+          filter: "blur(32px)",
+          pointerEvents: "none",
+          zIndex: -1,
+        }}
+        animate={{ opacity: spotlight.isHovered ? 0.1 : 0 }}
+        transition={{ duration: 0.3 }}
+      />
+
+      {/* 2. Top-border highlight sutil hacia cyber-blue/30 */}
+      <motion.div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: "12px",
+          right: "12px",
+          height: "1px",
+          background: "linear-gradient(90deg, transparent, var(--color-cyber-blue) 50%, transparent)",
+          pointerEvents: "none",
+          zIndex: 2,
+        }}
+        animate={{ opacity: spotlight.isHovered ? 0.3 : 0 }}
+        transition={{ duration: 0.25 }}
+      />
+
+      {/* 3. Border accent on hover */}
+      <motion.div
+        style={{
+          position: "absolute",
+          inset: 0,
+          borderRadius: "10px",
+          border: "1px solid var(--card-glow-border)",
+          pointerEvents: "none",
+          zIndex: 2,
+        }}
+        animate={{ opacity: spotlight.isHovered ? 1 : 0 }}
+        transition={{ duration: 0.25 }}
+      />
+
       <SpotlightGlow
         spotlightBg={spotlight.spotlightBg}
         isHovered={spotlight.isHovered}
@@ -83,8 +123,8 @@ const FeatureCard = memo(function FeatureCard({ feature, i }: { feature: Feature
           minWidth: "1.5rem",
           height: "1.5rem",
           borderRadius: "50%",
-          background: "rgba(228,228,231, 0.1)",
-          color: "var(--color-lime)",
+          background: "rgba(170, 220, 236, 0.08)",
+          color: "var(--color-cyber-blue)",
           marginTop: "2px",
           position: "relative",
           zIndex: 1,
@@ -137,7 +177,7 @@ export function ProjectFeatures({ features, sectionLabel = "Logros" }: Props) {
           transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
         >
           <div style={{ marginBottom: "1rem" }}>
-            <span className="label" style={{ display: "inline-block", color: "var(--color-lime)" }}>
+            <span className="label" style={{ display: "inline-block", color: "var(--color-cyber-blue)", fontFamily: "var(--font-mono, monospace)" }}>
               {locale === "en" ? "scope" : "alcance"}
             </span>
           </div>
@@ -147,17 +187,32 @@ export function ProjectFeatures({ features, sectionLabel = "Logros" }: Props) {
             </SpotlightHeading>
           </div>
         </motion.div>
-        <motion.div
-          variants={listContainer}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "0px 0px -10% 0px" }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-4"
-        >
-          {features.map((feature, i) => (
-            <FeatureCard key={i} feature={feature} i={i} />
-          ))}
-        </motion.div>
+        <div style={{ position: "relative", marginTop: "2rem" }}>
+          {/* Deep Purple Ambient Depth Glow behind features bento grid */}
+          <div
+            style={{
+              position: "absolute",
+              inset: "-10%",
+              background: "radial-gradient(circle at 50% 50%, var(--color-deep-purple) 0%, transparent 65%)",
+              filter: "blur(100px)",
+              opacity: 0.1,
+              pointerEvents: "none",
+              zIndex: 0,
+            }}
+          />
+          <motion.div
+            variants={listContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-4"
+            style={{ position: "relative", zIndex: 1 }}
+          >
+            {features.map((feature, i) => (
+              <FeatureCard key={i} feature={feature} i={i} />
+            ))}
+          </motion.div>
+        </div>
       </div>
     </section>
   );

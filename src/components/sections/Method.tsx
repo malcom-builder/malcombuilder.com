@@ -95,6 +95,21 @@ export function Method() {
   return (
     <section id="method" className="section" style={{ borderBottom: "1px solid var(--color-border)", position: "relative" }}>
 
+      {/* ── Deep Purple Depth Glow behind section content ── */}
+      <div aria-hidden="true" style={{
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        width: "60vw",
+        height: "40vw",
+        background: "radial-gradient(ellipse at 50% 50%, var(--color-deep-purple) 0%, transparent 65%)",
+        filter: "blur(120px)",
+        opacity: 0.12,
+        pointerEvents: "none",
+        zIndex: 0,
+      }} />
+
       {/* ── Accent orb — top left behind title ── */}
       <div aria-hidden="true" style={{
         position: "absolute",
@@ -128,7 +143,7 @@ export function Method() {
       <div className="container" style={{ position: "relative", zIndex: 1 }}>
         <FadeIn>
           <div style={{ marginBottom: "1rem" }}>
-            <span className="label" style={{ display: "inline-block", color: "var(--color-lime)" }}>{t("badge")}</span>
+            <span className="label font-mono" style={{ display: "inline-block", color: "var(--color-cyber-blue)" }}>{t("badge")}</span>
           </div>
           <div style={{ marginBottom: "0.5rem" }}>
             <SpotlightHeading as="h2" className="heading" style={{ color: "var(--color-fg)", textTransform: "lowercase" }}>{t("title")}</SpotlightHeading>

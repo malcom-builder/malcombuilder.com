@@ -44,12 +44,56 @@ const PrevNextCard = memo(function PrevNextCard({
     <motion.div
       variants={linkVariants}
       custom={custom}
-      style={{ textAlign: direction === "prev" ? "left" : "right" }}
+      style={{ textAlign: direction === "prev" ? "left" : "right", position: "relative" }}
       ref={spotlight.cardRef}
       onMouseMove={spotlight.handleMouseMove}
       onMouseEnter={() => spotlight.setIsHovered(true)}
       onMouseLeave={spotlight.resetGlow}
     >
+      {/* 1. Glow externo hiper-difuso en deep-purple/10 */}
+      <motion.div
+        style={{
+          position: "absolute",
+          inset: "-20px",
+          background: "radial-gradient(circle, var(--color-deep-purple) 0%, transparent 70%)",
+          filter: "blur(32px)",
+          pointerEvents: "none",
+          zIndex: -1,
+        }}
+        animate={{ opacity: spotlight.isHovered ? 0.1 : 0 }}
+        transition={{ duration: 0.3 }}
+      />
+
+      {/* 2. Top-border highlight sutil hacia cyber-blue/30 */}
+      <motion.div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: "12px",
+          right: "12px",
+          height: "1px",
+          background: "linear-gradient(90deg, transparent, var(--color-cyber-blue) 50%, transparent)",
+          pointerEvents: "none",
+          zIndex: 2,
+        }}
+        animate={{ opacity: spotlight.isHovered ? 0.3 : 0 }}
+        transition={{ duration: 0.25 }}
+      />
+
+      {/* 3. Border accent on hover */}
+      <motion.div
+        style={{
+          position: "absolute",
+          inset: 0,
+          borderRadius: "10px",
+          border: "1px solid var(--card-glow-border)",
+          pointerEvents: "none",
+          zIndex: 2,
+        }}
+        animate={{ opacity: spotlight.isHovered ? 1 : 0 }}
+        transition={{ duration: 0.25 }}
+      />
+
       <Link
         href={`/projects/${project.slug}`}
         style={{
@@ -61,12 +105,11 @@ const PrevNextCard = memo(function PrevNextCard({
           borderRadius: "10px",
           textDecoration: "none",
           position: "relative",
-          overflow: "hidden",
           transition: "border-color 0.25s ease, background-color 0.25s ease",
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.borderColor = "var(--color-accent)";
-          e.currentTarget.style.backgroundColor = "rgba(var(--spotlight-color), 0.02)";
+          e.currentTarget.style.borderColor = "rgba(170, 220, 236, 0.4)";
+          e.currentTarget.style.backgroundColor = "rgba(170, 220, 236, 0.02)";
         }}
         onMouseLeave={(e) => {
           e.currentTarget.style.borderColor = "var(--color-border)";
@@ -85,13 +128,14 @@ const PrevNextCard = memo(function PrevNextCard({
             gap: "0.375rem",
             fontSize: "0.75rem",
             fontWeight: 600,
-            color: "var(--color-muted)",
-            fontFamily: "monospace",
+            color: spotlight.isHovered ? "var(--color-cyber-blue)" : "var(--color-muted)",
+            fontFamily: "var(--font-mono, monospace)",
             textTransform: "uppercase",
             letterSpacing: "0.05em",
             position: "relative",
             zIndex: 1,
             alignSelf: direction === "next" ? "flex-end" : "flex-start",
+            transition: "color 0.2s ease",
           }}
         >
           {direction === "prev" && (
@@ -127,7 +171,7 @@ const PrevNextCard = memo(function PrevNextCard({
             position: "relative",
             zIndex: 1,
           }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-accent)")}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-cyber-blue)")}
           onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-fg)")}
         >
           {project.title}
@@ -154,7 +198,7 @@ export function ProjectPrevNext({ prev, next, locale }: Props) {
           transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
         >
           <div style={{ marginBottom: "1rem" }}>
-            <span className="label" style={{ display: "inline-block", color: "var(--color-lime)" }}>
+            <span className="label" style={{ display: "inline-block", color: "var(--color-cyber-blue)", fontFamily: "var(--font-mono, monospace)" }}>
               {locale === "en" ? "explore" : "explorar"}
             </span>
           </div>

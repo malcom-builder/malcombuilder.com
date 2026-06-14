@@ -107,7 +107,7 @@ export function ProjectLinks({ url, github }: Props) {
           transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
         >
           <div style={{ marginBottom: "1rem" }}>
-            <span className="label" style={{ display: "inline-block", color: "var(--color-lime)" }}>
+            <span className="label" style={{ display: "inline-block", color: "var(--color-cyber-blue)", fontFamily: "var(--font-mono, monospace)" }}>
               {locale === "en" ? "deployment" : "despliegue"}
             </span>
           </div>
@@ -125,12 +125,12 @@ export function ProjectLinks({ url, github }: Props) {
           viewport={{ once: true }}
           style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}
         >
-          <MagneticButton href={url} target="_blank" rel="noopener noreferrer" className="btn-primary">
-            Visitar sitio <ArrowUpRight size={16} />
+          <MagneticButton href={url} target="_blank" rel="noopener noreferrer" className="btn-primary btn-glow-trigger">
+            {locale === "en" ? "Visit site" : "Visitar sitio"} <ArrowUpRight size={16} />
           </MagneticButton>
           {github && (
-            <MagneticButton href={github} target="_blank" rel="noopener noreferrer" className="btn-outline">
-              <Code size={16} /> Ver código
+            <MagneticButton href={github} target="_blank" rel="noopener noreferrer" className="btn-outline btn-glow-trigger">
+              <Code size={16} /> {locale === "en" ? "View code" : "Ver código"}
             </MagneticButton>
           )}
         </motion.div>

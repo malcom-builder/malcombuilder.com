@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { Shield, Cpu, RefreshCw, QrCode, Layers } from "lucide-react";
+import { useParams } from "next/navigation";
 
 interface Tab {
   id: string;
@@ -42,6 +43,8 @@ export function ProjectMockup({ slug }: Props) {
   const [activeTab, setActiveTab] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
   const shouldReduce = useReducedMotion();
+  const params = useParams();
+  const locale = params?.locale as string;
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -73,7 +76,7 @@ export function ProjectMockup({ slug }: Props) {
     return (
       <section ref={sectionRef} data-section="showcase" className="section" style={{ paddingBlock: "4rem", borderBottom: "1px solid var(--color-border)" }}>
         <div className="container">
-          <span className="label" style={{ display: "inline-block", marginBottom: "2rem" }}>Interactive Preview</span>
+          <span className="label" style={{ display: "inline-block", marginBottom: "2rem", color: "var(--color-cyber-blue)", fontFamily: "var(--font-mono, monospace)" }}>{locale === "en" ? "Interactive Preview" : "Vista Previa Interactiva"}</span>
           <div 
             style={{ 
               borderRadius: "16px", 
@@ -96,7 +99,7 @@ export function ProjectMockup({ slug }: Props) {
   return (
     <section ref={sectionRef} data-section="showcase" className="section" style={{ paddingBlock: "6rem", borderBottom: "1px solid var(--color-border)", overflow: "hidden" }}>
       <div className="container">
-        <span className="label" style={{ display: "inline-block", marginBottom: "2rem" }}>Showcase</span>
+        <span className="label" style={{ display: "inline-block", marginBottom: "2rem", color: "var(--color-cyber-blue)", fontFamily: "var(--font-mono, monospace)" }}>Showcase</span>
 
         {/* Interface Navigation Tabs */}
         <div style={{ display: "flex", gap: "0.5rem", marginBottom: "2.5rem", flexWrap: "wrap" }}>
@@ -108,17 +111,17 @@ export function ProjectMockup({ slug }: Props) {
                 padding: "0.5rem 1.25rem",
                 borderRadius: "9999px",
                 fontSize: "0.85rem",
-                fontWeight: activeTab === idx ? 600 : 500,
-                background: activeTab === idx ? "var(--color-accent)" : "rgba(255,255,255,0.02)",
-                border: `1px solid ${activeTab === idx ? "var(--color-accent)" : "var(--color-border)"}`,
-                color: activeTab === idx ? "#ffffff" : "var(--color-muted)",
+                fontWeight: activeTab === idx ? 700 : 500,
+                background: activeTab === idx ? "var(--color-cyber-blue)" : "rgba(255,255,255,0.02)",
+                border: `1px solid ${activeTab === idx ? "var(--color-cyber-blue)" : "var(--color-border)"}`,
+                color: activeTab === idx ? "#000000" : "var(--color-muted)",
                 cursor: "pointer",
                 transition: "all 0.25s cubic-bezier(0.21, 0.47, 0.32, 0.98)",
               }}
               onMouseEnter={(e) => {
                 if (activeTab !== idx) {
                   e.currentTarget.style.color = "var(--color-fg)";
-                  e.currentTarget.style.borderColor = "rgba(255,255,255, 0.4)";
+                  e.currentTarget.style.borderColor = "rgba(170, 220, 236, 0.4)";
                 }
               }}
               onMouseLeave={(e) => {
@@ -342,13 +345,13 @@ function AuthMotionWidget() {
         <div>
           <div style={{ color: "var(--color-muted)", fontSize: "0.75rem", textTransform: "uppercase" }}>Token Refresh</div>
           <div style={{ fontSize: "1.25rem", color: "var(--color-fg)", fontWeight: 600, display: "flex", alignItems: "center", gap: "0.5rem", marginTop: "0.25rem" }}>
-            <RefreshCw size={16} style={{ color: "var(--color-lime)" }} /> Auto-Rotate
+            <RefreshCw size={16} style={{ color: "var(--color-cyber-blue)" }} /> Auto-Rotate
           </div>
         </div>
         <div>
           <div style={{ color: "var(--color-muted)", fontSize: "0.75rem", textTransform: "uppercase" }}>QR 2FA</div>
           <div style={{ fontSize: "1.25rem", color: "var(--color-fg)", fontWeight: 600, display: "flex", alignItems: "center", gap: "0.5rem", marginTop: "0.25rem" }}>
-            <QrCode size={16} style={{ color: "var(--color-accent)" }} /> Bound & Active
+            <QrCode size={16} style={{ color: "var(--color-cyber-blue)" }} /> Bound & Active
           </div>
         </div>
         <div>
@@ -400,7 +403,7 @@ function SmartWalletWidget() {
       <div 
         className="col-span-1 md:border-r border-[var(--color-border)] md:pr-6 flex flex-col"
       >
-        <div style={{ display: "flex", justifyContent: "space-between", color: "var(--color-accent)", fontSize: "0.85rem", fontWeight: 700, borderBottom: "1px solid var(--color-border)", paddingBottom: "0.5rem", marginBottom: "1rem" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", color: "var(--color-cyber-blue)", fontSize: "0.85rem", fontWeight: 700, borderBottom: "1px solid var(--color-border)", paddingBottom: "0.5rem", marginBottom: "1rem" }}>
           <span>Double-Entry Bookkeeping Ledger</span>
           <span>LIVE RECORD</span>
         </div>
@@ -414,7 +417,7 @@ function SmartWalletWidget() {
             >
               <span style={{ color: "var(--color-fg)", fontWeight: 600 }}>{entry.account}</span>
               <div style={{ display: "flex", gap: "1rem" }}>
-                <span style={{ color: entry.type === "Debe" ? "var(--color-accent)" : "var(--color-muted)" }}>{entry.type}</span>
+                <span style={{ color: entry.type === "Debe" ? "var(--color-cyber-blue)" : "var(--color-muted)" }}>{entry.type}</span>
                 <span style={{ color: "var(--color-fg)", fontWeight: 700 }}>{entry.value}</span>
               </div>
             </motion.div>
@@ -425,7 +428,7 @@ function SmartWalletWidget() {
       {/* Columna 2: Cifrado y Key Vault */}
       <div style={{ paddingLeft: "1.5rem", display: "flex", flexDirection: "column", justifyContent: "center", gap: "2rem" }} className="hidden md:flex">
         <div style={{ padding: "1.25rem", border: "1px solid var(--color-border)", borderRadius: "8px", background: "rgba(255,255,255,0.01)" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--color-accent)", fontWeight: 600, fontSize: "0.9rem" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--color-cyber-blue)", fontWeight: 600, fontSize: "0.9rem" }}>
             <Cpu size={16} /> Azure Key Vault Protection
           </div>
           <p style={{ color: "var(--color-muted)", fontSize: "0.75rem", marginTop: "0.5rem", lineHeight: 1.5 }}>
@@ -455,7 +458,7 @@ function MalcomBuilderWidget() {
       <div style={{ position: "absolute", width: "300px", height: "300px", background: "radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%)", filter: "blur(40px)", zIndex: 0 }} />
 
       <div style={{ position: "relative", zIndex: 1, textAlign: "center", maxWidth: "450px", paddingInline: "2rem" }}>
-        <Layers size={40} style={{ color: "var(--color-accent)", marginBottom: "1.5rem" }} />
+        <Layers size={40} style={{ color: "var(--color-cyber-blue)", marginBottom: "1.5rem" }} />
         <h4 style={{ fontFamily: "var(--font-display)", fontSize: "1.25rem", fontWeight: 700, color: "var(--color-fg)", marginBottom: "0.75rem" }}>AI-Native Mesh Stack</h4>
         <p style={{ color: "var(--color-muted)", fontSize: "0.85rem", lineHeight: 1.6 }}>
           malcombuilder.com operates with server components rendering directly on Edge servers. Dynamic page routing via next-intl provides multi-locale translations directly at edge network speeds.

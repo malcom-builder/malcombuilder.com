@@ -40,13 +40,13 @@ export function CustomCursor() {
     // Dynamic hover detection via event delegation — no MutationObserver needed
     const handleHoverStart = (e: Event) => {
       const target = e.target as HTMLElement;
-      if (target.matches("a, button, [role='button'], input, select, textarea")) {
+      if (target && typeof target.matches === "function" && target.matches("a, button, [role='button'], input, select, textarea, [class*='cursor-pointer'], [style*='cursor: pointer']")) {
         setIsHovered(true);
       }
     };
     const handleHoverEnd = (e: Event) => {
       const target = e.target as HTMLElement;
-      if (target.matches("a, button, [role='button'], input, select, textarea")) {
+      if (target && typeof target.matches === "function" && target.matches("a, button, [role='button'], input, select, textarea, [class*='cursor-pointer'], [style*='cursor: pointer']")) {
         setIsHovered(false);
       }
     };
@@ -112,8 +112,12 @@ export function CustomCursor() {
           width: isHovered ? 8 : 6,
           height: isHovered ? 8 : 6,
           borderRadius: "50%",
-          backgroundColor: isHovered ? "var(--color-fg)" : "var(--color-lime)",
-          boxShadow: mounted && resolvedTheme === "light" ? "none" : "0 0 10px var(--color-lime)",
+          backgroundColor: isHovered ? "var(--color-cyber-blue)" : "var(--color-lime)",
+          boxShadow: mounted && resolvedTheme === "light" 
+            ? "none" 
+            : isHovered 
+              ? "0 0 10px var(--color-cyber-blue)" 
+              : "0 0 10px var(--color-lime)",
           x: cursorX,
           y: cursorY,
           translateX: "-50%",
