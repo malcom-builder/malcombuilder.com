@@ -8,6 +8,7 @@ import { TextReveal } from "@/components/ui/TextReveal";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { SpotlightButton } from "@/components/ui/SpotlightButton";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { trackCTA } from "@/lib/analytics";
 
 const container = { hidden: {}, show: { transition: { staggerChildren: 0.12, delayChildren: 0.2 } } };
 const item      = { hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] } } };
@@ -243,7 +244,7 @@ export function Hero() {
           {/* CTAs */}
           <motion.div variants={item} className="flex flex-col gap-4 items-start">
             <div className="flex gap-4 items-center flex-wrap">
-              <Link href="/brief" style={{ textDecoration: "none" }}>
+              <Link href="/brief" onClick={() => trackCTA("Brief Form", "Hero Primary")} style={{ textDecoration: "none" }}>
                 <motion.span
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -255,6 +256,7 @@ export function Hero() {
               </Link>
               <a
                 href="#projects"
+                onClick={() => trackCTA("Projects", "Hero Secondary")}
                 className="inline-flex items-center justify-center px-4 py-3 text-zinc-400 font-medium hover:text-white hover:underline active:scale-[0.98] transition-all duration-300 text-base"
               >
                 {t("cta_secondary")}

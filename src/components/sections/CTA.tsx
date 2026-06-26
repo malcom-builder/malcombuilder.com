@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { Link } from "@/i18n/routing";
 import { SpotlightHeading } from "@/components/ui/SpotlightHeading";
+import { trackCTA } from "@/lib/analytics";
 
 export function CTA() {
   const t = useTranslations("cta");
@@ -35,7 +36,7 @@ export function CTA() {
             </SpotlightHeading>
             {/* El Botón Masivo */}
             <div className="mt-4">
-              <Link href="/brief" style={{ textDecoration: "none" }}>
+              <Link href="/brief" onClick={() => trackCTA("Brief Form", "Final CTA Section")} style={{ textDecoration: "none" }}>
                 <motion.span
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}

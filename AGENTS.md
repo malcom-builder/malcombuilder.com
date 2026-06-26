@@ -198,7 +198,7 @@ sitemap: 'https://malcombuilder.com/sitemap.xml'
 { url: 'https://malcombuilder.com/en', lastModified: new Date() }
 
 // metadata
-title: 'malcom.builder — AI-native system builder'
+title: 'malcom.builder — Desarrollo de productos digitales premium'
 ```
 
 ---
@@ -277,7 +277,7 @@ title: 'malcom.builder — AI-native system builder'
 - **SpotlightHeading container display:** Cambiado de `block` a `table` para que el contenedor del título se ajuste exactamente al ancho del texto. Esto soluciona la asimetría de hover al aproximarse al título por la derecha, logrando consistencia en ambos lados.
 - **Footer wordmark color hover:** Reemplazado el efecto de cursor-tracking spotlight del footer wordmark por una transición de color lenta (`0.6s ease`) al hacer hover por palabra (`malcom` a Zinc, `.builder` a Blanco).
 - **División del título en la sección About:** Dado que el título "Un builder. Un stack. Un resultado. Precisión." es largo y genera un salto de línea (wrapping), el contenedor `display: "table"` se ensanchaba al 100% de la caja de contenido del parent. Se solucionó dividiendo el titular en dos líneas independientes (`headline_part1` y `headline_part2`) representadas por dos `SpotlightHeading`s distintos. Esto asegura que cada línea se encoja exactamente a la longitud de sus caracteres y que la activación de la luz sea simétrica al aproximarse por la derecha en ambas líneas.
-- **Ajustes de CTA y Localización:** Se actualizó el título del CTA final en español a `"construyamos!"` (removiendo el signo de exclamación inicial) y se incrementó significativamente la intensidad y capas del resplandor de fondo (`text-shadow` y `drop-shadow` de hasta `120px` y opacidades más altas) tanto en reposo como en hover para una visualización premium e impactante.
+- **Ajustes de CTA y Localización:** Se actualizó el título del CTA final en español a `"construyamos"` (removiendo el signo de exclamación inicial) y se incrementó significativamente la intensidad y capas del resplandor de fondo (`text-shadow` y `drop-shadow` de hasta `120px` y opacidades más altas) tanto en reposo como en hover para una visualización premium e impactante.
 - **Restauración de Física de Spotlight:** Se restauró y estabilizó la física del cursor tracking y el restablecimiento suave de coordenadas en los spotlights del sitio, adaptándolos para trabajar con el esquema monocromático puro (blanco sobre negro puro) sin duplicados de texto ni artefactos visuales.
 - **Marquee de Stack Monocromático:** Refactorizado el track de logos de tecnologías en la sección Method. Se rediseñaron todos los SVGs para ser siluetas monocromáticas vectoriales que heredan color (`currentColor`). En hover, la pastilla (pill) se invierte a fondo blanco puro (`#FFFFFF`) y el texto e icono cambian a negro puro (`#000000`) con un leve drop-shadow blanco.
 - **Rediseño Estructural y Bento del Brief:** Refactorizado el formulario `/brief` para ser compacto, bento y centrado en el contenido. Agrupados los campos primarios de contacto de Paso 5 en una tarjeta dashboard unificada y optimizados los grids de selección para ser multidimensionales (grillas de 2 y 3 columnas en escritorio) en lugar de una lista vertical gigante.
@@ -285,9 +285,16 @@ title: 'malcom.builder — AI-native system builder'
 - **Equilibrio y Simetría de Tarjetas Impares:** En todas las grillas de 2 columnas de opciones del formulario que tienen un conteo de ítems impar (Ej: 5 o 9 ítems), la última tarjeta se expande a `sm:col-span-2` para garantizar el balance visual y evitar vacíos asimétricos.
 - **Optimizaciones Mobile para Brief:** Ajustada la escala de títulos (`text-3xl sm:text-4xl`) para pantallas pequeñas (375px) previniendo desbordes horizontales, reducida la densidad de tarjetas Bento a `p-4 sm:p-5` con un `gap-3 sm:gap-4` y adaptados los márgenes verticales de progreso para maximizar la superficie disponible en dispositivos móviles.
 - **Nitidez de Cursor en Modo Light:** Se modificó `CustomCursor.tsx` para anular dinámicamente las sombras difusas (`boxShadow: "none"`) del dot del cursor en Light Mode, manteniendo la precisión de clic y evitando halos negros difusos sobre fondos claros.
+- **Integración de Herramientas de Métricas (GA4 & Vercel):** Se implementó un sistema unificado de medición de métricas utilizando Vercel Analytics (para estadísticas de visitas), Vercel Speed Insights (para monitoreo de Core Web Vitals) y Google Analytics 4 (para tracking detallado de conversiones y eventos de negocio) configurado dinámicamente mediante `NEXT_PUBLIC_GA_ID`.
+- **Registro de Core Web Vitals:** Se configuró el reporte automático de Web Vitals (LCP, FID, CLS, FCP, TTFB, INP) hacia Google Analytics 4 utilizando el hook de Next.js `useReportWebVitals` cargado del paquete `'next/web-vitals'`.
+- **Eventos de Conversión en CTAs y Socials:** Se inyectó tracking en todos los botones e interfaces clave de conversión (Navbar CTA, Hero CTAs, enlaces y botones de Proyectos, CTA final, LangToggle y enlaces sociales del footer).
+- **Funnel del Brief Form:** Se inyectó tracking detallado en el formulario multi-paso `/brief` que captura el inicio (Paso 0), la visualización de cada paso (Pasos 1 a 5) y el estado final de envío (`success` o `error`).
+- **Soporte de Clics en SpotlightButton:** Se modificó el componente `SpotlightButton.tsx` para aceptar y mapear el prop `onClick` hacia el componente base `<Link>` permitiendo el tracking sin alterar los estilos y animaciones spotlight.
 
 ### Componentes creados
 
+- **AnalyticsProvider:** Componente del lado del cliente que inicializa Vercel Analytics, Vercel Speed Insights, el script de Google Analytics 4 y la recopilación automática de Core Web Vitals.
+- **analytics.ts:** Módulo helper de utilidades que maneja el despacho de eventos a `gtag` en producción y registra logs descriptivos estructurados (`[Analytics Dev] 📊 Event -> ...`) en el entorno de desarrollo local.
 - **SpotlightHeading:** Componente client-side que envuelve cualquier heading y agrega un overlay con `background-clip: text` + gradiente radial que sigue al cursor (efecto spotlight esmeralda). Respeta `prefers-reduced-motion`.
 - **AmbientOrb:** Orb flotante animado de fondo (índigo translúcido) que se mueve lentamente con `useMotionValue` + `useSpring`, visible solo en desktop.
 - **FadeIn:** Soporta prop `rotate` para animación de entrada con tilt (usado en Services cards).

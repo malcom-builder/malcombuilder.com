@@ -6,6 +6,7 @@ import { LangToggle } from "@/components/ui/LangToggle";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { useCallback, useMemo, useState, useEffect, useTransition } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { trackCTA } from "@/lib/analytics";
 
 const SECTION_IDS = ["services", "projects", "method", "about"];
 
@@ -160,7 +161,7 @@ export function Navbar() {
             <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
               <ThemeToggle />
               <LangToggle />
-              <Link href="/brief" style={{ textDecoration: "none", marginLeft: "0.5rem" }}>
+              <Link href="/brief" onClick={() => trackCTA("Build", "Navbar")} style={{ textDecoration: "none", marginLeft: "0.5rem" }}>
                 <span
                   className="navbar-cta"
                   style={{

@@ -4,6 +4,7 @@ import { useLocale } from "next-intl";
 import { useRouter, usePathname } from "@/i18n/routing";
 import { useTransition } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { trackLanguageToggle } from "@/lib/analytics";
 
 export function LangToggle() {
   const locale = useLocale();
@@ -14,6 +15,7 @@ export function LangToggle() {
   const other = locale === "es" ? "en" : "es";
 
   function toggle() {
+    trackLanguageToggle(other);
     startTransition(() => {
       router.replace(pathname, { locale: other });
     });

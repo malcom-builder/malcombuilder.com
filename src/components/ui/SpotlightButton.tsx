@@ -14,6 +14,7 @@ interface Props {
   style?: CSSProperties;
   id?: string;
   glowColor?: string;
+  onClick?: () => void;
 }
 
 function parseRgb(color: string): [number, number, number] {
@@ -21,7 +22,7 @@ function parseRgb(color: string): [number, number, number] {
   return m ? [parseInt(m[1]), parseInt(m[2]), parseInt(m[3])] : [255,255,255];
 }
 
-export function SpotlightButton({ href, children, className = "", style = {}, id, glowColor = "rgb(255,255,255)" }: Props) {
+export function SpotlightButton({ href, children, className = "", style = {}, id, glowColor = "rgb(255,255,255)", onClick }: Props) {
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
@@ -67,7 +68,7 @@ export function SpotlightButton({ href, children, className = "", style = {}, id
   }, [rawX, rawY]);
 
   if (shouldReduce) {
-    return <Link href={href} id={id} className={className} style={style}>{children}</Link>;
+    return <Link href={href} id={id} className={className} style={style} onClick={onClick}>{children}</Link>;
   }
 
   const { gap, fontSize, fontWeight, fontFamily, letterSpacing, whiteSpace, textAlign } = style;
@@ -84,7 +85,7 @@ export function SpotlightButton({ href, children, className = "", style = {}, id
         borderRadius: "9999px",
       }}
     >
-      <Link href={href} id={id} className={className} style={style}>
+      <Link href={href} id={id} className={className} style={style} onClick={onClick}>
         <span style={{ position: "relative", display: "inline-flex", alignItems: "center", gap }}>
           {children}
           <motion.span

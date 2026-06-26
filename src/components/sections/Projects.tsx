@@ -16,6 +16,7 @@ import { memo, useEffect, useRef, useState } from "react";
 import { SpotlightHeading } from "@/components/ui/SpotlightHeading";
 import Image from "next/image";
 import { SpotlightButton } from "@/components/ui/SpotlightButton";
+import { trackProjectClick, trackCTA } from "@/lib/analytics";
 
 // ─── Container variants ──────────────────────────────────────────────────────
 
@@ -344,7 +345,7 @@ const ProjectCard = memo(function ProjectCard({ proj }: { proj: typeof projects[
           </span>
         </div>
 
-        <Link href={`/projects/${proj.slug}`} style={{ textDecoration: "none" }}>
+        <Link href={`/projects/${proj.slug}`} onClick={() => trackProjectClick(proj.title, "details")} style={{ textDecoration: "none" }}>
           <h3
             style={{
               fontFamily: "var(--font-display)",
@@ -414,6 +415,7 @@ const ProjectCard = memo(function ProjectCard({ proj }: { proj: typeof projects[
         >
           <Link
             href={`/projects/${proj.slug}`}
+            onClick={() => trackProjectClick(proj.title, "details")}
             style={{
               fontSize: "0.8rem",
               fontFamily: "var(--font-mono), monospace",
@@ -431,6 +433,7 @@ const ProjectCard = memo(function ProjectCard({ proj }: { proj: typeof projects[
           <MagneticIcon>
             <a
               href={proj.url}
+              onClick={() => trackProjectClick(proj.title, "live")}
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -546,6 +549,7 @@ export function Projects() {
         <div style={{ display: "flex", justifyContent: "center", marginTop: "3.5rem" }}>
           <SpotlightButton
             href="/projects"
+            onClick={() => trackCTA("View All Projects", "Projects Section")}
             id="view-all-projects-btn"
             glowColor="rgb(255,255,255)"
             style={{

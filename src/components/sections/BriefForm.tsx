@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 import dict from "@/lib/brief-form-strings";
 import { SpotlightHeading } from "@/components/ui/SpotlightHeading";
+import { trackBriefStep, trackBriefSubmit } from "@/lib/analytics";
 
 const btnBackClass = "px-6 py-3 bg-transparent border border-[var(--color-border)] hover:border-[var(--color-cyber-blue)]/60 hover:text-[var(--color-cyber-blue)] rounded-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(170,220,236,0.15)] active:scale-[0.98] active:shadow-[inset_0_2px_8px_rgba(127,0,224,0.25)] flex items-center gap-2 text-sm font-semibold cursor-pointer text-[var(--color-muted)] font-body btn-glow-trigger";
 const btnNextClass = "px-8 py-3 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-[var(--color-bg)] font-bold rounded-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(170,220,236,0.25)] active:scale-[0.98] active:shadow-[inset_0_2px_8px_rgba(127,0,224,0.25)] flex items-center gap-2 text-sm cursor-pointer shadow-[var(--btn-shadow)] disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none font-body btn-glow-trigger";
@@ -179,6 +180,12 @@ export function BriefForm() {
   useEffect(() => {
     if (topRef.current && step > 0) {
       topRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [step]);
+
+  useEffect(() => {
+    if (step > 0 && step <= TOTAL_STEPS) {
+      trackBriefStep(step, `Step ${step}`);
     }
   }, [step]);
 
@@ -424,13 +431,16 @@ export function BriefForm() {
       });
 
       if (response.ok) {
+        trackBriefSubmit("success");
         setIsSuccess(true);
         setStep(6);
       } else {
+        trackBriefSubmit("error");
         const errData = await response.json();
         setErrors({ submit: errData.error || "Ocurrió un error al enviar. Intentá de nuevo." });
       }
     } catch (err) {
+      trackBriefSubmit("error");
       setErrors({ submit: "Error de red. Verificá tu conexión." });
     } finally {
       setIsSubmitting(false);
@@ -486,14 +496,15 @@ export function BriefForm() {
               </p>
             </div>
 
-            <div className="pt-10 flex justify-center relative">
-              <button
-                onClick={() => {
-                  setDirection(1);
-                  setStep(1);
-                }}
-                style={{ background: "transparent", border: "none", outline: "none", cursor: "pointer" }}
-                className="select-none flex justify-center z-10"
+             <div className="pt-10 flex justify-center relative">
+               <button
+                 onClick={() => {
+                   trackBriefStep(0, "Start Form");
+                   setDirection(1);
+                   setStep(1);
+                 }}
+                 style={{ background: "transparent", border: "none", outline: "none", cursor: "pointer" }}
+                 className="select-none flex justify-center z-10"
               >
                 <motion.span
                   whileHover={{ scale: 1.02 }}

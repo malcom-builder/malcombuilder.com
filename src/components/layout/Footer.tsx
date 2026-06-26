@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { socialLinks } from "@/lib/constants";
 import { Link } from "@/i18n/routing";
+import { trackSocialClick } from "@/lib/analytics";
 
 // ── Footer ────────────────────────────────────────────────────────────────────
 export function Footer() {
@@ -113,6 +114,7 @@ export function Footer() {
             <a
               key={s.href}
               href={s.href}
+              onClick={() => trackSocialClick(s.label)}
               target="_blank"
               rel="noopener noreferrer"
               className="footer-link"

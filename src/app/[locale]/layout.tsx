@@ -4,6 +4,7 @@ import { getMessages, getTranslations, setRequestLocale } from "next-intl/server
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { AnalyticsProvider } from "@/components/providers/AnalyticsProvider";
 import { HtmlLang } from "@/components/ui/HtmlLang";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { ClientOnly } from "@/components/ui/ClientOnly";
@@ -77,12 +78,14 @@ export default async function LocaleLayout({
       disableTransitionOnChange={false}
     >
       <NextIntlClientProvider messages={messages}>
-        {/* Sets document.documentElement.lang on the client */}
-        <HtmlLang locale={locale} />
-        <ClientOnly />
-        <ScrollProgress />
-        <Starfield />
-        {children}
+        <AnalyticsProvider>
+          {/* Sets document.documentElement.lang on the client */}
+          <HtmlLang locale={locale} />
+          <ClientOnly />
+          <ScrollProgress />
+          <Starfield />
+          {children}
+        </AnalyticsProvider>
       </NextIntlClientProvider>
     </ThemeProvider>
   );
