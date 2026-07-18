@@ -112,11 +112,11 @@ export function CustomCursor() {
           width: isHovered ? 8 : 6,
           height: isHovered ? 8 : 6,
           borderRadius: "50%",
-          backgroundColor: isHovered ? "var(--color-cyber-blue)" : "var(--color-lime)",
+          backgroundColor: isHovered ? "var(--color-fg)" : "var(--color-lime)",
           boxShadow: mounted && resolvedTheme === "light" 
             ? "none" 
             : isHovered 
-              ? "0 0 10px var(--color-cyber-blue)" 
+              ? "0 0 10px var(--color-fg)" 
               : "0 0 10px var(--color-lime)",
           x: cursorX,
           y: cursorY,

@@ -41,7 +41,7 @@ export function CTA() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   transition={{ type: "spring", stiffness: 450, damping: 22 }}
-                  className="inline-flex items-center justify-center px-10 py-5 bg-white text-black font-bold text-lg sm:text-xl rounded-lg cursor-pointer hover:shadow-[0_0_40px_rgba(170,220,236,0.3)] active:shadow-[inset_0_2px_8px_rgba(127,0,224,0.25)] select-none transition-shadow duration-300 btn-glow-trigger"
+                  className="inline-flex items-center justify-center px-10 py-5 bg-white text-black font-bold text-lg sm:text-xl rounded-lg cursor-pointer hover:shadow-[0_0_40px_rgba(255, 255, 255,0.3)] active:shadow-[inset_0_2px_8px_rgba(255, 255, 255,0.25)] select-none transition-shadow duration-300 btn-glow-trigger"
                 >
                   {t("button_text")}
                 </motion.span>

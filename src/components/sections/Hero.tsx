@@ -184,23 +184,23 @@ export function Hero() {
               <motion.span
                 variants={item}
                 style={{
-                  color: "var(--color-cyber-blue)",
+                  color: "var(--color-fg)",
                   display: "inline-block",
                   transition: "color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease",
                   cursor: "default",
-                  textShadow: "0 0 40px rgba(170, 220, 236, 0.4), 0 0 80px rgba(170, 220, 236, 0.15)",
+                  textShadow: "0 0 40px rgba(255, 255, 255, 0.4), 0 0 80px rgba(255, 255, 255, 0.15)",
                 }}
                 onMouseEnter={(e) => {
                   handleSoloEnter(e);
-                  (e.currentTarget as HTMLElement).style.color = "var(--color-cyber-blue)";
+                  (e.currentTarget as HTMLElement).style.color = "var(--color-fg)";
                   (e.currentTarget as HTMLElement).style.transform = "scale(1.02) translateX(4px)";
-                  (e.currentTarget as HTMLElement).style.textShadow = "0 0 50px rgba(170, 220, 236, 0.7), 0 0 100px rgba(170, 220, 236, 0.35)";
+                  (e.currentTarget as HTMLElement).style.textShadow = "0 0 50px rgba(255, 255, 255, 0.7), 0 0 100px rgba(255, 255, 255, 0.35)";
                 }}
                 onMouseLeave={(e) => {
                   handleSoloLeave();
-                  (e.currentTarget as HTMLElement).style.color = "var(--color-cyber-blue)";
+                  (e.currentTarget as HTMLElement).style.color = "var(--color-fg)";
                   (e.currentTarget as HTMLElement).style.transform = "scale(1) translateX(0)";
-                  (e.currentTarget as HTMLElement).style.textShadow = "0 0 40px rgba(170, 220, 236, 0.4), 0 0 80px rgba(170, 220, 236, 0.15)";
+                  (e.currentTarget as HTMLElement).style.textShadow = "0 0 40px rgba(255, 255, 255, 0.4), 0 0 80px rgba(255, 255, 255, 0.15)";
                 }}
               >
                 {t("headline_accent")}
@@ -249,7 +249,7 @@ export function Hero() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   transition={{ type: "spring", stiffness: 450, damping: 22 }}
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-bold rounded-lg cursor-pointer hover:shadow-[0_0_30px_rgba(170,220,236,0.25)] active:shadow-[inset_0_2px_8px_rgba(127,0,224,0.25)] select-none transition-shadow duration-300 text-base btn-glow-trigger"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-bold rounded-lg cursor-pointer hover:shadow-[0_0_30px_rgba(255, 255, 255,0.25)] active:shadow-[inset_0_2px_8px_rgba(255, 255, 255,0.25)] select-none transition-shadow duration-300 text-base btn-glow-trigger"
                 >
                   {t("cta_primary")}
                 </motion.span>

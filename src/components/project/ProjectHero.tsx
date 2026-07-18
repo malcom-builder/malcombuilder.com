@@ -126,7 +126,7 @@ export function ProjectHero({ title, category, tagline }: Props) {
             height: "70vw",
             maxWidth: "700px",
             maxHeight: "700px",
-            background: "radial-gradient(circle, var(--color-deep-purple) 0%, transparent 60%)",
+            background: "radial-gradient(circle, var(--color-fg) 0%, transparent 60%)",
             filter: "blur(90px)",
             borderRadius: "50%",
             transform: "translate(-50%, -50%)",
@@ -159,7 +159,7 @@ export function ProjectHero({ title, category, tagline }: Props) {
                 transition: "color 0.25s ease, transform 0.25s ease",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.color = "var(--color-cyber-blue)";
+                e.currentTarget.style.color = "var(--color-fg)";
                 e.currentTarget.style.transform = "translateX(-4px)";
               }}
               onMouseLeave={(e) => {
@@ -180,14 +180,14 @@ export function ProjectHero({ title, category, tagline }: Props) {
               alignItems: "center",
               gap: "0.5rem",
               padding: "0.4rem 0.85rem",
-              background: "rgba(170, 220, 236, 0.08)",
-              border: "1px solid rgba(170, 220, 236, 0.25)",
+              background: "rgba(255, 255, 255, 0.08)",
+              border: "1px solid rgba(255, 255, 255, 0.25)",
               borderRadius: "9999px",
               marginBottom: "1.5rem",
               fontFamily: "var(--font-mono, monospace)",
               fontSize: "0.75rem",
               fontWeight: 600,
-              color: "var(--color-cyber-blue)",
+              color: "var(--color-fg)",
               textTransform: "uppercase",
               letterSpacing: "0.08em",
             }}

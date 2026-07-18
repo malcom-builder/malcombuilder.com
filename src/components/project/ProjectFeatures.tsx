@@ -67,7 +67,7 @@ const FeatureCard = memo(function FeatureCard({ feature, i }: { feature: Feature
         style={{
           position: "absolute",
           inset: "-20px",
-          background: "radial-gradient(circle, var(--color-deep-purple) 0%, transparent 70%)",
+          background: "radial-gradient(circle, var(--color-fg) 0%, transparent 70%)",
           filter: "blur(32px)",
           pointerEvents: "none",
           zIndex: -1,
@@ -84,7 +84,7 @@ const FeatureCard = memo(function FeatureCard({ feature, i }: { feature: Feature
           left: "12px",
           right: "12px",
           height: "1px",
-          background: "linear-gradient(90deg, transparent, var(--color-cyber-blue) 50%, transparent)",
+          background: "linear-gradient(90deg, transparent, var(--color-fg) 50%, transparent)",
           pointerEvents: "none",
           zIndex: 2,
         }}
@@ -123,8 +123,8 @@ const FeatureCard = memo(function FeatureCard({ feature, i }: { feature: Feature
           minWidth: "1.5rem",
           height: "1.5rem",
           borderRadius: "50%",
-          background: "rgba(170, 220, 236, 0.08)",
-          color: "var(--color-cyber-blue)",
+          background: "rgba(255, 255, 255, 0.08)",
+          color: "var(--color-fg)",
           marginTop: "2px",
           position: "relative",
           zIndex: 1,
@@ -177,7 +177,7 @@ export function ProjectFeatures({ features, sectionLabel = "Logros" }: Props) {
           transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
         >
           <div style={{ marginBottom: "1rem" }}>
-            <span className="label" style={{ display: "inline-block", color: "var(--color-cyber-blue)", fontFamily: "var(--font-mono, monospace)" }}>
+            <span className="label" style={{ display: "inline-block", color: "var(--color-fg)", fontFamily: "var(--font-mono, monospace)" }}>
               {locale === "en" ? "scope" : "alcance"}
             </span>
           </div>
@@ -193,7 +193,7 @@ export function ProjectFeatures({ features, sectionLabel = "Logros" }: Props) {
             style={{
               position: "absolute",
               inset: "-10%",
-              background: "radial-gradient(circle at 50% 50%, var(--color-deep-purple) 0%, transparent 65%)",
+              background: "radial-gradient(circle at 50% 50%, var(--color-fg) 0%, transparent 65%)",
               filter: "blur(100px)",
               opacity: 0.1,
               pointerEvents: "none",

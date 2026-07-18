@@ -205,7 +205,7 @@ const ProjectCard = memo(function ProjectCard({ proj }: { proj: typeof projects[
           style={{
             position: "absolute",
             inset: "-20px",
-            background: "radial-gradient(circle, var(--color-deep-purple) 0%, transparent 70%)",
+            background: "radial-gradient(circle, var(--color-fg) 0%, transparent 70%)",
             filter: "blur(32px)",
             pointerEvents: "none",
             zIndex: -1,
@@ -224,7 +224,7 @@ const ProjectCard = memo(function ProjectCard({ proj }: { proj: typeof projects[
             left: "12px",
             right: "12px",
             height: "1px",
-            background: "linear-gradient(90deg, transparent, var(--color-cyber-blue) 50%, transparent)",
+            background: "linear-gradient(90deg, transparent, var(--color-fg) 50%, transparent)",
             pointerEvents: "none",
             zIndex: 2,
           }}
@@ -327,7 +327,7 @@ const ProjectCard = memo(function ProjectCard({ proj }: { proj: typeof projects[
               fontSize: "0.875rem",
               fontFamily: "var(--font-mono), monospace",
               fontWeight: 700,
-              color: "var(--color-cyber-blue)",
+              color: "var(--color-fg)",
             }}
           >
             {proj.id}
@@ -419,7 +419,7 @@ const ProjectCard = memo(function ProjectCard({ proj }: { proj: typeof projects[
             style={{
               fontSize: "0.8rem",
               fontFamily: "var(--font-mono), monospace",
-              color: "var(--color-cyber-blue)",
+              color: "var(--color-fg)",
               fontWeight: 600,
               textDecoration: "none",
               transition: "opacity 0.2s",
@@ -502,7 +502,7 @@ export function Projects() {
               },
             }}
             className="label font-mono"
-            style={{ display: "inline-block", marginBottom: "1rem", color: "var(--color-cyber-blue)" }}
+            style={{ display: "inline-block", marginBottom: "1rem", color: "var(--color-fg)" }}
           >
             {t("badge")}
           </motion.span>
@@ -519,7 +519,7 @@ export function Projects() {
             style={{
               position: "absolute",
               inset: "-10%",
-              background: "radial-gradient(circle at 50% 50%, var(--color-deep-purple) 0%, transparent 65%)",
+              background: "radial-gradient(circle at 50% 50%, var(--color-fg) 0%, transparent 65%)",
               filter: "blur(100px)",
               opacity: 0.15,
               pointerEvents: "none",

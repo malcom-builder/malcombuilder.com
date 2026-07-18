@@ -140,7 +140,7 @@ const MetricCard = memo(function MetricCard({ card }: { card: MetricCard }) {
         style={{
           position: "absolute",
           inset: "-20px",
-          background: "radial-gradient(circle, var(--color-deep-purple) 0%, transparent 70%)",
+          background: "radial-gradient(circle, var(--color-fg) 0%, transparent 70%)",
           filter: "blur(32px)",
           pointerEvents: "none",
           zIndex: -1,
@@ -157,7 +157,7 @@ const MetricCard = memo(function MetricCard({ card }: { card: MetricCard }) {
           left: "12px",
           right: "12px",
           height: "1px",
-          background: "linear-gradient(90deg, transparent, var(--color-cyber-blue) 50%, transparent)",
+          background: "linear-gradient(90deg, transparent, var(--color-fg) 50%, transparent)",
           pointerEvents: "none",
           zIndex: 2,
         }}
@@ -197,8 +197,8 @@ const MetricCard = memo(function MetricCard({ card }: { card: MetricCard }) {
         animate={{
           opacity: spotlight.isHovered ? 1 : 0.6,
           background: spotlight.isHovered
-            ? "var(--color-cyber-blue)"
-            : (card.isPositive ? "var(--color-cyber-blue)" : "var(--color-accent)"),
+            ? "var(--color-fg)"
+            : (card.isPositive ? "var(--color-fg)" : "var(--color-accent)"),
         }}
         transition={{ duration: 0.25 }}
       />
@@ -211,7 +211,7 @@ const MetricCard = memo(function MetricCard({ card }: { card: MetricCard }) {
           style={{
             fontSize: "clamp(2rem, 3.5vw, 2.75rem)",
             fontWeight: 800,
-            color: card.isPositive ? "var(--color-cyber-blue)" : "var(--color-fg)",
+            color: card.isPositive ? "var(--color-fg)" : "var(--color-fg)",
             fontFamily: "var(--font-mono, monospace)",
             lineHeight: 1,
             marginBottom: "0.5rem",
@@ -245,7 +245,7 @@ export function ProjectMetrics({ slug, metrics }: Props) {
           transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
         >
           <div style={{ marginBottom: "1rem" }}>
-            <span className="label" style={{ display: "inline-block", color: "var(--color-cyber-blue)", fontFamily: "var(--font-mono, monospace)" }}>
+            <span className="label" style={{ display: "inline-block", color: "var(--color-fg)", fontFamily: "var(--font-mono, monospace)" }}>
               {locale === "en" ? "outcomes" : "resultados"}
             </span>
           </div>
@@ -281,7 +281,7 @@ export function ProjectMetrics({ slug, metrics }: Props) {
                   style={{
                     background: "transparent",
                     border: "none",
-                    color: isActive ? "var(--color-cyber-blue)" : "var(--color-muted)",
+                    color: isActive ? "var(--color-fg)" : "var(--color-muted)",
                     fontSize: "0.9rem",
                     fontWeight: 600,
                     cursor: "pointer",
@@ -300,7 +300,7 @@ export function ProjectMetrics({ slug, metrics }: Props) {
                         left: 0,
                         right: 0,
                         height: "2px",
-                        background: "var(--color-cyber-blue)",
+                        background: "var(--color-fg)",
                         zIndex: 1,
                       }}
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
@@ -318,7 +318,7 @@ export function ProjectMetrics({ slug, metrics }: Props) {
             style={{
               position: "absolute",
               inset: "-10%",
-              background: "radial-gradient(circle at 50% 50%, var(--color-deep-purple) 0%, transparent 65%)",
+              background: "radial-gradient(circle at 50% 50%, var(--color-fg) 0%, transparent 65%)",
               filter: "blur(100px)",
               opacity: 0.12,
               pointerEvents: "none",
@@ -360,7 +360,7 @@ export function ProjectMetrics({ slug, metrics }: Props) {
                       <span>{chan.name}</span>
                       <div style={{ display: "flex", gap: "1.5rem" }} className="font-mono text-sm">
                         <span style={{ color: "var(--color-muted)" }}>{chan.value}</span>
-                        <span style={{ color: "var(--color-cyber-blue)" }}>{chan.percent}</span>
+                        <span style={{ color: "var(--color-fg)" }}>{chan.percent}</span>
                       </div>
                     </div>
                     {/* Custom animated bar */}
@@ -370,7 +370,7 @@ export function ProjectMetrics({ slug, metrics }: Props) {
                         whileInView={{ width: chan.percent }}
                         viewport={{ once: true }}
                         transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-                        style={{ height: "100%", background: "var(--color-cyber-blue)", borderRadius: "99px" }}
+                        style={{ height: "100%", background: "var(--color-fg)", borderRadius: "99px" }}
                       />
                     </div>
                   </motion.div>
@@ -396,7 +396,7 @@ export function ProjectMetrics({ slug, metrics }: Props) {
                       <span>{t.name}</span>
                       <div style={{ display: "flex", gap: "1.5rem" }} className="font-mono text-sm">
                         <span style={{ color: "var(--color-muted)" }}>{t.value}</span>
-                        <span style={{ color: "var(--color-cyber-blue)" }}>{t.percent}</span>
+                        <span style={{ color: "var(--color-fg)" }}>{t.percent}</span>
                       </div>
                     </div>
                     {/* Custom animated bar */}
@@ -406,7 +406,7 @@ export function ProjectMetrics({ slug, metrics }: Props) {
                         whileInView={{ width: t.percent }}
                         viewport={{ once: true }}
                         transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-                        style={{ height: "100%", background: "var(--color-cyber-blue)", borderRadius: "99px" }}
+                        style={{ height: "100%", background: "var(--color-fg)", borderRadius: "99px" }}
                       />
                     </div>
                   </motion.div>

@@ -55,7 +55,7 @@ const PrevNextCard = memo(function PrevNextCard({
         style={{
           position: "absolute",
           inset: "-20px",
-          background: "radial-gradient(circle, var(--color-deep-purple) 0%, transparent 70%)",
+          background: "radial-gradient(circle, var(--color-fg) 0%, transparent 70%)",
           filter: "blur(32px)",
           pointerEvents: "none",
           zIndex: -1,
@@ -72,7 +72,7 @@ const PrevNextCard = memo(function PrevNextCard({
           left: "12px",
           right: "12px",
           height: "1px",
-          background: "linear-gradient(90deg, transparent, var(--color-cyber-blue) 50%, transparent)",
+          background: "linear-gradient(90deg, transparent, var(--color-fg) 50%, transparent)",
           pointerEvents: "none",
           zIndex: 2,
         }}
@@ -108,8 +108,8 @@ const PrevNextCard = memo(function PrevNextCard({
           transition: "border-color 0.25s ease, background-color 0.25s ease",
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.borderColor = "rgba(170, 220, 236, 0.4)";
-          e.currentTarget.style.backgroundColor = "rgba(170, 220, 236, 0.02)";
+          e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.4)";
+          e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 0.02)";
         }}
         onMouseLeave={(e) => {
           e.currentTarget.style.borderColor = "var(--color-border)";
@@ -128,7 +128,7 @@ const PrevNextCard = memo(function PrevNextCard({
             gap: "0.375rem",
             fontSize: "0.75rem",
             fontWeight: 600,
-            color: spotlight.isHovered ? "var(--color-cyber-blue)" : "var(--color-muted)",
+            color: spotlight.isHovered ? "var(--color-fg)" : "var(--color-muted)",
             fontFamily: "var(--font-mono, monospace)",
             textTransform: "uppercase",
             letterSpacing: "0.05em",
@@ -171,7 +171,7 @@ const PrevNextCard = memo(function PrevNextCard({
             position: "relative",
             zIndex: 1,
           }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-cyber-blue)")}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-fg)")}
           onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-fg)")}
         >
           {project.title}
@@ -198,7 +198,7 @@ export function ProjectPrevNext({ prev, next, locale }: Props) {
           transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
         >
           <div style={{ marginBottom: "1rem" }}>
-            <span className="label" style={{ display: "inline-block", color: "var(--color-cyber-blue)", fontFamily: "var(--font-mono, monospace)" }}>
+            <span className="label" style={{ display: "inline-block", color: "var(--color-fg)", fontFamily: "var(--font-mono, monospace)" }}>
               {locale === "en" ? "explore" : "explorar"}
             </span>
           </div>
