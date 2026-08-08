@@ -9,12 +9,12 @@
   },
   "hero": {
     "tagline": "Digital Product Studio",
-    "headline": "I build digital products.",
-    "headline_accent": "Solo.",
-    "subheadline": "Slow agencies and surprise budgets are a thing of the past. Premium software architecture, fixed pricing, and delivery in weeks.",
-    "cta_primary": "Let's Build →",
+    "headline": "We build software that converts.",
+    "headline_accent": "End-to-end.",
+    "subheadline": "Slow agencies and surprise budgets are dead. We build your digital product with robust engineering, fixed pricing, and direct in-house execution.",
+    "cta_primary": "Start project →",
     "cta_secondary": "View projects",
-    "trust_badge": "Scalable stack · Closed scope · No hidden costs"
+    "trust_badge": "Solid architecture · Fixed price · Closed scope"
   },
   "services": {
     "badge": "Services",
@@ -22,18 +22,18 @@
     "items": [
       {
         "title": "Operations",
-        "pain": "Slow agencies. Surprise budgets. Client acting as project manager.",
-        "solution": "Fixed price, closed scope. Iterative delivery in weeks. Zero friction."
+        "pain": "Agencies taking months. Shifting budgets. You wasting time managing the project.",
+        "solution": "Quote in 24h. Fixed price. Closed scope. Iterative delivery. You focus on your business."
       },
       {
         "title": "Technology",
-        "pain": "Slow-loading sites. Broken WordPress. Fragile code that crashes under traffic.",
-        "solution": "Solid architecture. Scalable stack. Audited 100/100 performance."
+        "pain": "Slow-loading sites. Broken WordPress themes. Fragile systems that crash in production.",
+        "solution": "Clean architecture. Scalable stack. Constant monitoring. We ship code that never breaks."
       },
       {
         "title": "Positioning",
-        "pain": "Template design. Sites that don't project authority and lose clients.",
-        "solution": "Premium interfaces. B2B conversion psychology. Your website as your best salesperson."
+        "pain": "Generic designs. Sites that fail to project authority and hand over clients to your competition.",
+        "solution": "Premium, high-conversion interfaces. Design driven by B2B sales psychology."
       }
     ]
   },
@@ -45,15 +45,15 @@
   },
   "projectPages": {
     "zolfo-medicina-estetica": {
-      "tagline": "Every patient who searches for a treatment on Google and doesn't find you, goes to your competitor.",
-      "description": "Zolfo had a high-end clinic but a digital presence that didn't reflect it. The result: patients searching for their treatments on Google ended up at another clinic.\n\nToday, the site converts 47% of visits into actual inquiries. Each treatment has its own page optimized for Google. The patient arrives, browses, and books — with zero friction.\n\n765 active users in the first month. 444 contacts generated. 100% uptime.",
+      "tagline": "If a patient searches for a treatment and your site is slow, they book with your competitor.",
+      "description": "Zolfo had a premium clinic but a generic website. Patients searched for treatments and ended up elsewhere due to high friction.\n\nWe built a direct conversion engine. Each treatment ranks independently on Google. The patient arrives, browses instantly, and books via WhatsApp. Zero friction.\n\nResult: 47% lead conversion. 765 active users. 100% uptime.",
       "featuresLabel": "What's included",
       "features": [
-        { "title": "Individual SEO", "desc": "When someone searches for 'hyaluronic acid in Rosario', Zolfo appears — not the competition." },
-        { "title": "WhatsApp conversion", "desc": "47% of those who visit the site end up messaging via WhatsApp. No complicated forms, no friction." },
-        { "title": "Admin panel", "desc": "Upload a new photo, change a price, add a treatment. Solo. Without calling anyone." },
-        { "title": "Speed", "desc": "Google penalizes slow sites. This one loads in under a second. That is search positioning without paying for ads." },
-        { "title": "Stability", "desc": "Not a single crash over the entire period. Every hour a site is down is money lost." }
+        { "title": "Individual SEO", "desc": "Organic ranking per treatment. You show up exactly when the patient is ready to buy." },
+        { "title": "WhatsApp conversion", "desc": "47% of visits end in a consultation. A direct flow with no bureaucratic forms." },
+        { "title": "Admin panel", "desc": "Total control over your content. Update prices and photos instantly. No developers needed." },
+        { "title": "Speed", "desc": "Millisecond load times. Google rewards you and the user never abandons the site." },
+        { "title": "Stability", "desc": "0% downtime. A down site is a closed business. We guarantee continuous operation." }
       ],
       "metrics": {
         "title": "Metrics & Outcomes",
@@ -84,8 +84,8 @@
       }
     },
     "nurestetica": {
-      "tagline": "Patients choose based on trust. Trust enters through the eyes in the first three seconds.",
-      "description": "Aesthetic patients are demanding. Before booking an appointment, they have already checked Instagram, searched on Google, and visited the site of at least three clinics.\n\nNurEstética needed a presence that convinced in the first few seconds. No excess text. No slow loading. No generic design.\n\nThe result: 100/100 in user experience, loads in 0.35 seconds, zero layout shifts. The site feels as meticulously cared for as the clinic itself.",
+      "tagline": "Patient trust is won or lost in the first 3 seconds of load time.",
+      "description": "In aesthetics, the first impression is technical. A slow or generic site destroys brand authority before a word is read.\n\nNurEstética required a premium, immediate experience. We executed a radical redesign focused on speed and visual stability.\n\nResult: 100/100 Google real user experience score. 0.35s load time. Patients trust because the platform responds instantly.",
       "featuresLabel": "What's included",
       "features": [
         { "title": "Design", "desc": "Design is not decoration. It is the first filter the patient uses to decide whether to trust." },
@@ -105,8 +105,8 @@
       }
     },
     "authmotion": {
-      "tagline": "Control who enters your platform, what they see, and what they can do. Without relying on generic solutions.",
-      "description": "As your platform grows, access becomes a challenge. Who can view billing data? Who can edit? Who should only have read-only access?\n\nAuthMotion is the answer. An enterprise-grade authentication and permissions system, ready to integrate into any platform. Two-factor authentication, Google or GitHub login, custom roles.\n\nWithout paying for licenses. Without depending on third parties. Without reinventing the wheel every time.",
+      "tagline": "Absolute control over who accesses your platform. Enterprise-grade security from day one.",
+      "description": "As you scale, managing permissions becomes critical. An access flaw exposes sensitive data and destroys business reputation.\n\nAuthMotion is our enterprise-grade IAM module. Two-factor authentication, social login, and granular roles. Cleanly integrated into your current system.\n\nWe execute proven security. No third-party licenses, no per-user costs, zero risk.",
       "featuresLabel": "What's included",
       "features": [
         { "title": "2FA", "desc": "A password alone is not enough. Two-factor authentication blocks 99% of unauthorized access — even if the password is known." },
@@ -126,8 +126,8 @@
       }
     },
     "smartwallet": {
-      "tagline": "An accounting error in production is not a bug. It's money disappearing. Or customers who don't return.",
-      "description": "When a platform handles money, the margin of error is zero. A duplicate charge, an unbalanced ledger, a lost transaction — any of these destroys trust in minutes.\n\nSmartWallet is the financial engine that solves this. Double-entry bookkeeping as used by banks. A security vault for sensitive credentials. Atomic transactions that aren't lost even if the server crashes mid-process.\n\nReady to connect to any existing platform via API.",
+      "tagline": "A code accounting error is not a bug. It's lost money and lost clients.",
+      "description": "When handling financial transactions, the margin of error must be mathematically zero. A mismatched ledger breaks user trust forever.\n\nWe built SmartWallet with Double-Entry Bookkeeping architecture. Immutable bank-grade accounting. If a server fails mid-payment, the system rolls back cleanly.\n\nAbsolute transactional precision, ready to be integrated into your product.",
       "featuresLabel": "What's included",
       "features": [
         { "title": "Double-entry", "desc": "Every dollar that enters has a destination. Every dollar that leaves has an origin. Impossible for the balance to become offset." },
@@ -147,8 +147,8 @@
       }
     },
     "malcombuilder": {
-      "tagline": "The showcase of my technical studio. Designed to convert visits into clients.",
-      "description": "This is my own platform. I designed and built it using advanced AI as an execution lever to achieve a flawless, ultra-fast, and premium multilingual site. It showcases my work philosophy: extreme speed, author design, and zero user friction.\n\nWHAT IT SOLVES\nA slow or generic portfolio fails to convince anyone. This site serves as a living proof of concept of what I can build for your business: an interactive experience that loads in milliseconds, speaks your client's language, and builds immediate trust to close the sale.",
+      "tagline": "The studio's showcase. Built to demonstrate speed, premium design, and B2B conversion.",
+      "description": "We don't use templates. This portfolio is a proof of concept of what we build for our clients: instant-loading interactive systems.\n\nWe leverage solid architecture and AI as an execution agent to deliver a multi-language site that loads in milliseconds and scores 100/100 on Google.\n\nThis isn't decorative design; it's sales infrastructure.",
       "featuresLabel": "What's included",
       "features": [
         { "title": "Premium interactive experience", "desc": "Fluid animations and micro-interactions that capture attention without slowing navigation." },
@@ -168,8 +168,8 @@
       }
     },
     "pulse": {
-      "tagline": "Your website went down. How long did it take you to find out? How many customers did you lose in the meantime?",
-      "description": "A site that goes down without anyone knowing is worse than not having a website. The client tries to enter, fails, and goes elsewhere. You find out hours later.\n\nPulse monitors your site every 5 minutes. If something fails, it alerts you instantly on Telegram. If the SSL certificate is about to expire, it warns you before browsers block access.\n\nIt also generates automatic monthly uptime reports — so you have documented history to hold your hosting provider accountable when failures occur.",
+      "tagline": "Your platform crashed. If your clients find out before you do, you're losing money.",
+      "description": "Operating blind is an unacceptable business risk. One hour of downtime is lost revenue that you never recover.\n\nPulse is our in-house monitoring agent. It audits your systems every 5 minutes. If there's a drop or an expiring SSL certificate, it alerts you instantly via Telegram.\n\nTotal control, uptime history, and hard data to demand quality from your infrastructure providers.",
       "featuresLabel": "What's included",
       "features": [
         { "title": "Monitoring", "desc": "Every 5 minutes, Pulse verifies that your site responds. If it doesn't, you know it before any customer does." },
@@ -196,27 +196,27 @@
   },
   "about": {
     "label": "ABOUT",
-    "headline_part1": "One builder. One stack.",
-    "headline_part2": "One result. Precision.",
+    "headline_part1": "Engineering.",
+    "headline_part2": "Precision. Results.",
     "thesis": {
-      "text": "I build digital products, solo. Solid architecture, AI as the execution agent, shipped in weeks. No team, no inflated costs. With conviction."
+      "text": "Boutique Software Studio. Flawless technical architecture, AI as an execution lever, shipped in weeks. Software engineering subordinated to your business growth."
     },
     "who": {
       "label": "WHO",
       "name": "Malcom Foca",
-      "role": "Associate Degree in Software Development — UTN Rosario",
+      "role": "Lead Software Architect",
       "location": "Rosario → World"
     },
     "does": {
-      "label": "WHAT I DO",
-      "bold": "I build digital products.",
-      "line1": "Websites, platforms, systems and APIs. What the business needs to work digitally."
+      "label": "WHAT WE DO",
+      "bold": "We build digital systems that scale and generate revenue.",
+      "line1": "Platforms, web apps, and APIs. Technical development executed to optimize metrics and deliver results."
     },
     "how": {
-      "label": "HOW I DO IT",
-      "bold": "Solo. From architecture to deployment.",
-      "line1": "Solid architecture + AI as the execution agent.",
-      "line2": "Custom workflows. Standardized processes — documented context, deliverables per iteration, nothing improvised."
+      "label": "HOW WE DO IT",
+      "bold": "Direct in-house execution. From strategy to production code.",
+      "line1": "Solid architectural decisions. AI to accelerate development.",
+      "line2": "Rigorous processes: closed scope, fixed price, scalable code. Zero improvisation."
     },
     "social": {
       "instagram": "INSTAGRAM",
@@ -225,14 +225,14 @@
     }
   },
   "cta": {
-    "pre_title": "The architecture is already solved.",
-    "heading": "Ready to execute your system?",
-    "button_text": "Start brief →",
-    "sub": "No-cost evaluation. Fixed quote in 24h."
+    "pre_title": "The architecture is solved. Just bring your business.",
+    "heading": "ready?",
+    "button_text": "View brief →",
+    "sub": "Complete the technical brief. Fixed quote in 24h."
   },
   "footer": {
-    "tagline": "Digital Product Studio",
-    "description": "Webs, platforms and systems. Solo. With conviction.",
+    "tagline": "Boutique Software Studio",
+    "description": "End-to-end digital systems. Robust engineering. With conviction.",
     "nav_title": "Navigation",
     "social_title": "Social",
     "bottom": "© 2026 malcom.builder · Rosario, Argentina · Built with Next.js & AI"
@@ -243,7 +243,7 @@
     "lang": "Cambiar a Español"
   },
   "meta": {
-    "title": "malcom.builder — Premium digital product development",
-    "description": "Premium digital product development with fixed pricing. Fast delivery in weeks with no unnecessary meetings. Get your quote in 24h."
+    "title": "malcom.builder — Boutique Software Studio",
+    "description": "Boutique Software Studio specializing in high-conversion systems at a fixed price. Fast delivery and in-house execution. Get your quote in 24h."
   }
 }
