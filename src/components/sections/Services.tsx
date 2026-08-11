@@ -68,7 +68,7 @@ const ServiceRow = memo(function ServiceRow({ index, t }: { index: number; t: an
 
 export function Services() {
   const t = useTranslations("services");
-  const indices = [0, 1, 2];
+  const indices = [0, 1, 2, 3];
 
   return (
     <section id="services" className="section" style={{ borderBottom: "1px solid var(--color-border)" }}>
