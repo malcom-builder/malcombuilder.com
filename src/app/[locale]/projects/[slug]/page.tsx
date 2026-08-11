@@ -10,6 +10,7 @@ import { ProjectFeatures } from "@/components/project/ProjectFeatures";
 import { ProjectLinks } from "@/components/project/ProjectLinks";
 import { ProjectPrevNext } from "@/components/project/ProjectPrevNext";
 import { StaggeredPage } from "@/components/project/StaggeredPage";
+import { CTA } from "@/components/sections/CTA";
 
 export async function generateStaticParams() {
   const locales = ["es", "en"];
@@ -74,6 +75,9 @@ export default async function ProjectPage({
           <ProjectPrevNext prev={prevProject} next={nextProject} locale={locale} />
         )}
       </StaggeredPage>
+      <div style={{ borderTop: "1px solid var(--color-border)" }}>
+        <CTA />
+      </div>
     </article>
   );
 }

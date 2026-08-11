@@ -46,7 +46,7 @@
   "projectPages": {
     "zolfo-medicina-estetica": {
       "tagline": "If a patient searches for a treatment and your site is slow, they book with your competitor.",
-      "description": "Zolfo had a premium clinic but a generic website. Patients searched for treatments and ended up elsewhere due to high friction.\n\nWe built a direct conversion engine. Each treatment ranks independently on Google. The patient arrives, browses instantly, and books via WhatsApp. Zero friction.\n\nResult: 47% lead conversion. 765 active users. 100% uptime.",
+      "description": "Zolfo had a premium clinic but a generic website. Patients searched for treatments and ended up elsewhere due to high friction.\n\nWe built a direct conversion engine. Each treatment ranks independently on Google. The patient arrives, browses instantly, and books via WhatsApp. Zero friction.\n\nResult: 62% lead conversion. 1,215 active users. 100% uptime.",
       "featuresLabel": "What's included",
       "features": [
         { "title": "Individual SEO", "desc": "Organic ranking per treatment. You show up exactly when the patient is ready to buy." },
@@ -63,23 +63,23 @@
         "channels_desc": "Acquisition channels split (GA Sessions)",
         "treatments_desc": "Views distribution per treatment (GA Page Views)",
         "cards": [
-          { "label": "Lead Conversion", "value": "47.0%", "desc": "Nearly 1 out of 2 visitors ends up messaging to book. The site sells itself.", "isPositive": true },
-          { "label": "Booking Leads", "value": "444", "desc": "444 potential patients in a month. No additional ads, no extra effort.", "isPositive": true },
-          { "label": "Active Users", "value": "765", "desc": "765 people visited the clinic digitally. Far more than in person." },
-          { "label": "Page Views", "value": "5,456", "desc": "5,456 times someone explored a treatment. Every view is a purchase intent." }
+          { "label": "Lead Conversion", "value": "62.6%", "desc": "More than half of the visitors end up messaging to book. The site sells itself.", "isPositive": true },
+          { "label": "Booking Leads", "value": "761", "desc": "761 potential patients in a month. No additional ads, no extra effort.", "isPositive": true },
+          { "label": "Active Users", "value": "1,215", "desc": "1,215 people visited the clinic digitally. Far more than in person." },
+          { "label": "Page Views", "value": "6,227", "desc": "6,227 times someone explored a treatment. Every view is a purchase intent." }
         ],
         "channels": [
-          { "name": "Referral (Recommendations)", "value": 332, "percent": "35%" },
-          { "name": "Organic Social (Instagram)", "value": 256, "percent": "27%" },
-          { "name": "Direct Traffic", "value": 239, "percent": "25%" },
-          { "name": "Organic Search (Google)", "value": 99, "percent": "13%" }
+          { "name": "Organic Social (Instagram)", "value": 955, "percent": "70%" },
+          { "name": "Organic Search (Google)", "value": 193, "percent": "14%" },
+          { "name": "Referrals (Linktree/Others)", "value": 103, "percent": "8%" },
+          { "name": "Direct Traffic", "value": 73, "percent": "5%" }
         ],
         "treatments": [
-          { "name": "Homepage (Home)", "value": 2271, "percent": "42%" },
-          { "name": "Treatments Catalog", "value": 1323, "percent": "24%" },
-          { "name": "Hyaluronic Acid", "value": 383, "percent": "7%" },
-          { "name": "Botox", "value": 188, "percent": "3.5%" },
-          { "name": "Bio-stimulators", "value": 102, "percent": "2%" }
+          { "name": "Homepage (Home)", "value": 2421, "percent": "39%" },
+          { "name": "Treatments Catalog", "value": 1999, "percent": "32%" },
+          { "name": "Hyaluronic Acid", "value": 270, "percent": "4%" },
+          { "name": "Botox", "value": 236, "percent": "4%" },
+          { "name": "Bio-stimulators", "value": 119, "percent": "2%" }
         ]
       }
     },

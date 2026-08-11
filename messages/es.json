@@ -46,7 +46,7 @@
   "projectPages": {
     "zolfo-medicina-estetica": {
       "tagline": "Si un paciente busca un tratamiento en Google y tu sitio es lento, agenda con tu competencia.",
-      "description": "Zolfo tenía una clínica premium pero una web genérica. Los pacientes buscaban tratamientos y terminaban en otras clínicas porque la fricción era alta.\n\nConstruimos un sistema de conversión directa. Cada tratamiento posiciona en Google de forma independiente. El paciente entra, navega rápido y agenda por WhatsApp. Cero fricción.\n\nResultado: 47% de conversión a consultas. 765 usuarios activos. Uptime del 100%.",
+      "description": "Zolfo tenía una clínica premium pero una web genérica. Los pacientes buscaban tratamientos y terminaban en otras clínicas porque la fricción era alta.\n\nConstruimos un sistema de conversión directa. Cada tratamiento posiciona en Google de forma independiente. El paciente entra, navega rápido y agenda por WhatsApp. Cero fricción.\n\nResultado: 62% de conversión a consultas. 1.215 usuarios activos. Uptime del 100%.",
       "featuresLabel": "Qué incluye",
       "features": [
         {
@@ -80,63 +80,63 @@
         "cards": [
           {
             "label": "Conversión de Leads",
-            "value": "47.0%",
-            "desc": "Casi 1 de cada 2 visitantes termina escribiendo para agendar. El sitio vende solo.",
+            "value": "62.6%",
+            "desc": "Más de la mitad de los visitantes terminan escribiendo para agendar. El sitio vende solo.",
             "isPositive": true
           },
           {
             "label": "Leads de Reserva",
-            "value": "444",
-            "desc": "444 pacientes potenciales en un mes. Sin pauta adicional, sin esfuerzo extra.",
+            "value": "761",
+            "desc": "761 pacientes potenciales en un mes. Sin pauta adicional, sin esfuerzo extra.",
             "isPositive": true
           },
           {
             "label": "Usuarios Activos",
-            "value": "765",
-            "desc": "765 personas visitaron la clínica digitalmente. Muchos más que en persona."
+            "value": "1.215",
+            "desc": "1.215 personas visitaron la clínica digitalmente. Muchos más que en persona."
           },
           {
             "label": "Páginas Vistas",
-            "value": "5.456",
-            "desc": "5.456 veces alguien exploró un tratamiento. Cada vista es una intención de compra."
+            "value": "6.227",
+            "desc": "6.227 veces alguien exploró un tratamiento. Cada vista es una intención de compra."
           }
         ],
         "channels": [
           {
-            "name": "Referencia (Recomendación)",
-            "value": 332,
-            "percent": "35%"
-          },
-          {
             "name": "Redes Sociales (Instagram)",
-            "value": 256,
-            "percent": "27%"
+            "value": 955,
+            "percent": "70%"
           },
-          { "name": "Tráfico Directo", "value": 239, "percent": "25%" },
           {
             "name": "Búsqueda Orgánica (Google)",
-            "value": 99,
-            "percent": "13%"
+            "value": 193,
+            "percent": "14%"
+          },
+          { "name": "Referencias (Linktree/Otros)", "value": 103, "percent": "8%" },
+          {
+            "name": "Tráfico Directo",
+            "value": 73,
+            "percent": "5%"
           }
         ],
         "treatments": [
           {
             "name": "Página de Inicio (Home)",
-            "value": 2271,
-            "percent": "42%"
+            "value": 2421,
+            "percent": "39%"
           },
           {
             "name": "Catálogo de Tratamientos",
-            "value": 1323,
-            "percent": "24%"
+            "value": 1999,
+            "percent": "32%"
           },
-          { "name": "Ácido Hialurónico", "value": 383, "percent": "7%" },
+          { "name": "Ácido Hialurónico", "value": 270, "percent": "4%" },
           {
             "name": "Toxina Botulínica (Bótox)",
-            "value": 188,
-            "percent": "3.5%"
+            "value": 236,
+            "percent": "4%"
           },
-          { "name": "Bioestimadores", "value": 102, "percent": "2%" }
+          { "name": "Bioestimuladores", "value": 119, "percent": "2%" }
         ]
       }
     },
