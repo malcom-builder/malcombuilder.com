@@ -310,7 +310,7 @@
     },
     "malcombuilder": {
       "tagline": "La vitrina del studio. Construida para demostrar velocidad, diseño premium y conversión B2B.",
-      "description": "No usamos plantillas. Este portfolio es prueba de concepto de lo que construimos para nuestros clientes: sistemas interactivos de carga instantánea.\n\nAplicamos arquitectura sólida e IA como palanca de ejecución para entregar una web multi-idioma que carga en milisegundos y rankea 100/100 en Google.\n\nEsto no es diseño decorativo, es infraestructura de ventas.",
+      "description": "No usamos plantillas. Este portfolio es prueba de concepto de lo que construimos para nuestros clientes: sistemas interactivos de carga instantánea.\n\nAplicamos arquitectura sólida para entregar una web multi-idioma que carga en milisegundos y rankea 100/100 en Google.\n\nEsto no es diseño decorativo, es infraestructura de ventas.",
       "featuresLabel": "Qué incluye",
       "features": [
         {
@@ -427,7 +427,7 @@
     "headline_part1": "Ingeniería.",
     "headline_part2": "Precisión. Resultados.",
     "thesis": {
-      "text": "Software Studio. Arquitectura técnica impecable, IA como palanca de ejecución y entregas en semanas. Ingeniería de software subordinada al crecimiento de tu negocio."
+      "text": "Software Studio. Arquitectura técnica impecable. Ingeniería de software subordinada al crecimiento de tu negocio."
     },
     "who": {
       "label": "QUIÉN",

@@ -153,7 +153,7 @@
     },
     "malcombuilder": {
       "tagline": "The studio's showcase. Built to demonstrate speed, premium design, and B2B conversion.",
-      "description": "We don't use templates. This portfolio is a proof of concept of what we build for our clients: instant-loading interactive systems.\n\nWe leverage solid architecture and AI as an execution agent to deliver a multi-language site that loads in milliseconds and scores 100/100 on Google.\n\nThis isn't decorative design; it's sales infrastructure.",
+      "description": "We don't use templates. This portfolio is a proof of concept of what we build for our clients: instant-loading interactive systems.\n\nWe leverage solid architecture to deliver a multi-language site that loads in milliseconds and scores 100/100 on Google.\n\nThis isn't decorative design; it's sales infrastructure.",
       "featuresLabel": "What's included",
       "features": [
         { "title": "Premium interactive experience", "desc": "Fluid animations and micro-interactions that capture attention without slowing navigation." },
@@ -204,7 +204,7 @@
     "headline_part1": "Engineering.",
     "headline_part2": "Precision. Results.",
     "thesis": {
-      "text": "Software Studio. Flawless technical architecture, AI as an execution lever, shipped in weeks. Software engineering subordinated to your business growth."
+      "text": "Software Studio. Flawless technical architecture. Software engineering subordinated to your business growth."
     },
     "who": {
       "label": "WHO",
