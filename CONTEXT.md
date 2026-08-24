@@ -253,6 +253,9 @@ title: 'malcom.builder — Desarrollo de productos digitales premium'
 
 ### Decisiones UI/UX tomadas durante desarrollo
 
+- **Favicon Modernizado:** Creado un nuevo `icon.svg` basado en un diseño squircle minimalista con fondo Deep Obsidian y texto puro para mejorar el branding en la pestaña del navegador.
+- **Tarjetas de Proyecto Relajadas:** Eliminado el efecto spotlight radial con seguimiento de cursor en `ProjectCard`; las imágenes ahora se iluminan completamente en hover con una transición más larga y suave (`0.6s`) logrando un efecto más relajado y premium.
+- **Showcase AuthMotion Actualizado:** Reemplazado el widget animado genérico por capturas reales (`.webp`) del producto para el proyecto AuthMotion, eliminando el enlace al repositorio de GitHub y dirigiendo el tráfico a `authmotion.malcombuilder.com`.
 - **Nueva Identidad Visual Refinada:** Transición a un esquema **Minimalist Monochrome & Deep Obsidian** (Fondo `#000000` negro puro, acento primario `#FFFFFF` blanco puro) enriquecido con un único color de acento "hotspot" intencional para microdetalles (por defecto **Technical Mint `#00F5A0`**, con alternativas comentadas para **Classic Bronze Gold `#E5A93B`**, **Azul Hielo `#00F0FF`** y **Violeta `#8B5CF6`**).
 - **Descarte de Light Mode:** Soporte para Light Mode removido por completo (sin `.light` en CSS y sin control `ThemeToggle` en la interfaz). El sitio ahora es 100% Dark Mode.
 - **Wordmark de Marca:** Ajustado el logo en Navbar y Footer para mostrar `malcom` en White, `.` en Silver y `builder` en White/Silver con transiciones lentas y minimalistas.
