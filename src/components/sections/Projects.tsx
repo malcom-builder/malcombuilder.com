@@ -166,7 +166,7 @@ const ProjectCard = memo(function ProjectCard({ proj }: { proj: typeof projects[
       }}
       whileHover={{
         y: -6,
-        transition: { duration: 0.3, ease: [0.21, 0.47, 0.32, 0.98] },
+        transition: { duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] },
       }}
     >
       {/* 1. Glow externo hiper-difuso en deep-purple/10 */}
@@ -181,7 +181,7 @@ const ProjectCard = memo(function ProjectCard({ proj }: { proj: typeof projects[
             zIndex: -1,
           }}
           animate={{ opacity: isHovered ? 0.1 : 0 }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.6 }}
         />
       )}
 
@@ -199,7 +199,7 @@ const ProjectCard = memo(function ProjectCard({ proj }: { proj: typeof projects[
             zIndex: 2,
           }}
           animate={{ opacity: isHovered ? 0.3 : 0 }}
-          transition={{ duration: 0.25 }}
+          transition={{ duration: 0.6 }}
         />
       )}
 
@@ -218,7 +218,7 @@ const ProjectCard = memo(function ProjectCard({ proj }: { proj: typeof projects[
             WebkitMaskImage: "linear-gradient(to bottom, black 40%, transparent 100%)",
           }}
           animate={{ opacity: isHovered ? 0.35 : 0 }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.6 }}
         >
           <Image
             src={proj.spotlightImage}
@@ -244,7 +244,7 @@ const ProjectCard = memo(function ProjectCard({ proj }: { proj: typeof projects[
             overflow: "hidden",
           }}
           animate={{ opacity: isHovered ? 1 : 0 }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.6 }}
         />
       )}
 
@@ -260,7 +260,7 @@ const ProjectCard = memo(function ProjectCard({ proj }: { proj: typeof projects[
             zIndex: 0,
           }}
           animate={{ opacity: isHovered ? 1 : 0 }}
-          transition={{ duration: 0.25 }}
+          transition={{ duration: 0.6 }}
         />
       )}
 
