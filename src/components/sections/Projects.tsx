@@ -132,42 +132,12 @@ const ProjectCard = memo(function ProjectCard({ proj }: { proj: typeof projects[
   const cardRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
 
-  // Spotlight glow tracking (same pattern as Services BentoCard)
-  const rawX = useMotionValue(50);
-  const rawY = useMotionValue(0);
-  const glowX = useSpring(rawX, { stiffness: 150, damping: 20 });
-  const glowY = useSpring(rawY, { stiffness: 150, damping: 20 });
-  const spotlightBg = useTransform(
-    [glowX, glowY],
-    ([x, y]: number[]) =>
-      `radial-gradient(circle at ${x}% ${y}%, rgba(var(--spotlight-color), 0.14), transparent 65%)`
-  );
-
-  const imageSpotlightMask = useTransform(
-    [glowX, glowY],
-    ([x, y]: number[]) =>
-      `radial-gradient(circle 200px at ${x}% ${y}%, black 0%, transparent 100%)`
-  );
-
   const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
     setIsHovered(true);
-    if (shouldReduce) return;
-    const rect = cardRef.current?.getBoundingClientRect();
-    if (!rect) return;
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    rawX.set(x);
-    rawY.set(y);
-    glowX.jump(x);
-    glowY.jump(y);
   };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (shouldReduce) return;
-    const rect = cardRef.current?.getBoundingClientRect();
-    if (!rect) return;
-    rawX.set(((e.clientX - rect.left) / rect.width) * 100);
-    rawY.set(((e.clientY - rect.top) / rect.height) * 100);
+    // Spotlight removed, left for potential future use or to keep component signature
   };
 
   const resetGlow = () => {
@@ -233,7 +203,7 @@ const ProjectCard = memo(function ProjectCard({ proj }: { proj: typeof projects[
         />
       )}
 
-      {/* Spotlight image (reveals image on hover only where cursor is) */}
+      {/* Spotlight image (reveals image fully on hover) */}
       {proj.spotlightImage && !shouldReduce && (
         <motion.div
           style={{
@@ -243,10 +213,11 @@ const ProjectCard = memo(function ProjectCard({ proj }: { proj: typeof projects[
             zIndex: 0,
             overflow: "hidden",
             borderRadius: "12px",
-            maskImage: imageSpotlightMask,
-            WebkitMaskImage: imageSpotlightMask,
+            // To make it blend softly
+            maskImage: "linear-gradient(to bottom, black 40%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to bottom, black 40%, transparent 100%)",
           }}
-          animate={{ opacity: isHovered ? 0.99 : 0 }}
+          animate={{ opacity: isHovered ? 0.35 : 0 }}
           transition={{ duration: 0.3 }}
         >
           <Image
@@ -260,7 +231,7 @@ const ProjectCard = memo(function ProjectCard({ proj }: { proj: typeof projects[
         </motion.div>
       )}
 
-      {/* Cursor-tracking spotlight glow — same as Services BentoCard */}
+      {/* Static soft glow instead of cursor-tracking spotlight */}
       {!shouldReduce && (
         <motion.div
           style={{
@@ -268,7 +239,7 @@ const ProjectCard = memo(function ProjectCard({ proj }: { proj: typeof projects[
             inset: 0,
             pointerEvents: "none",
             zIndex: 0,
-            background: spotlightBg,
+            background: "radial-gradient(circle at 50% 50%, rgba(var(--spotlight-color), 0.1), transparent 100%)",
             borderRadius: "12px",
             overflow: "hidden",
           }}
