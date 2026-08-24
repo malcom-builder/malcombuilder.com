@@ -37,6 +37,15 @@ const mockups: Record<string, { tabs: Tab[]; mobile?: string; url: string }> = {
       { id: "perf", label: "Performance", img: "/images/projects/nur-estetica/nur-lighthouse.png" },
     ],
   },
+  "authmotion": {
+    url: "github.com/malcom-builder/AuthMotion",
+    tabs: [
+      { id: "overview", label: "Overview", img: "/images/projects/auth-motion/card-overview.webp" },
+      { id: "console", label: "Console", img: "/images/projects/auth-motion/card-console.webp" },
+      { id: "credentials", label: "Credentials", img: "/images/projects/auth-motion/card-credentials.webp" },
+      { id: "login", label: "Login", img: "/images/projects/auth-motion/card-login.webp" },
+    ],
+  },
 };
 
 export function ProjectMockup({ slug }: Props) {

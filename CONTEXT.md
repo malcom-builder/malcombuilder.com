@@ -1,4 +1,4 @@
-# AGENTS.md — malcom.builder / portfolio
+# CONTEXT.md — malcom.builder / portfolio
 
 > Contexto local del proyecto. El global está en ~/.agents/GLOBAL.md.
 > No repetir lo que ya está allá. Solo lo específico de este proyecto.
