@@ -38,12 +38,23 @@ const mockups: Record<string, { tabs: Tab[]; mobile?: string; url: string }> = {
     ],
   },
   "authmotion": {
-    url: "github.com/malcom-builder/AuthMotion",
+    url: "authmotion.malcombuilder.com",
     tabs: [
       { id: "overview", label: "Overview", img: "/images/projects/auth-motion/card-overview.webp" },
       { id: "console", label: "Console", img: "/images/projects/auth-motion/card-console.webp" },
       { id: "credentials", label: "Credentials", img: "/images/projects/auth-motion/card-credentials.webp" },
       { id: "login", label: "Login", img: "/images/projects/auth-motion/card-login.webp" },
+    ],
+  },
+  "smartwallet": {
+    url: "github.com/malcom-builder/SmartWallet",
+    tabs: [
+      { id: "hero", label: "Hero", img: "/images/projects/smart-wallet/hero.webp" },
+      { id: "dashboard", label: "Dashboard", img: "/images/projects/smart-wallet/dashboard.webp" },
+      { id: "virtual-card", label: "Virtual Card", img: "/images/projects/smart-wallet/virtual-card.webp" },
+      { id: "transactions", label: "Transactions", img: "/images/projects/smart-wallet/transactions.webp" },
+      { id: "swap", label: "Swap", img: "/images/projects/smart-wallet/swap.webp" },
+      { id: "receipt", label: "Receipt", img: "/images/projects/smart-wallet/swapt-receipt.webp" },
     ],
   },
 };
