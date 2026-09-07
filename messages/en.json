@@ -131,23 +131,23 @@
       }
     },
     "smartwallet": {
-      "tagline": "A code accounting error is not a bug. It's lost money and lost clients.",
-      "description": "When handling financial transactions, the margin of error must be mathematically zero. A mismatched ledger breaks user trust forever.\n\nWe built SmartWallet with Double-Entry Bookkeeping architecture. Immutable bank-grade accounting. If a server fails mid-payment, the system rolls back cleanly.\n\nAbsolute transactional precision, ready to be integrated into your product.",
+      "tagline": "The complete financial hub: from immutable accounting to virtual cards and swaps.",
+      "description": "A digital wallet cannot have a margin of error. We built SmartWallet with Double-Entry Bookkeeping architecture to guarantee absolute accounting precision, paired with a modern and fast interface.\n\nFrom a comprehensive dashboard to virtual card management, transaction history, and an asset exchange system (swap) with automated receipts.\n\nAbsolute transactional precision and a flawless user experience.",
       "featuresLabel": "What's included",
       "features": [
-        { "title": "Double-entry", "desc": "Every dollar that enters has a destination. Every dollar that leaves has an origin. Impossible for the balance to become offset." },
-        { "title": "Vault", "desc": "Access keys, tokens, and sensitive data live in a hardware vault. Not in an environment variable that someone could inspect." },
-        { "title": "Transactions", "desc": "If two users perform an operation simultaneously, the system resolves it without duplicating or losing anything. The money always arrives." },
-        { "title": "API", "desc": "Connects to what you already have. No need to rebuild the platform — SmartWallet integrates as a module." },
-        { "title": "Audit", "desc": "Every movement is recorded forever. If there is a dispute, you have the complete history. If there is fraud, it is detected." }
+        { "title": "Double-entry", "desc": "Every cent that enters has a destination. Impossible for the balance to offset. Bank-grade accounting." },
+        { "title": "Virtual Cards", "desc": "Instant generation and management of virtual cards directly from the dashboard for secure purchases." },
+        { "title": "Swap System", "desc": "Real-time asset exchange with detailed automated receipts issued for every operation." },
+        { "title": "Comprehensive Dashboard", "desc": "Total control of cash flow, income, and expenses, with a clear and precise transaction history." },
+        { "title": "Security Vault", "desc": "Access keys and sensitive data live in a hardware vault, guaranteeing asset protection." }
       ],
       "metrics": {
-        "title": "Precision & Control",
+        "title": "Experience & Security",
         "cards": [
-          { "label": "Ledger Precision", "value": "100%", "desc": "Every cent has a registered origin and destination. The balance never offsets. Never." },
-          { "label": "Data Security", "value": "Vaulted", "desc": "Credentials do not live in the code. They live in secure hardware. Just like a bank.", "isPositive": true },
-          { "label": "Transactions", "value": "Shielded", "desc": "If the server crashes mid-payment, nothing is left half-done. Everything goes through or nothing does.", "isPositive": true },
-          { "label": "Integration", "value": "REST API", "desc": "Connects to your app, website, or sales system. Without rebuilding anything." }
+          { "label": "Ledger Precision", "value": "100%", "desc": "The balance never offsets thanks to the double-entry core architecture." },
+          { "label": "Asset Management", "value": "Swaps", "desc": "Real-time exchange natively integrated into the wallet.", "isPositive": true },
+          { "label": "Security", "value": "Vaulted", "desc": "Credentials and transactions signed in secure hardware.", "isPositive": true },
+          { "label": "Cards", "value": "Virtual", "desc": "Instant issuance of virtual cards for users." }
         ]
       }
     },

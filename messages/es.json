@@ -255,55 +255,55 @@
       }
     },
     "smartwallet": {
-      "tagline": "Un error contable en código no es un bug. Es dinero perdido y clientes que no vuelven.",
-      "description": "Cuando el sistema maneja transacciones financieras, el margen de error debe ser cero matemático. Un saldo descuadrado quiebra la confianza del usuario para siempre.\n\nConstruimos SmartWallet con arquitectura de doble entrada (Double-Entry Bookkeeping). Contabilidad bancaria inmutable. Si el servidor falla a mitad de un pago, el sistema retrocede.\n\nPrecisión transaccional absoluta, lista para integrarse a tu producto.",
+      "tagline": "El hub financiero completo: desde contabilidad inmutable hasta tarjetas virtuales y swaps.",
+      "description": "Una billetera digital no puede tener margen de error. Construimos SmartWallet con arquitectura de doble entrada (Double-Entry Bookkeeping) para garantizar precisión contable absoluta y lo combinamos con una interfaz moderna y rápida.\n\nDesde el dashboard general hasta la gestión de tarjetas virtuales, el historial de transacciones y un sistema de intercambio (swap) con recibos automáticos.\n\nPrecisión transaccional absoluta y una experiencia de usuario impecable.",
       "featuresLabel": "Qué incluye",
       "features": [
         {
           "title": "Doble entrada",
-          "desc": "Cada peso que entra tiene un destino. Cada peso que sale tiene un origen. Imposible que el saldo se descuadre."
+          "desc": "Cada centavo que entra tiene un destino. Imposible que el saldo se descuadre. Contabilidad de nivel bancario."
         },
         {
-          "title": "Bóveda",
-          "desc": "Las claves de acceso, tokens y datos sensibles viven en una bóveda de hardware. No en una variable de entorno que alguien puede ver."
+          "title": "Tarjetas Virtuales",
+          "desc": "Generación y gestión de tarjetas virtuales directamente desde el panel para compras seguras."
         },
         {
-          "title": "Transacciones",
-          "desc": "Si dos usuarios hacen una operación al mismo tiempo, el sistema lo resuelve sin duplicar ni perder nada. El dinero siempre llega."
+          "title": "Sistema de Swap",
+          "desc": "Intercambio de activos en tiempo real con emisión de recibos detallados por cada operación."
         },
         {
-          "title": "API",
-          "desc": "Se conecta a lo que ya tenés. No hace falta reconstruir la plataforma — SmartWallet se integra como un módulo."
+          "title": "Dashboard integral",
+          "desc": "Control total del flujo de dinero, ingresos y gastos, con un historial de transacciones claro y preciso."
         },
         {
-          "title": "Auditoría",
-          "desc": "Cada movimiento queda registrado para siempre. Si hay un reclamo, tenés el historial completo. Si hay fraude, se detecta."
+          "title": "Bóveda de Seguridad",
+          "desc": "Las claves de acceso y los datos sensibles viven en una bóveda de hardware, garantizando la protección de los activos."
         }
       ],
       "metrics": {
-        "title": "Precisión & Control",
+        "title": "Experiencia & Seguridad",
         "cards": [
           {
             "label": "Precisión Contable",
             "value": "100%",
-            "desc": "Cada centavo tiene origen y destino registrado. El saldo nunca se descuadre. Nunca."
+            "desc": "El saldo nunca se descuadra gracias a la arquitectura core de doble entrada."
           },
           {
-            "label": "Seguridad de Datos",
+            "label": "Gestión de Activos",
+            "value": "Swaps",
+            "desc": "Intercambio en tiempo real integrado de forma nativa en la billetera.",
+            "isPositive": true
+          },
+          {
+            "label": "Seguridad",
             "value": "Bóveda",
-            "desc": "Las credenciales no viven en el código. Viven en hardware seguro. Como un banco.",
+            "desc": "Credenciales y transacciones firmadas en hardware seguro.",
             "isPositive": true
           },
           {
-            "label": "Transacciones",
-            "value": "Blindadas",
-            "desc": "Si el servidor se cae en mitad de un pago, nada queda a medias. Todo pasa o nada pasa.",
-            "isPositive": true
-          },
-          {
-            "label": "Integración",
-            "value": "API REST",
-            "desc": "Se conecta a tu app, tu web o tu sistema de ventas. Sin reescribir nada."
+            "label": "Tarjetas",
+            "value": "Virtuales",
+            "desc": "Emisión instantánea de tarjetas virtuales para los usuarios."
           }
         ]
       }

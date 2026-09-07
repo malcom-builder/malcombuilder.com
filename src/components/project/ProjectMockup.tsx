@@ -47,7 +47,7 @@ const mockups: Record<string, { tabs: Tab[]; mobile?: string; url: string }> = {
     ],
   },
   "smartwallet": {
-    url: "github.com/malcom-builder/SmartWallet",
+    url: "smartwallet.malcombuilder.com",
     tabs: [
       { id: "hero", label: "Hero", img: "/images/projects/smart-wallet/hero.webp" },
       { id: "dashboard", label: "Dashboard", img: "/images/projects/smart-wallet/dashboard.webp" },
