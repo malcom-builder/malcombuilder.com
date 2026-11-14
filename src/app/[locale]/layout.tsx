@@ -39,11 +39,20 @@ export async function generateMetadata({
       siteName: "malcom.builder",
       locale: locale === "es" ? "es_AR" : "en_US",
       type: "website",
+      images: [
+        {
+          url: "https://malcombuilder.com/og-image.png",
+          width: 1200,
+          height: 630,
+          alt: "malcom.builder — Software Studio",
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: t("title"),
       description: t("description"),
+      images: ["https://malcombuilder.com/og-image.png"],
     },
     robots: { index: true, follow: true },
   };
